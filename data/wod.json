@@ -1,169 +1,366 @@
 {
-  "week_start": "2026-04-20",
   "days": [
     {
-      "date": "2026-04-20",
-      "day": "MON",
-      "name": "2K ROW",
-      "tag": "BENCHMARK",
+      "date": "2026-03-30", "day": "MON", "name": "260330", "tag": "",
+      "type": "For reps",
+      "description": "Tabata air squats\nTabata push-ups\nTabata AbMat sit-ups\nTabata walking lunges\n– Each Tabata is 8 rounds of :20 of work and :10 of rest.",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-03-31", "day": "TUE", "name": "260331", "tag": "",
+      "type": "3 rounds for time",
+      "description": "400-m run\n30 KB snatches (35/53 lb)\n20 KB swings (35/53 lb)",
+      "movements": [
+        { "name": "KB Snatch", "detail": "30 reps", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 24, "is_percentage_1rm": false },
+        { "name": "KB Swing", "detail": "20 reps", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 24, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-01", "day": "WED", "name": "260401", "tag": "HEAVY DAY",
+      "type": "For load",
+      "description": "Push press\n3-2-2-1-1-1",
+      "movements": [
+        { "name": "Push Press", "detail": "3-2-2-1-1-1", "has_weight": true, "rx_female_kg": null, "rx_male_kg": null, "is_percentage_1rm": true }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-02", "day": "THU", "name": "260402", "tag": "",
+      "type": "For time",
+      "description": "1,000-m row\n50 toes-to-bars\n500-m row\n25 toes-to-bars",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-03", "day": "FRI", "name": "260403", "tag": "",
+      "type": "8 rounds for time",
+      "description": "5 box jump-overs (24/30 in)\n5 hang power cleans (155/225 lb)",
+      "movements": [
+        { "name": "Hang Power Clean", "detail": "5 reps", "has_weight": true, "rx_female_kg": 70, "rx_male_kg": 102, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-04", "day": "SAT", "name": "260404", "tag": "",
+      "type": "For time",
+      "description": "21-18-15-12-9\nL-sit pull-ups\n42-36-30-24-18\nThrusters (35/45 lb)",
+      "movements": [
+        { "name": "Thruster", "detail": "42-36-30-24-18 reps", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 20, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-05", "day": "SUN", "name": "260405", "tag": "PARTNER",
+      "type": "AMRAP 30 with a partner",
+      "description": "Echo bike calories\n– Rotate as needed.\n– Non-biking partner accumulates time in a front or side plank.",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-06", "day": "MON", "name": "260406", "tag": "",
+      "type": "For time",
+      "description": "800-m run\n80 pull-ups\n80 deadlifts (95/135 lb)\n800-m run\n– Partition the pull-up and deadlift reps any way.",
+      "movements": [
+        { "name": "Deadlift", "detail": "80 reps", "has_weight": true, "rx_female_kg": 43, "rx_male_kg": 61, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-07", "day": "TUE", "name": "260407", "tag": "",
+      "type": "AMRAP 15",
+      "description": "3 wall walks\n15 burpees\n60 double-unders",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-08", "day": "WED", "name": "260408", "tag": "HEAVY DAY",
+      "type": "For load",
+      "description": "Front squat\n3-3-3-3-3",
+      "movements": [
+        { "name": "Front Squat", "detail": "3-3-3-3-3", "has_weight": true, "rx_female_kg": null, "rx_male_kg": null, "is_percentage_1rm": true }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-09", "day": "THU", "name": "260409", "tag": "",
+      "type": "27-21-15-9 reps for time",
+      "description": "Hang power cleans (65/95 lb)\nToes-to-bars",
+      "movements": [
+        { "name": "Hang Power Clean", "detail": "27-21-15-9 reps", "has_weight": true, "rx_female_kg": 29, "rx_male_kg": 43, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-10", "day": "FRI", "name": "KELLY", "tag": "BENCHMARK",
+      "type": "5 rounds for time",
+      "description": "400-m run\n30 box jumps (20/24 in)\n30 wall-ball shots (14/20 lb) (9/10 ft)",
+      "movements": [
+        { "name": "Wall-ball Shot", "detail": "30 reps", "has_weight": true, "rx_female_kg": 6, "rx_male_kg": 9, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-11", "day": "SAT", "name": "260411", "tag": "PARTNER",
+      "type": "For time with a partner",
+      "description": "50-cal row\n30 muscle-ups\n50-cal row\n20 muscle-ups\n50-cal row\n10 muscle-ups\n– Trade off as desired.",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-12", "day": "SUN", "name": "260412", "tag": "",
+      "type": "5 × 2:00 rounds",
+      "description": "15/20-cal bike\nMax handstand push-ups\n– Rest 1:00 between rounds",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-13", "day": "MON", "name": "260413", "tag": "HEAVY DAY",
+      "type": "For load",
+      "description": "Hang squat clean\n2-2-2-2-2-2-2",
+      "movements": [
+        { "name": "Hang Squat Clean", "detail": "2-2-2-2-2-2-2", "has_weight": true, "rx_female_kg": null, "rx_male_kg": null, "is_percentage_1rm": true }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-14", "day": "TUE", "name": "260414", "tag": "",
+      "type": "10 rounds for time",
+      "description": "2 rope climbs (15/15 ft)\n10 GHD sit-ups or 15 AbMat sit-ups\n25 double-unders",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-15", "day": "WED", "name": "260415", "tag": "",
+      "type": "For time",
+      "description": "15 power snatches (75/115 lb)\n24/30-cal bike\n15 power snatches",
+      "movements": [
+        { "name": "Power Snatch", "detail": "15 + 15 reps", "has_weight": true, "rx_female_kg": 34, "rx_male_kg": 52, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-16", "day": "THU", "name": "260416", "tag": "",
+      "type": "AMRAP 14",
+      "description": "400/500-m row\n15 KB goblet squats (35/53 lb)\n:30 L-sit hold",
+      "movements": [
+        { "name": "KB Goblet Squat", "detail": "15 reps", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 24, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-17", "day": "FRI", "name": "DREW", "tag": "BENCHMARK",
+      "type": "For time",
+      "description": "Kraus\n200-m run\n30 pull-ups\n30 hand-release push-ups\n4 deadlifts\n:30 rest\n\nScott\n400-m run\n25 pull-ups\n25 hand-release push-ups\n4 deadlifts\n:30 rest\n\nGood\n600-m run\n20 pull-ups\n20 hand-release push-ups\n4 deadlifts\n:30 rest\n\nCully\n800-m run\n15 pull-ups\n15 hand-release push-ups\n4 deadlifts\n:30 rest\n\nNight Stalkers\n269 box step-ups (20/20 in)\n\n– 1.5 × bodyweight deadlifts.\n– Perform the full workout with a 14/20-lb weight vest.",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-18", "day": "SAT", "name": "260418", "tag": "PARTNER",
+      "type": "10 rounds for time, with a partner",
+      "description": "Double-KB front-rack carry (75 ft) (35/53 lb)\n15 box jump-overs (20/24 in)\nDouble-KB front-rack carry (75 ft) (35/53 lb)\n– Partners alternate full rounds, for 5 rounds each.",
+      "movements": [
+        { "name": "Double-KB Front-rack Carry", "detail": "75 ft", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 24, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-19", "day": "SUN", "name": "260419", "tag": "",
+      "type": "For time",
+      "description": "1-3-5-7-9-11-13-15 reps of:\nDB push presses (20/35 lb)\nDB front squats\nDB thrusters\n– Use two dumbbells.",
+      "movements": [
+        { "name": "DB Push Press", "detail": "1-3-5-7-9-11-13-15 reps", "has_weight": true, "rx_female_kg": 9, "rx_male_kg": 16, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-20", "day": "MON", "name": "2K ROW", "tag": "BENCHMARK",
       "type": "For time",
       "description": "2,000-m row",
       "movements": [
-        {
-          "name": "Row",
-          "detail": "2,000 m",
-          "has_weight": false
-        }
-      ],
-      "coach_notes": "",
-      "scaling": ""
+        { "name": "Row", "detail": "2,000 m", "has_weight": false }
+      ], "coach_notes": "", "scaling": ""
     },
     {
-      "date": "2026-04-21",
-      "day": "TUE",
-      "name": "GRIPPER RIPPER",
-      "tag": "",
+      "date": "2026-04-21", "day": "TUE", "name": "GRIPPER RIPPER", "tag": "",
       "type": "8 rounds for reps",
       "description": "On a 1:00 clock:\n100-m sprint\nMax clean and jerks\n– Rest 3:00 between rounds.",
       "movements": [
-        {
-          "name": "Sprint",
-          "detail": "100 m",
-          "has_weight": false
-        },
-        {
-          "name": "Clean and Jerk",
-          "detail": "Max reps",
-          "has_weight": true,
-          "rx_female_kg": 34,
-          "rx_male_kg": 52,
-          "is_percentage_1rm": false
-        }
-      ],
-      "coach_notes": "",
-      "scaling": ""
+        { "name": "Clean and Jerk", "detail": "Max reps", "has_weight": true, "rx_female_kg": 34, "rx_male_kg": 52, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
     },
     {
-      "date": "2026-04-22",
-      "day": "WED",
-      "name": "LIGHT 'TIL IT'S NOT",
-      "tag": "HEAVY DAY",
-      "type": "For load + AMRAP",
-      "description": "For load:\nOverhead squat 8-8-8-8\n\nThen…\n\nAMRAP 6:\n40 overhead squats\n30 deficit push-ups (2/4 in)",
+      "date": "2026-04-22", "day": "WED", "name": "LIGHT 'TIL IT'S NOT", "tag": "HEAVY DAY",
+      "type": "For load + AMRAP 6",
+      "description": "For load:\nOverhead squat 8-8-8-8\n\nThen…\n\nAMRAP 6:\n40 overhead squats (55/75 lb)\n30 deficit push-ups (2/4 in)",
       "movements": [
-        {
-          "name": "Overhead Squat (For load)",
-          "detail": "8-8-8-8",
-          "has_weight": true,
-          "rx_female_kg": null,
-          "rx_male_kg": null,
-          "is_percentage_1rm": false,
-          "note": "建立今日最重"
-        },
-        {
-          "name": "Overhead Squat (AMRAP)",
-          "detail": "40 reps",
-          "has_weight": true,
-          "rx_female_kg": 25,
-          "rx_male_kg": 34,
-          "is_percentage_1rm": false
-        },
-        {
-          "name": "Deficit Push-ups",
-          "detail": "30 reps (2/4 in)",
-          "has_weight": false
-        }
-      ],
-      "coach_notes": "",
-      "scaling": ""
+        { "name": "Overhead Squat (For load)", "detail": "8-8-8-8", "has_weight": true, "rx_female_kg": null, "rx_male_kg": null, "is_percentage_1rm": true },
+        { "name": "Overhead Squat (AMRAP)", "detail": "40 reps", "has_weight": true, "rx_female_kg": 25, "rx_male_kg": 34, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
     },
     {
-      "date": "2026-04-23",
-      "day": "THU",
-      "name": "PUMP IT. FOLD IT. HANG IT.",
-      "tag": "PARTNER",
+      "date": "2026-04-23", "day": "THU", "name": "PUMP IT. FOLD IT. HANG IT.", "tag": "PARTNER",
       "type": "For time with a partner",
-      "description": "100-cal air bike\n80 V-ups\n6:00 accumulated pull-up bar hang\n80 V-ups\n100-cal air bike\n– 30:00 time cap\n– Share the work as desired.",
-      "movements": [
-        { "name": "Air Bike", "detail": "100 cal", "has_weight": false },
-        { "name": "V-ups", "detail": "80 reps", "has_weight": false },
-        { "name": "Pull-up Bar Hang", "detail": "6:00 accumulated", "has_weight": false },
-        { "name": "V-ups", "detail": "80 reps", "has_weight": false },
-        { "name": "Air Bike", "detail": "100 cal", "has_weight": false }
-      ],
-      "coach_notes": "",
-      "scaling": ""
+      "description": "100-cal air bike\n80 V-ups\n6:00 accumulated pull-up bar hang\n80 V-ups\n100-cal air bike\n– 30:00 time cap.\n– Share the work as desired.",
+      "movements": [], "coach_notes": "", "scaling": ""
     },
     {
-      "date": "2026-04-24",
-      "day": "FRI",
-      "name": "DUMMIE BUNNY",
-      "tag": "",
+      "date": "2026-04-24", "day": "FRI", "name": "DUMMIE BUNNY", "tag": "",
       "type": "For time",
-      "description": "100 double-unders\n60 DB deadlifts\n100 double-unders\n45 DB hang power cleans\n100 double-unders\n30 DB push jerks\n– Use two dumbbells.",
+      "description": "100 double-unders\n60 DB deadlifts (50/70 lb)\n100 double-unders\n45 DB hang power cleans (50/70 lb)\n100 double-unders\n30 DB push jerks (50/70 lb)\n– Use two dumbbells.",
       "movements": [
-        { "name": "Double-unders", "detail": "100 reps", "has_weight": false },
-        {
-          "name": "DB Deadlift",
-          "detail": "60 reps",
-          "has_weight": true,
-          "rx_female_kg": 22.5,
-          "rx_male_kg": 32,
-          "is_percentage_1rm": false,
-          "note": "每手一個"
-        },
-        { "name": "Double-unders", "detail": "100 reps", "has_weight": false },
-        {
-          "name": "DB Hang Power Clean",
-          "detail": "45 reps",
-          "has_weight": true,
-          "rx_female_kg": 22.5,
-          "rx_male_kg": 32,
-          "is_percentage_1rm": false
-        },
-        { "name": "Double-unders", "detail": "100 reps", "has_weight": false },
-        {
-          "name": "DB Push Jerk",
-          "detail": "30 reps",
-          "has_weight": true,
-          "rx_female_kg": 22.5,
-          "rx_male_kg": 32,
-          "is_percentage_1rm": false
-        }
-      ],
-      "coach_notes": "",
-      "scaling": ""
+        { "name": "DB Deadlift", "detail": "60 reps", "has_weight": true, "rx_female_kg": 22.5, "rx_male_kg": 32, "is_percentage_1rm": false },
+        { "name": "DB Hang Power Clean", "detail": "45 reps", "has_weight": true, "rx_female_kg": 22.5, "rx_male_kg": 32, "is_percentage_1rm": false },
+        { "name": "DB Push Jerk", "detail": "30 reps", "has_weight": true, "rx_female_kg": 22.5, "rx_male_kg": 32, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
     },
     {
-      "date": "2026-04-25",
-      "day": "SAT",
-      "name": "LET'S HUNT",
-      "tag": "",
+      "date": "2026-04-25", "day": "SAT", "name": "LET'S HUNT", "tag": "",
       "type": "For time",
       "description": "400-m bear crawl\n400-m run\n400-m walking lunges\n400-m run",
-      "movements": [
-        { "name": "Bear Crawl", "detail": "400 m", "has_weight": false },
-        { "name": "Run", "detail": "400 m", "has_weight": false },
-        { "name": "Walking Lunges", "detail": "400 m", "has_weight": false },
-        { "name": "Run", "detail": "400 m", "has_weight": false }
-      ],
-      "coach_notes": "",
-      "scaling": ""
+      "movements": [], "coach_notes": "", "scaling": ""
     },
     {
-      "date": "2026-04-26",
-      "day": "SUN",
-      "name": "SUNDAY IS FOR _____",
-      "tag": "",
+      "date": "2026-04-26", "day": "SUN", "name": "SUNDAY IS FOR _____", "tag": "",
       "type": "EMOM 15",
       "description": "Min 1 | 15 toes-to-bars\nMin 2 | :30 bike for calories\nMin 3 | 20 hip extensions",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-27", "day": "MON", "name": "260427", "tag": "HEAVY DAY",
+      "type": "For load",
+      "description": "Deadlift\n10-10-7-7-3-3-3",
       "movements": [
-        { "name": "Toes-to-bars", "detail": "15 reps / min", "has_weight": false },
-        { "name": "Bike", "detail": "30 sec for calories", "has_weight": false },
-        { "name": "Hip Extensions", "detail": "20 reps / min", "has_weight": false }
-      ],
-      "coach_notes": "",
-      "scaling": ""
+        { "name": "Deadlift", "detail": "10-10-7-7-3-3-3", "has_weight": true, "rx_female_kg": null, "rx_male_kg": null, "is_percentage_1rm": true }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-28", "day": "TUE", "name": "260428", "tag": "PARTNER",
+      "type": "AMRAP 20 with a partner",
+      "description": "400-m run\nHandstand walk (100 ft)\n100 walking lunges\n– Run together.\n– Split the handstand walk evenly (50 ft each).\n– Share the lunges as desired.",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-29", "day": "WED", "name": "ANDI", "tag": "BENCHMARK",
+      "type": "For time",
+      "description": "100 hang power snatches (45/65 lb)\n100 push presses\n100 sumo deadlift high pulls\n100 front squats",
+      "movements": [
+        { "name": "Hang Power Snatch", "detail": "100 reps", "has_weight": true, "rx_female_kg": 20, "rx_male_kg": 29, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-04-30", "day": "THU", "name": "260430", "tag": "",
+      "type": "5 rounds for time",
+      "description": ":30 L-sit\n14/18-cal air bike\n10 DB burpees (35/50 lb)\n– Rest 2:00 between rounds.\n– Use two dumbbells.",
+      "movements": [
+        { "name": "DB Burpee", "detail": "10 reps", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 22.5, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-01", "day": "FRI", "name": "NASTY GIRLS", "tag": "BENCHMARK",
+      "type": "3 rounds for time",
+      "description": "50 air squats\n7 ring muscle-ups\n10 hang power cleans (95/135 lb)",
+      "movements": [
+        { "name": "Hang Power Clean", "detail": "10 reps", "has_weight": true, "rx_female_kg": 43, "rx_male_kg": 61, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-02", "day": "SAT", "name": "260502", "tag": "",
+      "type": "For time",
+      "description": "10-8-6-4-2\nPush jerks (125/185 lb)\n100-80-60-40-20\nDouble-unders",
+      "movements": [
+        { "name": "Push Jerk", "detail": "10-8-6-4-2 reps", "has_weight": true, "rx_female_kg": 57, "rx_male_kg": 84, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-03", "day": "SUN", "name": "260503", "tag": "",
+      "type": "AMRAP 15",
+      "description": "3-6-9-12...\nChest-to-bar pull-ups\n– Row 12/15 calories after each round.",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-04", "day": "MON", "name": "260504", "tag": "",
+      "type": "75-50-25 reps for time",
+      "description": "Wall-ball shots (14/20 lb)\nAbMat sit-ups\nCalorie bike\n– Women bike 60-40-20 calories.",
+      "movements": [
+        { "name": "Wall-ball Shot", "detail": "75-50-25 reps", "has_weight": true, "rx_female_kg": 6, "rx_male_kg": 9, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-05", "day": "TUE", "name": "260505", "tag": "",
+      "type": "5 rounds for time",
+      "description": "15 box jumps (24/30 in)\n15 bench presses (95/135 lb)",
+      "movements": [
+        { "name": "Bench Press", "detail": "15 reps", "has_weight": true, "rx_female_kg": 43, "rx_male_kg": 61, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-06", "day": "WED", "name": "260506", "tag": "",
+      "type": "2 rounds for time",
+      "description": "1,600-m run\n15 deadlifts (225/315 lb)",
+      "movements": [
+        { "name": "Deadlift", "detail": "15 reps", "has_weight": true, "rx_female_kg": 102, "rx_male_kg": 143, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-07", "day": "THU", "name": "260507", "tag": "",
+      "type": "For time",
+      "description": "40-cal row\n200 double-unders\n40-cal row",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-08", "day": "FRI", "name": "260508", "tag": "",
+      "type": "For reps",
+      "description": "On a 4:00 clock:\nMax snatches (105/155 lb)\n4:00 rest\nOn a 3:00 clock:\nMax snatches (125/185 lb)\n3:00 rest\nOn a 2:00 clock:\nMax snatches (145/205 lb)",
+      "movements": [
+        { "name": "Snatch", "detail": "Max reps each clock", "has_weight": true, "rx_female_kg": 47.5, "rx_male_kg": 70, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-09", "day": "SAT", "name": "CINDY", "tag": "BENCHMARK",
+      "type": "AMRAP 20",
+      "description": "5 pull-ups\n10 push-ups\n15 air squats",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-10", "day": "SUN", "name": "260510", "tag": "PARTNER",
+      "type": "3 rounds for time with a partner",
+      "description": "400-m DB farmers carry (35/50 lb)\n25 GHD sit-ups\n25 double-DB Russian swings\n– Break up the carries as desired.\n– One partner performs the GHD sit-ups, and the other performs the Russian dumbbell swings; then, switch.",
+      "movements": [
+        { "name": "DB Farmers Carry", "detail": "400 m", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 22.5, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-11", "day": "MON", "name": "260511", "tag": "",
+      "type": "For time",
+      "description": "30 power cleans (105/155 lb)\n800-m run\n30 power cleans",
+      "movements": [
+        { "name": "Power Clean", "detail": "30 + 30 reps", "has_weight": true, "rx_female_kg": 47.5, "rx_male_kg": 70, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-12", "day": "TUE", "name": "260512", "tag": "HEAVY DAY",
+      "type": "For load",
+      "description": "Back squat\n5-5-3-3-1-1-1",
+      "movements": [
+        { "name": "Back Squat", "detail": "5-5-3-3-1-1-1", "has_weight": true, "rx_female_kg": null, "rx_male_kg": null, "is_percentage_1rm": true }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-13", "day": "WED", "name": "260513", "tag": "",
+      "type": "3 rounds for time",
+      "description": "25 ring dips\n10 KB Turkish get-ups (53/70 lb)\n25 pull-ups\n– Switch arms as desired on the Turkish get-ups.",
+      "movements": [
+        { "name": "KB Turkish Get-up", "detail": "10 reps", "has_weight": true, "rx_female_kg": 24, "rx_male_kg": 32, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-14", "day": "THU", "name": "260514", "tag": "",
+      "type": "7 rounds for time",
+      "description": "Handstand walk (50 ft)\n20 box step-ups (20/24 in)",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-15", "day": "FRI", "name": "260515", "tag": "",
+      "type": "5 rounds for time",
+      "description": "22/30-cal Echo bike\n20 sumo deadlift high pulls (65/95 lb)\n15 knees-to-elbows",
+      "movements": [
+        { "name": "Sumo Deadlift High Pull", "detail": "20 reps", "has_weight": true, "rx_female_kg": 29, "rx_male_kg": 43, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-16", "day": "SAT", "name": "260516", "tag": "",
+      "type": "5 × 3:00 AMRAP",
+      "description": "1 rope climb (15/15 ft)\n9 thrusters (65/95 lb)\n– Rest 3:00 between each AMRAP.\n– Start each round where you left off.",
+      "movements": [
+        { "name": "Thruster", "detail": "9 reps", "has_weight": true, "rx_female_kg": 29, "rx_male_kg": 43, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-17", "day": "SUN", "name": "260517", "tag": "",
+      "type": "For time",
+      "description": "300 calories on any machine\nor\n5,000-m run",
+      "movements": [], "coach_notes": "", "scaling": ""
     }
   ]
 }
