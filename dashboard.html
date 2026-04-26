@@ -244,18 +244,19 @@ function showTab(tab) {
 
 // ── WOD ──
 function renderDayTabs() {
-  const today = new Date();
-  const todayDay = today.getDay(); // 0=Sun
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
   const container = document.getElementById('day-tabs');
   container.innerHTML = '';
 
   const dayNames = ['日','一','二','三','四','五','六'];
 
   wodData.days.forEach((day, i) => {
-    const d = new Date(day.date);
-    const isToday = d.getDay() === todayDay && isSameWeek(d, today);
+    const isToday = day.date === todayStr;
+    const parts = day.date.split('-');
+    const d = new Date(+parts[0], +parts[1]-1, +parts[2]);
     const btn = document.createElement('button');
-    btn.className = 'day-tab' + (isToday ? ' today' : '') + (i === (isToday ? i : currentDayIndex) ? '' : '');
+    btn.className = 'day-tab' + (isToday ? ' today' : '');
     btn.textContent = `${dayNames[d.getDay()]} ${d.getMonth()+1}/${d.getDate()}`;
     btn.onclick = () => {
       currentDayIndex = i;
@@ -270,7 +271,6 @@ function renderDayTabs() {
     container.appendChild(btn);
   });
 
-  // Activate first if none set as today
   if (!container.querySelector('.active')) {
     container.children[0]?.classList.add('active');
     currentDayIndex = 0;
@@ -279,15 +279,6 @@ function renderDayTabs() {
   renderWOD(currentDayIndex);
 }
 
-function isSameWeek(d1, d2) {
-  const startOfWeek = (d) => {
-    const t = new Date(d);
-    t.setDate(t.getDate() - t.getDay());
-    t.setHours(0,0,0,0);
-    return t;
-  };
-  return startOfWeek(d1).getTime() === startOfWeek(d2).getTime();
-}
 
 function renderWOD(idx) {
   const day = wodData.days[idx];
