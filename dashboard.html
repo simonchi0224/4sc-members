@@ -517,47 +517,27 @@ async function submitLog() {
 
   let aiFeedback = '';
   try {
-    const systemPrompt = `你是 4SC CrossFit 的 AI 教練助理。根據學員的訓練記錄，請用以下固定格式給予回饋（全程繁體中文）：
-
-🔥 **今日表現**
-（1-2句鼓勵，認可學員今天的努力與具體成就）
-
-📊 **弱項觀察**
-（根據使用重量、降階選擇、完成情況，點出 1-2 個需要加強的環節。若無降階則從重量判斷）
-
-💡 **下週加強建議**
-（給出 1-2 個具體動作 + 建議組數/強度，針對上方觀察到的弱項）
-
-回覆請簡潔，每段不超過 3 句話。`;
-
-    const userMsg = `學員資料：${memberData.gender === 'male' ? '男' : '女'}，${memberData.real_name}
-
-今日 WOD：${day.name}（${day.type}）
-訓練內容：${day.description}
-
-學員訓練記錄：
-${result || '（未填寫重量／降階）'}
-
-學員筆記：${notes || '（未填）'}`;
-
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await fetch('/api/ai-feedback', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENAI_API_KEY}`
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        max_tokens: 400,
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userMsg }
-        ]
+        member_id: (await sb.auth.getUser()).data.user.id,
+        wod_name: day.name,
+        wod_type: day.type,
+        wod_description: day.description,
+        result,
+        notes,
+        gender: memberData.gender,
+        member_name: memberData.real_name
       })
     });
     const data = await res.json();
-    aiFeedback = data.choices?.[0]?.message?.content || '';
-    aiText.innerHTML = aiFeedback.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    if (data.error) {
+      aiText.textContent = data.error;
+    } else {
+      aiFeedback = data.feedback;
+      aiText.innerHTML = aiFeedback.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+    }
   } catch(e) {
     aiText.textContent = '（AI 回饋暫時無法使用）';
   }
