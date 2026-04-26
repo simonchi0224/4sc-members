@@ -1,7 +1,7 @@
 // ⚠️ 填入你的 Supabase 設定
 // 位置：Supabase → Project Settings → API
 const SUPABASE_URL = 'https://ddttoxfhodhefaqgdnsj.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_cl5EzK0TLxobJ8VzWlnOLg_p_ZY6RcF';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkdHRveGZob2RoZWZhcWdkbnNqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxODk3NzAsImV4cCI6MjA5Mjc2NTc3MH0.zbpN8CE6KcaQl_FjWYxvISPSSK8VEqmwqLG-R-vAktY';
 
 // Claude API（用於 AI 訓練回饋）
 // 位置：https://console.anthropic.com/settings/keys

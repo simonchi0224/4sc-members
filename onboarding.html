@@ -52,6 +52,20 @@ select option { background: #1e293b; }
         <option value="female">女</option>
       </select>
     </div>
+    <div class="form-group">
+      <label>生日（選填，用於分齡訓練建議）</label>
+      <input type="date" id="birthday" placeholder="yyyy-mm-dd">
+    </div>
+    <div class="form-group" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div>
+        <label>身高 cm（選填）</label>
+        <input type="number" id="height" placeholder="例：175" min="100" max="250">
+      </div>
+      <div>
+        <label>體重 kg（選填）</label>
+        <input type="number" id="weight" placeholder="例：70" min="30" max="200">
+      </div>
+    </div>
     <button class="submit-btn" type="submit" id="submit-btn">送出等待教練審核</button>
     <div id="msg"></div>
   </form>
@@ -72,18 +86,27 @@ async function submitForm(e) {
   const { data: { user } } = await sb.auth.getUser();
   if (!user) { window.location.href = 'index.html'; return; }
 
-  const { error } = await sb.from('members').upsert({
+  const birthdayVal = document.getElementById('birthday').value;
+  const heightVal = document.getElementById('height').value;
+  const weightVal = document.getElementById('weight').value;
+
+  const payload = {
     id: user.id,
     email: user.email,
     real_name: document.getElementById('real-name').value.trim(),
     location: document.getElementById('location').value,
     gender: document.getElementById('gender').value,
     status: 'pending'
-  });
+  };
+  if (birthdayVal) payload.birthday = birthdayVal;
+  if (heightVal) payload.height_cm = parseFloat(heightVal);
+  if (weightVal) payload.weight_kg = parseFloat(weightVal);
+
+  const { error } = await sb.from('members').upsert(payload);
 
   if (error) {
     msg.style.color = '#f87171';
-    msg.textContent = '送出失敗，請重試。';
+    msg.textContent = '送出失敗：' + error.message;
     btn.disabled = false;
     btn.textContent = '送出等待教練審核';
   } else {
