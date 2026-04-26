@@ -95,16 +95,27 @@ a { text-decoration: none; color: inherit; }
 .field-label { font-size: 0.78rem; font-weight: 700; color: var(--gray); margin-bottom: 8px; letter-spacing: 0.5px; }
 .field-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 12px 14px; color: var(--white); font-size: 0.9rem; font-family: inherit; outline: none; resize: vertical; transition: border-color 0.2s; }
 .field-input:focus { border-color: var(--cyan); }
+.field-input option { background: #1e293b; }
 .log-btn { background: var(--orange); color: var(--white); border: none; border-radius: 10px; padding: 12px 24px; font-weight: 800; font-size: 0.9rem; cursor: pointer; font-family: inherit; }
-.ai-feedback-box { background: linear-gradient(135deg, rgba(34,211,238,0.06), rgba(139,92,246,0.04)); border: 1px solid rgba(34,211,238,0.15); border-radius: 14px; padding: 20px 20px; margin-top: 16px; }
+.ai-feedback-box { background: linear-gradient(135deg, rgba(34,211,238,0.06), rgba(139,92,246,0.04)); border: 1px solid rgba(34,211,238,0.15); border-radius: 14px; padding: 20px; margin-top: 16px; }
 .ai-label { font-size: 0.72rem; font-weight: 800; color: var(--cyan); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
 .ai-text { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.8; }
 .ai-loading { color: var(--gray); font-size: 0.88rem; }
+.log-wod-summary { background: rgba(34,211,238,0.04); border: 1px solid rgba(34,211,238,0.12); border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; }
+.log-wod-name { font-weight: 900; font-size: 1rem; margin-bottom: 2px; }
+.log-wod-type { font-size: 0.75rem; color: var(--cyan); }
+.log-mv-row { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; }
+.log-mv-name { font-size: 0.85rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.log-mv-rx { font-size: 0.72rem; color: var(--cyan); font-weight: 400; }
+.log-mv-inputs { display: grid; grid-template-columns: 130px 1fr; gap: 8px; }
+@media (max-width: 480px) { .log-mv-inputs { grid-template-columns: 1fr; } }
+.log-mv-input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 8px 10px; color: var(--white); font-size: 0.85rem; font-family: inherit; outline: none; width: 100%; }
+.log-mv-input:focus { border-color: var(--cyan); }
 .log-history { }
 .log-entry { background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px; margin-bottom: 12px; }
 .log-entry-date { font-size: 0.75rem; color: var(--gray); margin-bottom: 8px; }
 .log-entry-wod { font-weight: 800; margin-bottom: 6px; font-size: 0.92rem; }
-.log-entry-note { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.7; }
+.log-entry-note { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.7; white-space: pre-line; }
 .log-entry-ai { margin-top: 10px; font-size: 0.82rem; color: var(--cyan); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; line-height: 1.7; }
 
 /* Schedule */
@@ -162,19 +173,33 @@ a { text-decoration: none; color: inherit; }
   <!-- ── Log ── -->
   <div class="section" id="tab-log">
     <div class="log-form">
-      <h3>📝 記錄今日訓練</h3>
+      <h3>📝 記錄訓練</h3>
+
       <div class="field-group">
-        <div class="field-label">今日 WOD</div>
-        <input class="field-input" id="log-wod" type="text" placeholder="例：2K ROW" readonly>
+        <div class="field-label">訓練日期</div>
+        <select class="field-input" id="log-date-select" onchange="onLogDateChange()"></select>
       </div>
+
+      <div id="log-wod-summary" class="log-wod-summary" style="display:none;">
+        <div class="log-wod-name" id="log-wod-name"></div>
+        <div class="log-wod-type" id="log-wod-type"></div>
+      </div>
+
       <div class="field-group">
-        <div class="field-label">完成重量／成績</div>
-        <input class="field-input" id="log-result" type="text" placeholder="例：深蹲 80kg × 3組，完成時間 12:34">
+        <div class="field-label">完成時間（選填）</div>
+        <input class="field-input" id="log-time" type="text" placeholder="例：12:34 或 DNF">
       </div>
+
+      <div id="log-movements-section" style="display:none;">
+        <div class="field-label" style="margin-bottom:10px;">動作細節</div>
+        <div id="log-movements"></div>
+      </div>
+
       <div class="field-group">
         <div class="field-label">今日感受與筆記</div>
         <textarea class="field-input" id="log-notes" rows="3" placeholder="例：腰有點緊，下次要多暖身。最後一組差點沒完成但撐住了。"></textarea>
       </div>
+
       <button class="log-btn" onclick="submitLog()">儲存並取得 AI 反饋</button>
       <div class="ai-feedback-box" id="ai-box" style="display:none;">
         <div class="ai-label">🤖 Claude 教練回饋</div>
@@ -231,6 +256,7 @@ async function init() {
   renderDayTabs();
   renderSchedule();
   renderPRGrid();
+  renderLogForm();
   loadLogs();
 }
 
@@ -379,31 +405,93 @@ function updateCalc() {
 }
 
 // ── Training Log ──
+let logDayIndex = 0;
+
+function renderLogForm() {
+  const DAY_ZH_MAP = { MON:'週一', TUE:'週二', WED:'週三', THU:'週四', FRI:'週五', SAT:'週六', SUN:'週日' };
+  const sel = document.getElementById('log-date-select');
+  sel.innerHTML = wodData.days.map((d, i) => {
+    const label = `${DAY_ZH_MAP[d.day]} ${d.date.slice(5)} · ${d.name}`;
+    return `<option value="${i}">${label}</option>`;
+  }).join('');
+  sel.value = currentDayIndex;
+  logDayIndex = currentDayIndex;
+  renderLogMovements();
+}
+
+function onLogDateChange() {
+  logDayIndex = parseInt(document.getElementById('log-date-select').value);
+  renderLogMovements();
+  document.getElementById('ai-box').style.display = 'none';
+}
+
+function renderLogMovements() {
+  const day = wodData.days[logDayIndex];
+  document.getElementById('log-wod-name').textContent = day.name;
+  document.getElementById('log-wod-type').textContent = day.type;
+  document.getElementById('log-wod-summary').style.display = 'block';
+
+  const mvContainer = document.getElementById('log-movements');
+  const section = document.getElementById('log-movements-section');
+
+  if (!day.movements?.length) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+
+  mvContainer.innerHTML = day.movements.map((m, i) => {
+    const rxW = memberData.gender === 'female' ? m.rx_female_kg : m.rx_male_kg;
+    const rxLabel = rxW ? `Rx: ${rxW} kg` : '';
+    const weightInput = m.has_weight
+      ? `<input class="log-mv-input" type="number" id="lm-w-${i}" placeholder="使用重量 kg" min="0" max="500">`
+      : `<div></div>`;
+    return `<div class="log-mv-row">
+      <div class="log-mv-name">${m.name}${rxLabel ? `<span class="log-mv-rx">${rxLabel}</span>` : ''}</div>
+      <div class="log-mv-inputs">
+        ${weightInput}
+        <input class="log-mv-input" type="text" id="lm-s-${i}" placeholder="降階（例：TTB → Knee Raise）">
+      </div>
+    </div>`;
+  }).join('');
+}
+
 async function submitLog() {
   const { data: { user } } = await sb.auth.getUser();
   const notes = document.getElementById('log-notes').value.trim();
-  const result = document.getElementById('log-result').value.trim();
-  const wodName = document.getElementById('log-wod').value;
-  const day = wodData.days[currentDayIndex];
+  const time = document.getElementById('log-time').value.trim();
+  const day = wodData.days[logDayIndex];
 
-  if (!notes && !result) return;
+  // Collect movement data
+  const mvLines = (day.movements || []).map((m, i) => {
+    const w = document.getElementById(`lm-w-${i}`)?.value;
+    const s = document.getElementById(`lm-s-${i}`)?.value.trim();
+    let line = m.name;
+    if (w) line += ` ${w} kg`;
+    if (s) line += ` → ${s}`;
+    return (w || s) ? line : null;
+  }).filter(Boolean);
+
+  const result = [
+    time ? `完成時間：${time}` : '',
+    mvLines.length ? mvLines.join('\n') : ''
+  ].filter(Boolean).join('\n');
+
+  if (!result && !notes) return;
 
   const aiBox = document.getElementById('ai-box');
   const aiText = document.getElementById('ai-text');
   aiBox.style.display = 'block';
   aiText.innerHTML = '<span class="ai-loading">分析中…</span>';
 
-  // Get AI feedback
   let aiFeedback = '';
   try {
     const prompt = `你是一位 CrossFit 教練，請根據學員的訓練記錄給予簡短、具體、鼓勵性的回饋（100-150字中文）。
 
-今日 WOD：${wodName}
+今日 WOD：${day.name}
 訓練內容：${day.description}
-學員成績：${result || '未填寫'}
-學員筆記：${notes}
+學員訓練記錄：
+${result || '（未填）'}
+學員筆記：${notes || '（未填）'}
 
-請針對學員提到的具體內容（疲勞、動作問題、完成情況等）給予回饋，並給一個下次訓練的小提示。`;
+請針對學員的重量選擇、降階選擇或完成情況給予具體回饋，並給一個下次訓練的小提示。`;
 
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -426,12 +514,13 @@ async function submitLog() {
     aiText.textContent = '（AI 回饋暫時無法使用）';
   }
 
-  // Save to DB
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
   await sb.from('training_logs').insert({
     member_id: user.id,
-    date: new Date().toISOString().split('T')[0],
+    date: todayStr,
     wod_date: day.date,
-    wod_name: wodName,
+    wod_name: day.name,
     result,
     notes,
     ai_feedback: aiFeedback
