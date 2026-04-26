@@ -68,10 +68,10 @@ h1 { font-size: 1.4rem; font-weight: 900; margin-bottom: 8px; }
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 <script>
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 async function signInWithGoogle() {
-  const { error } = await supabase.auth.signInWithOAuth({
+  const { error } = await sb.auth.signInWithOAuth({
     provider: 'google',
     options: { redirectTo: window.location.origin + '/onboarding.html' }
   });
@@ -82,12 +82,12 @@ async function signInWithGoogle() {
 }
 
 // If already logged in, redirect
-supabase.auth.getSession().then(({ data: { session } }) => {
+sb.auth.getSession().then(({ data: { session } }) => {
   if (session) checkMemberStatus(session.user);
 });
 
 async function checkMemberStatus(user) {
-  const { data } = await supabase.from('members').select('status').eq('id', user.id).single();
+  const { data } = await sb.from('members').select('status').eq('id', user.id).single();
   if (!data) { window.location.href = 'onboarding.html'; return; }
   if (data.status === 'approved') { window.location.href = 'dashboard.html'; return; }
   if (data.status === 'pending') { window.location.href = 'pending.html'; return; }

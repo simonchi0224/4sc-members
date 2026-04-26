@@ -97,7 +97,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--dark); color: 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 <script>
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const ADMIN_EMAIL = 'simonchi0224@gmail.com';
 const LOC_LABEL = { xindian: '新店館', yonghe: '永和館' };
 let wodData = null;
@@ -110,7 +110,7 @@ function switchTab(tab) {
 }
 
 async function init() {
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await sb.auth.getUser();
   if (!user || user.email !== ADMIN_EMAIL) {
     document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;color:#94a3b8;font-family:sans-serif;">⛔ 無存取權限</div>';
     return;
@@ -121,8 +121,8 @@ async function init() {
 }
 
 async function loadMembers() {
-  const { data: pending } = await supabase.from('members').select('*').eq('status', 'pending').order('created_at');
-  const { data: approved } = await supabase.from('members').select('*').eq('status', 'approved').order('real_name');
+  const { data: pending } = await sb.from('members').select('*').eq('status', 'pending').order('created_at');
+  const { data: approved } = await sb.from('members').select('*').eq('status', 'approved').order('real_name');
 
   const pendingHTML = (pending || []).map(m => `
     <tr class="member-row">
@@ -153,7 +153,7 @@ async function loadMembers() {
 }
 
 async function updateStatus(id, status) {
-  await supabase.from('members').update({ status }).eq('id', id);
+  await sb.from('members').update({ status }).eq('id', id);
   loadMembers();
 }
 
@@ -202,7 +202,7 @@ async function saveAllWOD() {
     d.coach_notes = document.getElementById(`note-${i}`).value.trim();
   });
   // Save to Supabase wod_cache table
-  await supabase.from('wod_cache').upsert({ id: 'current', data: wodData, updated_at: new Date().toISOString() });
+  await sb.from('wod_cache').upsert({ id: 'current', data: wodData, updated_at: new Date().toISOString() });
   btn.textContent = '儲存全部課表 →';
   document.getElementById('save-status').textContent = '✓ 已儲存 ' + new Date().toLocaleTimeString('zh-TW');
 }

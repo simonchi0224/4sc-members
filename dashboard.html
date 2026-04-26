@@ -197,7 +197,7 @@ a { text-decoration: none; color: inherit; }
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 <script>
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const DAY_KEYS = ['sun','mon','tue','wed','thu','fri','sat'];
 const DAY_ZH = ['日','一','二','三','四','五','六'];
 
@@ -208,10 +208,10 @@ let currentDayIndex = 0;
 
 // ── Init ──
 async function init() {
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await sb.auth.getUser();
   if (!user) { window.location.href = 'index.html'; return; }
 
-  const { data: member } = await supabase.from('members').select('*').eq('id', user.id).single();
+  const { data: member } = await sb.from('members').select('*').eq('id', user.id).single();
   if (!member || member.status !== 'approved') { window.location.href = 'pending.html'; return; }
   memberData = member;
 
@@ -224,7 +224,7 @@ async function init() {
   ]);
 
   // Load PRs
-  const { data: prs } = await supabase.from('personal_records').select('*').eq('member_id', user.id);
+  const { data: prs } = await sb.from('personal_records').select('*').eq('member_id', user.id);
   memberData.prs = {};
   (prs || []).forEach(p => memberData.prs[p.movement] = p.weight_kg);
 
@@ -357,11 +357,11 @@ function renderPRGrid() {
 }
 
 async function savePR(movement) {
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await sb.auth.getUser();
   const key = 'pr-' + movement.replace(/ /g, '-');
   const val = parseFloat(document.getElementById(key).value);
   if (!val) return;
-  await supabase.from('personal_records').upsert({ member_id: user.id, movement, weight_kg: val }, { onConflict: 'member_id,movement' });
+  await sb.from('personal_records').upsert({ member_id: user.id, movement, weight_kg: val }, { onConflict: 'member_id,movement' });
   if (!memberData.prs) memberData.prs = {};
   memberData.prs[movement] = val;
   renderWOD(currentDayIndex);
@@ -389,7 +389,7 @@ function updateCalc() {
 
 // ── Training Log ──
 async function submitLog() {
-  const { data: { user } } = await supabase.auth.getUser();
+  const { data: { user } } = await sb.auth.getUser();
   const notes = document.getElementById('log-notes').value.trim();
   const result = document.getElementById('log-result').value.trim();
   const wodName = document.getElementById('log-wod').value;
@@ -436,7 +436,7 @@ async function submitLog() {
   }
 
   // Save to DB
-  await supabase.from('training_logs').insert({
+  await sb.from('training_logs').insert({
     member_id: user.id,
     date: new Date().toISOString().split('T')[0],
     wod_date: day.date,
@@ -450,8 +450,8 @@ async function submitLog() {
 }
 
 async function loadLogs() {
-  const { data: { user } } = await supabase.auth.getUser();
-  const { data: logs } = await supabase.from('training_logs').select('*').eq('member_id', user.id).order('date', { ascending: false }).limit(10);
+  const { data: { user } } = await sb.auth.getUser();
+  const { data: logs } = await sb.from('training_logs').select('*').eq('member_id', user.id).order('date', { ascending: false }).limit(10);
   const container = document.getElementById('log-history');
   if (!logs?.length) { container.innerHTML = '<p style="color:var(--gray);font-size:0.85rem;">還沒有訓練紀錄，完成第一次訓練後紀錄在這裡！</p>'; return; }
   container.innerHTML = logs.map(l => `
@@ -488,7 +488,7 @@ function renderSchedule() {
 
 // ── Auth ──
 async function logout() {
-  await supabase.auth.signOut();
+  await sb.auth.signOut();
   window.location.href = 'index.html';
 }
 
