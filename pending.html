@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>等待審核｜4SC CrossFit 會員平台</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --dark: #080d1a; --dark2: #0f1628; --cyan: #22d3ee; --orange: #f97316; --white: #f8fafc; --gray: #94a3b8; }
+body { font-family: 'Noto Sans TC', sans-serif; background: var(--dark); color: var(--white); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; }
+.card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 56px 40px; max-width: 420px; width: 100%; }
+.icon { font-size: 3rem; margin-bottom: 24px; }
+h1 { font-size: 1.3rem; font-weight: 900; margin-bottom: 12px; }
+p { color: var(--gray); font-size: 0.9rem; line-height: 1.8; }
+.line-cta { margin-top: 32px; display: inline-flex; align-items: center; gap: 10px; background: #06C755; color: #fff; padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: 0.9rem; text-decoration: none; }
+.logout { margin-top: 20px; display: block; color: var(--gray); font-size: 0.8rem; cursor: pointer; background: none; border: none; font-family: inherit; }
+.logout:hover { color: var(--white); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">⏳</div>
+  <h1>資料已送出，等待教練確認</h1>
+  <p>教練確認你是現有學員後，你就可以登入使用完整功能。<br><br>通常在 24 小時內完成，你也可以直接 LINE 教練詢問進度。</p>
+  <a href="https://lin.ee/602l65F" target="_blank" class="line-cta">💬 LINE 詢問進度</a>
+  <button class="logout" onclick="logout()">登出</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Poll every 30s to check if approved
+setInterval(async () => {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return;
+  const { data } = await supabase.from('members').select('status').eq('id', user.id).single();
+  if (data?.status === 'approved') window.location.href = 'dashboard.html';
+}, 30000);
+
+async function logout() {
+  await supabase.auth.signOut();
+  window.location.href = 'index.html';
+}
+</script>
+</body>
+</html>

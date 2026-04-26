@@ -1,0 +1,169 @@
+{
+  "week_start": "2026-04-20",
+  "days": [
+    {
+      "date": "2026-04-20",
+      "day": "MON",
+      "name": "2K ROW",
+      "tag": "BENCHMARK",
+      "type": "For time",
+      "description": "2,000-m row",
+      "movements": [
+        {
+          "name": "Row",
+          "detail": "2,000 m",
+          "has_weight": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-04-21",
+      "day": "TUE",
+      "name": "GRIPPER RIPPER",
+      "tag": "",
+      "type": "8 rounds for reps",
+      "description": "On a 1:00 clock:\n100-m sprint\nMax clean and jerks\n– Rest 3:00 between rounds.",
+      "movements": [
+        {
+          "name": "Sprint",
+          "detail": "100 m",
+          "has_weight": false
+        },
+        {
+          "name": "Clean and Jerk",
+          "detail": "Max reps",
+          "has_weight": true,
+          "rx_female_kg": 34,
+          "rx_male_kg": 52,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-04-22",
+      "day": "WED",
+      "name": "LIGHT 'TIL IT'S NOT",
+      "tag": "HEAVY DAY",
+      "type": "For load + AMRAP",
+      "description": "For load:\nOverhead squat 8-8-8-8\n\nThen…\n\nAMRAP 6:\n40 overhead squats\n30 deficit push-ups (2/4 in)",
+      "movements": [
+        {
+          "name": "Overhead Squat (For load)",
+          "detail": "8-8-8-8",
+          "has_weight": true,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": false,
+          "note": "建立今日最重"
+        },
+        {
+          "name": "Overhead Squat (AMRAP)",
+          "detail": "40 reps",
+          "has_weight": true,
+          "rx_female_kg": 25,
+          "rx_male_kg": 34,
+          "is_percentage_1rm": false
+        },
+        {
+          "name": "Deficit Push-ups",
+          "detail": "30 reps (2/4 in)",
+          "has_weight": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-04-23",
+      "day": "THU",
+      "name": "PUMP IT. FOLD IT. HANG IT.",
+      "tag": "PARTNER",
+      "type": "For time with a partner",
+      "description": "100-cal air bike\n80 V-ups\n6:00 accumulated pull-up bar hang\n80 V-ups\n100-cal air bike\n– 30:00 time cap\n– Share the work as desired.",
+      "movements": [
+        { "name": "Air Bike", "detail": "100 cal", "has_weight": false },
+        { "name": "V-ups", "detail": "80 reps", "has_weight": false },
+        { "name": "Pull-up Bar Hang", "detail": "6:00 accumulated", "has_weight": false },
+        { "name": "V-ups", "detail": "80 reps", "has_weight": false },
+        { "name": "Air Bike", "detail": "100 cal", "has_weight": false }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-04-24",
+      "day": "FRI",
+      "name": "DUMMIE BUNNY",
+      "tag": "",
+      "type": "For time",
+      "description": "100 double-unders\n60 DB deadlifts\n100 double-unders\n45 DB hang power cleans\n100 double-unders\n30 DB push jerks\n– Use two dumbbells.",
+      "movements": [
+        { "name": "Double-unders", "detail": "100 reps", "has_weight": false },
+        {
+          "name": "DB Deadlift",
+          "detail": "60 reps",
+          "has_weight": true,
+          "rx_female_kg": 22.5,
+          "rx_male_kg": 32,
+          "is_percentage_1rm": false,
+          "note": "每手一個"
+        },
+        { "name": "Double-unders", "detail": "100 reps", "has_weight": false },
+        {
+          "name": "DB Hang Power Clean",
+          "detail": "45 reps",
+          "has_weight": true,
+          "rx_female_kg": 22.5,
+          "rx_male_kg": 32,
+          "is_percentage_1rm": false
+        },
+        { "name": "Double-unders", "detail": "100 reps", "has_weight": false },
+        {
+          "name": "DB Push Jerk",
+          "detail": "30 reps",
+          "has_weight": true,
+          "rx_female_kg": 22.5,
+          "rx_male_kg": 32,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-04-25",
+      "day": "SAT",
+      "name": "LET'S HUNT",
+      "tag": "",
+      "type": "For time",
+      "description": "400-m bear crawl\n400-m run\n400-m walking lunges\n400-m run",
+      "movements": [
+        { "name": "Bear Crawl", "detail": "400 m", "has_weight": false },
+        { "name": "Run", "detail": "400 m", "has_weight": false },
+        { "name": "Walking Lunges", "detail": "400 m", "has_weight": false },
+        { "name": "Run", "detail": "400 m", "has_weight": false }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-04-26",
+      "day": "SUN",
+      "name": "SUNDAY IS FOR _____",
+      "tag": "",
+      "type": "EMOM 15",
+      "description": "Min 1 | 15 toes-to-bars\nMin 2 | :30 bike for calories\nMin 3 | 20 hip extensions",
+      "movements": [
+        { "name": "Toes-to-bars", "detail": "15 reps / min", "has_weight": false },
+        { "name": "Bike", "detail": "30 sec for calories", "has_weight": false },
+        { "name": "Hip Extensions", "detail": "20 reps / min", "has_weight": false }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    }
+  ]
+}

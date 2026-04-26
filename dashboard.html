@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>本週訓練｜4SC CrossFit</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --dark: #080d1a; --dark2: #0f1628; --dark3: #162040;
+  --cyan: #22d3ee; --cyan-d: #0891b2;
+  --orange: #f97316; --orange-d: #ea580c;
+  --green: #10b981;
+  --white: #f8fafc; --gray: #94a3b8; --gray2: #475569;
+  --radius: 12px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans TC', sans-serif; background: var(--dark); color: var(--white); min-height: 100vh; }
+a { text-decoration: none; color: inherit; }
+
+/* Nav */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(8,13,26,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-inner { max-width: 900px; margin: 0 auto; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 58px; }
+.nav-logo { font-size: 0.95rem; font-weight: 900; }
+.nav-logo span { color: var(--cyan); }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-user { font-size: 0.8rem; color: var(--gray); }
+.nav-logout { font-size: 0.78rem; color: var(--gray); cursor: pointer; background: none; border: none; font-family: inherit; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); }
+.nav-logout:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+
+/* Tab bar */
+.tab-bar { position: fixed; top: 58px; left: 0; right: 0; z-index: 99; background: rgba(8,13,26,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.tab-inner { max-width: 900px; margin: 0 auto; padding: 0 5%; display: flex; gap: 0; }
+.tab-btn { padding: 14px 20px; font-size: 0.82rem; font-weight: 700; color: var(--gray); background: none; border: none; font-family: inherit; cursor: pointer; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+.tab-btn.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+
+/* Wrap */
+.wrap { max-width: 900px; margin: 0 auto; padding: 130px 5% 40px; }
+
+/* Section */
+.section { display: none; }
+.section.active { display: block; }
+
+/* ── WOD section ── */
+.week-nav { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.week-label { font-size: 0.88rem; font-weight: 800; color: var(--gray); flex: 1; }
+.day-tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px; -webkit-overflow-scrolling: touch; }
+.day-tab { flex-shrink: 0; padding: 8px 16px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); color: var(--gray); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+.day-tab.active { background: var(--cyan); color: var(--dark); border-color: var(--cyan); }
+.day-tab.today { border-color: var(--orange); color: var(--orange); }
+.day-tab.today.active { background: var(--orange); color: var(--white); border-color: var(--orange); }
+
+.wod-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px; margin-bottom: 20px; }
+.wod-tag { display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; }
+.wod-tag.BENCHMARK { background: rgba(249,115,22,0.15); color: var(--orange); }
+.wod-tag.PARTNER { background: rgba(34,211,238,0.12); color: var(--cyan); }
+.wod-tag.HEAVY { background: rgba(139,92,246,0.15); color: #a78bfa; }
+.wod-tag.default { background: rgba(255,255,255,0.06); color: var(--gray); }
+.wod-name { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 6px; }
+.wod-type { font-size: 0.82rem; font-weight: 700; color: var(--cyan); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+.wod-desc { font-size: 0.92rem; color: rgba(255,255,255,0.75); line-height: 1.9; white-space: pre-line; margin-bottom: 20px; }
+.movements-list { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; }
+.movement-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.movement-row:last-child { border-bottom: none; }
+.movement-name { font-size: 0.9rem; font-weight: 700; }
+.movement-detail { font-size: 0.82rem; color: var(--gray); }
+.movement-weight { font-size: 0.85rem; text-align: right; }
+.rx-weight { color: var(--cyan); font-weight: 800; }
+.your-weight { color: var(--orange); font-weight: 900; font-size: 1rem; }
+.coach-note { background: rgba(34,211,238,0.06); border-left: 3px solid var(--cyan); border-radius: 0 8px 8px 0; padding: 12px 16px; margin-top: 16px; font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.7; }
+
+/* ── Weight Calculator ── */
+.pr-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 28px; }
+@media (max-width: 600px) { .pr-grid { grid-template-columns: 1fr; } }
+.pr-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 18px 16px; }
+.pr-label { font-size: 0.75rem; font-weight: 700; color: var(--gray); margin-bottom: 8px; letter-spacing: 0.5px; }
+.pr-input-row { display: flex; align-items: center; gap: 8px; }
+.pr-input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 10px 12px; color: var(--white); font-size: 1rem; font-weight: 800; width: 80px; outline: none; font-family: inherit; }
+.pr-input:focus { border-color: var(--cyan); }
+.pr-unit { font-size: 0.82rem; color: var(--gray); }
+.pr-save { font-size: 0.75rem; color: var(--cyan); cursor: pointer; background: none; border: none; font-family: inherit; margin-left: auto; }
+
+.calc-section { background: var(--dark3); border: 1px solid rgba(34,211,238,0.12); border-radius: 16px; padding: 24px; }
+.calc-title { font-size: 0.88rem; font-weight: 800; margin-bottom: 16px; }
+.pct-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.pct-chip { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px 14px; text-align: center; min-width: 70px; }
+.pct-chip .pct { font-size: 0.75rem; color: var(--gray); }
+.pct-chip .weight { font-size: 1rem; font-weight: 900; color: var(--cyan); }
+
+/* ── Training Log ── */
+.log-form { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+.log-form h3 { font-size: 1rem; font-weight: 800; margin-bottom: 20px; }
+.field-group { margin-bottom: 16px; }
+.field-label { font-size: 0.78rem; font-weight: 700; color: var(--gray); margin-bottom: 8px; letter-spacing: 0.5px; }
+.field-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 12px 14px; color: var(--white); font-size: 0.9rem; font-family: inherit; outline: none; resize: vertical; transition: border-color 0.2s; }
+.field-input:focus { border-color: var(--cyan); }
+.log-btn { background: var(--orange); color: var(--white); border: none; border-radius: 10px; padding: 12px 24px; font-weight: 800; font-size: 0.9rem; cursor: pointer; font-family: inherit; }
+.ai-feedback-box { background: linear-gradient(135deg, rgba(34,211,238,0.06), rgba(139,92,246,0.04)); border: 1px solid rgba(34,211,238,0.15); border-radius: 14px; padding: 20px 20px; margin-top: 16px; }
+.ai-label { font-size: 0.72rem; font-weight: 800; color: var(--cyan); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+.ai-text { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.8; }
+.ai-loading { color: var(--gray); font-size: 0.88rem; }
+.log-history { }
+.log-entry { background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px; margin-bottom: 12px; }
+.log-entry-date { font-size: 0.75rem; color: var(--gray); margin-bottom: 8px; }
+.log-entry-wod { font-weight: 800; margin-bottom: 6px; font-size: 0.92rem; }
+.log-entry-note { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.7; }
+.log-entry-ai { margin-top: 10px; font-size: 0.82rem; color: var(--cyan); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; line-height: 1.7; }
+
+/* Schedule */
+.schedule-grid { display: grid; gap: 12px; }
+.sched-day { background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px 20px; display: flex; align-items: flex-start; gap: 16px; }
+.sched-day-label { font-size: 0.8rem; font-weight: 900; color: var(--gray); width: 32px; flex-shrink: 0; padding-top: 2px; }
+.sched-day.today-day .sched-day-label { color: var(--orange); }
+.sched-times { display: flex; flex-wrap: wrap; gap: 8px; }
+.sched-time { background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.15); border-radius: 999px; padding: 5px 14px; font-size: 0.82rem; font-weight: 700; color: var(--cyan); }
+.sched-empty { font-size: 0.82rem; color: rgba(255,255,255,0.2); }
+.location-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2); border-radius: 999px; padding: 6px 14px; font-size: 0.78rem; font-weight: 700; color: var(--orange); margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">4SC <span>CrossFit</span></div>
+    <div class="nav-right">
+      <span class="nav-user" id="user-name">—</span>
+      <button class="nav-logout" onclick="logout()">登出</button>
+    </div>
+  </div>
+</nav>
+
+<div class="tab-bar">
+  <div class="tab-inner">
+    <button class="tab-btn active" onclick="showTab('wod')">📋 本週課表</button>
+    <button class="tab-btn" onclick="showTab('calc')">⚖️ 重量換算</button>
+    <button class="tab-btn" onclick="showTab('log')">📝 訓練紀錄</button>
+    <button class="tab-btn" onclick="showTab('schedule')">🕐 開課時間</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ── WOD ── -->
+  <div class="section active" id="tab-wod">
+    <div class="day-tabs" id="day-tabs"></div>
+    <div id="wod-content"></div>
+  </div>
+
+  <!-- ── Calculator ── -->
+  <div class="section" id="tab-calc">
+    <h2 style="font-size:1.2rem;font-weight:900;margin-bottom:8px;">我的 1RM 最大重量</h2>
+    <p style="color:var(--gray);font-size:0.85rem;margin-bottom:24px;line-height:1.7;">輸入你目前各動作的最大重量，系統自動換算今日課表應使用的重量。</p>
+    <div class="pr-grid" id="pr-grid"></div>
+
+    <div class="calc-section" id="calc-result" style="display:none;">
+      <div class="calc-title">💡 今日建議訓練重量</div>
+      <div class="pct-row" id="pct-row"></div>
+    </div>
+  </div>
+
+  <!-- ── Log ── -->
+  <div class="section" id="tab-log">
+    <div class="log-form">
+      <h3>📝 記錄今日訓練</h3>
+      <div class="field-group">
+        <div class="field-label">今日 WOD</div>
+        <input class="field-input" id="log-wod" type="text" placeholder="例：2K ROW" readonly>
+      </div>
+      <div class="field-group">
+        <div class="field-label">完成重量／成績</div>
+        <input class="field-input" id="log-result" type="text" placeholder="例：深蹲 80kg × 3組，完成時間 12:34">
+      </div>
+      <div class="field-group">
+        <div class="field-label">今日感受與筆記</div>
+        <textarea class="field-input" id="log-notes" rows="3" placeholder="例：腰有點緊，下次要多暖身。最後一組差點沒完成但撐住了。"></textarea>
+      </div>
+      <button class="log-btn" onclick="submitLog()">儲存並取得 AI 反饋</button>
+      <div class="ai-feedback-box" id="ai-box" style="display:none;">
+        <div class="ai-label">🤖 Claude 教練回饋</div>
+        <div class="ai-text" id="ai-text"></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:800;margin-bottom:16px;">歷史紀錄</h3>
+    <div id="log-history"></div>
+  </div>
+
+  <!-- ── Schedule ── -->
+  <div class="section" id="tab-schedule">
+    <div class="location-badge" id="location-badge">🏋️ —</div>
+    <div class="schedule-grid" id="schedule-grid"></div>
+  </div>
+
+</div><!-- /wrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const DAY_KEYS = ['sun','mon','tue','wed','thu','fri','sat'];
+const DAY_ZH = ['日','一','二','三','四','五','六'];
+
+let memberData = null;
+let wodData = null;
+let scheduleData = null;
+let currentDayIndex = 0;
+
+// ── Init ──
+async function init() {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) { window.location.href = 'index.html'; return; }
+
+  const { data: member } = await supabase.from('members').select('*').eq('id', user.id).single();
+  if (!member || member.status !== 'approved') { window.location.href = 'pending.html'; return; }
+  memberData = member;
+
+  document.getElementById('user-name').textContent = member.real_name;
+
+  // Load JSON data
+  [wodData, scheduleData] = await Promise.all([
+    fetch('data/wod.json').then(r => r.json()),
+    fetch('data/schedule.json').then(r => r.json())
+  ]);
+
+  // Load PRs
+  const { data: prs } = await supabase.from('personal_records').select('*').eq('member_id', user.id);
+  memberData.prs = {};
+  (prs || []).forEach(p => memberData.prs[p.movement] = p.weight_kg);
+
+  renderDayTabs();
+  renderSchedule();
+  renderPRGrid();
+  loadLogs();
+}
+
+// ── Tab nav ──
+function showTab(tab) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ── WOD ──
+function renderDayTabs() {
+  const today = new Date();
+  const todayDay = today.getDay(); // 0=Sun
+  const container = document.getElementById('day-tabs');
+  container.innerHTML = '';
+
+  const dayNames = ['日','一','二','三','四','五','六'];
+
+  wodData.days.forEach((day, i) => {
+    const d = new Date(day.date);
+    const isToday = d.getDay() === todayDay && isSameWeek(d, today);
+    const btn = document.createElement('button');
+    btn.className = 'day-tab' + (isToday ? ' today' : '') + (i === (isToday ? i : currentDayIndex) ? '' : '');
+    btn.textContent = `${dayNames[d.getDay()]} ${d.getMonth()+1}/${d.getDate()}`;
+    btn.onclick = () => {
+      currentDayIndex = i;
+      document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      renderWOD(i);
+    };
+    if (isToday) {
+      currentDayIndex = i;
+      btn.classList.add('active');
+    }
+    container.appendChild(btn);
+  });
+
+  // Activate first if none set as today
+  if (!container.querySelector('.active')) {
+    container.children[0]?.classList.add('active');
+    currentDayIndex = 0;
+  }
+
+  renderWOD(currentDayIndex);
+}
+
+function isSameWeek(d1, d2) {
+  const startOfWeek = (d) => {
+    const t = new Date(d);
+    t.setDate(t.getDate() - t.getDay());
+    t.setHours(0,0,0,0);
+    return t;
+  };
+  return startOfWeek(d1).getTime() === startOfWeek(d2).getTime();
+}
+
+function renderWOD(idx) {
+  const day = wodData.days[idx];
+  const html = [];
+
+  const tagClass = day.tag === 'BENCHMARK' ? 'BENCHMARK' : day.tag === 'PARTNER' ? 'PARTNER' : day.tag.includes('HEAVY') ? 'HEAVY' : 'default';
+
+  html.push(`<div class="wod-card">`);
+  if (day.tag) html.push(`<span class="wod-tag ${tagClass}">${day.tag}</span>`);
+  html.push(`<div class="wod-name">${day.name}</div>`);
+  html.push(`<div class="wod-type">${day.type}</div>`);
+  html.push(`<div class="wod-desc">${day.description}</div>`);
+
+  if (day.movements && day.movements.some(m => m.has_weight)) {
+    html.push(`<div class="movements-list">`);
+    day.movements.forEach(m => {
+      if (!m.has_weight) return;
+      const rxW = memberData.gender === 'female' ? m.rx_female_kg : m.rx_male_kg;
+      const pr = memberData.prs?.[m.name];
+      html.push(`<div class="movement-row">
+        <div>
+          <div class="movement-name">${m.name}</div>
+          <div class="movement-detail">${m.detail}${m.note ? ' · ' + m.note : ''}</div>
+        </div>
+        <div class="movement-weight">
+          ${rxW ? `<div class="rx-weight">Rx: ${rxW} kg</div>` : ''}
+          ${pr && !m.is_percentage_1rm ? `<div class="your-weight">→ 你的 Rx 重量</div>` : ''}
+          ${m.is_percentage_1rm && pr ? `<div class="your-weight">${Math.round(pr * 0.7)} kg <span style="font-size:0.72rem;color:var(--gray)">70%</span></div>` : ''}
+        </div>
+      </div>`);
+    });
+    html.push(`</div>`);
+  }
+
+  if (day.coach_notes) {
+    html.push(`<div class="coach-note">📌 ${day.coach_notes}</div>`);
+  }
+
+  html.push(`</div>`);
+
+  // Pre-fill log WOD name
+  document.getElementById('log-wod').value = day.name;
+
+  document.getElementById('wod-content').innerHTML = html.join('');
+}
+
+// ── PR Grid ──
+const MOVEMENTS = [
+  'Back Squat', 'Front Squat', 'Overhead Squat',
+  'Deadlift', 'Clean', 'Clean and Jerk',
+  'Snatch', 'Shoulder Press', 'Push Press', 'Push Jerk'
+];
+
+function renderPRGrid() {
+  const grid = document.getElementById('pr-grid');
+  grid.innerHTML = MOVEMENTS.map(mv => {
+    const val = memberData.prs?.[mv] || '';
+    return `<div class="pr-card">
+      <div class="pr-label">${mv}</div>
+      <div class="pr-input-row">
+        <input class="pr-input" type="number" id="pr-${mv.replace(/ /g,'-')}" value="${val}" placeholder="0" min="0" max="500" oninput="updateCalc()">
+        <span class="pr-unit">kg</span>
+        <button class="pr-save" onclick="savePR('${mv}')">儲存</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function savePR(movement) {
+  const { data: { user } } = await supabase.auth.getUser();
+  const key = 'pr-' + movement.replace(/ /g, '-');
+  const val = parseFloat(document.getElementById(key).value);
+  if (!val) return;
+  await supabase.from('personal_records').upsert({ member_id: user.id, movement, weight_kg: val }, { onConflict: 'member_id,movement' });
+  if (!memberData.prs) memberData.prs = {};
+  memberData.prs[movement] = val;
+  renderWOD(currentDayIndex);
+}
+
+function updateCalc() {
+  const day = wodData.days[currentDayIndex];
+  const weightedMovements = day.movements.filter(m => m.is_percentage_1rm);
+  if (!weightedMovements.length) {
+    document.getElementById('calc-result').style.display = 'none';
+    return;
+  }
+  document.getElementById('calc-result').style.display = 'block';
+  const pcts = [50, 60, 65, 70, 75, 80, 85, 90];
+  document.getElementById('pct-row').innerHTML = weightedMovements.map(m => {
+    const key = 'pr-' + m.name.replace(/ /g, '-');
+    const pr = parseFloat(document.getElementById(key)?.value) || 0;
+    if (!pr) return '';
+    return pcts.map(p => `<div class="pct-chip">
+      <div class="pct">${p}%</div>
+      <div class="weight">${Math.round(pr * p / 100 / 2.5) * 2.5} kg</div>
+    </div>`).join('');
+  }).join('');
+}
+
+// ── Training Log ──
+async function submitLog() {
+  const { data: { user } } = await supabase.auth.getUser();
+  const notes = document.getElementById('log-notes').value.trim();
+  const result = document.getElementById('log-result').value.trim();
+  const wodName = document.getElementById('log-wod').value;
+  const day = wodData.days[currentDayIndex];
+
+  if (!notes && !result) return;
+
+  const aiBox = document.getElementById('ai-box');
+  const aiText = document.getElementById('ai-text');
+  aiBox.style.display = 'block';
+  aiText.innerHTML = '<span class="ai-loading">分析中…</span>';
+
+  // Get AI feedback
+  let aiFeedback = '';
+  try {
+    const prompt = `你是一位 CrossFit 教練，請根據學員的訓練記錄給予簡短、具體、鼓勵性的回饋（100-150字中文）。
+
+今日 WOD：${wodName}
+訓練內容：${day.description}
+學員成績：${result || '未填寫'}
+學員筆記：${notes}
+
+請針對學員提到的具體內容（疲勞、動作問題、完成情況等）給予回饋，並給一個下次訓練的小提示。`;
+
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': CLAUDE_API_KEY,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 300,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    const data = await res.json();
+    aiFeedback = data.content?.[0]?.text || '';
+    aiText.textContent = aiFeedback;
+  } catch(e) {
+    aiText.textContent = '（AI 回饋暫時無法使用）';
+  }
+
+  // Save to DB
+  await supabase.from('training_logs').insert({
+    member_id: user.id,
+    date: new Date().toISOString().split('T')[0],
+    wod_date: day.date,
+    wod_name: wodName,
+    result,
+    notes,
+    ai_feedback: aiFeedback
+  });
+
+  loadLogs();
+}
+
+async function loadLogs() {
+  const { data: { user } } = await supabase.auth.getUser();
+  const { data: logs } = await supabase.from('training_logs').select('*').eq('member_id', user.id).order('date', { ascending: false }).limit(10);
+  const container = document.getElementById('log-history');
+  if (!logs?.length) { container.innerHTML = '<p style="color:var(--gray);font-size:0.85rem;">還沒有訓練紀錄，完成第一次訓練後紀錄在這裡！</p>'; return; }
+  container.innerHTML = logs.map(l => `
+    <div class="log-entry">
+      <div class="log-entry-date">${l.date}</div>
+      <div class="log-entry-wod">${l.wod_name}${l.result ? ' · ' + l.result : ''}</div>
+      ${l.notes ? `<div class="log-entry-note">${l.notes}</div>` : ''}
+      ${l.ai_feedback ? `<div class="log-entry-ai">🤖 ${l.ai_feedback}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+// ── Schedule ──
+function renderSchedule() {
+  const loc = scheduleData.locations.find(l => l.id === memberData.location) || scheduleData.locations[0];
+  document.getElementById('location-badge').textContent = `🏋️ ${loc.name}（${loc.class_type}）`;
+
+  const today = new Date().getDay();
+  const dayOrder = ['mon','tue','wed','thu','fri','sat','sun'];
+  const dayLabel = { mon:'週一', tue:'週二', wed:'週三', thu:'週四', fri:'週五', sat:'週六', sun:'週日' };
+  const dayNum = { mon:1, tue:2, wed:3, thu:4, fri:5, sat:6, sun:0 };
+
+  document.getElementById('schedule-grid').innerHTML = dayOrder.map(d => {
+    const times = loc.schedule[d] || [];
+    const isToday = dayNum[d] === today;
+    return `<div class="sched-day${isToday ? ' today-day' : ''}">
+      <div class="sched-day-label">${dayLabel[d]}</div>
+      <div class="sched-times">
+        ${times.length ? times.map(t => `<span class="sched-time">${t}</span>`).join('') : '<span class="sched-empty">本日無課</span>'}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Auth ──
+async function logout() {
+  await supabase.auth.signOut();
+  window.location.href = 'index.html';
+}
+
+init();
+</script>
+</body>
+</html>
