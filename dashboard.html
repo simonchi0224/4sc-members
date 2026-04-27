@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>本週訓練｜4SC CrossFit</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -16,13 +16,29 @@
   --radius: 12px;
 }
 html { scroll-behavior: smooth; }
-body { font-family: 'Noto Sans TC', sans-serif; background: var(--dark); color: var(--white); min-height: 100vh; }
+body { font-family: 'Noto Sans TC', sans-serif; background: var(--dark); color: var(--white); min-height: 100vh; overflow-x: hidden; }
 a { text-decoration: none; color: inherit; }
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.5;
+}
+.wrap, .nav, .tab-bar { position: relative; z-index: 1; }
+
+/* Fade up animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.section.active { animation: fadeUp 0.4s ease both; }
 
 /* Nav */
 .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(8,13,26,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.06); }
 .nav-inner { max-width: 900px; margin: 0 auto; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 58px; }
-.nav-logo { font-size: 0.95rem; font-weight: 900; }
+.nav-logo { font-size: 0.95rem; font-weight: 900; font-family: 'Space Mono', monospace; letter-spacing: -0.02em; }
 .nav-logo span { color: var(--cyan); }
 .nav-right { display: flex; align-items: center; gap: 16px; }
 .nav-user { font-size: 0.8rem; color: var(--gray); }
@@ -42,23 +58,38 @@ a { text-decoration: none; color: inherit; }
 .section { display: none; }
 .section.active { display: block; }
 
-/* ── WOD section ── */
-.week-nav { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-.week-label { font-size: 0.88rem; font-weight: 800; color: var(--gray); flex: 1; }
-.day-tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px; -webkit-overflow-scrolling: touch; }
-.day-tab { flex-shrink: 0; padding: 8px 16px; border-radius: 999px; font-size: 0.8rem; font-weight: 700; background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); color: var(--gray); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
-.day-tab.active { background: var(--cyan); color: var(--dark); border-color: var(--cyan); }
-.day-tab.today { border-color: var(--orange); color: var(--orange); }
-.day-tab.today.active { background: var(--orange); color: var(--white); border-color: var(--orange); }
+/* ── WOD Feed ── */
+.wod-feed { display: flex; flex-direction: column; }
+.wod-week-sep { display: flex; align-items: center; gap: 12px; padding: 28px 0 14px; }
+.wod-week-sep:first-child { padding-top: 0; }
+.wod-week-sep-line { flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+.wod-week-sep-label { font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; color: var(--gray); letter-spacing: 0.12em; text-transform: uppercase; }
+.wod-date-badge { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--gray); margin-bottom: 12px; }
+.wod-date-badge.today-badge { color: var(--orange); font-weight: 700; }
+.wod-card.is-today { border-color: rgba(249,115,22,0.5); box-shadow: 0 0 0 1px rgba(249,115,22,0.2); }
+.wod-card.is-past { opacity: 0.5; }
+
+/* Floating jump button */
+#jump-today-btn {
+  position: fixed; bottom: 28px; right: 20px; z-index: 50;
+  background: var(--orange); color: white;
+  border: none; border-radius: 999px;
+  padding: 10px 20px; font-size: 0.82rem; font-weight: 800;
+  cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 20px rgba(249,115,22,0.45);
+  display: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+#jump-today-btn.visible { display: block; }
 
 .wod-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px 24px; margin-bottom: 20px; }
-.wod-tag { display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; }
+.wod-tag { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; }
 .wod-tag.BENCHMARK { background: rgba(249,115,22,0.15); color: var(--orange); }
 .wod-tag.PARTNER { background: rgba(34,211,238,0.12); color: var(--cyan); }
 .wod-tag.HEAVY { background: rgba(139,92,246,0.15); color: #a78bfa; }
 .wod-tag.default { background: rgba(255,255,255,0.06); color: var(--gray); }
-.wod-name { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 6px; }
-.wod-type { font-size: 0.82rem; font-weight: 700; color: var(--cyan); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+.wod-name { font-size: clamp(1.4rem, 4vw, 1.9rem); font-weight: 900; letter-spacing: -0.5px; margin-bottom: 6px; }
+.wod-type { font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; color: var(--cyan); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
 .wod-desc { font-size: 0.92rem; color: rgba(255,255,255,0.75); line-height: 1.9; white-space: pre-line; margin-bottom: 20px; }
 .movements-list { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; }
 .movement-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -85,8 +116,8 @@ a { text-decoration: none; color: inherit; }
 .calc-title { font-size: 0.88rem; font-weight: 800; margin-bottom: 16px; }
 .pct-row { display: flex; gap: 10px; flex-wrap: wrap; }
 .pct-chip { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px 14px; text-align: center; min-width: 70px; }
-.pct-chip .pct { font-size: 0.75rem; color: var(--gray); }
-.pct-chip .weight { font-size: 1rem; font-weight: 900; color: var(--cyan); }
+.pct-chip .pct { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--gray); }
+.pct-chip .weight { font-family: 'Space Mono', monospace; font-size: 1rem; font-weight: 700; color: var(--cyan); }
 
 /* ── Training Log ── */
 .log-form { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
@@ -113,7 +144,7 @@ a { text-decoration: none; color: inherit; }
 .log-mv-input:focus { border-color: var(--cyan); }
 .log-history { }
 .log-entry { background: var(--dark2); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 18px; margin-bottom: 12px; }
-.log-entry-date { font-size: 0.75rem; color: var(--gray); margin-bottom: 8px; }
+.log-entry-date { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--gray); margin-bottom: 8px; }
 .log-entry-wod { font-weight: 800; margin-bottom: 6px; font-size: 0.92rem; }
 .log-entry-note { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.7; white-space: pre-line; }
 .log-entry-ai { margin-top: 10px; font-size: 0.82rem; color: var(--cyan); border-top: 1px solid rgba(255,255,255,0.06); padding-top: 10px; line-height: 1.7; }
@@ -154,13 +185,9 @@ a { text-decoration: none; color: inherit; }
 
   <!-- ── WOD ── -->
   <div class="section active" id="tab-wod">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-      <span style="font-size:0.75rem;color:var(--gray);">← 左滑看過去課表</span>
-      <button onclick="jumpToToday()" style="font-size:0.75rem;font-weight:700;color:var(--orange);background:none;border:1px solid rgba(249,115,22,0.3);border-radius:999px;padding:4px 12px;cursor:pointer;font-family:inherit;">今天</button>
-    </div>
-    <div class="day-tabs" id="day-tabs"></div>
-    <div id="wod-content"></div>
+    <div class="wod-feed" id="wod-feed"></div>
   </div>
+  <button id="jump-today-btn" onclick="jumpToToday()">回到今天</button>
 
   <!-- ── Calculator ── -->
   <div class="section" id="tab-calc">
@@ -187,10 +214,11 @@ a { text-decoration: none; color: inherit; }
       <div id="log-wod-summary" class="log-wod-summary" style="display:none;">
         <div class="log-wod-name" id="log-wod-name"></div>
         <div class="log-wod-type" id="log-wod-type"></div>
+        <div class="log-wod-desc" id="log-wod-desc" style="margin-top:8px;font-size:0.82rem;color:var(--gray);line-height:1.7;white-space:pre-line;"></div>
       </div>
 
       <div class="field-group">
-        <div class="field-label">完成時間（選填）</div>
+        <div class="field-label" id="log-time-label">完成時間（選填）</div>
         <input class="field-input" id="log-time" type="text" placeholder="例：12:34 或 DNF">
       </div>
 
@@ -206,7 +234,7 @@ a { text-decoration: none; color: inherit; }
 
       <button class="log-btn" onclick="submitLog()">儲存並取得 AI 反饋</button>
       <div class="ai-feedback-box" id="ai-box" style="display:none;">
-        <div class="ai-label">🤖 Claude 教練回饋</div>
+        <div class="ai-label">🤖 AI 教練回饋</div>
         <div class="ai-text" id="ai-text"></div>
       </div>
     </div>
@@ -257,7 +285,7 @@ async function init() {
   memberData.prs = {};
   (prs || []).forEach(p => memberData.prs[p.movement] = p.weight_kg);
 
-  renderDayTabs();
+  renderWodFeed();
   renderSchedule();
   renderPRGrid();
   renderLogForm();
@@ -272,117 +300,104 @@ function showTab(tab) {
   event.currentTarget.classList.add('active');
 }
 
-// ── WOD ──
-let todayTabEl = null;
-
+// ── WOD Feed ──
 function getTodayStr() {
   const now = new Date();
   return `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
 }
 
-function renderDayTabs() {
-  const todayStr = getTodayStr();
-  const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() + 7);
-  const cutoffStr = `${cutoff.getFullYear()}-${String(cutoff.getMonth()+1).padStart(2,'0')}-${String(cutoff.getDate()).padStart(2,'0')}`;
-
-  const container = document.getElementById('day-tabs');
-  container.innerHTML = '';
-  todayTabEl = null;
-
-  const dayNames = ['日','一','二','三','四','五','六'];
-
-  wodData.days.forEach((day, i) => {
-    if (day.date > cutoffStr) return;
-    const isToday = day.date === todayStr;
-    const parts = day.date.split('-');
-    const d = new Date(+parts[0], +parts[1]-1, +parts[2]);
-    const btn = document.createElement('button');
-    btn.className = 'day-tab' + (isToday ? ' today' : '');
-    btn.dataset.idx = String(i);
-    btn.textContent = `${dayNames[d.getDay()]} ${d.getMonth()+1}/${d.getDate()}`;
-    btn.onclick = () => {
-      currentDayIndex = i;
-      document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      renderWOD(i);
-    };
-    if (isToday) {
-      currentDayIndex = i;
-      btn.classList.add('active');
-      todayTabEl = btn;
-    }
-    container.appendChild(btn);
-  });
-
-  if (!container.querySelector('.active') && container.lastElementChild) {
-    container.lastElementChild.classList.add('active');
-    currentDayIndex = parseInt(container.lastElementChild.dataset.idx);
-  }
-
-  setTimeout(() => {
-    (todayTabEl || container.lastElementChild)?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }, 150);
-
-  renderWOD(currentDayIndex);
-}
-
-function jumpToToday() {
-  const todayStr = getTodayStr();
-  document.querySelectorAll('.day-tab').forEach(btn => {
-    const i = parseInt(btn.dataset.idx);
-    if (wodData.days[i]?.date === todayStr) {
-      document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      currentDayIndex = i;
-      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      renderWOD(i);
-    }
-  });
-}
-
-
-function renderWOD(idx) {
-  const day = wodData.days[idx];
-  const html = [];
-
-  const tagClass = day.tag === 'BENCHMARK' ? 'BENCHMARK' : day.tag === 'PARTNER' ? 'PARTNER' : day.tag.includes('HEAVY') ? 'HEAVY' : 'default';
-
-  html.push(`<div class="wod-card">`);
-  if (day.tag) html.push(`<span class="wod-tag ${tagClass}">${day.tag}</span>`);
-  html.push(`<div class="wod-name">${day.name}</div>`);
-  html.push(`<div class="wod-type">${day.type}</div>`);
-  html.push(`<div class="wod-desc">${day.description}</div>`);
-
-  if (day.movements && day.movements.some(m => m.has_weight)) {
-    html.push(`<div class="movements-list">`);
+function buildWodCardInner(day) {
+  const tagClass = day.tag === 'BENCHMARK' ? 'BENCHMARK' : day.tag === 'PARTNER' ? 'PARTNER' : (day.tag||'').includes('HEAVY') ? 'HEAVY' : 'default';
+  let html = '';
+  if (day.tag) html += `<span class="wod-tag ${tagClass}">${day.tag}</span>`;
+  html += `<div class="wod-name">${day.name}</div>`;
+  html += `<div class="wod-type">${day.type}</div>`;
+  html += `<div class="wod-desc">${day.description}</div>`;
+  if (day.movements?.some(m => m.has_weight)) {
+    html += `<div class="movements-list">`;
     day.movements.forEach(m => {
       if (!m.has_weight) return;
       const rxW = memberData.gender === 'female' ? m.rx_female_kg : m.rx_male_kg;
       const pr = memberData.prs?.[m.name];
-      html.push(`<div class="movement-row">
+      html += `<div class="movement-row">
         <div>
           <div class="movement-name">${m.name}</div>
           <div class="movement-detail">${m.detail}${m.note ? ' · ' + m.note : ''}</div>
         </div>
         <div class="movement-weight">
           ${rxW ? `<div class="rx-weight">Rx: ${rxW} kg</div>` : ''}
-          ${pr && !m.is_percentage_1rm ? `<div class="your-weight">→ 你的 Rx 重量</div>` : ''}
           ${m.is_percentage_1rm && pr ? `<div class="your-weight">${Math.round(pr * 0.7)} kg <span style="font-size:0.72rem;color:var(--gray)">70%</span></div>` : ''}
         </div>
-      </div>`);
+      </div>`;
     });
-    html.push(`</div>`);
+    html += `</div>`;
   }
+  if (day.coach_notes) html += `<div class="coach-note">📌 ${day.coach_notes}</div>`;
+  return html;
+}
 
-  if (day.coach_notes) {
-    html.push(`<div class="coach-note">📌 ${day.coach_notes}</div>`);
-  }
+function renderWodFeed() {
+  const todayStr = getTodayStr();
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() + 7);
+  const cutoffStr = `${cutoff.getFullYear()}-${String(cutoff.getMonth()+1).padStart(2,'0')}-${String(cutoff.getDate()).padStart(2,'0')}`;
 
-  html.push(`</div>`);
+  const feed = document.getElementById('wod-feed');
+  feed.innerHTML = '';
+  const dayNames = ['日','一','二','三','四','五','六'];
+  let currentWeek = null;
+  let todayEl = null;
 
-  // Pre-fill log WOD name
-  document.getElementById('wod-content').innerHTML = html.join('');
+  wodData.days.forEach((day, i) => {
+    if (day.date > cutoffStr) return;
+    const isToday = day.date === todayStr;
+    const isPast = day.date < todayStr;
+    if (isToday) currentDayIndex = i;
+
+    const parts = day.date.split('-');
+    const d = new Date(+parts[0], +parts[1]-1, +parts[2]);
+    const weekNum = Math.ceil((i + 1) / 7);
+
+    if (weekNum !== currentWeek) {
+      currentWeek = weekNum;
+      const sep = document.createElement('div');
+      sep.className = 'wod-week-sep';
+      sep.innerHTML = `<div class="wod-week-sep-line"></div><span class="wod-week-sep-label">第 ${weekNum} 週</span><div class="wod-week-sep-line"></div>`;
+      feed.appendChild(sep);
+    }
+
+    const card = document.createElement('div');
+    card.className = 'wod-card' + (isToday ? ' is-today' : isPast ? ' is-past' : '');
+    if (isToday) card.id = 'wod-today';
+    card.dataset.idx = i;
+
+    const dateLabel = isToday
+      ? `今天 · ${d.getMonth()+1}月${d.getDate()}日（${dayNames[d.getDay()]}）`
+      : `${d.getMonth()+1}月${d.getDate()}日（${dayNames[d.getDay()]}）`;
+
+    card.innerHTML = `<div class="wod-date-badge ${isToday ? 'today-badge' : ''}">${dateLabel}</div>` + buildWodCardInner(day);
+    feed.appendChild(card);
+    if (isToday) todayEl = card;
+  });
+
+  setTimeout(() => {
+    (todayEl || feed.lastElementChild)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 200);
+
+  // Show/hide floating button based on today visibility
+  const floatBtn = document.getElementById('jump-today-btn');
+  const observer = new IntersectionObserver(entries => {
+    floatBtn.classList.toggle('visible', !entries[0].isIntersecting);
+  }, { threshold: 0.5 });
+  if (todayEl) observer.observe(todayEl);
+}
+
+function jumpToToday() {
+  document.getElementById('wod-today')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderWOD() {
+  renderWodFeed();
 }
 
 // ── PR Grid ──
@@ -463,7 +478,30 @@ function renderLogMovements() {
   const day = wodData.days[logDayIndex];
   document.getElementById('log-wod-name').textContent = day.name;
   document.getElementById('log-wod-type').textContent = day.type;
+  document.getElementById('log-wod-desc').textContent = day.description || '';
   document.getElementById('log-wod-summary').style.display = 'block';
+
+  // EMOM/AMRAP 自動帶入固定時間
+  const timeInput = document.getElementById('log-time');
+  const timeLabel = document.getElementById('log-time-label');
+  const emomMatch = day.type.match(/EMOM\s*(\d+)/i);
+  const amrapMatch = day.type.match(/AMRAP\s*(\d+)/i);
+  if (emomMatch) {
+    timeInput.value = `${emomMatch[1]}:00`;
+    timeInput.readOnly = true;
+    timeInput.style.opacity = '0.5';
+    timeLabel.textContent = `完成時間（EMOM 固定 ${emomMatch[1]} 分鐘）`;
+  } else if (amrapMatch) {
+    timeInput.value = `${amrapMatch[1]}:00`;
+    timeInput.readOnly = true;
+    timeInput.style.opacity = '0.5';
+    timeLabel.textContent = `完成時間（AMRAP 固定 ${amrapMatch[1]} 分鐘）`;
+  } else {
+    timeInput.readOnly = false;
+    timeInput.style.opacity = '1';
+    timeInput.value = '';
+    timeLabel.textContent = '完成時間（選填）';
+  }
 
   const mvContainer = document.getElementById('log-movements');
   const section = document.getElementById('log-movements-section');
