@@ -81,17 +81,23 @@ async function signInWithGoogle() {
   }
 }
 
-// If already logged in, redirect
-sb.auth.getSession().then(({ data: { session } }) => {
-  if (session) checkMemberStatus(session.user);
-});
+let routingDone = false;
 
 async function checkMemberStatus(user) {
+  if (routingDone) return;
+  routingDone = true;
   const { data } = await sb.from('members').select('status').eq('id', user.id).single();
   if (!data) { window.location.href = 'onboarding.html'; return; }
   if (data.status === 'approved') { window.location.href = 'dashboard.html'; return; }
   if (data.status === 'pending') { window.location.href = 'pending.html'; return; }
 }
+
+// Handle both: existing session on page load AND OAuth callback redirect
+sb.auth.onAuthStateChange((event, session) => {
+  if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session) {
+    checkMemberStatus(session.user);
+  }
+});
 </script>
 </body>
 </html>
