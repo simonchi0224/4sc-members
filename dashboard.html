@@ -612,8 +612,12 @@ async function loadLogs() {
 
 // ── Schedule ──
 function renderSchedule() {
-  const loc = scheduleData.locations.find(l => l.id === memberData.location) || scheduleData.locations[0];
-  document.getElementById('location-badge').textContent = `🏋️ ${loc.name}（${loc.class_type}）`;
+  const memberLocs = (memberData.location || '').split(',').map(s => s.trim()).filter(Boolean);
+  const matchedLocs = scheduleData.locations.filter(l => memberLocs.includes(l.id));
+  const locs = matchedLocs.length ? matchedLocs : [scheduleData.locations[0]];
+
+  document.getElementById('location-badge').textContent =
+    `🏋️ ${locs.map(l => l.name).join(' · ')}`;
 
   const today = new Date().getDay();
   const dayOrder = ['mon','tue','wed','thu','fri','sat','sun'];
@@ -621,13 +625,17 @@ function renderSchedule() {
   const dayNum = { mon:1, tue:2, wed:3, thu:4, fri:5, sat:6, sun:0 };
 
   document.getElementById('schedule-grid').innerHTML = dayOrder.map(d => {
-    const times = loc.schedule[d] || [];
     const isToday = dayNum[d] === today;
+    const locRows = locs.map(loc => {
+      const times = loc.schedule[d] || [];
+      return `<div style="margin-bottom:${locs.length > 1 ? '6px' : '0'}">
+        ${locs.length > 1 ? `<span style="font-size:0.72rem;color:var(--gray);font-weight:700;margin-right:6px;">${loc.name}</span>` : ''}
+        ${times.length ? times.map(t => `<span class="sched-time">${t}</span>`).join('') : '<span class="sched-empty">本日無課</span>'}
+      </div>`;
+    }).join('');
     return `<div class="sched-day${isToday ? ' today-day' : ''}">
       <div class="sched-day-label">${dayLabel[d]}</div>
-      <div class="sched-times">
-        ${times.length ? times.map(t => `<span class="sched-time">${t}</span>`).join('') : '<span class="sched-empty">本日無課</span>'}
-      </div>
+      <div class="sched-times" style="flex-direction:column;align-items:flex-start;">${locRows}</div>
     </div>`;
   }).join('');
 }

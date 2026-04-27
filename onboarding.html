@@ -37,12 +37,17 @@ select option { background: #1e293b; }
       <input type="text" id="real-name" placeholder="例：陳小明" required>
     </div>
     <div class="form-group">
-      <label>主要訓練場館</label>
-      <select id="location" required>
-        <option value="">請選擇</option>
-        <option value="xindian">新店館（CrossFit）</option>
-        <option value="yonghe">永和館（混合健身）</option>
-      </select>
+      <label>訓練場館（可多選）</label>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+        <label style="display:flex;align-items:center;gap:10px;color:var(--white);font-size:0.95rem;font-weight:400;cursor:pointer;margin:0;">
+          <input type="checkbox" id="loc-xindian" value="xindian" style="width:18px;height:18px;accent-color:var(--cyan);flex-shrink:0;">
+          新店館（CrossFit）
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;color:var(--white);font-size:0.95rem;font-weight:400;cursor:pointer;margin:0;">
+          <input type="checkbox" id="loc-yonghe" value="yonghe" style="width:18px;height:18px;accent-color:var(--cyan);flex-shrink:0;">
+          永和館（混合健身）
+        </label>
+      </div>
     </div>
     <div class="form-group">
       <label>性別（用於 Rx 重量換算）</label>
@@ -90,11 +95,20 @@ async function submitForm(e) {
   const heightVal = document.getElementById('height').value;
   const weightVal = document.getElementById('weight').value;
 
+  const locs = ['xindian','yonghe'].filter(v => document.getElementById('loc-'+v).checked);
+  if (!locs.length) {
+    msg.style.color = '#f87171';
+    msg.textContent = '請至少選擇一個場館';
+    btn.disabled = false;
+    btn.textContent = '送出等待教練審核';
+    return;
+  }
+
   const payload = {
     id: user.id,
     email: user.email,
     real_name: document.getElementById('real-name').value.trim(),
-    location: document.getElementById('location').value,
+    location: locs.join(','),
     gender: document.getElementById('gender').value,
     status: 'pending'
   };
