@@ -73,7 +73,7 @@ const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 async function signInWithGoogle() {
   const { error } = await sb.auth.signInWithOAuth({
     provider: 'google',
-    options: { redirectTo: window.location.origin + '/onboarding.html' }
+    options: { redirectTo: window.location.origin + '/index.html' }
   });
   if (error) {
     document.getElementById('error-msg').style.display = 'block';
