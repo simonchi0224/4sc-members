@@ -1,4 +1,8 @@
 const OFF_TOPIC_PATTERN = /^(請問|請幫|幫我|你好|hi |hello|你是|你能|告訴我|能不能|可以幫|寫一|生成|解釋一下)/i;
+
+// 筆記內容明顯與訓練無關的模式（不限開頭）
+const NON_TRAINING_NOTES_PATTERN = /(好看|好吃|好喝|電影|電視|追劇|生日|過節|旅遊|購物|今天天氣|最近|朋友|小孩|兒子|女兒|老婆|老公|男友|女友|上班|工作|開會|睡覺|肚子餓|想吃)/;
+
 const CANNED_REJECTION = '本系統只支援反饋你的訓練結果，請填寫今日使用重量、完成情況或身體感受，我會根據你的訓練記錄給予回饋。';
 
 export default async function handler(req, res) {
@@ -15,9 +19,19 @@ export default async function handler(req, res) {
     return res.json({ feedback: CANNED_REJECTION });
   }
 
+  // 第二層：筆記內容明顯是生活閒聊則擋回（只有筆記、沒有動作記錄時）
+  const hasMovementResult = result && result !== '完成時間：' && result.trim().length > 0;
+  if (!hasMovementResult && notes && NON_TRAINING_NOTES_PATTERN.test(notes)) {
+    return res.json({ feedback: CANNED_REJECTION });
+  }
+
   const systemPrompt = `你是 4SC CrossFit 的 AI 教練助理。
 你的唯一職責是根據學員填寫的訓練記錄給予回饋。
-若學員輸入的內容不是訓練記錄（例如閒聊、測試、非訓練問題），請直接回覆：「本系統只支援反饋你的訓練結果，請填寫今日使用重量、完成情況或身體感受。」
+
+重要判斷規則：
+- 只根據「學員記錄」和「學員筆記」欄位判斷，不要自行用訓練內容推測
+- 如果學員筆記完全是與訓練無關的內容（日常生活、家庭、食物、娛樂等），即使有完成時間，也必須拒絕
+- 拒絕時直接回覆：「本系統只支援反饋你的訓練結果，請填寫今日使用重量、完成情況或身體感受。」
 
 若內容是合法的訓練記錄，請嚴格使用以下格式（繁體中文）：
 
@@ -30,7 +44,8 @@ export default async function handler(req, res) {
 💡 **下週加強建議**
 （針對弱項給出 1-2 個具體動作 + 建議組數與強度）
 
-每段限 2-3 句，簡潔有力。`;
+每段限 2-3 句，簡潔有力。
+術語規範：平板支撐（不說「板橋」）、深蹲、硬舉、挺舉、抓舉、跳箱、壁球、引體向上、雙槓撐體。全程使用台灣健身界通用詞彙。`;
 
   const userMsg = `學員：${member_name || '學員'}（${gender === 'male' ? '男' : '女'}）
 今日 WOD：${wod_name}（${wod_type}）
@@ -56,6 +71,9 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
+    if (data.error) {
+      return res.status(500).json({ error: `OpenAI 錯誤：${data.error.message}` });
+    }
     const feedback = data.choices?.[0]?.message?.content || '';
     res.json({ feedback });
   } catch (e) {
