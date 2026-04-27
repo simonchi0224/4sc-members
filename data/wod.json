@@ -84,7 +84,7 @@
     {
       "date": "2026-04-10", "day": "FRI", "name": "KELLY", "tag": "BENCHMARK",
       "type": "5 rounds for time",
-      "description": "400-m run\n30 box jumps (20/24 in)\n30 wall-ball shots (6.5/9 kg) (9/10 ft)",
+      "description": "400-m run\n30 box jumps (20/24 in)\n30 wall-ball shots (6.5/9 kg) (2.5/3 m)",
       "movements": [
         { "name": "Wall-ball Shot", "detail": "30 reps", "has_weight": true, "rx_female_kg": 6, "rx_male_kg": 9, "is_percentage_1rm": false }
       ], "coach_notes": "", "scaling": ""
@@ -112,7 +112,7 @@
     {
       "date": "2026-04-14", "day": "TUE", "name": "260414", "tag": "",
       "type": "10 rounds for time",
-      "description": "2 rope climbs (15/15 ft)\n10 GHD sit-ups or 15 AbMat sit-ups\n25 double-unders",
+      "description": "2 rope climbs (4.5/4.5 m)\n10 GHD sit-ups or 15 AbMat sit-ups\n25 double-unders",
       "movements": [], "coach_notes": "", "scaling": ""
     },
     {
@@ -140,9 +140,9 @@
     {
       "date": "2026-04-18", "day": "SAT", "name": "260418", "tag": "PARTNER",
       "type": "10 rounds for time, with a partner",
-      "description": "Double-KB front-rack carry (75 ft) (16/24 kg)\n15 box jump-overs (20/24 in)\nDouble-KB front-rack carry (75 ft) (16/24 kg)\n– Partners alternate full rounds, for 5 rounds each.",
+      "description": "Double-KB front-rack carry (23 m) (16/24 kg)\n15 box jump-overs (20/24 in)\nDouble-KB front-rack carry (23 m) (16/24 kg)\n– Partners alternate full rounds, for 5 rounds each.",
       "movements": [
-        { "name": "Double-KB Front-rack Carry", "detail": "75 ft", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 24, "is_percentage_1rm": false }
+        { "name": "Double-KB Front-rack Carry", "detail": "23 m", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 24, "is_percentage_1rm": false }
       ], "coach_notes": "", "scaling": ""
     },
     {
@@ -217,7 +217,7 @@
     {
       "date": "2026-04-28", "day": "TUE", "name": "260428", "tag": "PARTNER",
       "type": "AMRAP 20 with a partner",
-      "description": "400-m run\nHandstand walk (100 ft)\n100 walking lunges\n– Run together.\n– Split the handstand walk evenly (50 ft each).\n– Share the lunges as desired.",
+      "description": "400-m run\nHandstand walk (30.5 m)\n100 walking lunges\n– Run together.\n– Split the handstand walk evenly (15 m each).\n– Share the lunges as desired.",
       "movements": [], "coach_notes": "", "scaling": ""
     },
     {
@@ -337,7 +337,7 @@
     {
       "date": "2026-05-14", "day": "THU", "name": "260514", "tag": "",
       "type": "7 rounds for time",
-      "description": "Handstand walk (50 ft)\n20 box step-ups (20/24 in)",
+      "description": "Handstand walk (15 m)\n20 box step-ups (20/24 in)",
       "movements": [], "coach_notes": "", "scaling": ""
     },
     {
@@ -351,7 +351,7 @@
     {
       "date": "2026-05-16", "day": "SAT", "name": "260516", "tag": "",
       "type": "5 × 3:00 AMRAP",
-      "description": "1 rope climb (15/15 ft)\n9 thrusters (29.5/43 kg)\n– Rest 3:00 between each AMRAP.\n– Start each round where you left off.",
+      "description": "1 rope climb (4.5/4.5 m)\n9 thrusters (29.5/43 kg)\n– Rest 3:00 between each AMRAP.\n– Start each round where you left off.",
       "movements": [
         { "name": "Thruster", "detail": "9 reps", "has_weight": true, "rx_female_kg": 29, "rx_male_kg": 43, "is_percentage_1rm": false }
       ], "coach_notes": "", "scaling": ""
