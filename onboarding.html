@@ -30,11 +30,19 @@ select option { background: #1e293b; }
   <div class="logo">4SC <span>CrossFit</span></div>
   <h1>填寫會員資料</h1>
   <p class="subtitle">教練需要確認你是現有學員後，才能開放使用。<br>請填寫你在場館登記的真實姓名。</p>
+  <div style="margin-bottom:24px;padding:14px 16px;background:rgba(34,211,238,0.07);border:1px solid rgba(34,211,238,0.2);border-radius:12px;font-size:0.82rem;color:#7dd3fc;line-height:1.7;">
+    ℹ️ 本平台僅供<strong style="color:var(--cyan);">現有有效的團體課程或教練課程會員</strong>使用。<br>
+    送出後系統將自動比對會員資格，未通過者無法開通使用。
+  </div>
 
   <form onsubmit="submitForm(event)">
     <div class="form-group">
-      <label>真實姓名（中文）</label>
-      <input type="text" id="real-name" placeholder="例：陳小明" required>
+      <label>真實姓名 <span style="color:var(--orange);">*必填</span></label>
+      <input type="text" id="real-name" placeholder="例：陳小明" required style="border-color:rgba(249,115,22,0.4);">
+      <div style="margin-top:8px;padding:10px 12px;background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.25);border-radius:8px;font-size:0.78rem;color:#fb923c;line-height:1.6;">
+        ⚠️ 請填寫你在場館<strong>合約上的真實姓名</strong>，教練需要用姓名比對會員資格。<br>
+        暱稱或英文名無法通過審核。
+      </div>
     </div>
     <div class="form-group">
       <label>訓練場館（可多選）</label>
@@ -73,6 +81,14 @@ select option { background: #1e293b; }
     </div>
     <button class="submit-btn" type="submit" id="submit-btn">送出等待教練審核</button>
     <div id="msg"></div>
+    <div id="warn-box" style="display:none;margin-top:16px;padding:16px;background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.35);border-radius:12px;">
+      <div style="font-size:0.85rem;color:#fb923c;line-height:1.7;margin-bottom:14px;">
+        ⚠️ <strong>系統未查詢到你的有效會員資格</strong><br>
+        有可能是後台資料尚未同步，或姓名填寫與合約不符。<br>
+        仍可送出申請，但建議同時聯繫客服人員確認資格，以免影響審核進度。
+      </div>
+      <button type="button" id="confirm-btn" class="submit-btn" style="margin-top:0;background:#f97316;">確認送出申請</button>
+    </div>
   </form>
 </div>
 
@@ -81,30 +97,14 @@ select option { background: #1e293b; }
 <script>
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-async function submitForm(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submit-btn');
-  const msg = document.getElementById('msg');
-  btn.disabled = true;
-  btn.textContent = '送出中…';
+let _payload = null;
 
-  const { data: { user } } = await sb.auth.getUser();
-  if (!user) { window.location.href = 'index.html'; return; }
-
+function buildPayload(user) {
+  const locs = ['xindian','yonghe'].filter(v => document.getElementById('loc-'+v).checked);
   const birthdayVal = document.getElementById('birthday').value;
   const heightVal = document.getElementById('height').value;
   const weightVal = document.getElementById('weight').value;
-
-  const locs = ['xindian','yonghe'].filter(v => document.getElementById('loc-'+v).checked);
-  if (!locs.length) {
-    msg.style.color = '#f87171';
-    msg.textContent = '請至少選擇一個場館';
-    btn.disabled = false;
-    btn.textContent = '送出等待教練審核';
-    return;
-  }
-
-  const payload = {
+  const p = {
     id: user.id,
     email: user.email,
     real_name: document.getElementById('real-name').value.trim(),
@@ -112,21 +112,76 @@ async function submitForm(e) {
     gender: document.getElementById('gender').value,
     status: 'pending'
   };
-  if (birthdayVal) payload.birthday = birthdayVal;
-  if (heightVal) payload.height_cm = parseFloat(heightVal);
-  if (weightVal) payload.weight_kg = parseFloat(weightVal);
+  if (birthdayVal) p.birthday = birthdayVal;
+  if (heightVal) p.height_cm = parseFloat(heightVal);
+  if (weightVal) p.weight_kg = parseFloat(weightVal);
+  return p;
+}
+
+async function doSubmit(payload) {
+  const btn = document.getElementById('submit-btn');
+  const confirmBtn = document.getElementById('confirm-btn');
+  const msg = document.getElementById('msg');
+  if (confirmBtn) confirmBtn.disabled = true;
 
   const { error } = await sb.from('members').upsert(payload);
-
   if (error) {
     msg.style.color = '#f87171';
     msg.textContent = '送出失敗：' + error.message;
     btn.disabled = false;
     btn.textContent = '送出等待教練審核';
+    if (confirmBtn) confirmBtn.disabled = false;
   } else {
     window.location.href = 'pending.html';
   }
 }
+
+async function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const msg = document.getElementById('msg');
+  const warnBox = document.getElementById('warn-box');
+
+  msg.textContent = '';
+  warnBox.style.display = 'none';
+
+  const locs = ['xindian','yonghe'].filter(v => document.getElementById('loc-'+v).checked);
+  if (!locs.length) {
+    msg.style.color = '#f87171';
+    msg.textContent = '請至少選擇一個場館';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '查詢資格中…';
+
+  const { data: { user } } = await sb.auth.getUser();
+  if (!user) { window.location.href = 'index.html'; return; }
+
+  _payload = buildPayload(user);
+
+  // Check if name exists in approved members
+  const { data: match } = await sb.from('members')
+    .select('id')
+    .eq('real_name', _payload.real_name)
+    .eq('status', 'approved')
+    .maybeSingle();
+
+  if (match) {
+    // Found — submit directly
+    await doSubmit(_payload);
+  } else {
+    // Not found — show warning, let user confirm
+    btn.disabled = false;
+    btn.textContent = '送出等待教練審核';
+    warnBox.style.display = 'block';
+    warnBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+document.getElementById('confirm-btn').addEventListener('click', async () => {
+  if (_payload) await doSubmit(_payload);
+});
 </script>
 </body>
 </html>

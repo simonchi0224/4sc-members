@@ -361,6 +361,59 @@
       "type": "For time",
       "description": "300 calories on any machine\nor\n5,000-m run",
       "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-18", "day": "MON", "name": "AFFILIATE – 26.05.18", "tag": "",
+      "type": "For time",
+      "description": "10 deadlifts (84/125 kg)\n20 pull-ups\n30 wall-ball shots (6/9 kg)\n40 box jumps (20/24 in)\n1,000-m row\n40 box jumps\n30 wall-ball shots\n20 pull-ups\n10 deadlifts",
+      "movements": [
+        { "name": "Deadlift", "detail": "10+10 reps", "has_weight": true, "rx_female_kg": 84, "rx_male_kg": 125, "is_percentage_1rm": false },
+        { "name": "Wall-ball Shot", "detail": "30+30 reps", "has_weight": true, "rx_female_kg": 6, "rx_male_kg": 9, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-19", "day": "TUE", "name": "260519", "tag": "",
+      "type": "6 × 1:30 rounds",
+      "description": "20 single-leg squats\nMax-cal bike\n– Rest 1:30 between rounds.",
+      "movements": [], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-20", "day": "WED", "name": "260520", "tag": "",
+      "type": "6 rounds for time",
+      "description": "24 KB swings (16/24 kg)\n12 burpees to a target\n– Burpee target is 6 inches above fingertips with arms overhead.",
+      "movements": [
+        { "name": "KB Swing", "detail": "24 reps", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 24, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-21", "day": "THU", "name": "260521", "tag": "",
+      "type": "AMRAP 12",
+      "description": "200-m run\n8 hang squat cleans (34/52 kg)\n4 wall walks",
+      "movements": [
+        { "name": "Hang Squat Clean", "detail": "8 reps", "has_weight": true, "rx_female_kg": 34, "rx_male_kg": 52, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-22", "day": "FRI", "name": "260522", "tag": "HEAVY DAY",
+      "type": "5 sets for load",
+      "description": "5 shoulder presses + 5 push presses + 5 push jerks\n– No rest between movements.",
+      "movements": [
+        { "name": "Shoulder Press", "detail": "5 reps", "has_weight": true, "rx_female_kg": null, "rx_male_kg": null, "is_percentage_1rm": true }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-23", "day": "SAT", "name": "260523", "tag": "",
+      "type": "AMRAP 15",
+      "description": "100-m DB suitcase carry (16/22.5 kg)\n10 shuttle runs\n30 alternating DB hang snatches\n– Shuttle run is 25 ft out and back.",
+      "movements": [
+        { "name": "DB Suitcase Carry", "detail": "100 m", "has_weight": true, "rx_female_kg": 16, "rx_male_kg": 22.5, "is_percentage_1rm": false }
+      ], "coach_notes": "", "scaling": ""
+    },
+    {
+      "date": "2026-05-24", "day": "SUN", "name": "260524", "tag": "PARTNER",
+      "type": "For time with a partner",
+      "description": "60 AbMat sit-ups\n80/120 calories\n60 toes-to-bars\n56/80 calories\n60 knees-to-elbows\n42/60 calories\n– Use any machine for calories.\n– Share work as desired.",
+      "movements": [], "coach_notes": "", "scaling": ""
     }
   ]
 }

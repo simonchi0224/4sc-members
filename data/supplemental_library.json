@@ -1,0 +1,404 @@
+{
+  "programs": [
+    {
+      "id": "murph-prep-6wk",
+      "name": "Murph 備戰計劃",
+      "subtitle": "6-Week Murph Prep",
+      "description": "六週計劃，逐步建立 1-mile run、100 pull-ups、200 push-ups、300 air squats 的體能基礎。第六週減量，第七週挑戰 Murph。",
+      "total_days": 42,
+      "days": [
+        { "day": 1, "week_label": "Week 1", "rest": false, "type": "4 rounds for time", "movements": ["400-meter run", "40 air squats"] },
+        { "day": 2, "week_label": "Week 1", "rest": false, "type": "EMOM 20", "movements": ["Min.1 | 3 strict pull-ups + 5 knees-to-elbows", "Min.2 | 2 wall walks + 5 box jumps (20/24 in)"] },
+        { "day": 3, "week_label": "Week 1", "rest": false, "type": "AMRAP 15", "movements": ["400-meter run", "21 hand-release push-ups", "200-meter single-dumbbell farmers carry (35/50 lb)"] },
+        { "day": 4, "week_label": "Week 1", "rest": true },
+        { "day": 5, "week_label": "Week 2", "rest": false, "type": "4 rounds for max reps", "movements": ["1 minute of dumbbell cleans (35/50 lb)", "1 minute of double-unders", "1 minute of sit-ups", "1 minute of rest"] },
+        { "day": 6, "week_label": "Week 2", "rest": false, "type": "3 rounds for time", "movements": ["20 dumbbell thrusters (20/35 lb)", "20 burpees"] },
+        { "day": 7, "week_label": "Week 2", "rest": true },
+        { "day": 8, "week_label": "Week 2", "rest": false, "type": "5 rounds for time", "movements": ["15 box jump-overs (20/24 in)", "15 push-ups", "15 pull-ups"] },
+        { "day": 9, "week_label": "Week 2", "rest": false, "type": "AMRAP 10", "movements": ["10 dumbbell front squats (20/35 lb)", "20 alternating dumbbell power snatches", "* Use two dumbbells for front squats and one for snatches"] },
+        { "day": 10, "week_label": "Week 2", "rest": false, "type": "7 × 1:00 rounds", "movements": ["21 double-unders", "7 burpees", "Max-rep dumbbell deadlifts (35/50 lb)", "– Rest 2:00 between rounds"] },
+        { "day": 11, "week_label": "Week 3", "rest": true },
+        { "day": 12, "week_label": "Week 3", "rest": false, "type": "For time", "movements": ["200-ft – 150-ft – 100-ft Bear Crawl", "20-15-10 Burpee pull-ups", "* Use a pull-up bar at least 6 inches above your reach"] },
+        { "day": 13, "week_label": "Week 3", "rest": false, "type": "2 rounds for reps", "movements": ["3:00 max-reps toes-to-bars", "3:00 max-reps single-dumbbell swings (35/50 lb)", "3:00 max-reps box step-ups (20/24 in)", "* Run 400 meters at the start of each 3-minute interval"] },
+        { "day": 14, "week_label": "Week 3", "rest": true },
+        { "day": 15, "week_label": "Week 3", "rest": false, "type": "EMOM 12", "movements": ["Odd minute | 5 strict pull-ups", "Even minute | Max dumbbell devils presses (20/35 lb)"] },
+        { "day": 16, "week_label": "Week 3", "rest": false, "type": "5 rounds", "movements": ["1:00 shuttle runs (25 ft out and back)", "1:00 dumbbell push jerks (35/50 lb)", "Rest 2:00"] },
+        { "day": 17, "week_label": "Week 3", "rest": false, "type": "For time", "movements": ["800-meter run", "36 dumbbell front-rack lunges (35/50 lb)", "600-meter run", "24 dumbbell front-rack lunges", "400-meter run", "12 dumbbell front-rack lunges", "200-meter run"] },
+        { "day": 18, "week_label": "Week 4", "rest": true },
+        { "day": 19, "week_label": "Week 4", "rest": false, "type": "6 rounds for time", "movements": ["9 hang dumbbell squat cleans (35/50 lb)", "9 lateral burpees over the dumbbell"] },
+        { "day": 20, "week_label": "Week 4", "rest": false, "type": "For time", "movements": ["80 dumbbell box step-ups (20/24 in) (35/50 lb)", "* Every minute on the minute starting at :00, perform 20 double-unders"] },
+        { "day": 21, "week_label": "Week 4", "rest": true },
+        { "day": 22, "week_label": "Week 4", "rest": false, "type": "4 rounds for time", "movements": ["20 pull-ups", "30 push-ups", "40 sit-ups", "50 air squats", "* Rest 3:00 between each round"] },
+        { "day": 23, "week_label": "Week 4", "rest": false, "type": "\"Griff\" For time", "movements": ["800-meter run", "400-meter run (backwards)", "800-meter run", "400-meter run (backwards)"] },
+        { "day": 24, "week_label": "Week 4", "rest": false, "type": "7 rounds for time", "movements": ["7 dumbbell power cleans (35/50 lb)", "7 dumbbell push presses", "7 box jump-overs (20/24 in)", "* Step down from the box"] },
+        { "day": 25, "week_label": "Week 5", "rest": true },
+        { "day": 26, "week_label": "Week 5", "rest": false, "type": "AMRAP 10", "movements": ["3-6-9-12… Toes-to-bars", "1-2-3-4… Wall walks"] },
+        { "day": 27, "week_label": "Week 5", "rest": false, "type": "For time", "movements": ["20 burpees", "100 double-unders", "20 left-arm dumbbell snatches (35/50 lb)", "20 right-arm dumbbell snatches", "400-meter run", "50 single-arm overhead dumbbell lunges (35/50 lb)", "400-meter run", "20 left-arm dumbbell snatches", "20 right-arm dumbbell snatches", "100 double-unders", "20 burpees"] },
+        { "day": 28, "week_label": "Week 5", "rest": true },
+        { "day": 29, "week_label": "Week 5", "rest": false, "type": "For time", "movements": ["9 handstand push-ups", "100-meter run", "15 hand-release push-ups", "200-meter run", "21 dumbbell floor press (35/50 lb)", "400-meter run", "21 dumbbell floor press", "200-meter run", "15 hand-release push-ups", "100-meter run", "9 handstand push-ups"] },
+        { "day": 30, "week_label": "Week 5", "rest": false, "type": "For time", "movements": ["27-21-15-9", "Dumbbell thrusters (20/35 lb)", "Pull-ups"] },
+        { "day": 31, "week_label": "Week 5", "rest": false, "type": "For time", "movements": ["1,600-meter run"] },
+        { "day": 32, "week_label": "Week 6", "rest": true },
+        { "day": 33, "week_label": "Week 6", "rest": false, "type": "AMRAP 20", "movements": ["200-meter run", "5 dumbbell power cleans (35/50 lb)", "25 push-ups", "5 dumbbell power cleans", "50 air squats", "5 dumbbell power cleans", "75 double-unders"] },
+        { "day": 34, "week_label": "Week 6", "rest": false, "type": "3 rounds for time", "movements": ["30 alternating dumbbell snatches (35/50 lb)", "20 shuttle runs", "– 1 shuttle run = 25 feet out and 25 feet back"] },
+        { "day": 35, "week_label": "Week 6", "rest": true },
+        { "day": 36, "week_label": "Week 6", "rest": false, "type": "5 sets for time", "movements": ["600-meter run", "* Rest 3:00 between rounds"] },
+        { "day": 37, "week_label": "Week 6", "rest": false, "type": "10 rounds for time", "movements": ["2 dumbbell snatches/arm (35/50 lb)", "3 dumbbell goblet squats", "4 pull-ups"] },
+        { "day": 38, "week_label": "Week 6", "rest": false, "type": "5 rounds for time", "movements": ["8 hand-release push-ups", "8 alternating dumbbell front-rack lunges (35/50 lb)", "8 dumbbell push presses", "400-meter run"] },
+        { "day": 39, "week_label": "Week 6", "rest": true },
+        { "day": 40, "week_label": "Week 6", "rest": false, "type": "AMRAP 10", "movements": ["2-4-6-8… Box jump-overs (20/24 in)", "Burpees"] },
+        { "day": 41, "week_label": "Week 6", "rest": false, "type": "For time", "movements": ["100 double-unders", "25 sit-ups", "50 alternating dumbbell clean and jerks (35/50 lb)", "25 sit-ups", "100 double-unders"] },
+        { "day": 42, "week_label": "Week 6", "rest": true }
+      ]
+    },
+    {
+      "id": "strict-pullup-4wk",
+      "name": "四週嚴格引體向上計劃",
+      "subtitle": "4-Week Strict Pull-up Program",
+      "description": "12天系統訓練，從基礎懸吊與划船動作出發，逐步建立完成嚴格引體向上的力量。",
+      "total_days": 12,
+      "days": [
+        { "day": 1, "week_label": "Week 1", "rest": false, "type": "3 exercises", "movements": ["1) 3×10 ring rows – Feet under the rings", "2) 30s×3 active hang from the pull-up bar", "3) 100 banded pull a parts – Use a thin band"] },
+        { "day": 2, "week_label": "Week 1", "rest": false, "type": "3 exercises", "movements": ["1) 3×10 ring rows – Feet under the rings", "2) 2×20 dumbbell bent over rows – use weight you can do 10+ reps unbroken", "3) 100 banded face pulls – Use a thin band"] },
+        { "day": 3, "week_label": "Week 1", "rest": false, "type": "3 exercises", "movements": ["1) 3×10 ring rows – Feet 1 step forward of the rings", "2) 30s×3 active hang from the pull-up bar", "3) 2×10 dumbbell \"Y-T-A\" raises – Use light dumbbells"] },
+        { "day": 4, "week_label": "Week 2", "rest": false, "type": "3 exercises", "movements": ["1) 4×8 archer rows", "2) 5×3 negative chin-over-bar pull-ups – Start with chin over bar, lower on a 2-count", "3) 100 banded pull a-parts – Use a thin band"] },
+        { "day": 5, "week_label": "Week 2", "rest": false, "type": "3 exercises", "movements": ["1) 5×5 banded pull-ups – Use a band that allows 5 unbroken controlled reps", "2) 3×20 dumbbell bent over rows", "3) 100 banded face pulls – Use a thin band"] },
+        { "day": 6, "week_label": "Week 2", "rest": false, "type": "3 exercises", "movements": ["1) 4×8 archer rows – Pull deeper on the bar vs Day 4", "2) 6×3 negative chin-over-bar pull-ups – lower on a 2-count", "3) 2×10 dumbbell \"Y-T-A\" raises – Use light dumbbells"] },
+        { "day": 7, "week_label": "Week 3", "rest": false, "type": "4 exercises", "movements": ["1) 3×5 jumping chin-over-bar pull-ups – Jump only as much as needed, do not hold the negative", "2) 5×3 negative chin-over-bar pull-ups – lower on a 3-count", "3) 5×1 supinated strict pull-up attempts – pull as close to bar as possible", "4) 100 banded pull a parts – Use a thin band"] },
+        { "day": 8, "week_label": "Week 3", "rest": false, "type": "3 exercises", "movements": ["1) 6×5 banded pull-ups – Use a band that allows 5 unbroken controlled reps", "2) 4×6 archer rows – Pull deeper on the bar vs Day 6", "3) 100 banded face pulls – Use a thin band"] },
+        { "day": 9, "week_label": "Week 3", "rest": false, "type": "4 exercises", "movements": ["1) 10×2 banded pull-ups – Use a band that allows 2 controlled reps", "2) 5×2 negative chin-over-bar pull-ups – lower on a 3-count", "3) 5×1 pronated strict pull-up attempts – pull as close to bar as possible", "4) 2×10 dumbbell \"Y-T-A\" raises – Use light dumbbells"] },
+        { "day": 10, "week_label": "Week 4", "rest": false, "type": "3 exercises", "movements": ["1) 10×2 negative chin-over-bar pull-ups – lower on a 3-count", "2) 5×1 supinated strict pull-up attempts – pull as close to bar as possible", "3) 100 banded pull a parts – Use a thin band"] },
+        { "day": 11, "week_label": "Week 4", "rest": false, "type": "4 exercises", "movements": ["1) 3×5 jumping chin-over-bar pull-ups – Jump only as much as needed, do not hold the negative", "2) 10×1 banded pull-up – Use a band that allows 1 controlled rep", "3) 5×1 pronated strict pull-up attempts – pull as close to bar as possible", "4) 100 banded face pulls – Use a thin band"] },
+        { "day": 12, "week_label": "Week 4", "rest": false, "type": "Attempts", "movements": ["1) Strict pull-up attempts", "– Pull fast! Strict doesn't mean slow.", "– Drive elbows down toward the ground", "– Keep pulling, keep your body rigid"] }
+      ]
+    },
+    {
+      "id": "bar-muscle-up-4wk",
+      "name": "首次 Bar Muscle-Up 計劃",
+      "subtitle": "Get Your First Bar Muscle-Up",
+      "description": "前置條件：3-5 下嚴格 chest-to-bar 引體向上、嚴格單槓撐體；靜態撐體上下各 10 秒以上。",
+      "total_days": 12,
+      "days": [
+        { "day": 1, "week_label": "Day 1", "rest": false, "type": "3 exercises", "movements": ["1) 5×3 strict chin-over-bar pull-ups", "2) 3×15 hand-release push-ups", "3) 100 banded pull a parts – Use a thin band"] },
+        { "day": 2, "week_label": "Week 1", "rest": false, "type": "3 exercises", "movements": ["1) 5×3 strict chest-to-bar pull-ups", "2) 4×6 paused dumbbell bench press – Pause on chest for 1 second each rep", "3) 100 banded face pulls – Use a thin band"] },
+        { "day": 3, "week_label": "Week 1", "rest": false, "type": "3 exercises", "movements": ["1) 5×3 strict chest-to-bar pull-ups", "2) 3×10 deficit push-ups", "3) 2×10 dumbbell \"Y-T-A\" raises – Use light dumbbells"] },
+        { "day": 4, "week_label": "Week 2", "rest": false, "type": "3 exercises", "movements": ["1) 4×5 strict chest-to-bar pull-ups", "2) 3×10 Russian dips", "3) 100 banded pull a parts – Use a thin band"] },
+        { "day": 5, "week_label": "Week 2", "rest": false, "type": "4 exercises", "movements": ["1) 5×3 jumping bar muscle-up – Jump only enough to get your body over the bar", "2) 3×10 straight bar or ring dips", "3) 5×3 weighted chin-over-bar pull-ups – use weight that allows 3 reps unbroken", "4) 100 banded face pulls – Use a thin band"] },
+        { "day": 6, "week_label": "Week 2", "rest": false, "type": "4 exercises", "movements": ["1) 5×3 banded bar muscle-ups – Use a band that allows 3 unbroken controlled reps", "2) 5×8 Russian dips", "3) 4×5 strict chest-to-bar pull-ups", "4) 2×10 dumbbell \"Y-T-A\" raises – Use light dumbbells"] },
+        { "day": 7, "week_label": "Week 3", "rest": false, "type": "5 exercises", "movements": ["1) 5×1 bar muscle-up attempts – best effort under own power", "2) 5×3 jumping bar muscle-up – Jump only enough to get body over bar", "3) 4×6 paused dumbbell bench press – 1-sec pause, increase loading vs Week 1", "4) 5×3 weighted chest-to-bar pull-ups – weight for 3 unbroken", "5) 100 banded pull a parts – Use a thin band"] },
+        { "day": 8, "week_label": "Week 3", "rest": false, "type": "4 exercises", "movements": ["1) 5×2 banded bar muscle-ups – Use a band that allows 2 unbroken controlled reps", "2) 5×8 Russian dips", "3) 4×5 strict chest-to-bar pull-ups", "4) 100 banded face pulls – Use a thin band"] },
+        { "day": 9, "week_label": "Week 3", "rest": false, "type": "5 exercises", "movements": ["1) 5×1 bar muscle-up attempts – best effort under own power", "2) 5×3 jumping bar muscle-up – minimal jump", "3) 5×8 straight bar or ring dips", "4) 4×8 archer rows", "5) 2×10 dumbbell \"Y-T-A\" raises – Use light dumbbells"] },
+        { "day": 10, "week_label": "Week 4", "rest": false, "type": "5 exercises", "movements": ["1) 5×1 bar muscle-up attempts – best effort under own power", "2) 5×2 banded bar muscle-ups – band for 2 unbroken controlled", "3) 5×8 Russian dips", "4) 10×2 weighted chest-to-bar pull-ups – weight for 3 unbroken", "5) 100 banded pull a parts – Use a thin band"] },
+        { "day": 11, "week_label": "Week 4", "rest": false, "type": "5 exercises", "movements": ["1) 5×1 bar muscle-up attempts – best effort under own power", "2) 5×2 jumping bar muscle-up – minimal jump", "3) 5×8 straight bar or ring dips", "4) 4×8 archer rows", "5) 100 banded face pulls – Use a thin band"] },
+        { "day": 12, "week_label": "Week 4", "rest": false, "type": "Attempts", "movements": ["1) Bar muscle-up attempts", "– Big kip swing, let yourself get as far behind the bar as possible", "– Pull the bar into the hips, sit up fast", "– Keep the bar tight to your body, look for your toes, press out"] }
+      ]
+    },
+    {
+      "id": "handstand-pushup-4wk",
+      "name": "首次倒立伏地挺身計劃",
+      "subtitle": "Get Your First Handstand Push-Up",
+      "description": "前置條件：腳尖 10 下以上伏地挺身、能夠靠牆倒立、靜態倒立 20 秒以上。",
+      "total_days": 12,
+      "days": [
+        { "day": 1, "week_label": "Week 1", "rest": false, "type": "3 exercises", "movements": ["1) 3×10 push-ups", "2) 5×3 partial wall-walk + :03 hold – Take 2-4 steps toward the wall then hold", "3) 100 banded pull a parts – Use a thin band"] },
+        { "day": 2, "week_label": "Week 1", "rest": false, "type": "4 exercises", "movements": ["1) 3×10 seated dumbbell shoulder presses – Increase loading but maintain unbroken reps", "2) 10×50-ft single-arm overhead kettlebell carry – 5 sets right arm, 5 left; increase loading", "3) 4×20 seconds hollow body hold", "4) 100 banded tricep pull-downs – Use a thin band"] },
+        { "day": 3, "week_label": "Week 1", "rest": false, "type": "3 exercises", "movements": ["1) 3×12 push-ups", "2) 5×3 partial wall-walk + :03 hold", "3) 2×10 dumbbell \"Y-T-A\" raises – Use light dumbbells"] },
+        { "day": 4, "week_label": "Week 2", "rest": false, "type": "3 exercises", "movements": ["1) 3×10 piked push-ups – Hips up, feet close to hands, AbMat target for head, start and finish in downward dog", "2) 5×3 full wall-walk + :03 hold – Walk until chest hits wall; do not over-extend body toward wall", "3) 100 banded pull a parts – Use a thin band"] },
+        { "day": 5, "week_label": "Week 2", "rest": false, "type": "4 exercises", "movements": ["1) 4×10 dumbbell push presses – Increase loading but maintain unbroken reps", "2) 8×100-ft single-arm overhead kettlebell carry – 4 sets right arm, 4 left; increase loading", "3) 4×15 hollow body rocks", "4) 100 banded tricep pull-downs – Use a thin band"] },
+        { "day": 6, "week_label": "Week 2", "rest": false, "type": "3 exercises", "movements": ["1) 4×8 piked push-ups – Increase difficulty vs Day 4: walk feet closer or elevate on box", "2) 5×3 full wall-walk + :03 hold", "3) 2×10 dumbbell \"Y-T-A\" raises – Use light dumbbells"] },
+        { "day": 7, "week_label": "Week 3", "rest": false, "type": "4 exercises", "movements": ["1) 6×5 piked push-ups – Increase difficulty vs Week 2: feet closer to hands or elevated on box", "2) 5×3 kick up to handstand + :03 hold", "3) 3×3 handstand push-up negatives – lower head to floor on 2-count; add 1-2 mats if needed", "4) 100 banded pull a parts – Use a thin band"] },
+        { "day": 8, "week_label": "Week 3", "rest": false, "type": "4 exercises", "movements": ["1) 5×6 seated dumbbell shoulder presses – Increase loading vs Week 1", "2) 8×100-ft single-arm overhead kettlebell carry – 4 right, 4 left; increase loading", "3) 4×20 hollow body rocks", "4) 100 banded tricep pull-downs – Use a thin band"] },
+        { "day": 9, "week_label": "Week 3", "rest": false, "type": "3 exercises", "movements": ["1) 5×3 handstand push-up negatives – lower on 2-count; add mats if needed", "2) 3×20 alternating shoulder taps – feet on box, pike position", "3) 2×10 dumbbell \"Y-T-A\" raises – Use light dumbbells"] },
+        { "day": 10, "week_label": "Week 4", "rest": false, "type": "3 exercises", "movements": ["1) 7×3 handstand push-up negatives – lower on 2-count; add 1-2 mats if needed", "2) 5×12 alternating shoulder taps – stomach against wall after wall walk", "3) 100 banded pull a parts – Use a thin band"] },
+        { "day": 11, "week_label": "Week 4", "rest": false, "type": "4 exercises", "movements": ["1) 5×6 dumbbell push presses – Increase loading vs Week 2", "2) 10×100-ft single-arm overhead kettlebell carry – 5 right, 5 left; increase loading", "3) 8 sets × 20 seconds hollow body rocks + 10 seconds rest", "4) 100 banded tricep pull-downs – Use a thin band"] },
+        { "day": 12, "week_label": "Week 4", "rest": false, "type": "Attempts", "movements": ["1) Handstand push-up attempts", "– Keep your body rigid as you lower", "– As your head touches the ground, drive away fast", "– Keep core tight and push your head through your arms"] }
+      ]
+    }
+  ],
+  "weeks": [
+    {
+      "week_start": "2026-04-27",
+      "label": "Week 18 · 2026/04/27",
+      "blocks": [
+        {
+          "id": "w18-strength-1",
+          "name": "Strength I",
+          "category": "strength",
+          "type": "For load",
+          "movements": [
+            "Snatch、Clean 或 Jerk（三選一）",
+            "5 下 × 2 組 · 50–60%+",
+            "4 下 × 5 組 · 60–70%+",
+            "3 下 × 3 組 · 70–80%"
+          ],
+          "notes": "Strength I 循環第三週，繼續用第一週選定的動作。以最近 1RM 計算重量，組間充分休息。",
+          "tags": ["Strength", "槓鈴", "上肢", "全身", "Snatch", "Clean", "Jerk", "Olympic Lifting"]
+        },
+        {
+          "id": "w18-strength-2",
+          "name": "Strength II",
+          "category": "strength",
+          "type": "For load",
+          "movements": [
+            "前蹲舉（Front Squat）",
+            "1-1-1-1-1-1-1"
+          ],
+          "notes": "Strength II 循環第三週，目標是找到今日最重的單下前蹲舉。逐組加重，每 3 分鐘做一組。",
+          "tags": ["Strength", "槓鈴", "下肢", "Front Squat"]
+        },
+        {
+          "id": "w18-strength-3",
+          "name": "Strength III",
+          "category": "strength",
+          "type": "3 rounds for completion",
+          "movements": [
+            "沙袋熊抱走 100 公尺（32/45 kg）",
+            "過頭持槓片走 100 公尺（16/20 kg）",
+            "向後拉雪橇 100 公尺（20/40 kg）"
+          ],
+          "notes": "選擇能不間斷完成的重量，維持穩定節奏。動作之間可充分休息。熊抱走保持挺胸；過頭走肋骨收緊、手肘鎖定。",
+          "tags": ["Strength", "沙袋", "雪橇", "全身", "Carry"]
+        },
+        {
+          "id": "w18-skill-1",
+          "name": "Skill I",
+          "category": "skill",
+          "type": "3 sets",
+          "movements": [
+            "Skin-the-cat × 10（吊環）",
+            "棒式撐地（手掌）:30",
+            "嚴格引體向上 × 10",
+            "棒式撐地（前臂）:30"
+          ],
+          "notes": "組間休息 2:00–3:00。不熟悉 skin-the-cat 可先看示範影片。引體向上可減量、用彈力帶輔助或改做 ring row。",
+          "tags": ["Skill", "吊環", "上肢", "核心", "Pull-up", "Gymnastics", "體重"]
+        },
+        {
+          "id": "w18-stamina-1",
+          "name": "Stamina I",
+          "category": "stamina",
+          "type": "15:00 clock",
+          "movements": [
+            "划船機 / 腳踏車 / 滑雪機，計總距離",
+            "每分鐘整點衝刺 :15 秒"
+          ],
+          "notes": "從慢速開始，衝刺時盡量提速。衝刺後充分降速確保能反覆重複。計分為 15 分鐘總距離。",
+          "tags": ["Stamina", "有氧", "全身", "Row", "Bike", "Ski"]
+        }
+      ]
+    },
+    {
+      "week_start": "2026-05-04",
+      "label": "Week 19 · 2026/05/04",
+      "blocks": [
+        {
+          "id": "w19-strength-1",
+          "name": "Strength I",
+          "category": "strength",
+          "type": "For load",
+          "movements": [
+            "Snatch、Clean 或 Jerk（三選一）",
+            "5 下 × 2 組 · 50–60%+",
+            "4 下 × 3 組 · 60–70%+",
+            "3 下 × 2 組 · 70–80%"
+          ],
+          "notes": "Strength I 循環第四週，繼續用第一週選定的動作。八週循環結束後可更換動作。",
+          "tags": ["Strength", "槓鈴", "上肢", "全身", "Snatch", "Clean", "Jerk", "Olympic Lifting"]
+        },
+        {
+          "id": "w19-strength-2",
+          "name": "Strength II",
+          "category": "strength",
+          "type": "For load",
+          "movements": [
+            "前蹲舉（Front Squat）",
+            "10-8-8-6-6"
+          ],
+          "notes": "Strength II 循環第四週（減量週）。每組維持紮實技術、重量變動幅度小。每 3 分鐘做一組。",
+          "tags": ["Strength", "槓鈴", "下肢", "Front Squat", "Deload"]
+        },
+        {
+          "id": "w19-strength-3",
+          "name": "Strength III",
+          "category": "strength",
+          "type": "For time",
+          "movements": [
+            "向後拉雪橇 400 公尺（11/20 kg）",
+            "推雪橇 400 公尺"
+          ],
+          "notes": "計畫約 20 分鐘完成。拉雪橇時面向雪橇、抓繩後退走；重量應能維持穩定節奏走完全程。",
+          "tags": ["Strength", "雪橇", "全身", "下肢"]
+        },
+        {
+          "id": "w19-skill-1",
+          "name": "Skill I",
+          "category": "skill",
+          "type": "EMOM 14",
+          "movements": [
+            "奇數分鐘：嚴格 Muscle-up 1–3 下（吊環）",
+            "偶數分鐘：Candlestick 3–5 下"
+          ],
+          "notes": "無法做 muscle-up 可改做 low-ring 轉換練習，調整難度。把這堂課當作技術練習機會，不要求力竭。",
+          "tags": ["Skill", "吊環", "上肢", "核心", "Muscle-up", "Gymnastics", "體重"]
+        },
+        {
+          "id": "w19-stamina-1",
+          "name": "Stamina I",
+          "category": "stamina",
+          "type": "8 sets",
+          "movements": [
+            "跑步 300 公尺",
+            "輕鬆步行 100 公尺（恢復）"
+          ],
+          "notes": "維持可持續的配速，不要全力衝刺。步行 100 公尺是你的休息時間，不計時。跑步替代：400 公尺划船（節奏配速）。",
+          "tags": ["Stamina", "有氧", "全身", "Run"]
+        }
+      ]
+    },
+    {
+      "week_start": "2026-05-11",
+      "label": "Week 20 · 2026/05/11",
+      "blocks": [
+        {
+          "id": "w20-strength-1",
+          "name": "Strength I",
+          "category": "strength",
+          "type": "For load",
+          "movements": [
+            "Snatch、Clean 或 Jerk（三選一）",
+            "3 下 × 4 組 · 70–80%",
+            "2 下 × 3 組 · 80–90%",
+            "1 下 × 2 組 · 90%+"
+          ],
+          "notes": "Strength I 循環第五週，繼續用第一週選定的動作。以最近 1RM 計算重量，Jerk 請從架子上取槓，組間充分休息。",
+          "tags": ["Strength", "槓鈴", "上肢", "全身", "Snatch", "Clean", "Jerk", "Olympic Lifting"]
+        },
+        {
+          "id": "w20-strength-2",
+          "name": "Strength II",
+          "category": "strength",
+          "type": "For load",
+          "movements": [
+            "臥推（Bench Press）",
+            "5-5-5-5-5+"
+          ],
+          "notes": "新循環第一週，從前蹲舉切換到臥推。第 4、5 組使用相同重量，最後一組在技術穩定的前提下多做幾下（不到力竭）。組間充分休息。",
+          "tags": ["Strength", "槓鈴", "上肢", "Bench Press"]
+        },
+        {
+          "id": "w20-strength-3",
+          "name": "Strength III",
+          "category": "strength",
+          "type": "For time",
+          "movements": [
+            "向後拉雪橇 800 公尺（20/32 kg）"
+          ],
+          "notes": "接繩子或帶子到雪橇，面向雪橇、直臂後退走。大腿前側會有明顯感受。維持持續移動，必要時可減輕重量。",
+          "tags": ["Strength", "雪橇", "下肢", "全身"]
+        },
+        {
+          "id": "w20-skill-1",
+          "name": "Skill I",
+          "category": "skill",
+          "type": "2 sets + EMOM 10",
+          "movements": [
+            "吊環低點撐體保持 :20",
+            "False grip 吊環划船 × 10",
+            "EMOM 10：Ring Muscle-up 1–3 下"
+          ],
+          "notes": "這是技術練習課，不是體能訓練。無法做 muscle-up 可改做跳躍式 muscle-up、low-ring 轉換練習或吊環 false pull-up。",
+          "tags": ["Skill", "吊環", "上肢", "核心", "Muscle-up", "Gymnastics", "體重"]
+        },
+        {
+          "id": "w20-stamina-1",
+          "name": "Stamina I",
+          "category": "stamina",
+          "type": "4 sets for total time",
+          "movements": [
+            "慢跑 200 公尺（恢復配速）",
+            "跑步 400 公尺",
+            "慢跑 100 公尺（恢復配速）",
+            "衝刺 100 公尺"
+          ],
+          "notes": "跑步段全力投入，避免保留體力。200 公尺慢跑就是你的休息，組間無額外休息。建議在跑道上進行，總時間約 25 分鐘以內。",
+          "tags": ["Stamina", "有氧", "全身", "Run"]
+        }
+      ]
+    },
+    {
+      "week_start": "2026-05-18",
+      "label": "Week 21 · 2026/05/18",
+      "blocks": [
+        {
+          "id": "w21-strength-1",
+          "name": "Strength I",
+          "category": "strength",
+          "type": "For load",
+          "movements": [
+            "Snatch、Clean 或 Jerk（三選一）",
+            "3 下 × 3 組 · 70–80%",
+            "2 下 × 3 組 · 80–90%",
+            "1 下 × 3 組 · 90%+"
+          ],
+          "notes": "Strength I 循環第六週，繼續用第一週選定的動作。以最近 1RM 計算重量，Jerk 請從架子上取槓，組間充分休息。",
+          "tags": ["Strength", "槓鈴", "上肢", "全身", "Snatch", "Clean", "Jerk", "Olympic Lifting"]
+        },
+        {
+          "id": "w21-strength-2",
+          "name": "Strength II",
+          "category": "strength",
+          "type": "For load",
+          "movements": [
+            "臥推（Bench Press）",
+            "3-3-3-3-3+"
+          ],
+          "notes": "Strength II 循環第二週，繼續臥推。找今日 3 下的最大重量。第 4、5 組使用相同重量，最後一組可超過 3 下但不到力竭。有同伴請準備保護。",
+          "tags": ["Strength", "槓鈴", "上肢", "Bench Press"]
+        },
+        {
+          "id": "w21-strength-3",
+          "name": "Strength III",
+          "category": "strength",
+          "type": "For completion",
+          "movements": [
+            "沙袋熊抱走 200 公尺（32/45 kg）",
+            "單臂啞鈴過頭走 100 公尺（左）（16/22.5 kg）",
+            "單臂啞鈴過頭走 100 公尺（右）",
+            "沙袋熊抱走 200 公尺"
+          ],
+          "notes": "動作間充分休息。沙袋走分 2-3 組；過頭走 1-2 組。選擇能輕鬆走但後段有挑戰感的重量。過頭走推到失敗為止，不要在 20 呎前停下。",
+          "tags": ["Strength", "沙袋", "啞鈴", "全身", "Carry"]
+        },
+        {
+          "id": "w21-skill-1",
+          "name": "Skill I",
+          "category": "skill",
+          "type": "4 sets",
+          "movements": [
+            "倒立走（Handstand Walk）30 公尺",
+            "棒式保持（Plank Hold）1:00"
+          ],
+          "notes": "組間休息 2:00。設置 30 公尺路線，走越遠越好不落地。棒式可用手掌或前臂。無法倒立走可改 50 下交替肩觸（腳架高於肩）。",
+          "tags": ["Skill", "倒立", "核心", "Handstand", "Gymnastics", "體重"]
+        },
+        {
+          "id": "w21-stamina-1",
+          "name": "Stamina I",
+          "category": "stamina",
+          "type": "For time",
+          "movements": [
+            "400 公尺跑步",
+            "休息 1:00",
+            "800 公尺跑步",
+            "休息 2:00",
+            "1,200 公尺跑步",
+            "休息 3:00",
+            "1,600 公尺跑步"
+          ],
+          "notes": "目標完成時間 20:00–26:00（不含休息）。400 公尺 < 2:30；800 公尺 < 5:00；1,200 公尺 < 8:00；1,600 公尺 < 10:00。各段維持可持續配速，留力給較長段落。替代：腳踏車 800/1,600/2,400/3,200 公尺，或划船 400/800/1,200/1,600 公尺。",
+          "tags": ["Stamina", "有氧", "全身", "Run"]
+        }
+      ]
+    }
+  ]
+}

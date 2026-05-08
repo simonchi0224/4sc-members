@@ -1,0 +1,84 @@
+{
+  "monthly_focuses": [
+    {
+      "month": "2026-04",
+      "label": "本月焦點",
+      "title": "耐力與體能",
+      "bullets": [
+        "四月訓練重點：耐力與體能。本月課表設計圍繞這兩個面向，同時為五月的 Murph 挑戰打底。",
+        "四月 Benchmark 測試課表：2K Rowing、Kelly、Andi，預計本月陸續安排。",
+        "本季度持續加入跑步訓練（單次長跑、WOD 內跑步、間歇跑），目標是在季末完成 5K 挑戰。",
+        "2026 CrossFit Games 準決賽即將開打，為從公開賽晉級的頂尖選手加油！"
+      ]
+    },
+    {
+      "month": "2026-05",
+      "label": "本月焦點",
+      "title": "MURPH PREP",
+      "bullets": [
+        "歡迎來到五月！本月訓練目標只有一個：備戰 Murph。",
+        "課表將安排針對 Murph 的體能與技術訓練，從引體向上、伏地挺身到深蹲與跑步，全面備戰。",
+        "延續四月耐力基礎，本月加入更長時間的有氧訓練，逐步累積訓練量。",
+        "月底以 Murph 開跑，接著是整整一週的 Hero WOD！最後一週精心設計，接觸多種 Hero WOD，同時控制總訓練量避免過度疲勞。",
+        "五月 Benchmark：Cindy、Murph"
+      ]
+    }
+  ],
+  "supplemental": {
+    "label": "本週加強訓練",
+    "title": "WORK YOUR WEAKNESS",
+    "week_start": "2026-04-27",
+    "blocks": [
+      {
+        "name": "Strength I",
+        "type": "For load",
+        "movements": [
+          "Snatch、Clean 或 Jerk（三選一）",
+          "5 下 × 2 組 · 50–60%+",
+          "4 下 × 5 組 · 60–70%+",
+          "3 下 × 3 組 · 70–80%"
+        ],
+        "notes": "本週是 Strength I 循環第三週，繼續用第一週選定的動作。以最近 1RM 計算重量，組間充分休息。"
+      },
+      {
+        "name": "Strength II",
+        "type": "For load",
+        "movements": [
+          "前蹲舉（Front Squat）",
+          "1-1-1-1-1-1-1"
+        ],
+        "notes": "Strength II 循環第三週，前蹲舉持續四週。目標是找到今日最重的單下，逐組加重。每 3 分鐘做一組。"
+      },
+      {
+        "name": "Strength III",
+        "type": "3 rounds for completion",
+        "movements": [
+          "沙袋熊抱走 100 公尺（32/45 kg）",
+          "過頭持槓片走 100 公尺（16/20 kg）",
+          "向後拉雪橇 100 公尺（20/40 kg）"
+        ],
+        "notes": "選擇能不間斷完成的重量，維持穩定節奏。動作之間可充分休息。熊抱走保持挺胸；過頭走肋骨收緊、手肘鎖定。"
+      },
+      {
+        "name": "Skill I",
+        "type": "3 sets",
+        "movements": [
+          "Skin-the-cat × 10（吊環）",
+          "棒式撐地（手掌）:30",
+          "嚴格引體向上 × 10",
+          "棒式撐地（前臂）:30"
+        ],
+        "notes": "組間休息 2:00–3:00。不熟悉 skin-the-cat 可先看示範影片。引體向上可減量、用彈力帶輔助或改做 ring row。"
+      },
+      {
+        "name": "Stamina I",
+        "type": "15:00 clock",
+        "movements": [
+          "划船機 / 腳踏車 / 滑雪機，計總距離",
+          "每分鐘整點衝刺 :15 秒"
+        ],
+        "notes": "從慢速開始，衝刺時盡量提速。衝刺後充分降速確保能反覆重複。計分為 15 分鐘總距離。"
+      }
+    ]
+  }
+}

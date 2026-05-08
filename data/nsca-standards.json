@@ -1,0 +1,45 @@
+{
+  "_meta": {
+    "note": "NSCA 官方常模數據在版權教科書中無法公開抓取。以下數據來自 FitnessCalcs.com，聚合自健力競賽數據、健身房調查及力量研究，與 NSCA CSCS 教材引用的 bodyweight ratio 標準接近。",
+    "source": "https://fitnesscalcs.com/reference/strength-standards-table/",
+    "unit": "bodyweight_ratio (1RM ÷ 體重)",
+    "levels": {
+      "b": "beginner 初學",
+      "n": "novice 新手",
+      "i": "intermediate 中階",
+      "a": "advanced 進階",
+      "e": "elite 精英"
+    },
+    "scraped_date": "2026-04-26"
+  },
+  "bodyweight_ratio": {
+    "male": {
+      "Back Squat":       { "b": 0.75, "n": 1.25, "i": 1.50, "a": 2.00, "e": 2.50 },
+      "Bench Press":      { "b": 0.50, "n": 0.85, "i": 1.15, "a": 1.50, "e": 1.85 },
+      "Deadlift":         { "b": 1.00, "n": 1.50, "i": 1.85, "a": 2.35, "e": 2.75 },
+      "Overhead Press":   { "b": 0.35, "n": 0.55, "i": 0.75, "a": 1.00, "e": 1.25 }
+    },
+    "female": {
+      "Back Squat":       { "b": 0.50, "n": 0.85, "i": 1.15, "a": 1.50, "e": 1.85 },
+      "Bench Press":      { "b": 0.25, "n": 0.50, "i": 0.75, "a": 1.00, "e": 1.25 },
+      "Deadlift":         { "b": 0.75, "n": 1.15, "i": 1.40, "a": 1.85, "e": 2.25 },
+      "Overhead Press":   { "b": 0.20, "n": 0.35, "i": 0.50, "a": 0.65, "e": 0.85 }
+    }
+  },
+  "powerlifting_percentiles": {
+    "_note": "來源：Journal of Science and Medicine in Sport (2024), n=809,986 健力競賽成績 (無裝備、藥物檢測)",
+    "_source": "https://pubmed.ncbi.nlm.nih.gov/39060209/",
+    "age_18_35": {
+      "90th_percentile_bw_ratio": {
+        "male":   { "Back Squat": 2.83, "Bench Press": 1.95, "Deadlift": 3.25 },
+        "female": { "Back Squat": 2.26, "Bench Press": 1.35, "Deadlift": 2.66 }
+      }
+    },
+    "age_80_plus": {
+      "90th_percentile_bw_ratio": {
+        "male":   { "Back Squat": 1.72, "Bench Press": 1.31, "Deadlift": 2.30 },
+        "female": { "Back Squat": 1.01, "Bench Press": 0.92, "Deadlift": 1.68 }
+      }
+    }
+  }
+}

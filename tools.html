@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>訓練工具｜4SC CrossFit</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Geist+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#0a0a0a;--paper:#ffffff;--accent:#e8ff00;--muted:#6b7280;--mono:'Geist Mono',monospace}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--ink);color:var(--paper);min-height:100vh}
+
+nav{background:var(--ink);border-bottom:2px solid var(--accent);padding:0 5%;height:54px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.nav-logo{font-weight:900;font-size:1rem;letter-spacing:.05em}
+.nav-logo span{color:var(--accent)}
+.nav-link{font-size:.78rem;color:var(--muted);text-decoration:none}
+.nav-link:hover{color:var(--accent)}
+
+.wrap{max-width:960px;margin:0 auto;padding:40px 5% 80px}
+
+/* Section headers */
+.sec-title{font-size:1.5rem;font-weight:900;letter-spacing:-.03em;margin-bottom:6px}
+.sec-title span{color:var(--accent)}
+.sec-sub{color:var(--muted);font-size:.85rem;margin-bottom:28px;line-height:1.6}
+.divider{border:none;border-top:1px solid #222;margin:48px 0}
+
+/* Tabs */
+.main-tabs{display:flex;gap:8px;margin-bottom:32px}
+.main-tab{padding:10px 22px;border-radius:999px;font-size:.85rem;font-weight:700;background:#161616;border:1px solid #2a2a2a;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s}
+.main-tab.active{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+.tab-panel{display:none}.tab-panel.active{display:block}
+
+/* ── 1RM Calculator ── */
+.mv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:32px}
+.mv-card{background:#161616;border:1px solid #2a2a2a;border-radius:14px;padding:18px;transition:border-color .15s}
+.mv-card.has-data{border-color:var(--accent)}
+.mv-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.mv-zh{font-size:1rem;font-weight:900}
+.mv-en{font-size:.68rem;color:var(--muted);font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.mv-rm-badge{font-family:var(--mono);font-weight:700;font-size:1.25rem;color:var(--accent);line-height:1;text-align:right}
+.mv-rm-badge small{font-size:.6rem;color:var(--muted);display:block;margin-top:2px}
+.slider-row{margin-bottom:12px}
+.slider-label{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:5px;font-family:var(--mono)}
+.slider-label strong{color:var(--paper)}
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;background:#2a2a2a;border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--ink)}
+.reps-row{display:flex;gap:4px;margin-bottom:12px}
+.rep-btn{flex:1;padding:6px 2px;border-radius:6px;border:1px solid #2a2a2a;background:transparent;color:var(--muted);font-size:.68rem;font-family:var(--mono);cursor:pointer;transition:all .1s}
+.rep-btn.active{background:var(--accent);color:var(--ink);border-color:var(--accent);font-weight:700}
+.rep-btn:hover:not(.active){border-color:#555;color:var(--paper)}
+.pct-table{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.pct-cell{background:#1e1e1e;border-radius:6px;padding:6px 4px;text-align:center}
+.pct-label{font-size:.58rem;color:var(--muted);font-family:var(--mono);display:block}
+.pct-val{font-size:.78rem;font-weight:700;font-family:var(--mono);display:block;margin-top:1px}
+
+/* ── PR Records ── */
+.pr-group{margin-bottom:28px}
+.pr-group-title{font-size:.72rem;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-family:var(--mono);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #1e1e1e}
+.pr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.pr-item{background:#161616;border:1px solid #2a2a2a;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;transition:border-color .15s}
+.pr-item:focus-within{border-color:#444}
+.pr-item.filled{border-color:var(--accent)}
+.pr-item-zh{font-size:.88rem;font-weight:700}
+.pr-item-en{font-size:.62rem;color:var(--muted);font-family:var(--mono)}
+.pr-input-row{display:flex;align-items:center;gap:6px}
+.pr-input{background:transparent;border:none;border-bottom:1px solid #333;color:var(--accent);font-size:1rem;font-weight:700;font-family:var(--mono);width:80px;outline:none;padding:2px 0;text-align:center}
+.pr-input:focus{border-bottom-color:var(--accent)}
+.pr-unit{font-size:.7rem;color:var(--muted);font-family:var(--mono)}
+
+/* WOD benchmarks */
+.wod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.wod-item{background:#161616;border:1px solid #2a2a2a;border-radius:12px;padding:14px 16px;transition:border-color .15s}
+.wod-item:focus-within,.wod-item.filled{border-color:var(--accent)}
+.wod-name{font-size:.95rem;font-weight:900;letter-spacing:.04em;font-family:var(--mono)}
+.wod-desc{font-size:.68rem;color:var(--muted);margin:4px 0 10px;line-height:1.5}
+.wod-input-row{display:flex;align-items:center;gap:8px}
+.wod-input{background:transparent;border:1px solid #333;border-radius:6px;color:var(--accent);font-size:.9rem;font-weight:700;font-family:var(--mono);width:80px;outline:none;padding:6px 8px;text-align:center}
+.wod-input:focus{border-color:var(--accent)}
+.wod-unit{font-size:.7rem;color:var(--muted);font-family:var(--mono)}
+
+/* ── Share card ── */
+.share-setup{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px;align-items:flex-end}
+.setup-field label{display:block;font-size:.7rem;color:var(--muted);font-family:var(--mono);margin-bottom:6px;letter-spacing:.05em}
+.setup-field input[type=text]{padding:9px 14px;background:#161616;border:1px solid #333;border-radius:10px;color:var(--paper);font-size:.9rem;font-family:inherit;outline:none;width:200px}
+.setup-field input[type=text]:focus{border-color:var(--accent)}
+.photo-label{display:flex;align-items:center;gap:8px;padding:8px 14px;background:#161616;border:1px solid #333;border-radius:10px;cursor:pointer;font-size:.82rem;color:var(--muted)}
+
+#share-card{background:var(--ink);border:2px solid var(--accent);border-radius:18px;padding:24px 24px 18px;max-width:500px;font-family:'Noto Sans TC',sans-serif}
+.card-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.card-logo{font-size:.82rem;font-weight:900;letter-spacing:.06em;color:var(--muted)}
+.card-logo span{color:var(--accent)}
+#card-avatar{display:none;width:44px;height:44px;border-radius:50%;overflow:hidden;border:2px solid var(--accent);flex-shrink:0}
+#card-avatar img{width:100%;height:100%;object-fit:cover}
+.card-title{font-size:1.35rem;font-weight:900}
+#card-name{font-size:.78rem;color:var(--accent);font-family:var(--mono);margin-top:3px;min-height:1em}
+.card-date{font-size:.68rem;color:var(--muted);font-family:var(--mono);margin-bottom:16px}
+
+.card-section-label{font-size:.6rem;color:var(--muted);font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;margin:10px 0 6px;padding-bottom:4px;border-bottom:1px solid #222}
+.card-rows{display:flex;flex-direction:column;gap:6px;margin-bottom:6px}
+.card-row{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#161616;border-radius:8px}
+.card-mv{font-size:.82rem;font-weight:700}
+.card-mv-en{font-size:.58rem;color:var(--muted);font-family:var(--mono)}
+.card-val{font-size:1rem;font-weight:900;font-family:var(--mono);color:var(--accent)}
+.card-val small{font-size:.55rem;color:var(--muted)}
+.card-empty{color:#333;font-size:.8rem;text-align:center;padding:16px}
+.card-tags{font-size:.65rem;color:var(--muted);font-family:var(--mono);border-top:1px solid #222;padding-top:10px;margin-top:6px;line-height:1.8}
+.card-tags strong{color:var(--accent)}
+
+.btn-row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.btn-primary{padding:13px 26px;background:var(--accent);color:var(--ink);border:none;border-radius:10px;font-weight:900;font-size:.9rem;cursor:pointer;font-family:inherit}
+.btn-secondary{padding:13px 18px;background:transparent;color:var(--muted);border:1px solid #333;border-radius:10px;font-size:.82rem;cursor:pointer;font-family:inherit}
+.btn-secondary:hover{border-color:#555;color:var(--paper)}
+
+.cta-strip{margin-top:48px;padding:24px;background:#161616;border:1px solid #2a2a2a;border-radius:14px;text-align:center}
+.cta-strip h3{font-size:.95rem;font-weight:900;margin-bottom:6px}
+.cta-strip p{font-size:.8rem;color:var(--muted);margin-bottom:14px}
+.cta-btn{display:inline-block;padding:11px 24px;background:var(--accent);color:var(--ink);border-radius:8px;font-weight:800;font-size:.85rem;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">4SC <span>CrossFit</span></div>
+  <a class="nav-link" href="index.html">會員登入 →</a>
+</nav>
+
+<div class="wrap">
+  <div class="main-tabs">
+    <button class="main-tab active" onclick="showTab('calc',this)">⚖️ 1RM 估算器</button>
+    <button class="main-tab" onclick="showTab('pr',this)">🏆 PR 記錄</button>
+    <button class="main-tab" onclick="showTab('share',this)">📸 分享卡片</button>
+  </div>
+
+  <!-- ── Tab 1: Calculator ── -->
+  <div class="tab-panel active" id="tab-calc">
+    <div class="sec-title">1RM <span>最大力量</span>估算</div>
+    <p class="sec-sub">拖動重量 + 選擇次數，即時換算理論最大力量</p>
+    <div class="mv-grid" id="mv-grid"></div>
+  </div>
+
+  <!-- ── Tab 2: PR Records ── -->
+  <div class="tab-panel" id="tab-pr">
+    <div class="sec-title"><span>PR</span> 個人紀錄</div>
+    <p class="sec-sub">填入你的個人最佳成績，生成分享卡片</p>
+
+    <!-- Core lifts -->
+    <div class="pr-group">
+      <div class="pr-group-title">核心力量 · 1RM</div>
+      <div class="pr-grid" id="pr-core"></div>
+    </div>
+
+    <!-- Olympic lifts -->
+    <div class="pr-group">
+      <div class="pr-group-title">奧林匹克舉重 · 1RM</div>
+      <div class="pr-grid" id="pr-oly"></div>
+    </div>
+
+    <!-- Press series -->
+    <div class="pr-group">
+      <div class="pr-group-title">推系列 · 1RM</div>
+      <div class="pr-grid" id="pr-press"></div>
+    </div>
+
+    <!-- Multi-RM -->
+    <div class="pr-group">
+      <div class="pr-group-title">多次數最大 · 3RM / 5RM</div>
+      <div class="pr-grid" id="pr-mrm"></div>
+    </div>
+
+    <!-- Benchmark WODs -->
+    <div class="pr-group">
+      <div class="pr-group-title">Benchmark WODs</div>
+      <div class="wod-grid" id="wod-grid"></div>
+    </div>
+  </div>
+
+  <!-- ── Tab 3: Share card ── -->
+  <div class="tab-panel" id="tab-share">
+    <div class="sec-title">📸 <span>分享</span>卡片</div>
+    <p class="sec-sub">填入姓名與照片，生成你的力量數據卡片並截圖分享</p>
+
+    <div class="share-setup">
+      <div class="setup-field">
+        <label>ATHLETE NAME</label>
+        <input type="text" id="user-name" placeholder="輸入你的暱稱" oninput="renderShareCard()">
+      </div>
+      <div class="setup-field">
+        <label>PHOTO（選填）</label>
+        <label class="photo-label">
+          <span id="photo-label">＋ 上傳照片</span>
+          <input type="file" accept="image/*" style="display:none" onchange="loadPhoto(this)">
+        </label>
+      </div>
+    </div>
+
+    <div id="share-card">
+      <div class="card-header-row">
+        <div class="card-logo">4SC <span>CrossFit</span></div>
+        <div id="card-avatar"><img src="" alt=""></div>
+      </div>
+      <div class="card-title">我的最佳紀錄</div>
+      <div id="card-name"></div>
+      <div class="card-date" id="card-date"></div>
+      <div id="card-content"><div class="card-empty">請先在「PR 記錄」或「1RM 估算器」填入數據</div></div>
+      <div class="card-tags">
+        <strong>#4SCCrossFit</strong> &nbsp;<strong>#四季健身</strong> &nbsp;<strong>#全齡強健</strong> &nbsp;<strong>#中高齡訓練</strong><br>#CrossFit #重量訓練 #台灣健身
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-primary" onclick="takeScreenshot()">📸 一鍵截圖儲存</button>
+      <button class="btn-secondary" onclick="resetAll()">清除所有數據</button>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <h3>想要完整的訓練記錄與 WOD 追蹤？</h3>
+    <p>加入 4SC CrossFit 會員平台，記錄每次訓練、追蹤你的 PR 成長</p>
+    <a class="cta-btn" href="index.html">申請加入會員 →</a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+// ── Data ────────────────────────────────────────────────
+const CALC_MOVEMENTS = [
+  { id:'bs',  zh:'深蹲',     en:'Back Squat',    w:80,  r:5 },
+  { id:'fs',  zh:'前蹲舉',   en:'Front Squat',   w:70,  r:5 },
+  { id:'dl',  zh:'硬舉',     en:'Deadlift',      w:100, r:5 },
+  { id:'cl',  zh:'上搏',     en:'Power Clean',   w:60,  r:3 },
+  { id:'sn',  zh:'抓舉',     en:'Snatch',        w:50,  r:3 },
+  { id:'sp',  zh:'嚴格推舉', en:'Strict Press',  w:50,  r:5 },
+  { id:'pp',  zh:'借力推',   en:'Push Press',    w:60,  r:5 },
+  { id:'bp',  zh:'臥推',     en:'Bench Press',   w:70,  r:5 },
+];
+
+const PR_LIFTS = {
+  core: [
+    { id:'dl1',  zh:'硬舉',       en:'Deadlift',         u:'kg' },
+    { id:'bs1',  zh:'深蹲',       en:'Back Squat',        u:'kg' },
+    { id:'fs1',  zh:'前蹲舉',     en:'Front Squat',       u:'kg' },
+    { id:'bp1',  zh:'臥推',       en:'Bench Press',       u:'kg' },
+    { id:'cj1',  zh:'上搏挺舉',   en:'Clean & Jerk',      u:'kg' },
+    { id:'sqsn', zh:'深蹲抓舉',   en:'Squat Snatch',      u:'kg' },
+  ],
+  oly: [
+    { id:'pc1',  zh:'爆發式上搏', en:'Power Clean',       u:'kg' },
+    { id:'ps1',  zh:'爆發式抓舉', en:'Power Snatch',      u:'kg' },
+    { id:'hpc',  zh:'懸掛爆發上搏',en:'Hang Power Clean', u:'kg' },
+    { id:'hps',  zh:'懸掛爆發抓舉',en:'Hang Power Snatch',u:'kg' },
+    { id:'sqc',  zh:'深蹲上搏',   en:'Squat Clean',       u:'kg' },
+    { id:'hsc',  zh:'懸掛深蹲上搏',en:'Hang Squat Clean', u:'kg' },
+    { id:'hsn',  zh:'懸掛深蹲抓舉',en:'Hang Squat Snatch',u:'kg' },
+    { id:'ohs',  zh:'過頭深蹲',   en:'Overhead Squat',    u:'kg' },
+    { id:'wpu',  zh:'負重引體向上',en:'Weighted Pull-up',  u:'kg' },
+  ],
+  press: [
+    { id:'stp',  zh:'嚴格推舉',   en:'Shoulder Press',    u:'kg' },
+    { id:'pup',  zh:'借力推',     en:'Push Press',        u:'kg' },
+    { id:'pj1',  zh:'推舉跳',     en:'Push Jerk',         u:'kg' },
+    { id:'sj1',  zh:'分腿挺舉',   en:'Split Jerk',        u:'kg' },
+    { id:'thr',  zh:'推蹲',       en:'Thruster',          u:'kg' },
+  ],
+  mrm: [
+    { id:'bs3',  zh:'深蹲 3RM',   en:'Back Squat 3RM',    u:'kg' },
+    { id:'dl3',  zh:'硬舉 3RM',   en:'Deadlift 3RM',      u:'kg' },
+    { id:'fs3',  zh:'前蹲舉 3RM', en:'Front Squat 3RM',   u:'kg' },
+    { id:'bs5',  zh:'深蹲 5RM',   en:'Back Squat 5RM',    u:'kg' },
+    { id:'dl5',  zh:'硬舉 5RM',   en:'Deadlift 5RM',      u:'kg' },
+    { id:'fs5',  zh:'前蹲舉 5RM', en:'Front Squat 5RM',   u:'kg' },
+  ],
+};
+
+const WODS = [
+  { id:'fran',  name:'FRAN',           desc:'21-15-9 Thrusters (43/61 kg) + Pull-ups',               type:'time' },
+  { id:'murph', name:'MURPH',          desc:'1 mile run + 100 pull-ups + 200 push-ups + 300 squats + 1 mile', type:'time' },
+  { id:'grace', name:'GRACE',          desc:'30 Clean & Jerks (43/61 kg)',                             type:'time' },
+  { id:'helen', name:'HELEN',          desc:'3 rounds: 400m run + 21 KB swings + 12 pull-ups',         type:'time' },
+  { id:'cindy', name:'CINDY',          desc:'20 min AMRAP: 5 pull-ups + 10 push-ups + 15 squats',      type:'rounds' },
+  { id:'diane', name:'DIANE',          desc:'21-15-9 Deadlift (70/102 kg) + HSPU',                     type:'time' },
+  { id:'annie', name:'ANNIE',          desc:'50-40-30-20-10 Double-unders + Sit-ups',                  type:'time' },
+  { id:'karen', name:'KAREN',          desc:'150 Wall balls (6/9 kg)',                                  type:'time' },
+  { id:'isabel',name:'ISABEL',         desc:'30 Snatches (43/61 kg)',                                   type:'time' },
+  { id:'fgb',   name:'FIGHT GONE BAD', desc:'3 rounds × 5 stations × 1 min each',                     type:'reps' },
+];
+
+// ── State ────────────────────────────────────────────────
+const calcState = {};
+CALC_MOVEMENTS.forEach(m => { calcState[m.id] = { w: m.w, r: m.r, touched: false }; });
+const prState = {}; // id → value string
+const wodState = {}; // id → value string
+
+// ── Calculator ───────────────────────────────────────────
+function epley(w, r) {
+  if (r <= 1) return w;
+  return Math.round(w * (1 + r / 30) / 2.5) * 2.5;
+}
+function pct(rm, p) { return Math.round(rm * p / 2.5) * 2.5; }
+
+function buildCalc() {
+  document.getElementById('mv-grid').innerHTML = CALC_MOVEMENTS.map(m => {
+    const s = calcState[m.id];
+    const rm = epley(s.w, s.r);
+    const btns = [1,2,3,5,8,10].map(r =>
+      `<button class="rep-btn${r===s.r?' active':''}" data-mv="${m.id}" data-rep="${r}" onclick="setReps('${m.id}',${r})">${r}RM</button>`
+    ).join('');
+    return `<div class="mv-card${s.touched?' has-data':''}" id="mc-${m.id}">
+      <div class="mv-head">
+        <div><div class="mv-zh">${m.zh}</div><div class="mv-en">${m.en}</div></div>
+        <div class="mv-rm-badge"><span id="rm-${m.id}">${rm}</span><small>kg 1RM</small></div>
+      </div>
+      <div class="slider-row">
+        <div class="slider-label"><span>重量</span><strong><span id="wl-${m.id}">${s.w}</span> kg</strong></div>
+        <input type="range" min="20" max="220" step="2.5" value="${s.w}" oninput="setWeight('${m.id}',this.value)">
+      </div>
+      <div class="slider-label" style="margin-bottom:5px"><span>次數</span><strong><span id="rl-${m.id}">${s.r}</span> RM</strong></div>
+      <div class="reps-row">${btns}</div>
+      <div class="pct-table">
+        <div class="pct-cell"><span class="pct-label">90%</span><span class="pct-val" id="p90-${m.id}">${pct(rm,.9)}</span></div>
+        <div class="pct-cell"><span class="pct-label">80%</span><span class="pct-val" id="p80-${m.id}">${pct(rm,.8)}</span></div>
+        <div class="pct-cell"><span class="pct-label">70%</span><span class="pct-val" id="p70-${m.id}">${pct(rm,.7)}</span></div>
+        <div class="pct-cell"><span class="pct-label">60%</span><span class="pct-val" id="p60-${m.id}">${pct(rm,.6)}</span></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setWeight(id, v) {
+  calcState[id].w = parseFloat(v); calcState[id].touched = true; refreshCalc(id);
+}
+function setReps(id, r) {
+  calcState[id].r = r; calcState[id].touched = true; refreshCalc(id);
+}
+function refreshCalc(id) {
+  const s = calcState[id], rm = epley(s.w, s.r);
+  document.getElementById('rm-'+id).textContent = rm;
+  document.getElementById('wl-'+id).textContent = s.w;
+  document.getElementById('rl-'+id).textContent = s.r;
+  document.getElementById('p90-'+id).textContent = pct(rm,.9);
+  document.getElementById('p80-'+id).textContent = pct(rm,.8);
+  document.getElementById('p70-'+id).textContent = pct(rm,.7);
+  document.getElementById('p60-'+id).textContent = pct(rm,.6);
+  document.getElementById('mc-'+id).classList.toggle('has-data', s.touched);
+  document.querySelectorAll(`[data-mv="${id}"].rep-btn`).forEach(b =>
+    b.classList.toggle('active', parseInt(b.dataset.rep) === s.r));
+}
+
+// ── PR Records ───────────────────────────────────────────
+function buildPR() {
+  ['core','oly','press','mrm'].forEach(grp => {
+    document.getElementById('pr-'+grp).innerHTML = PR_LIFTS[grp].map(l => `
+      <div class="pr-item${prState[l.id]?' filled':''}" id="pri-${l.id}">
+        <div><div class="pr-item-zh">${l.zh}</div><div class="pr-item-en">${l.en}</div></div>
+        <div class="pr-input-row">
+          <input class="pr-input" type="number" min="0" step="2.5" placeholder="—"
+            value="${prState[l.id]||''}" oninput="setPR('${l.id}',this.value)" id="pri-inp-${l.id}">
+          <span class="pr-unit">${l.u}</span>
+        </div>
+      </div>`).join('');
+  });
+
+  document.getElementById('wod-grid').innerHTML = WODS.map(w => {
+    const ph = w.type==='time' ? 'mm:ss' : w.type==='rounds' ? '組數' : '分數';
+    return `<div class="wod-item${wodState[w.id]?' filled':''}" id="wodi-${w.id}">
+      <div class="wod-name">${w.name}</div>
+      <div class="wod-desc">${w.desc}</div>
+      <div class="wod-input-row">
+        <input class="wod-input" type="text" placeholder="${ph}"
+          value="${wodState[w.id]||''}" oninput="setWOD('${w.id}',this.value)" id="wod-inp-${w.id}">
+        <span class="wod-unit">${w.type==='time'?'完成時間':w.type==='rounds'?'組':''}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setPR(id, v) {
+  prState[id] = v.trim();
+  document.getElementById('pri-'+id)?.classList.toggle('filled', !!v.trim());
+}
+function setWOD(id, v) {
+  wodState[id] = v.trim();
+  document.getElementById('wodi-'+id)?.classList.toggle('filled', !!v.trim());
+}
+
+// ── Share Card ───────────────────────────────────────────
+function renderShareCard() {
+  const name = (document.getElementById('user-name')?.value||'').trim();
+  document.getElementById('card-name').textContent = name ? '@ '+name : '';
+
+  const content = document.getElementById('card-content');
+  const rows = [];
+
+  // Calc results (touched)
+  const calcRows = CALC_MOVEMENTS.filter(m => calcState[m.id].touched).map(m => {
+    const rm = epley(calcState[m.id].w, calcState[m.id].r);
+    return `<div class="card-row">
+      <div><div class="card-mv">${m.zh}</div><div class="card-mv-en">${m.en} · ${calcState[m.id].w}kg×${calcState[m.id].r}RM</div></div>
+      <div class="card-val">${rm} <small>kg 1RM</small></div>
+    </div>`;
+  });
+
+  // PR lifts (filled)
+  const allLifts = [...PR_LIFTS.core,...PR_LIFTS.oly,...PR_LIFTS.press,...PR_LIFTS.mrm];
+  const prRows = allLifts.filter(l => prState[l.id]).map(l =>
+    `<div class="card-row">
+      <div><div class="card-mv">${l.zh}</div><div class="card-mv-en">${l.en}</div></div>
+      <div class="card-val">${prState[l.id]} <small>${l.u}</small></div>
+    </div>`);
+
+  // WOD results (filled)
+  const wodRows = WODS.filter(w => wodState[w.id]).map(w =>
+    `<div class="card-row">
+      <div><div class="card-mv" style="font-family:var(--mono);letter-spacing:.04em">${w.name}</div></div>
+      <div class="card-val">${wodState[w.id]}</div>
+    </div>`);
+
+  if (!calcRows.length && !prRows.length && !wodRows.length) {
+    content.innerHTML = '<div class="card-empty">請先填入數據</div>';
+    return;
+  }
+
+  let html = '';
+  if (calcRows.length) html += `<div class="card-section-label">1RM 估算</div><div class="card-rows">${calcRows.join('')}</div>`;
+  if (prRows.length)   html += `<div class="card-section-label">力量 PR</div><div class="card-rows">${prRows.join('')}</div>`;
+  if (wodRows.length)  html += `<div class="card-section-label">Benchmark WODs</div><div class="card-rows">${wodRows.join('')}</div>`;
+  content.innerHTML = html;
+}
+
+// ── Photo ────────────────────────────────────────────────
+function loadPhoto(input) {
+  if (!input.files?.[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const av = document.getElementById('card-avatar');
+    av.querySelector('img').src = e.target.result;
+    av.style.display = 'block';
+    document.getElementById('photo-label').textContent = '✓ 已上傳';
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+// ── Screenshot ───────────────────────────────────────────
+async function takeScreenshot() {
+  renderShareCard();
+  const card = document.getElementById('share-card');
+  const btn = event.currentTarget;
+  btn.textContent = '生成中…'; btn.disabled = true;
+  try {
+    const canvas = await html2canvas(card, { backgroundColor:'#0a0a0a', scale:3, useCORS:true, logging:false });
+    const a = document.createElement('a');
+    a.download = '4SC-PR-'+new Date().toISOString().slice(0,10)+'.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  } catch { alert('截圖失敗，請手動截圖'); }
+  btn.textContent = '📸 一鍵截圖儲存'; btn.disabled = false;
+}
+
+// ── Tabs ─────────────────────────────────────────────────
+function showTab(id, el) {
+  document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+  if (id === 'share') renderShareCard();
+}
+
+function resetAll() {
+  CALC_MOVEMENTS.forEach(m => { calcState[m.id] = { w:m.w, r:m.r, touched:false }; });
+  Object.keys(prState).forEach(k => delete prState[k]);
+  Object.keys(wodState).forEach(k => delete wodState[k]);
+  buildCalc(); buildPR(); renderShareCard();
+}
+
+// ── Init ─────────────────────────────────────────────────
+document.getElementById('card-date').textContent =
+  new Date().toLocaleDateString('zh-TW', { year:'numeric', month:'long', day:'numeric' });
+buildCalc();
+buildPR();
+</script>
+</body>
+</html>
