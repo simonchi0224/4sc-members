@@ -4,89 +4,255 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>教練後台｜4SC CrossFit</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=block" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root { --dark: #080d1a; --dark2: #0f1628; --dark3: #162040; --cyan: #22d3ee; --orange: #f97316; --green: #10b981; --red: #ef4444; --white: #f8fafc; --gray: #94a3b8; }
-body { font-family: 'Noto Sans TC', sans-serif; background: var(--dark); color: var(--white); min-height: 100vh; }
-.nav { background: rgba(8,13,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 58px; }
-.nav-logo { font-size: 0.95rem; font-weight: 900; }
-.nav-logo span { color: var(--orange); }
-.wrap { max-width: 1200px; margin: 0 auto; padding: 40px 5%; }
-.page-title { font-size: 1.4rem; font-weight: 900; margin-bottom: 32px; }
-.section-title { font-size: 1rem; font-weight: 800; margin-bottom: 16px; color: var(--gray); letter-spacing: 0.5px; text-transform: uppercase; font-size: 0.78rem; }
+:root {
+  --paper: #ffffff;
+  --ink: #0a0a0a;
+  --ink-2: #1a1a1a;
+  --ink-mute: #4a4a4a;
+  --rule: #0a0a0a;
+  --rule-soft: #d4d4d4;
+  --rule-faint: #ececec;
+  --bg-soft: #f6f6f4;
+  --accent: #e8ff00;
+  --accent-deep: #d4e600;
+  --warn: #ff5a36;
+  --green: #16a34a;
+  --red: #ff5a36;
+  --sans: 'Geist','Noto Sans TC',-apple-system,'PingFang TC',sans-serif;
+  --mono: 'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:0;padding:0}
 
-/* Member table */
-.table-wrap { overflow-x: auto; }
-.member-table { width: 100%; border-collapse: collapse; min-width: 700px; }
-.member-table th { text-align: left; font-size: 0.75rem; font-weight: 700; color: var(--gray); padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.08); letter-spacing: 0.5px; white-space: nowrap; }
-.member-row { border-bottom: 1px solid rgba(255,255,255,0.05); }
-.member-row:hover { background: rgba(255,255,255,0.02); }
-.member-row td { padding: 12px 14px; font-size: 0.88rem; vertical-align: middle; white-space: nowrap; }
-.member-row td.td-name { white-space: normal; min-width: 120px; max-width: 200px; }
-.member-row td.td-email { color: var(--gray); font-size: 0.8rem; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
-.status-badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; }
-.status-pending { background: rgba(249,115,22,0.15); color: var(--orange); }
-.status-approved { background: rgba(16,185,129,0.12); color: var(--green); }
-.status-rejected { background: rgba(239,68,68,0.12); color: var(--red); }
-.status-suspended { background: rgba(148,163,184,0.12); color: #94a3b8; }
-.action-btn { padding: 6px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; border: none; cursor: pointer; font-family: inherit; margin-right: 6px; }
-.approve-btn { background: rgba(16,185,129,0.15); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
-.approve-btn:hover { background: var(--green); color: var(--dark); }
-.reject-btn { background: rgba(239,68,68,0.1); color: var(--red); border: 1px solid rgba(239,68,68,0.2); }
-.reject-btn:hover { background: var(--red); color: var(--white); }
-.empty-state { color: var(--gray); font-size: 0.88rem; padding: 32px 16px; }
-.member-filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.mf-btn { padding: 10px 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: var(--gray); font-size: 0.9rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.15s; }
-.mf-btn:hover { border-color: rgba(255,255,255,0.25); color: var(--white); }
-.mf-btn.active { background: rgba(34,211,238,0.15); border-color: rgba(34,211,238,0.5); color: var(--cyan); }
-.mf-count { display: inline-block; background: rgba(255,255,255,0.12); border-radius: 999px; padding: 2px 8px; font-size: 0.75rem; margin-left: 6px; font-weight: 800; }
-.mf-count-warn { background: rgba(239,68,68,0.25); color: #f87171; }
+/* ── Top bar ── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--ink);color:#fff;
+  padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:3px solid var(--ink);
+}
+.brand{
+  font-family:var(--mono);font-weight:700;font-size:13px;
+  letter-spacing:0.18em;display:flex;align-items:center;gap:10px;
+}
+.brand .dot{
+  width:9px;height:9px;border-radius:50%;background:var(--accent);
+  display:inline-block;
+}
+.topbar-right{display:flex;align-items:center;gap:12px;}
+#admin-email{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.05em;}
 
-/* WOD editor */
-.wod-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 24px; margin-bottom: 16px; }
-.day-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-.day-label { font-weight: 900; font-size: 0.95rem; }
-.field-group { margin-bottom: 14px; }
-.field-label { font-size: 0.72rem; font-weight: 700; color: var(--gray); margin-bottom: 6px; letter-spacing: 0.5px; }
-.field-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px 12px; color: var(--white); font-size: 0.88rem; font-family: inherit; outline: none; resize: vertical; }
-.field-input:focus { border-color: var(--cyan); }
-.save-wod-btn { background: var(--cyan); color: var(--dark); border: none; border-radius: 8px; padding: 10px 20px; font-weight: 800; font-size: 0.85rem; cursor: pointer; font-family: inherit; }
-.save-all-btn { background: var(--orange); color: var(--white); border: none; border-radius: 10px; padding: 14px 28px; font-weight: 800; font-size: 0.95rem; cursor: pointer; font-family: inherit; margin-top: 8px; }
-.tab-bar { display: flex; gap: 8px; margin-bottom: 28px; }
-.tab { padding: 9px 20px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); color: var(--gray); cursor: pointer; }
-.tab.active { background: var(--cyan); color: var(--dark); border-color: var(--cyan); }
-.s { display: none; }
-.s.active { display: block; }
-#save-status { font-size: 0.82rem; color: var(--green); margin-left: 16px; }
-.th-sort { cursor: pointer; user-select: none; white-space: nowrap; }
-.th-sort:hover { color: var(--white); }
-#member-search:focus { border-color: var(--cyan); }
+/* ── Tab bar ── */
+.tab-bar{
+  display:flex;gap:0;
+  border-bottom:2px solid var(--ink);
+  background:var(--paper);
+  position:sticky;top:56px;z-index:49;
+  overflow-x:auto;scrollbar-width:none;
+  padding:0 28px;
+}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab{
+  position:relative;padding:16px 0;margin-right:28px;
+  font-size:13px;font-weight:600;color:#9a9a9a;
+  white-space:nowrap;cursor:pointer;transition:color .2s;
+  font-family:var(--mono);letter-spacing:.05em;text-transform:uppercase;
+  background:none;border:none;
+}
+.tab:first-child{margin-left:0;}
+.tab.active{color:var(--ink);}
+.tab.active::after{
+  content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;
+  background:var(--ink);
+}
+
+/* ── Wrap ── */
+.wrap{max-width:1200px;margin:0 auto;padding:32px 28px 80px;}
+
+/* ── Section label ── */
+.section-label{
+  font-family:var(--mono);font-size:10.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);
+  margin-bottom:16px;
+}
+
+/* ── Member filter bar ── */
+.member-filter-bar{
+  display:flex;gap:8px;flex-wrap:wrap;
+  margin-bottom:24px;padding-bottom:24px;
+  border-bottom:1px solid var(--rule-faint);
+}
+.mf-btn{
+  padding:9px 18px;border-radius:0;
+  border:1.5px solid var(--rule-soft);
+  background:var(--paper);color:var(--ink-mute);
+  font-size:12px;font-weight:700;font-family:var(--mono);
+  letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+  transition:all .15s;
+}
+.mf-btn:hover{border-color:var(--ink);color:var(--ink);}
+.mf-btn.active{background:var(--ink);color:var(--accent);border-color:var(--ink);}
+.mf-count{
+  display:inline-block;background:rgba(0,0,0,.08);
+  border-radius:2px;padding:1px 6px;font-size:10px;margin-left:6px;font-weight:800;
+}
+.mf-btn.active .mf-count{background:rgba(232,255,0,.25);}
+.mf-count-warn{background:rgba(255,90,54,.15);color:var(--warn);}
+.mf-btn.active .mf-count-warn{background:rgba(255,90,54,.35);}
+
+/* ── Search ── */
+.search-wrap{margin-bottom:20px;}
+.search-input{
+  width:100%;padding:11px 16px;
+  border:1.5px solid var(--rule-soft);border-radius:0;
+  font-size:13px;font-family:var(--mono);
+  background:var(--paper);color:var(--ink);
+  outline:none;transition:border-color .15s;
+}
+.search-input:focus{border-color:var(--ink);}
+.search-input::placeholder{color:#bbb;}
+
+/* ── Member table ── */
+.table-wrap{overflow-x:auto;}
+.member-table{width:100%;border-collapse:collapse;min-width:700px;}
+.member-table thead{border-bottom:2px solid var(--ink);}
+.member-table th{
+  text-align:left;font-size:10.5px;font-weight:700;
+  font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-mute);padding:10px 14px;white-space:nowrap;
+}
+.member-row{border-bottom:1px solid var(--rule-faint);}
+.member-row:hover{background:var(--bg-soft);}
+.member-row td{padding:13px 14px;font-size:13px;vertical-align:middle;white-space:nowrap;}
+.member-row td.td-name{white-space:normal;min-width:130px;max-width:220px;}
+.member-row td.td-email{color:var(--ink-mute);font-size:11px;font-family:var(--mono);max-width:200px;overflow:hidden;text-overflow:ellipsis;}
+.th-sort{cursor:pointer;user-select:none;}
+.th-sort:hover{color:var(--ink);}
+
+/* ── Status badges ── */
+.status-badge{
+  display:inline-block;padding:2px 10px;border-radius:0;
+  font-size:10px;font-weight:800;font-family:var(--mono);
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.status-pending{background:rgba(255,90,54,.1);color:var(--warn);border:1px solid rgba(255,90,54,.3);}
+.status-approved{background:rgba(22,163,74,.1);color:var(--green);border:1px solid rgba(22,163,74,.3);}
+.status-rejected{background:rgba(255,90,54,.08);color:var(--warn);border:1px solid rgba(255,90,54,.2);}
+.status-suspended{background:rgba(0,0,0,.05);color:var(--ink-mute);border:1px solid var(--rule-soft);}
+
+/* ── Action buttons ── */
+.action-btn{
+  display:inline-block;padding:6px 14px;
+  font-size:11px;font-weight:700;font-family:var(--mono);
+  letter-spacing:.06em;cursor:pointer;border:1.5px solid;
+  margin-right:6px;transition:all .15s;
+}
+.approve-btn{border-color:rgba(22,163,74,.4);color:var(--green);background:rgba(22,163,74,.06);}
+.approve-btn:hover{background:var(--green);color:#fff;border-color:var(--green);}
+.reject-btn{border-color:rgba(255,90,54,.3);color:var(--warn);background:rgba(255,90,54,.06);}
+.reject-btn:hover{background:var(--warn);color:#fff;border-color:var(--warn);}
+
+/* ── Expires date input ── */
+.date-input{
+  background:var(--bg-soft);border:1px solid var(--rule-soft);
+  color:var(--ink);font-size:11px;font-family:var(--mono);
+  padding:4px 8px;outline:none;cursor:pointer;
+}
+.date-input:focus{border-color:var(--ink);}
+
+/* ── Note textarea ── */
+.note-textarea{
+  width:100%;margin-top:6px;padding:5px 8px;
+  background:var(--bg-soft);border:1px solid var(--rule-faint);
+  color:var(--ink-mute);font-size:11px;font-family:var(--mono);
+  resize:none;outline:none;
+}
+.note-textarea:focus{border-color:var(--ink-mute);}
+
+/* ── Empty state ── */
+.empty-state{
+  color:var(--ink-mute);font-size:12px;
+  font-family:var(--mono);padding:32px 14px;letter-spacing:.05em;
+}
+
+/* ── Section hide/show ── */
+.s{display:none;}
+.s.active{display:block;}
+
+/* ── WOD Editor ── */
+.wod-card{
+  border:1.5px solid var(--rule-soft);background:var(--paper);
+  padding:24px;margin-bottom:12px;
+}
+.wod-card.today-card{border-color:var(--ink);border-width:2px;}
+.day-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.day-label{font-weight:900;font-size:14px;font-family:var(--mono);letter-spacing:.05em;text-transform:uppercase;}
+.day-label.is-today{color:var(--ink);background:var(--accent);padding:4px 10px;display:inline-block;}
+.field-group{margin-bottom:14px;}
+.field-label{
+  font-size:10px;font-weight:700;font-family:var(--mono);
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);
+  margin-bottom:6px;
+}
+.field-input{
+  width:100%;background:var(--bg-soft);border:1px solid var(--rule-soft);
+  padding:10px 12px;color:var(--ink);font-size:13px;font-family:var(--sans);
+  outline:none;resize:vertical;transition:border-color .15s;
+}
+.field-input:focus{border-color:var(--ink);}
+.save-all-btn{
+  background:var(--ink);color:var(--accent);border:none;
+  padding:14px 32px;font-weight:800;font-size:13px;font-family:var(--mono);
+  letter-spacing:.1em;text-transform:uppercase;cursor:pointer;
+  margin-top:12px;transition:opacity .2s;
+}
+.save-all-btn:hover{opacity:.85;}
+#save-status{
+  font-size:11px;font-family:var(--mono);color:var(--green);
+  margin-left:16px;letter-spacing:.05em;
+}
+
+/* ── Week accordion ── */
+.week-group{border:1.5px solid var(--rule-soft);margin-bottom:8px;}
+.week-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;cursor:pointer;background:var(--bg-soft);
+  user-select:none;font-family:var(--mono);font-size:12px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.week-header.current{background:var(--accent);color:var(--ink);}
+.week-body{display:none;padding:12px;}
+.week-body.open{display:block;}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-logo">4SC <span>教練後台</span></div>
-  <span id="admin-email" style="font-size:0.8rem;color:var(--gray);"></span>
-</nav>
+<div class="topbar">
+  <div class="brand">
+    <span class="dot"></span>4SC · ADMIN
+  </div>
+  <div class="topbar-right">
+    <span id="admin-email"></span>
+  </div>
+</div>
+
+<div class="tab-bar">
+  <button class="tab active" onclick="switchTab('members',this)">👥 會員管理</button>
+  <button class="tab" onclick="switchTab('wod',this)">📋 課表編輯</button>
+</div>
 
 <div class="wrap">
-  <h1 class="page-title">教練後台</h1>
-
-  <div class="tab-bar">
-    <div class="tab active" onclick="switchTab('members', this)">👥 會員管理</div>
-    <div class="tab" onclick="switchTab('wod', this)">📋 課表編輯</div>
-  </div>
 
   <!-- Members -->
   <div class="s active" id="s-members">
-    <!-- Search -->
-    <div style="margin-bottom:16px;">
-      <input id="member-search" type="text" placeholder="🔍  搜尋姓名…" oninput="filterMembers()"
-        style="width:100%;padding:10px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:var(--white);font-size:0.9rem;font-family:inherit;outline:none;">
+    <div class="search-wrap">
+      <input id="member-search" type="text" placeholder="搜尋姓名…" class="search-input" oninput="filterMembers()">
     </div>
-    <!-- Filter tabs -->
     <div class="member-filter-bar">
       <button class="mf-btn active" onclick="showMemberSection('pending')">待審核 <span class="mf-count" id="count-pending"></span></button>
       <button class="mf-btn" onclick="showMemberSection('approved')">已核准 <span class="mf-count" id="count-approved"></span></button>
@@ -120,7 +286,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--dark); color: 
     </div>
 
     <div id="ms-expired" class="member-section" style="display:none;">
-      <p style="color:var(--gray);font-size:0.8rem;margin-bottom:12px;">到期日已過的會員，確認後可直接停用。</p>
+      <p style="color:var(--ink-mute);font-size:11px;font-family:var(--mono);margin-bottom:14px;letter-spacing:.05em;">到期日已過的會員，確認後可直接停用。</p>
       <div class="table-wrap"><table class="member-table">
         <thead><tr>
           <th class="th-sort" onclick="sortMembers('expired','real_name')">姓名 <span id="sort-expired-real_name"></span></th>
@@ -134,7 +300,7 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--dark); color: 
     </div>
 
     <div id="ms-inactive" class="member-section" style="display:none;">
-      <p style="color:var(--gray);font-size:0.8rem;margin-bottom:12px;">購買課程後可直接在此核准，不需重新申請。</p>
+      <p style="color:var(--ink-mute);font-size:11px;font-family:var(--mono);margin-bottom:14px;letter-spacing:.05em;">購買課程後可直接在此核准，不需重新申請。</p>
       <div class="table-wrap"><table class="member-table">
         <thead><tr>
           <th class="th-sort" onclick="sortMembers('inactive','real_name')">姓名 <span id="sort-inactive-real_name"></span></th>
@@ -147,9 +313,8 @@ body { font-family: 'Noto Sans TC', sans-serif; background: var(--dark); color: 
 
   <!-- WOD Editor -->
   <div class="s" id="s-wod">
-    <p style="color:var(--gray);font-size:0.85rem;margin-bottom:24px;line-height:1.7;">
-      直接編輯本週課表。修改後點「儲存全部課表」，學員即時看到更新。<br>
-      你也可以把截圖傳給 Claude，請他幫你更新這裡的資料。
+    <p style="color:var(--ink-mute);font-size:11px;font-family:var(--mono);margin-bottom:24px;line-height:1.8;letter-spacing:.04em;">
+      直接編輯本週課表。修改後點「儲存全部課表」，學員即時看到更新。
     </p>
     <div id="wod-editor"></div>
     <button class="save-all-btn" onclick="saveAllWOD()">儲存全部課表 →</button>
@@ -198,17 +363,17 @@ function rosterBadge(name) {
   const clean = name.trim();
   const matches = _roster.filter(m => m.name === clean || m.name.includes(clean) || clean.includes(m.name));
   if (!matches.length)
-    return `<div style="font-size:0.68rem;color:#64748b;margin-top:3px;">✗ 合約名單查無此人</div>`;
+    return `<div style="font-size:10px;color:#999;margin-top:4px;font-family:var(--mono);">✗ 合約名單查無此人</div>`;
   const today = new Date().toISOString().slice(0,10);
   const match = matches.find(m => m.is_group_class && m.expiry >= today)
              || matches.find(m => m.is_group_class)
              || matches[0];
   const active = match.expiry >= today;
   const type = match.is_group_class ? '團課' : '自主訓練';
-  const color = match.is_group_class ? '#a6e635' : '#d9a55c';
+  const color = match.is_group_class ? '#16a34a' : '#d97706';
   const icon = match.is_group_class ? '✓' : '△';
   const expLabel = active ? `到期 ${match.expiry}` : `⚠ 已到期 ${match.expiry}`;
-  return `<div style="font-size:0.68rem;color:${color};margin-top:3px;">${icon} ${match.location}・${type} · ${expLabel}</div>`;
+  return `<div style="font-size:10px;color:${color};margin-top:4px;font-family:var(--mono);">${icon} ${match.location}・${type} · ${expLabel}</div>`;
 }
 
 function switchTab(tab, el) {
@@ -228,18 +393,18 @@ async function googleLogin() {
 async function init() {
   const { data: { user } } = await sb.auth.getUser();
   if (!user) {
-    document.body.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;gap:16px;font-family:sans-serif;background:#0a0f1e;">
-      <div style="color:#94a3b8;font-size:0.9rem;">4SC CrossFit 管理後台</div>
-      <button onclick="googleLogin()" style="padding:12px 28px;background:#22d3ee;color:#0a0f1e;border:none;border-radius:10px;font-size:1rem;font-weight:700;cursor:pointer;">
-        Google 登入
+    document.body.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;gap:20px;font-family:var(--mono);background:var(--ink);">
+      <div style="color:#666;font-size:11px;letter-spacing:.1em;text-transform:uppercase;">4SC CrossFit · Admin</div>
+      <button onclick="googleLogin()" style="padding:14px 32px;background:var(--accent);color:var(--ink);border:none;font-size:13px;font-weight:800;font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;">
+        Google 登入 →
       </button>
     </div>`;
     return;
   }
   if (!ADMIN_EMAILS.includes(user.email)) {
-    document.body.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;gap:8px;color:#94a3b8;font-family:sans-serif;background:#0a0f1e;">
-      <div>⛔ 無存取權限</div>
-      <div style="font-size:0.8rem;">${user.email}</div>
+    document.body.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;gap:8px;font-family:var(--mono);background:var(--ink);">
+      <div style="color:#666;font-size:11px;letter-spacing:.1em;">⛔ 無存取權限</div>
+      <div style="color:#444;font-size:10px;">${user.email}</div>
     </div>`;
     return;
   }
@@ -301,8 +466,6 @@ function updateSortIcons(section, keys) {
 }
 
 function renderMembers() {
-  const noteStyle = `width:100%;margin-top:6px;padding:5px 8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:5px;color:#94a3b8;font-size:0.72rem;font-family:monospace;resize:none;outline:none;`;
-
   const pending  = applySort(applySearch(_membersData.pending), 'pending');
   const approved = applySort(applySearch(_membersData.approved), 'approved');
   const expired  = applySort(applySearch(_membersData.expired), 'expired');
@@ -317,40 +480,39 @@ function renderMembers() {
     <tr class="member-row">
       <td class="td-name">
         <strong contenteditable="true"
-          style="outline:none;border-bottom:1px dashed rgba(255,255,255,0.2);cursor:text;display:inline-block;min-width:40px;"
+          style="outline:none;border-bottom:1px dashed #ccc;cursor:text;display:inline-block;min-width:40px;font-size:13px;"
           data-original="${m.real_name}"
           onblur="saveName('${m.id}', this)"
         >${m.real_name}</strong>
-        <span style="font-size:0.62rem;color:#475569;margin-left:4px;" title="點擊姓名可直接編輯">✎</span>
+        <span style="font-size:10px;color:#bbb;margin-left:4px;" title="點擊姓名可直接編輯">✎</span>
         <div id="badge-${m.id}">${rosterBadge(m.real_name)}</div>
-        <textarea rows="2" placeholder="備註…" style="${noteStyle}"
+        <textarea rows="2" placeholder="備註…" class="note-textarea"
           onblur="saveNote('${m.id}', this.value)"
         >${m.admin_notes||''}</textarea>
       </td>
       <td class="td-email">${m.email}</td>
       <td>${formatLoc(m.location)}</td>
-      <td>${m.gender === 'male' ? '男' : '女'}</td>
-      <td style="color:var(--gray);font-size:0.78rem">${m.created_at?.split('T')[0]}</td>
+      <td style="font-size:12px;">${m.gender === 'male' ? '男' : '女'}</td>
+      <td style="color:var(--ink-mute);font-size:11px;font-family:var(--mono);">${m.created_at?.split('T')[0]}</td>
       <td style="white-space:nowrap;">
         <button class="action-btn approve-btn" onclick="updateStatus('${m.id}','approved')">✓ 核准</button>
         <button class="action-btn reject-btn" onclick="updateStatus('${m.id}','rejected')">✕ 拒絕</button><br>
-        <button class="action-btn" style="background:rgba(234,179,8,0.1);color:#eab308;border:1px solid rgba(234,179,8,0.25);margin-top:4px;" onclick="requestNameFix('${m.id}')">✎ 更正姓名</button>
+        <button class="action-btn" style="border-color:rgba(217,119,6,.4);color:#d97706;background:rgba(217,119,6,.06);margin-top:6px;" onclick="requestNameFix('${m.id}')">✎ 更正姓名</button>
       </td>
     </tr>`).join('') || `<tr><td colspan="6" class="empty-state">目前沒有待審核申請</td></tr>`;
 
   document.getElementById('approved-list').innerHTML = approved.map(m => `
     <tr class="member-row">
       <td class="td-name">
-        <strong>${m.real_name}</strong>
+        <strong style="font-size:13px;">${m.real_name}</strong>
         ${rosterBadge(m.real_name)}
-        ${m.admin_notes ? `<div style="margin-top:4px;font-size:0.7rem;color:#64748b;font-family:monospace;white-space:normal;">${m.admin_notes}</div>` : ''}
+        ${m.admin_notes ? `<div style="margin-top:4px;font-size:10px;color:var(--ink-mute);font-family:var(--mono);white-space:normal;">${m.admin_notes}</div>` : ''}
       </td>
       <td class="td-email">${m.email}</td>
       <td>${formatLoc(m.location)}</td>
-      <td style="color:var(--gray);font-size:0.78rem;">${formatLoginTime(m.last_login_at)}</td>
+      <td style="color:var(--ink-mute);font-size:11px;font-family:var(--mono);">${formatLoginTime(m.last_login_at)}</td>
       <td>
-        <input type="date" value="${m.expires_at||''}"
-          style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:#94a3b8;font-size:0.78rem;padding:4px 8px;font-family:monospace;"
+        <input type="date" value="${m.expires_at||''}" class="date-input"
           onchange="saveExpiry('${m.id}', this.value)">
       </td>
       <td><span class="status-badge status-approved">已核准</span></td>
@@ -360,12 +522,12 @@ function renderMembers() {
     </tr>`).join('') || `<tr><td colspan="7" class="empty-state">尚無會員</td></tr>`;
 
   document.getElementById('expired-list').innerHTML = expired.map(m => `
-    <tr class="member-row" style="background:rgba(239,68,68,0.04);">
-      <td class="td-name"><strong>${m.real_name}</strong></td>
+    <tr class="member-row" style="background:rgba(255,90,54,.03);">
+      <td class="td-name"><strong style="font-size:13px;">${m.real_name}</strong></td>
       <td class="td-email">${m.email}</td>
       <td>${formatLoc(m.location)}</td>
-      <td style="color:var(--gray);font-size:0.78rem;">${formatLoginTime(m.last_login_at)}</td>
-      <td style="color:#f87171;font-size:0.78rem;font-family:monospace;">${m.expires_at}</td>
+      <td style="color:var(--ink-mute);font-size:11px;font-family:var(--mono);">${formatLoginTime(m.last_login_at)}</td>
+      <td style="color:var(--warn);font-size:11px;font-family:var(--mono);font-weight:700;">${m.expires_at}</td>
       <td>
         <button class="action-btn reject-btn" onclick="updateStatus('${m.id}','suspended')">停用</button>
       </td>
@@ -377,8 +539,8 @@ function renderMembers() {
       : `<span class="status-badge status-rejected">未通過</span>`;
     return `<tr class="member-row">
       <td class="td-name">
-        <strong>${m.real_name}</strong>
-        ${m.admin_notes ? `<div style="margin-top:4px;font-size:0.7rem;color:#64748b;font-family:monospace;white-space:normal;">${m.admin_notes}</div>` : ''}
+        <strong style="font-size:13px;">${m.real_name}</strong>
+        ${m.admin_notes ? `<div style="margin-top:4px;font-size:10px;color:var(--ink-mute);font-family:var(--mono);white-space:normal;">${m.admin_notes}</div>` : ''}
       </td>
       <td class="td-email">${m.email}</td>
       <td>${formatLoc(m.location)}</td>
@@ -452,8 +614,8 @@ function getWeekStart(dateStr) {
 function toggleWeek(weekKey) {
   const body = document.getElementById('week-body-' + weekKey);
   const icon = document.getElementById('week-icon-' + weekKey);
-  const open = body.style.display !== 'none';
-  body.style.display = open ? 'none' : 'block';
+  const open = body.classList.contains('open');
+  body.classList.toggle('open', !open);
   icon.textContent = open ? '▶' : '▼';
 }
 
@@ -465,7 +627,6 @@ async function loadWODEditor() {
   const todayStr = new Date().toISOString().slice(0, 10);
   const currentWeekStart = getWeekStart(todayStr);
 
-  // Group days by week
   const weeks = [];
   const weekMap = {};
   wodData.days.forEach((d, i) => {
@@ -483,15 +644,14 @@ async function loadWODEditor() {
     weekEnd.setDate(weekEnd.getDate() + 6);
     const weekLabel = `${weekStart.slice(5)} ～ ${weekEnd.toISOString().slice(5, 10)}`;
     const weekKey = weekStart.replace(/-/g, '');
-    const hasToday = days.some(({ d }) => d.date === todayStr);
 
     const daysHtml = days.map(({ d, i }) => {
       const isToday = d.date === todayStr;
       return `
-        <div class="wod-card" style="${isToday ? 'border-color:rgba(34,211,238,0.4);' : ''}">
+        <div class="wod-card${isToday ? ' today-card' : ''}">
           <div class="day-header">
-            <div class="day-label" style="${isToday ? 'color:var(--cyan);' : ''}">
-              ${isToday ? '● ' : ''}${DAY_ZH[d.day]} ${d.date}${isToday ? ' · 今天' : ''}
+            <div class="day-label${isToday ? ' is-today' : ''}">
+              ${DAY_ZH[d.day]} · ${d.date}${isToday ? ' · TODAY' : ''}
             </div>
           </div>
           <div class="field-group">
@@ -507,7 +667,7 @@ async function loadWODEditor() {
             <input class="field-input" id="type-${i}" value="${d.type}">
           </div>
           <div class="field-group">
-            <div class="field-label">訓練內容（直接貼上 CrossFit.com 的文字）</div>
+            <div class="field-label">訓練內容</div>
             <textarea class="field-input" id="desc-${i}" rows="5">${d.description}</textarea>
           </div>
           <div class="field-group">
@@ -518,16 +678,12 @@ async function loadWODEditor() {
     }).join('');
 
     return `
-      <div style="margin-bottom:8px;border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;">
-        <div onclick="toggleWeek('${weekKey}')"
-             style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;background:${isCurrentWeek ? 'rgba(34,211,238,0.08)' : 'rgba(255,255,255,0.03)'};user-select:none;">
-          <div style="font-weight:800;font-size:0.88rem;${isCurrentWeek ? 'color:var(--cyan);' : 'color:var(--white);'}">
-            ${isCurrentWeek ? '📍 本週 · ' : ''}${weekLabel}
-            ${hasToday ? ' <span style="font-size:0.72rem;background:rgba(34,211,238,0.2);color:var(--cyan);padding:2px 8px;border-radius:999px;margin-left:6px;">今天</span>' : ''}
-          </div>
-          <span id="week-icon-${weekKey}" style="font-size:0.75rem;color:var(--gray);">${isCurrentWeek ? '▼' : '▶'}</span>
+      <div class="week-group">
+        <div class="week-header${isCurrentWeek ? ' current' : ''}" onclick="toggleWeek('${weekKey}')">
+          <span>${isCurrentWeek ? '📍 本週 · ' : ''}${weekLabel}</span>
+          <span id="week-icon-${weekKey}">${isCurrentWeek ? '▼' : '▶'}</span>
         </div>
-        <div id="week-body-${weekKey}" style="display:${isCurrentWeek ? 'block' : 'none'};padding:12px;">
+        <div id="week-body-${weekKey}" class="week-body${isCurrentWeek ? ' open' : ''}">
           ${daysHtml}
         </div>
       </div>`;
@@ -544,7 +700,6 @@ async function saveAllWOD() {
     d.description = document.getElementById(`desc-${i}`).value.trim();
     d.coach_notes = document.getElementById(`note-${i}`).value.trim();
   });
-  // Save to Supabase wod_cache table
   await sb.from('wod_cache').upsert({ id: 'current', data: wodData, updated_at: new Date().toISOString() });
   btn.textContent = '儲存全部課表 →';
   document.getElementById('save-status').textContent = '✓ 已儲存 ' + new Date().toLocaleTimeString('zh-TW');
