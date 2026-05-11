@@ -989,6 +989,7 @@ a{color:inherit;text-decoration:none}
       <div style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px;">本週 Hero WODs</div>
       <div id="hero-week-chips" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
     </div>
+    <div id="hero-tag-row" style="padding:0 22px 16px;display:flex;gap:6px;flex-wrap:wrap;"></div>
     <div id="hero-results" style="display:flex;flex-direction:column;gap:1px;background:var(--rule-soft);border:2px solid var(--ink);overflow:hidden;margin:0 22px 40px;"></div>
   </div>
 
@@ -2110,6 +2111,9 @@ async function adminSaveAllWOD() {
 
 // ── Hero WODs ──
 let _heroWODs = null;
+let _heroActiveTag = null;
+
+const HERO_TAGS = ['引體向上','單槓','體操','舉重','跑步','划船','繩索攀爬','跳箱','搬運','壺鈴','雙人','伏地挺身','高容量','短時','長時'];
 
 const HERO_WEEK_NAMES = ['MURPH','ADRIAN','SHAM','WESTON','BRIAN','LAURA','PARTNER WESTON'];
 
@@ -2141,12 +2145,19 @@ function getScaling(name) {
 function heroCard(wod) {
   const scaling = getScaling(wod.name);
   const scalingHtml = scaling.map(s => `<li style="font-size:12px;color:var(--ink-mute);font-family:var(--mono);padding:3px 0;border-bottom:1px solid var(--rule-faint);">${s}</li>`).join('');
-  const id = 'hw-' + wod.name.replace(/\s/g,'_');
+  const id = 'hw-' + wod.name.replace(/[\s\/]/g,'_');
+  const tags = (wod.tags || []);
+  const tagsHtml = tags.map(t =>
+    `<span style="font-family:var(--mono);font-size:10px;padding:2px 8px;background:var(--bg-soft);border:1px solid var(--rule-soft);color:var(--ink-mute);letter-spacing:.04em;">${t}</span>`
+  ).join('');
   return `
     <div class="lib-card" id="${id}" onclick="toggleHeroCard('${id}')">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-        <div style="font-family:var(--sans);font-size:18px;font-weight:900;letter-spacing:-0.02em;text-transform:uppercase;">${wod.name}</div>
-        <span style="font-family:var(--mono);font-size:10px;color:var(--ink-mute);letter-spacing:.1em;">展開 ↓</span>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+        <div>
+          <div style="font-family:var(--sans);font-size:18px;font-weight:900;letter-spacing:-0.02em;text-transform:uppercase;margin-bottom:8px;">${wod.name}</div>
+          ${tagsHtml ? `<div style="display:flex;flex-wrap:wrap;gap:4px;">${tagsHtml}</div>` : ''}
+        </div>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--ink-mute);letter-spacing:.1em;flex-shrink:0;margin-top:4px;" id="${id}-arrow">展開 ↓</span>
       </div>
       <div id="${id}-body" style="display:none;margin-top:14px;border-top:1px solid var(--rule-faint);padding-top:14px;">
         <pre style="font-family:var(--mono);font-size:12px;white-space:pre-wrap;line-height:1.7;color:var(--ink);margin-bottom:16px;">${wod.description}</pre>
@@ -2158,7 +2169,7 @@ function heroCard(wod) {
 
 function toggleHeroCard(id) {
   const body = document.getElementById(id + '-body');
-  const arrow = document.querySelector(`#${id} span`);
+  const arrow = document.getElementById(id + '-arrow');
   const open = body.style.display !== 'none';
   body.style.display = open ? 'none' : 'block';
   if (arrow) arrow.textContent = open ? '展開 ↓' : '收合 ↑';
@@ -2166,7 +2177,17 @@ function toggleHeroCard(id) {
 
 async function initHeroPage() {
   await loadHeroWODs();
-  // Check if current week has hero WODs (5/25-5/31 week)
+
+  // Tag filter row
+  const tagRow = document.getElementById('hero-tag-row');
+  tagRow.innerHTML = HERO_TAGS.map(tag =>
+    `<button onclick="toggleHeroTag('${tag}')" id="htag-${tag}"
+      style="padding:6px 14px;border:1.5px solid var(--rule-soft);background:var(--paper);color:var(--ink-mute);
+             font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;transition:all .15s;"
+      >${tag}</button>`
+  ).join('');
+
+  // Current week hero highlight
   const today = new Date();
   const y = today.getFullYear(), m = today.getMonth()+1, day = today.getDate();
   const isHeroWeek = (y===2026 && m===5 && day>=25 && day<=31);
@@ -2179,7 +2200,28 @@ async function initHeroPage() {
       ).join('');
     }
   }
-  renderHeroWODs(_heroWODs);
+  renderHeroWODs(getFilteredHeroes());
+}
+
+function toggleHeroTag(tag) {
+  _heroActiveTag = _heroActiveTag === tag ? null : tag;
+  document.querySelectorAll('[id^="htag-"]').forEach(btn => {
+    const t = btn.id.replace('htag-','');
+    const active = t === _heroActiveTag;
+    btn.style.background = active ? 'var(--ink)' : 'var(--paper)';
+    btn.style.color = active ? 'var(--accent)' : 'var(--ink-mute)';
+    btn.style.borderColor = active ? 'var(--ink)' : 'var(--rule-soft)';
+  });
+  renderHeroWODs(getFilteredHeroes());
+}
+
+function getFilteredHeroes() {
+  const q = (document.getElementById('hero-search')?.value || '').trim().toLowerCase();
+  return _heroWODs.filter(w => {
+    const matchTag = !_heroActiveTag || (w.tags || []).includes(_heroActiveTag);
+    const matchQ = !q || w.name.toLowerCase().includes(q) || w.description.toLowerCase().includes(q);
+    return matchTag && matchQ;
+  });
 }
 
 function highlightHero(name) {
@@ -2195,9 +2237,7 @@ function highlightHero(name) {
 }
 
 function filterHeroWODs() {
-  const q = document.getElementById('hero-search').value.trim().toLowerCase();
-  const filtered = q ? _heroWODs.filter(w => w.name.toLowerCase().includes(q) || w.description.toLowerCase().includes(q)) : _heroWODs;
-  renderHeroWODs(filtered);
+  renderHeroWODs(getFilteredHeroes());
 }
 
 function renderHeroWODs(list) {
