@@ -1,0 +1,564 @@
+{
+  "wods": [
+    {
+      "name": "JT",
+      "description": "21-15-9 reps for time of:\nHandstand push-ups\nRing dips\nPush-ups"
+    },
+    {
+      "name": "MICHAEL",
+      "description": "3 rounds for time of:\nRun 800 meters\n50 back extensions\n50 sit-ups"
+    },
+    {
+      "name": "MURPH",
+      "description": "For time:\n1-mile run\n100 pull-ups\n200 push-ups\n300 squats\n1-mile run\nPartition the pull-ups, push-ups,\nand squats as needed. Start\nand finish with a mile run. If\nyou’ve got a 20-lb vest or body\narmor, wear it."
+    },
+    {
+      "name": "DANIEL",
+      "description": "For time:\n50 pull-ups\n400-meter run\n21 thrusters\n800-meter run\n21 thrusters\n400-meter run\n50 pull-ups"
+    },
+    {
+      "name": "JOSH",
+      "description": "For time:\n21 overhead squats\n42 pull-ups\n15 overhead squats\n30 pull-ups\n9 overhead squats\n18 pull-ups"
+    },
+    {
+      "name": "JASON",
+      "description": "For time:\n100 squats\n5 muscle-ups\n75 squats\n10 muscle-ups\n50 squats\n15 muscle-ups\n25 squats\n20 muscle-ups"
+    },
+    {
+      "name": "BADGER",
+      "description": "3 rounds for time of:\n30 squat cleans\n30 pull-ups\nRun 800 meters"
+    },
+    {
+      "name": "JOSHIE",
+      "description": "3 rounds for time of:\n21 dumbbell snatches, right arm\n21 L pull-ups\n21 dumbbell snatches, left arm\n21 L pull-ups"
+    },
+    {
+      "name": "NATE",
+      "description": "Complete as many rounds as\npossible in 20 minutes of:\n2 muscle-ups\n4 handstand push-ups\n8 kettlebell swings"
+    },
+    {
+      "name": "RANDY",
+      "description": "For time:\n75 power snatches"
+    },
+    {
+      "name": "GRIFF",
+      "description": "For time:\nRun 800 meters\nRun 400 meters backwards\nRun 800 meters\nRun 400 meters backwards\nDT\n5 rounds for time of:\n12 deadlifts\n9 hang power cleans\n6 push jerks"
+    },
+    {
+      "name": "DANNY",
+      "description": "RYAN\n5 rounds for time of:\n7 muscle-ups\n21 burpees"
+    },
+    {
+      "name": "Complete as many rounds in 20",
+      "description": "minutes as you can of:\n30 box jumps\n20 push presses\n30 pull-ups"
+    },
+    {
+      "name": "ERIN",
+      "description": "5 rounds for time of:\n15 dumbbell split cleans\n21 pull-ups"
+    },
+    {
+      "name": "TYLER",
+      "description": "5 rounds for time of:\nRun 400 meters\n30 GHD sit-ups\n15 deadlifts\nLUMBERJACK 20\nFor time:\n20 deadlifts\nRun 400 meters\n20 kettlebell swings\nRun 400 meters\n20 overhead squats\nRun 400 meters\n20 burpees\nRun 400 meters\n20 chest-to-bar pull-ups\nRun 400 meters\n20 box jumps\nRun 400 meters\n20 dumbbell squat cleans\nRun 400 meters\nkettlebell, 75-lb overhead\nsquats, 20-inch box,\n30-lb dumbbells\nkettlebell, 115-lb overhead\nsquats, 24-inch box,\n45-lb dumbbells\nHANSEN"
+    },
+    {
+      "name": "5 rounds for time of:",
+      "description": "30 kettlebell swings\n30 burpees\n30 GHD sit-ups"
+    },
+    {
+      "name": "GARRETT",
+      "description": "3 rounds for time of:\n75 squats\n25 ring handstand push-ups\n25 L pull-ups\nJERRY\nFor time:\nRun 1 mile\nRow 2K\nRun 1 mile"
+    },
+    {
+      "name": "WAR FRANK",
+      "description": "3 rounds for time of:\n25 muscle-ups\n100 squats\n35 GHD sit-ups"
+    },
+    {
+      "name": "MCGHEE",
+      "description": "As many rounds as possible in\n30 minutes of:\n5 deadlifts\n13 push-ups\n9 box jumps\nNUTTS\nFor time:\n10 handstand push-ups\n15 deadlifts\n25 box jumps\n50 pull-ups\n100 wall-ball shots\n200 double-unders\nRun 400 meters with a plate\nbox, 14-lb medicine ball to 9\nfeet, 25-lb plate\nbox, 20-lb medicine ball to 10\nfeet, 45-lb plate"
+    },
+    {
+      "name": "ARNIE",
+      "description": "With a single kettlebell for time:\n21 Turkish get-ups, right arm\n50 kettlebell swings\n21 overhead squats, left arm\n50 kettlebell swings\n21 overhead squats, right arm\n50 kettlebell swings\n21 Turkish get-ups, left arm"
+    },
+    {
+      "name": "THE SEVEN",
+      "description": "7 rounds for time of:\n7 handstand push-ups\n7 thrusters\n7 knees-to-elbows\n7 deadlifts\n7 burpees\n7 kettlebell swings\n7 pull-ups\ndeadlifts, 53-lb kettlebell\ndeadlifts, 70-lb kettlebell"
+    },
+    {
+      "name": "RJ",
+      "description": "5 rounds for time of:\nRun 800 meters\n5 rope climbs to 15 feet\n50 push-ups"
+    },
+    {
+      "name": "JOHNSON",
+      "description": "Complete as many rounds\nand reps as possible in\n20 minutes of:\n9 deadlifts\n8 muscle-ups\n9 squat cleans\nsquat cleans\nsquat cleans"
+    },
+    {
+      "name": "ADAMBROWN",
+      "description": "2 rounds for time of:\n24 deadlifts\n24 box jumps\n24 wall-ball shots\n24 bench presses\n24 box jumps\n24 wall-ball shots\n24 cleans\n14-lb ball to 9 feet, 135-lb bench\npress, 95-lb clean\nbox, 20-lb ball to 10 feet, 195-lb\nbench press, 145-lb cleans"
+    },
+    {
+      "name": "COE",
+      "description": "10 rounds for time of:\n10 thrusters\n10 ring push-ups\nHELTON\n3 rounds for time of:\nRun 800 meters\n30 dumbbell squat cleans\n30 burpees"
+    },
+    {
+      "name": "JACK",
+      "description": "Complete as many rounds\nand reps as possible in\n20 minutes of:\n10 push presses\n10 kettlebell swings\n10 box jumps\nkettlebell, 20-inch box\nkettlebell, 24-inch box"
+    },
+    {
+      "name": "ROY",
+      "description": "5 rounds for time of:\n15 deadlifts\n20 box jumps\n25 pull-ups"
+    },
+    {
+      "name": "SEVERIN",
+      "description": "For time:\n50 strict pull-ups\n100 hand-release push-ups\nRun 5K\nIf you’ve got a weight vest or\nbody armor, wear it.\nFORREST\n3 rounds for time of:\n20 L pull-ups\n30 toes-to-bars\n40 burpees\nRun 800 meters"
+    },
+    {
+      "name": "BRENTON",
+      "description": "5 rounds for time of:\n100-foot bear crawl\n100-foot standing broad jump\nDo 3 burpees after every\n5 broad jumps. If you’ve\ngot a 20-lb vest or body\narmor, wear it."
+    },
+    {
+      "name": "BLAKE",
+      "description": "4 rounds for time of:\n100-foot overhead\nwalking lunge\n30 box jumps\n20 wall-ball shots\n10 handstand push-ups\n14-lb medicine ball to a\n9-foot target\n20-lb medicine ball to a\n10-foot target"
+    },
+    {
+      "name": "COLLIN",
+      "description": "6 rounds for time of:\n400-meter sandbag carry\n12 push presses\n12 box jumps\n12 sumo deadlift high pulls\npress, 20-inch box, 65-lb sumo\ndeadlift high pull\npress, 24-inch box, 95-lb sumo\ndeadlift high pull\nWHITTEN\n5 rounds for time of:\n22 kettlebell swings\n22 box jumps\n400-meter run\n22 burpees\n22 wall-ball shots\nbox, 14-lb medicine ball to a\n9-foot target\nbox, 20-lb medicine ball to a\n10-foot target"
+    },
+    {
+      "name": "THOMPSON",
+      "description": "10 rounds for time of:\n1 rope climb to 15 feet\n29 back squats\n10-meter barbell farmers carry\nfarmers carry\nfarmers carry\nBegin the rope climbs seated\non the floor.\nBULL\n2 rounds for time of:\n200 double-unders\n50 overhead squats\n50 pull-ups\n1-mile run"
+    },
+    {
+      "name": "RANKEL",
+      "description": "Complete as many rounds as\npossible in 20 minutes of:\n6 deadlifts\n7 burpee pull-ups\n10 kettlebell swings\n200-meter run\n70-lb kettlebell"
+    },
+    {
+      "name": "LEDESMA",
+      "description": "WEAVER\nMOORE\nComplete as many rounds\nand reps as possible in\n20 minutes of:\n5 parallette handstand push-ups\n10 toes-to-rings\n15 medicine-ball cleans\n4 rounds for time of:\n10 L pull-ups\n15 push-ups\n15 chest-to-bar pull-ups\n15 push-ups\n20 pull-ups\n15 push-ups\nComplete as many rounds in 20\nminutes as you can of:\n1 rope climb to 15 feet\nRun 400 meters\nMax-rep handstand push-ups"
+    },
+    {
+      "name": "WITTMAN",
+      "description": "HAMMER\n7 rounds for time of:\n15 kettlebell swings\n15 power cleans\n15 box jumps\nbarbell, 20-inch box\nbarbell, 24-inch box\n5 rounds, each for time, of:\n5 power cleans\n10 front squats\n5 jerks\n20 pull-ups\nRest 90 seconds\nbetween rounds."
+    },
+    {
+      "name": "WILMOT",
+      "description": "6 rounds for time of:\n50 squats\n25 ring dips"
+    },
+    {
+      "name": "SMALL",
+      "description": "3 rounds for time of:\nRow 1,000 meters\n50 burpees\n50 box jumps\nRun 800 meters"
+    },
+    {
+      "name": "MORRISON",
+      "description": "50-40-30-20-10 reps\nfor time of:\nWall-ball shots\nBox jumps\nKettlebell swings\n9-foot target, 20-inch box,\n35-lb kettlebell\n10-foot target, 24-inch box,\n53-lb kettlebell\nMANION\n7 rounds for time of:\nRun 400 meters\n29 back squat"
+    },
+    {
+      "name": "GATOR",
+      "description": "8 rounds for time of:\n5 front squat\n26 ring push-ups"
+    },
+    {
+      "name": "BRADLEY",
+      "description": "10 rounds for time of:\nSprint 100 meters\n10 pull-ups\nSprint 100 meters\n10 burpees\nRest 30 seconds\nSANTIAGO\n7 rounds for time of:\n18 dumbbell hang squat cleans\n18 pull-ups\n10 power cleans\n10 handstand push-ups\n95-lb barbell\n135-lb barbell"
+    },
+    {
+      "name": "CARSE",
+      "description": "21-18-15-12-9-6-3 reps\nfor time of:\nSquat cleans\nDouble-unders\nDeadlifts\nBox jumps\nBegin each round with a\n50-meter bear crawl.\ndeadlift, 20-inch box\ndeadlift, 24-inch box"
+    },
+    {
+      "name": "MEADOWS",
+      "description": "For time:\n20 muscle-ups\n25 lowers from an inverted hang\non the rings, slowly, with straight\nbody and arms\n30 ring handstand push-ups\n35 ring rows\n40 ring push-ups"
+    },
+    {
+      "name": "SANTORA",
+      "description": "3 rounds for reps of:\n1 minute of squat cleans\n1 minute of 20-foot shuttle\nsprints (20 feet forward + 20\nfeet backward = 1 rep)\n1 minute of deadlifts\n1 minute of burpees\n1 minute of jerks\nRest 1 minute between rounds.\nOn the shuttle sprints, 20\nfeet forward and 20 feet\nbackward is 1 rep.\ndeadlifts, 105-lb jerks\ndeadlifts, 155-lb jerk"
+    },
+    {
+      "name": "HIDALGO",
+      "description": "For time:\nRun 2 miles\nRest 2 minutes\n20 squat cleans\n20 box jumps\n20 overhead walking lunges\n20 box jumps\n20 squat cleans\nRest 2 minutes\nRun 2 miles\nbox, 25-lb plate\nbox, 45-lb plate\nIf you’ve got a 20-lb vest or\nbody armor, wear it."
+    },
+    {
+      "name": "RICKY",
+      "description": "Complete as many rounds as\npossible in 20 minutes of:\n10 pull-ups\n5 dumbbell deadlifts\n8 push presses\n95-lb barbell\n135-lb barbell"
+    },
+    {
+      "name": "WOOD",
+      "description": "5 rounds for time of:\n400-meter run\n10 burpee box jumps\n10 sumo deadlift high pulls\n10 thrusters\nRest 1 minute\nDAE HAN\n3 rounds for time of:\nRun 800 meters with an\nempty barbell\n3 rope climbs\n12 thrusters\n95-lb thrusters\n135-lb thrusters"
+    },
+    {
+      "name": "DESFORGES",
+      "description": "5 rounds for time of:\n12 deadlifts\n20 pull-ups\n12 clean and jerks\n20 knees-to-elbows\nclean and jerks\nclean and jerks"
+    },
+    {
+      "name": "RAHOI",
+      "description": "Complete as many rounds as\npossible in 12 minutes of:\n12 box jumps\n6 thrusters\n6 bar-facing burpees"
+    },
+    {
+      "name": "KLEPTO",
+      "description": "4 rounds for time of:\n27 box jumps\n20 burpees\n11 squat cleans\nDEL\nFor time:\n25 burpees\nRun 400 meters with a\nmedicine ball\n25 weighted pull-ups\nwith a dumbbell\nRun 400 meters with a\nmedicine ball\n25 handstand push-ups\nRun 400 meters with a\nmedicine ball\n25 chest-to-bar pull-ups\nRun 400 meters with a\nmedicine ball\n25 burpees\n15-lb dumbbell\n20-lb dumbbell"
+    },
+    {
+      "name": "PHEEZY",
+      "description": "3 rounds for time of:\n5 front squats\n18 pull-ups\n5 deadlifts\n18 toes-to-bars\n5 push jerks\n18 hand-release push-ups\ndeadlifts, 115-lb push jerks\ndeadlifts, 165-lb push jerks"
+    },
+    {
+      "name": "J.J.",
+      "description": "For time:\n1 squat clean\n10 parallette\nhandstand push-ups\n2 squat cleans\n9 parallette handstand push-ups\n3 squat cleans\n8 parallette handstand push-ups\n4 squat cleans\n7 parallette handstand push-ups\n5 squat cleans\n6 parallette handstand push-ups\n6 squat cleans\n5 parallette handstand push-ups\n7 squat cleans\n4 parallette handstand push-ups\n8 squat cleans\n3 parallette handstand push-ups\n9 squat cleans\n2 parallette handstand push-ups\n10 squat cleans\n1 parallette handstand push-up"
+    },
+    {
+      "name": "JAG 28",
+      "description": "For time:\nRun 800 meters\n28 kettlebell swings\n28 strict pull-ups\n28 kettlebell clean and jerks\n28 strict pull-ups\nRun 800 meters"
+    },
+    {
+      "name": "ADRIAN",
+      "description": "7 rounds for time of:\n3 forward rolls\n5 wall climbs\n7 toes-to-bars\n9 box jumps"
+    },
+    {
+      "name": "NICK",
+      "description": "12 rounds for time of:\n10 dumbbell hang squat cleans\n6 handstand push-ups\non dumbbells\nJARED\n4 rounds for time of:\nRun 800 meters\n40 pull-ups\n70 push-ups"
+    },
+    {
+      "name": "TULLY",
+      "description": "STRANGE\n8 rounds for time of:\n600-meter run\n11 weighted pull-ups\n11 walking lunges with\ntwo kettlebells\n11 kettlebell thrusters"
+    },
+    {
+      "name": "TUMILSON",
+      "description": "8 rounds for time of:\nRun 200 meters\n11 dumbbell burpee deadlifts\n4 rounds for time of:\nSwim 200 meters\n23 dumbbell squat cleans"
+    },
+    {
+      "name": "HOLLEYMAN",
+      "description": "30 rounds for time of:\n5 wall-ball shots\n3 handstand push-ups\n1 power clean\n155-lb cleans\n225-lb cleans\nGLEN\nFor time:\n30 clean and jerks\nRun 1 mile\n10 rope climbs to 15 feet\nRun 1 mile\n100 burpees"
+    },
+    {
+      "name": "TOM",
+      "description": "Complete as many rounds as\npossible in 25 minutes of:\n7 muscle-ups\n11 thrusters\n14 toes-to-bars"
+    },
+    {
+      "name": "SEAN",
+      "description": "CLOVIS\nFor time:\nRun 10 miles\n150 burpee pull-ups\nPartition the run and burpee\npull-ups as needed.\n10 rounds for time of:\n11 chest-to-bar pull-ups\n22 front squats\nZEUS\n3 rounds for time of:\n30 wall-ball shots\n30 sumo deadlift high pulls\n30 box jumps\n30 push presses\n30-calorie row\n30 push-ups\n10 back squats\ntarget, 55-lb barbell, 20-inch\nbox, bodyweight back squat\nto a 10-foot target, 75-lb\nbarbell, 24-inch box,\nbodyweight back squat"
+    },
+    {
+      "name": "HORTMAN",
+      "description": "WESTON\n5 rounds for time of:\nRow 1,000 meters\n200-meter farmers carry\n50-meter dumbbell waiters\nwalk, right arm\n50-meter dumbbell waiters\nwalk, left arm"
+    },
+    {
+      "name": "Complete as many rounds as",
+      "description": "possible in 45 minutes of:\nRun 800 meters\n80 squats\n8 muscle-ups"
+    },
+    {
+      "name": "BARRAZA",
+      "description": "Complete as many rounds\nand reps as possible in\n18 minutes of:\nRun 200 meters\n9 deadlifts\n6 burpee bar muscle-ups"
+    },
+    {
+      "name": "HAMILTON",
+      "description": "3 rounds for time of:\nRow 1,000 meters\n50 push-ups\nRun 1,000 meters\n50 pull-ups"
+    },
+    {
+      "name": "For time:",
+      "description": "30 GHD sit-ups\n15 squat cleans\n24 GHD sit-ups\n12 squat cleans\n18 GHD sit-ups\n9 squat cleans\n12 GHD sit-ups\n6 squat cleans\n6 GHD sit-ups\n3 squat cleans\nJORGE\nGALLANT\nFor time:\n1-mile run with a medicine ball\n60 burpee pull-ups\n800-meter run with a\nmedicine ball\n30 burpee pull-ups\n400-meter run with a\nmedicine ball\n15 burpee pull-ups\nFor time:\n10 rope climbs to 15 feet\n20 back squats\n30 handstand push-ups\n40-calorie row\n4 rounds for time of:\n400-meter run\n24 back squats\n24 jerks"
+    },
+    {
+      "name": "OMAR",
+      "description": "For time:\n10 thrusters\n15 bar-facing burpees\n20 thrusters\n25 bar-facing burpees\n30 thrusters\n35 bar-facing burpees\nSMYKOWSKI\nFor time:\nRun 6K\n60 burpee pull-ups"
+    },
+    {
+      "name": "DONNY",
+      "description": "21-15-9-9-15-21 reps for time of:\nDeadlifts\nBurpees"
+    },
+    {
+      "name": "DOBOGAI",
+      "description": "7 rounds for time of:\n8 muscle-ups\n22-yard farmers carry\nHOTSHOTS 19\n6 rounds for time of:\n30 squats\n19 power cleans\n7 strict pull-ups\n400-meter run\nWALSH\nTHE DON\nFor time:\n66 deadlifts\n66 box jump\n66 kettlebell swings\n66 knees-to-elbows\n66 sit-ups\n66 pull-ups\n66 thrusters\n66 wall-ball shots\n66 burpees\n66 double-unders\nbox, 35-lb kettlebell, 35-lb\nthruster, 14-lb medicine ball to a\n9-foot target\nbox, 53-lb kettlebell, 55-lb\nthruster, 20-lb medicine ball to a\n10-foot target"
+    },
+    {
+      "name": "4 rounds for time of:",
+      "description": "22 burpee pull-ups\n22 back squats\n200-meter run with a\nplate overhead"
+    },
+    {
+      "name": "LEE",
+      "description": "5 rounds for time of:\n400-meter run\n1 deadlift\n3 squat cleans\n5 push jerks\n3 muscle-ups\n1 rope climb to 15 feet\nclean, 125-lb push jerk\nclean, 185-lb push jerk"
+    },
+    {
+      "name": "TAYLOR",
+      "description": "COFFEY\nFor time:\n800-meter run\n50 back squats\n50 bench presses\n800-meter run\n35 back squats\n35 bench presses\n800-meter run\n20 back squats\n20 bench presses\n800-meter run\n1 muscle-up\n4 rounds for time of:\n400-meter run\n5 burpee muscle-ups\nIf you’ve got a weighted vest or\nbody armor, wear it."
+    },
+    {
+      "name": "JUSTIN",
+      "description": "30-20-10 reps for time of:\nBodyweight back squats\nBodyweight bench presses\nStrict pull-ups"
+    },
+    {
+      "name": "DG",
+      "description": "Complete as many rounds\nand reps as possible in\n10 minutes of:\n8 toes-to-bars\n8 dumbbell thrusters\n12 dumbbell walking lunges\nNUKES\n8 minutes to complete:\n1-mile run\nMax reps deadlifts\nThen, 10 minutes to complete:\n1-mile run\nMax reps power cleans\nThen, 12 minutes to complete:\n1-mile run\nMax reps overhead squats\nDo not rest between rounds.\nclean, 95-lb overhead squat\nclean, 135-lb overhead squat"
+    },
+    {
+      "name": "ZEMBIEC",
+      "description": "5 rounds for time of:\n11 back squats\n7 strict burpee pull-ups\n400-meter run"
+    },
+    {
+      "name": "ALEXANDER",
+      "description": "5 rounds for time of:\n31 back squats\n12 power cleans\n125-lb power clean\n185-lb power clean"
+    },
+    {
+      "name": "BELL",
+      "description": "3 rounds for time of:\n21 deadlifts\n15 pull-ups\n9 front squats"
+    },
+    {
+      "name": "KEVIN",
+      "description": "3 rounds for time of:\n32 deadlifts\n32 hanging hip touches,\nalternating arms\n800-meter running\nfarmers carry\n10-lb dumbbells\n15-lb dumbbells"
+    },
+    {
+      "name": "ROCKET",
+      "description": "Complete as many rounds as\npossible in 30 minutes of:\n50-yard swim\n10 push-ups\n15 squats\nJBO"
+    },
+    {
+      "name": "Complete as many rounds",
+      "description": "and reps as possible in\n28 minutes of:\n9 overhead squats\n1 legless rope climb to 15 feet,\nbeginning from seated\n12 bench presses\nFor time:\nRun 1.5 miles\n150 burpees\nRun 1.5 miles\nIf you’ve got a weight vest or\nbody armor, wear it."
+    },
+    {
+      "name": "RILEY",
+      "description": "FEEKS\nFor time:\n2 100-meter shuttle sprints\n2 dumbbell squat\nclean thrusters\n4 100-meter shuttle sprints\n4 dumbbell squat\nclean thrusters\n6 100-meter shuttle sprints\n6 dumbbell squat\nclean thrusters\n8 100-meter shuttle sprints\n8 dumbbell squat\nclean thrusters\n10 100-meter shuttle sprints\n10 dumbbell squat\nclean thrusters\n12 100-meter shuttle sprints\n12 dumbbell squat\nclean thrusters\n14 100-meter shuttle sprints\n14 dumbbell squat\nclean thrusters\n16 100-meter shuttle sprints\n16 dumbbell squat\nclean thrusters"
+    },
+    {
+      "name": "NED",
+      "description": "7 rounds for time of:\n11 bodyweight back squats\n1,000-meter row"
+    },
+    {
+      "name": "OZZY",
+      "description": "7 rounds for time of:\n11 deficit handstand push-ups\n1,000-meter run"
+    },
+    {
+      "name": "JENNY",
+      "description": "Complete as many rounds\nand reps as possible in\n20 minutes of:\n20 overhead squats\n20 back squats\n400-meter run"
+    },
+    {
+      "name": "SPEHAR",
+      "description": "For time:\n100 thrusters\n100 chest-to-bar pull-ups\nRun 6 miles\nPartition the thrusters, pull-ups,\nand run as needed."
+    },
+    {
+      "name": "LUKE",
+      "description": "For time:\nRun 400 meters\n15 clean and jerks\nRun 400 meters\n30 toes-to-bars\nRun 400 meters\n45 wall-ball shots\nRun 400 meters\n45 kettlebell swings\nRun 400 meters\n30 ring dips\nRun 400 meters\n15 front-rack weighted lunges\nRun 400 meters\nmedicine ball to a 9-foot target,\n35-lb kettlebell\nmedicine ball to a 10-foot target,\n53-lb kettlebell"
+    },
+    {
+      "name": "ROBBIE",
+      "description": "Complete as many rounds as\npossible in 25 minutes of:\n8 freestanding\nhandstand push-ups\n1 L-sit rope climb to 15 feet\nFOO\nFor time:\n13 bench presses\nThen, complete as many\nrounds and reps as possible in\n20 minutes of:\n7 chest-to-bar pull-ups\n77 double-unders\n2 squat clean thrusters\n28 sit-ups"
+    },
+    {
+      "name": "BOWEN",
+      "description": "3 rounds for time of:\n800-meter run\n7 deadlifts\n10 burpee pull-ups\n14 single-arm kettlebell\nthrusters, 7 each arm\n20 box jumps\nkettlebell, 20-inch box\nkettlebell, 24-inch box"
+    },
+    {
+      "name": "SHAWN",
+      "description": "For time:\nRun 5 miles\nRun in 5-minute intervals,\nstopping after each to perform\n50 squats and 50 push-ups\nbefore beginning the next\n5-minute run interval.\nGAZA\n5 rounds for time of:\n35 kettlebell swings\n30 push-ups\n25 pull-ups\n20 box jumps\n1-mile run"
+    },
+    {
+      "name": "CAPOOT",
+      "description": "For time:\n100 push-ups\nRun 800 meters\n75 push-ups\nRun 1,200 meters\n50 push-ups\nRun 1,600 meters\n25 push-ups\nRun 2,000 meters"
+    },
+    {
+      "name": "HALL",
+      "description": "5 rounds for time of:\n3 cleans\n200-meter sprint\n20 kettlebell\nsnatches, 10 each arm\nRest 2 minutes between rounds.\n53-lb kettlebell\nMARCO\n3 rounds for time of:\n21 pull-ups\n15 handstand push-ups\n9 thrusters"
+    },
+    {
+      "name": "SERVAIS",
+      "description": "For time:\nRun 1.5 miles\nThen, 8 rounds of:\n19 pull-ups\n19 push-ups\n19 burpees\nThen,\n400-meter sandbag carry\n1-mile farmers carry\n30-lb dumbbells\n45-lb dumbbells"
+    },
+    {
+      "name": "PK",
+      "description": "5 rounds for time of:\n10 back squats\n10 deadlifts\n400-meter sprint\nRest 2 minutes between rounds.\n185-lb deadlifts\n275-lb deadlifts\nRENÉ\n7 rounds for time of:\n400-meter run\n21 walking lunges\n15 pull-ups\n9 burpees\nIf you have a weight vest or\nbody armor, wear it."
+    },
+    {
+      "name": "PIKE",
+      "description": "5 rounds for time of:\n20 thrusters\n10 strict ring dips\n20 push-ups\n10 strict handstand push-ups\n50-meter bear crawl"
+    },
+    {
+      "name": "JENNIFER",
+      "description": "Complete as many rounds\nand reps as possible in\n26 minutes of:\n10 pull-ups\n15 kettlebell swings\n20 box jumps\nSCOOTER\nOn a 35-minute clock with a\npartner, complete as many\nrounds and reps as possible in\n30 minutes of:\n30 double-unders\n15 pull-ups\n15 push-ups\n100-meter sprint\nThen, 5 minutes to find a 1-repmax partner deadlift\nFor the AMRAP, have one\npartner work while the other\nrests, switching after a full\nround is completed. If you’re\nperforming without a partner,\nrest 60 seconds between each\nround, and find a regular 1-repmax deadlift."
+    },
+    {
+      "name": "T.U.P.",
+      "description": "15-12-9-6-3 reps for time of:\nPower cleans\nPull-ups\nFront squats\nPull-ups"
+    },
+    {
+      "name": "HARPER",
+      "description": "Complete as many rounds as\npossible in 23 minutes of:\n9 chest-to-bar pull-ups\n15 power cleans\n21 squats\n400-meter run with a plate\nHORTON\nMATT 16\nFor time:\n16 deadlifts\n16 hang power cleans\n16 push presses\nRun 800 meters\n16 deadlifts\n16 hang power cleans\n16 push presses\nRun 800 meters\n16 deadlifts\n16 hang power cleans\n16 push presses\npower clean, 95-lb push press\npower clean, 135-lb push press"
+    },
+    {
+      "name": "SISSON",
+      "description": "Complete as many rounds as\npossible in 20 minutes of:\n1 rope climb to 15 feet\n5 burpees\n200-meter run\nIf you’ve got a weight vest or\nbody armor, wear it."
+    },
+    {
+      "name": "HILDY",
+      "description": "5 rounds for time of:\n6 deadlifts\n6 burpees\n5 cleans\n5 chest-to-bar pull-ups\n4 thrusters\n4 muscle-ups\n105-lb thruster\n155-lb thruster\nFor time:\n100-calorie row\n75 thrusters\n50 pull-ups\n75 wall-ball shots\n100-calorie row\nIf you’ve got a weight vest or\nbody armor, wear it.\nmedicine ball to a 9-foot target,\n14-lb weight vest\nball to a 10-foot target,\n20-lb weight vest"
+    },
+    {
+      "name": "WOEHLKE",
+      "description": "T.J.\nBIG SEXY\n3 rounds, each for time, of:\n4 jerks\n5 front squats\n6 power cleans\n40 pull-ups\n50 push-ups\n60 sit-ups\nRest 3 minutes between rounds.\nFor time:\n10 bench presses\n10 strict pull-ups\nMax-set thrusters\nRepeat the triplet until you have\ncompleted 100 thrusters.\n95-lb thruster\n135-lb thruster"
+    },
+    {
+      "name": "MONTI",
+      "description": "5 rounds for time of:\n50 barbell step-ups\n15 cleans\n50 barbell step-ups\n10 snatches\n95-lb clean and snatch\n135-lb clean and snatch"
+    },
+    {
+      "name": "DVB",
+      "description": "For time:\nRun 1 mile with a medicine ball\nThen, 8 rounds of:\n10 wall-ball shots\n1 rope climb\nRun 800 meters with a\nmedicine ball\nThen, 4 rounds of:\n10 wall-ball shots\n1 rope climb\nRun 400 meters with a\nmedicine ball\nThen 2 rounds of:\n10 wall-ball shots\n1 rope climb\n9-foot target\n10-foot target"
+    },
+    {
+      "name": "MARSTON",
+      "description": "Complete as many rounds\nand reps as possible in\n20 minutes of:\n1 deadlift\n10 toes-to-bars\n15 bar-facing burpees"
+    },
+    {
+      "name": "MANUEL",
+      "description": "5 rounds of:\n3 minutes of rope climbs\n2 minutes of squats\n2 minutes of push-ups\n3 minutes to run 400 meters\nWear a weight vest or body\narmor. After the run, rest\nfor the remainder of the 3\nminutes before beginning\nthe next round.\nARTIE\nComplete as many rounds\nand reps as possible in\n20 minutes of:\n5 pull-ups\n10 push-ups\n15 squats\n5 pull-ups\n10 thrusters"
+    },
+    {
+      "name": "TIFF",
+      "description": "On a 25-minute clock:\n1.5-mile run\nThen, in the remaining time,\ncomplete as many rounds and\nreps as possible of:\n11 chest-to-bar pull-ups\n7 hang squat cleans\n7 push presses\nPAUL PENA\n7 rounds, each for time, of:\n100-meter sprint\n19 kettlebell swings\n10 burpee box jumps\nRest 3 minutes between rounds."
+    },
+    {
+      "name": "YETI",
+      "description": "For time:\n25 pull-ups\n10 muscle-ups\n1.5-mile run\n10 muscle-ups\n25 pull-ups"
+    },
+    {
+      "name": "LIAM",
+      "description": "For time:\nRun 800 meters with a plate\n100 toes-to-bars\n50 front squats\n10 rope climbs to 15 feet\nRun 800 meters with a plate\nPartition the toes-to-bars,\nfront squats, and rope climbs\nas needed. Start and finish\nwith the run."
+    },
+    {
+      "name": "MIRON",
+      "description": "5 rounds for time of:\n800-meter run\n23 back squats, ¾ body weight\n13 deadlifts, 1 ½ body weight"
+    },
+    {
+      "name": "RICH",
+      "description": "For time:\n13 squat snatches\nThen, 10 rounds of:\n​10 pull-ups\n100-meter sprint\nThen, 13 squat cleans\nPAT\nDALLAS 5\n5 minutes of:\n​Burpees\nThen, 5 minutes of:\n​7 deadlifts\n​7 box jumps\nThen, 5 minutes of:\n​Turkish get-ups\nThen, 5 minutes of:\n​7 snatches\n​7 push-ups\nThen, 5 minutes of:\n​Rowing for calories\nComplete as many reps as\npossible at each 5-minute\nstation. Rest 1 minute\nbetween stations.\n30-lb dumbbell for Turkish\nget-up, 55-lb snatch\n40-lb dumbbell for Turkish\nget-up, 75-lb snatch"
+    },
+    {
+      "name": "For time:",
+      "description": "Run 800 meters with a plate\nThen, 14 rounds of:\n5 strict pull-ups\n4 burpee box jumps\n3 cleans\nThen,\nRun 800 meters with a plate\n125-lb barbell\n185-lb barbell\nComplete as many rounds as\npossible in 19 minutes of:\n3 muscle-ups\n1 shuttle sprint (5 yards, 10\nyards, 15 yards)\n6 burpee box jump-overs\nOn the burpees, jump over the\nbox without touching it."
+    },
+    {
+      "name": "DUNN",
+      "description": "©CrossFit, LLC. 20260504R1KW\n23 of 31\nCrossFit Hero Workouts\nKEV\nVIOLA\nT\nWith a partner, complete as\nmany rounds and reps as\npossible in 26 minutes of:\n6 deadlifts, each\n9 synchronized barfacing burpees\n9 bar muscle-ups, each\n55-foot partner barbell carry\nComplete as many rounds\nand reps as possible in\n20 minutes of:\n400-meter run\n11 power snatches\n17 pull-ups\n13 power cleans\n5 rounds for time of:\n100-meter sprint\n10 squat clean thrusters\n15 kettlebell swings\n100-meter sprint\nRest 2 minutes\n35-lb kettlebell\n35-lb kettlebell"
+    },
+    {
+      "name": "EMILY",
+      "description": "10 rounds for time of:\n30 double-unders\n15 pull-ups\n30 squats\n100-meter sprint\nRest 2 minutes"
+    },
+    {
+      "name": "COFFLAND",
+      "description": "Hang from a pull-up bar\nfor 6 minutes\nEach time you drop from the\nbar, complete:\n800-meter run\n30 push-ups"
+    },
+    {
+      "name": "HAVANA",
+      "description": "Complete as many rounds as\npossible in 25 minutes of:\n150 double-unders\n50 push-ups\n15 power cleans"
+    },
+    {
+      "name": "ANDY",
+      "description": "For time:\n25 thrusters\n50 box jumps\n75 deadlifts\n1.5-mile run\n75 deadlifts\n50 box jumps\n25 thrusters\nWear a weight vest\nor body armor.\nbarbell, 20-inch box\nbarbell, 24-inch box\nTHE LYON\n5 rounds, each for time, of:\n7 squat cleans\n7 shoulder-to-overheads\n7 burpee chest-to-bar pull-ups\nRest 2 minutes between rounds.\nIdeally, use a pull-up bar that is\n6 inches above your max reach\nwhen standing."
+    },
+    {
+      "name": "JOSIE",
+      "description": "For time, wearing a 20-lb vest\nor body armor:\nRun 1,200 meters\nThen, 4 rounds of:\n12 strict pull-ups\n9 strict dips\n6 strict handstand push-ups\nThen, run 1,200 meters"
+    },
+    {
+      "name": "DORK",
+      "description": "6 rounds for time of:\n60 double-unders\n30 kettlebell swings\n15 burpees"
+    },
+    {
+      "name": "LARRY",
+      "description": "21-18-15-12-9-6-3 reps\nfor time of:\nFront squats\nBar-facing burpees"
+    },
+    {
+      "name": "KERRIE",
+      "description": "LORENZO\nWearing a weight vest, 10\nrounds for time of:\n100-meter sprint\n5 burpees\n20 sit-ups\n15 push-ups\n100-meter sprint\nRest 2 minutes\nFor time:\nRun 1,000 meters\nThen,\n5 rounds of:\n15 push-ups\n20 medicine-ball cleans\n21 burpees\nThen,\nRun 1,000 meters"
+    },
+    {
+      "name": "EVA STRONG",
+      "description": "With a partner, 5 rounds\nfor time of:\n24 double-unders (each)\n19 toes-to-bars (total)\n2 clean and jerks (total)\n400-meter run (together)"
+    },
+    {
+      "name": "CHAD1000X",
+      "description": "MARTIN\nFor time, with a partner:\n2,000-meter row\n100 bodyweight deadlifts\n50 thrusters (65/95 lb)\n1,000-meter row\n100 hand-release push-ups\n50 pull-ups\n500-meter row\n100 sit-ups\n100 wall-ball shots (14/20 lb)\nPEYTON\nComplete as many rounds as\npossible in 20 minutes of:\n10 chest-to-bar pull-ups\n10 dumbbell thrusters, 35/50 lb\nStop and perform 40 doubleunders every 2 minutes,\nincluding at 0:00.\nThen, at the 20:00 mark,\ncomplete a 2-mile run.\nPost rounds of the AMRAP and\nrun time to comments."
+    },
+    {
+      "name": "First posted July 3, 2021.",
+      "description": "For time:\n1,000 weighted box step-ups"
+    },
+    {
+      "name": "GARBO",
+      "description": "On a 21-minute clock:\n400-meter run\nThen, as many rounds and reps\nas possible of:\n10 hand-release push-ups\n4 strict pull-ups\n20 kettlebell swings\n10 kettlebell goblet squats"
+    },
+    {
+      "name": "MCCARTNEY",
+      "description": "For time in teams of 3:\n2,000-meter row\n14 dumbbell thrusters\n34 kettlebell swings\n484 double-unders\n108 burpees\n2,000-meter row\n18 deadlifts\nkettlebell, 155-lb deadlifts\nkettlebell, 225-lb deadlifts\nWESLEY\nOn a 35-minute clock:\n800-meter run\nThen, as many rounds and reps\nas possible of:\n8 box jumps\n6 strict pull-ups\n21-yard walking lunge with a\n45-lb plate overhead"
+    },
+    {
+      "name": "TRIPLE DEUCE",
+      "description": "As many rounds and reps as\npossible in 20 minutes of:\n22 burpees\n22 air squats\n22 pull-ups\n22 sandbag\nground-to-over-the-shoulders\n722-meter sprint"
+    },
+    {
+      "name": "HAMMY",
+      "description": "For time:\n1,200-meter run\n80 box step-overs\n40 hand-release push-ups\n800-meter run\n40 burpees to target\n20 strict pull-ups\n400-meter run\n20 burpee box jumps\n10 ring muscle-ups\n400-meter run\n40 burpees to target\n20 strict pull-ups\n800-meter run\n80 box step-overs\n40 hand-release push-ups\n1,200-meter run\nIIf you have a 14-/20-lb weight\nvest, wear it for as much of the\nworkout as possible.\ntarget for burpees\ntarget for burpees\nK27\n27 rounds for time of:\n5 hang power cleans\n5 burpees\n15 double-unders"
+    },
+    {
+      "name": "BURIAK",
+      "description": "As many rounds and reps as\npossible in 20 minutes of:\n5 squat cleans\n10 burpees over the bar\n15 pull-ups\n200-meter run"
+    },
+    {
+      "name": "GOOSE",
+      "description": "For time with a partner:\n106 deadlifts\nThen, 7 rounds of:\n3 rope climbs\n15 thrusters\n15 kettlebell swings\nThen, 400-meter run with\na plate (Both partners\ncarry a plate.)\n53-lb kettlebell, 25-lb plate\n70-lb kettlebell, 45-lb plate\nGALE FORCE\nOn an 18-minute clock for reps:\n83 wall-ball shots\nThen, as many rounds and reps\nas possible of:\n2 power cleans\n18 push-ups\n24 double-unders\n125-lb barbell\n185-lb barbell"
+    },
+    {
+      "name": "NORTHRUP",
+      "description": "For time:\n26 barbell back-rack step-ups\nThen, 3 rounds of:\n17 power cleans\n19 sit-ups\n21 deadlifts\nThen, 31-calorie row"
+    },
+    {
+      "name": "PIKEY",
+      "description": "For time:\nRun 400 meters\n12 burpee bar muscle-ups\n15 squat snatches\nRun 800 meters\n12 burpee bar muscle-ups\n20 clean and jerks\nRun 800 meters\n12 burpee bar muscle-ups\n18 thrusters\nRun 400 meters\nFINSETH\nAs many rounds and reps as\npossible in 30 minutes of:\n20 box step-ups with a\nweighted backpack\n23 burpees-over-backpack\n19 air squats\nWhen 30 minutes have elapsed,\ncomplete one more set of 19\nsquats together as a group.\nGAGE\nFor time:\n1,996-meter row\nThen, 3 rounds of:\n12 power cleans\n11 back squats\n3 rope climbs to 15 feet\n27 burpees\nThen, 2,024-meter row"
+    },
+    {
+      "name": "FERN",
+      "description": "With a 60-minute time cap:\nFor time:\n2-mile run\nThen 9 rounds of:\n20-calorie row\n20 burpees\nThen 3 rounds for time of\n30 push-ups\n30 pull-ups\n30 burpees"
+    },
+    {
+      "name": "WHITT",
+      "description": "CITY 100\nFor time with a partner:\n31 shuttle runs (7 meters down,\n7 meters back)\nThen,\n10 rounds for time of:\n7 deadlifts\n7 hang power cleans\n7-meter overhead walking lunge\nOne partner must hold a\nbarbell in the front rack while\nthe other partner performs an\nentire round of the complex.\nUpon finishing the round,\nswitch stations.\n8 rounds for time of:\nRun 400 meters\n15 burpee box jump-overs\n10-calorie bike\n6 alternating dumbbell snatches"
+    },
+    {
+      "name": "For time:",
+      "description": "3 rounds of:\n8 burpees\n28 air squats\n9 push-ups\nThen,\nRun 1,000 meters\n25 over-the-shoulder\nsandbag cleans\nRun 1,000 meters\nThen,\n5 rounds of:\n10 deadlifts\n14 box jumps\n10 burpees\ndeadlifts, 20-inch box\ndeadlifts, 24-inch box"
+    },
+    {
+      "name": "DOMINIC J. HALL",
+      "description": "On a running clock:\nFrom 0:00-12:23:\nMax-reps box step-ups\nFrom 12:23-15:00:\nRest\nFrom 15:00-48:00:\nAs many reps as possible of:\n9 deadlifts\n400-m run\n22 push-ups\nbox, 185-lb deadlifts\nbox, 275-lb deadlifts"
+    },
+    {
+      "name": "JONATHON FARMER",
+      "description": "For time:\n1,500-meter row\nThen,\n2 rounds of:\n53 push-ups\n11 pull-ups\n5 shoulder presses\n100-meter farmers carry\n50-meter sled push\n300-meter sprint\nThen,\n1,500-meter row\nfarmers carry, 45-lb sled push\nfarmers carry, 90-lb sled push"
+    },
+    {
+      "name": "RYAN COMAS",
+      "description": "For time as a 3-person team:\n1,065-foot versa climb or 1,065meter row or ski\nThen,\n10 rounds of:\n13 deadlifts\n13 pull-ups\n13-calorie row\n13 back squats\n13 burpees\nThen,\n1,065-foot versa climb or 1,065meter row or ski\nTIMOTHY HELTON\nFor time, as a 3-person team:\n2,364-meter row\nThen,\n10 rounds of:\n49 wall-ball shots\n26 pull-ups\n200-meter run\n8 ring muscle-ups\n40 deadlifts\nThen,\nOn a 10-minute clock:\nBuild to a heavy single back\nsquat for each team member.\nClock begins immediately upon\ncompletion of the 10 rounds.\n105-lb deadlift\n155-lb deadlift"
+    },
+    {
+      "name": "TOPSY",
+      "description": "Complete as many rounds\nand reps as possible in\n25 minutes of:\n3 ring muscle-ups\n8 thrusters\n17-calorie row"
+    },
+    {
+      "name": "ESTRADA",
+      "description": "100 box step-ups with a\nweighted backpack\nThen,\n3 rounds of:\n800-meter run\n17-calorie bike\n25 front squats\n135 lb front squats\n185 lb front squats"
+    },
+    {
+      "name": "LEEHAN",
+      "description": "7 rounds for time of:\n6 deadlifts\n6 air squats\n6 box jumps (20/24 inches)\nAdd 6 reps to each movement\nafter every round.\nThen, 1,742-meter row"
+    },
+    {
+      "name": "NUNEZ",
+      "description": "For time:\n800m run\n60 burpee box jump overs\n50 pull-ups\n40 squats (weight 1)\n600m run\n30 burpee box jump overs\n25 chest-to-bar pull-ups\n20 squats (weight 2)\n400m run\n15 burpee box jump overs\n12 bar muscle-ups\n10 squat cleans (weight 3)"
+    },
+    {
+      "name": "DREW",
+      "description": "For time, all with a weight\nvest: (Each round honors one\nof the heroes who died in the\nhelicopter crash.)\nKraus: 200-meter run, 30 pullups, 30 hand-release push-ups,\n4 deadlifts*\nRest 30 seconds\nScott: 400-meter run, 25 pullups, 25 hand-release push-ups,\n4 deadlifts*\nRest 30 seconds\nGood: 600-meter run, 20 pullups, 20 hand-release push-ups,\n4 deadlifts*\nRest 30 seconds\nCully: 800-meter run, 15 pullups, 15 hand-release push-ups,\n4 deadlifts*\nRest 30 seconds\nNight Stalkers: 269 step-ups\n*Prescribed weight for deadlifts\nis 1.5 times bodyweight.\nMALONEY\n6 rounds for time of:\n300-meter shuttle run (50meters out and back x 6, 100meters out and back x 3)\n16 deadlifts\n6 hang power cleans\nRest 2 minutes between sets."
+    },
+    {
+      "name": "JACK’S TRIANGLE",
+      "description": "On a 23:00 clock, for total reps:\nMinutes 0:00-2:00\nMax deadlifts (155/225 lb)\nMinutes 2:00-21:00\nAs many rounds and reps as\npossible in 19 minutes of:\n4 strict pull-ups\n11 box jumps\n13 hand-release push-ups\n23-calorie bike\nMinutes 21:00-23:00\nMax deadlifts"
+    }
+  ]
+}

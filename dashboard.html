@@ -856,8 +856,9 @@ a{color:inherit;text-decoration:none}
     <button class="tab" data-tab="log"><span class="tab-num">03</span>訓練紀錄</button>
     <button class="tab" data-tab="schedule"><span class="tab-num">04</span>開課時間</button>
     <button class="tab" data-tab="library"><span class="tab-num">05</span>補強庫</button>
-    <button class="tab" onclick="window.open('tools.html','_blank')" style="white-space:nowrap;"><span class="tab-num">06</span>訓練工具</button>
-    <button class="tab" data-tab="admin" id="admin-tab-btn" style="display:none;"><span class="tab-num">07</span>後台</button>
+    <button class="tab" data-tab="hero"><span class="tab-num">06</span>Hero WOD</button>
+    <button class="tab" onclick="window.open('tools.html','_blank')" style="white-space:nowrap;"><span class="tab-num">07</span>訓練工具</button>
+    <button class="tab" data-tab="admin" id="admin-tab-btn" style="display:none;"><span class="tab-num">08</span>後台</button>
     <span class="tab-ink" id="tab-ink"></span>
   </div>
 
@@ -969,6 +970,26 @@ a{color:inherit;text-decoration:none}
       <div class="lib-tag-row" id="lib-tag-row"></div>
     </div>
     <div class="lib-results" id="lib-results"></div>
+  </div>
+
+  <!-- ── Hero WOD Page ── -->
+  <div class="page" id="tab-hero">
+    <div class="page-head">
+      <h1>HERO<br>WOD</h1>
+      <div class="lede"><b>140 WORKOUTS</b>以英雄之名命名的訓練。</div>
+    </div>
+    <div style="padding:0 22px 20px;display:flex;gap:10px;align-items:center;">
+      <input id="hero-search" type="text" placeholder="搜尋 WOD 名稱…"
+        style="width:100%;padding:12px 16px;border:2px solid var(--ink);background:var(--paper);
+               color:var(--ink);font-size:14px;font-family:var(--mono);outline:none;letter-spacing:.04em;"
+        oninput="filterHeroWODs()">
+      <button onclick="rollHeroWOD()" style="flex-shrink:0;padding:12px 18px;background:var(--ink);color:var(--accent);font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap;">🎲 骰骰看</button>
+    </div>
+    <div id="hero-week-highlight" style="display:none;padding:0 22px 24px;">
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px;">本週 Hero WODs</div>
+      <div id="hero-week-chips" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+    </div>
+    <div id="hero-results" style="display:flex;flex-direction:column;gap:1px;background:var(--rule-soft);border:2px solid var(--ink);overflow:hidden;margin:0 22px 40px;"></div>
   </div>
 
   <!-- ── Admin Page ── -->
@@ -1151,12 +1172,14 @@ function setupTabs() {
   });
 }
 
+let _heroInited = false;
 function showTab(tabId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + tabId).classList.add('active');
   const el = document.querySelector(`[data-tab="${tabId}"]`);
   if (el) { el.classList.add('active'); updateTabInk(el); }
+  if (tabId === 'hero' && !_heroInited) { _heroInited = true; initHeroPage(); }
 }
 
 function updateTabInk(activeEl) {
@@ -2083,6 +2106,134 @@ async function adminSaveAllWOD() {
   await sb.from('wod_cache').upsert({ id:'current', data:wod, updated_at:new Date().toISOString() });
   btn.textContent = '儲存全部課表 →';
   document.getElementById('admin-save-status').textContent = '✓ 已儲存 ' + new Date().toLocaleTimeString('zh-TW');
+}
+
+// ── Hero WODs ──
+let _heroWODs = null;
+
+const HERO_WEEK_NAMES = ['MURPH','ADRIAN','SHAM','WESTON','BRIAN','LAURA','PARTNER WESTON'];
+
+const HERO_SCALING = {
+  'MURPH': ['可拆分：20 rounds of 5 pull-ups / 10 push-ups / 15 squats','用跳躍引體取代 pull-ups','用膝蓋伏地挺身取代 push-ups','不穿背心'],
+  'ADRIAAN': ['forward roll 改為滾背練習','wall walk 改為肩推倒立靠牆','toes-to-bars 改為 knees-to-elbows'],
+  'SHAM': ['deadlift 改用自身體重的 50%','sprint 改為快走或慢跑'],
+  'BRIAN': ['rope climb 改為 3 pull-ups + 2 ring rows','back squat 減重 20%'],
+  'LAURA': ['power clean 減重','可單人完成縮短輪次'],
+  'WESTON': ['farmers carry 減輕重量','waiters walk 改用 KB'],
+  'DT': ['重量降為建議的 60–70%'],
+  'NATE': ['muscle-up 改為 jumping muscle-up','handstand push-up 改為 pike push-up'],
+  'DEFAULT': ['降低重量至建議的 60–70%','縮短距離或輪次','用替代動作取代技術動作']
+};
+
+async function loadHeroWODs() {
+  if (_heroWODs) return;
+  const res = await fetch('data/hero_wods.json').catch(() => null);
+  if (!res) { _heroWODs = []; return; }
+  const d = await res.json();
+  _heroWODs = d.wods || [];
+}
+
+function getScaling(name) {
+  const key = Object.keys(HERO_SCALING).find(k => name.toUpperCase().includes(k));
+  return HERO_SCALING[key] || HERO_SCALING['DEFAULT'];
+}
+
+function heroCard(wod) {
+  const scaling = getScaling(wod.name);
+  const scalingHtml = scaling.map(s => `<li style="font-size:12px;color:var(--ink-mute);font-family:var(--mono);padding:3px 0;border-bottom:1px solid var(--rule-faint);">${s}</li>`).join('');
+  const id = 'hw-' + wod.name.replace(/\s/g,'_');
+  return `
+    <div class="lib-card" id="${id}" onclick="toggleHeroCard('${id}')">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div style="font-family:var(--sans);font-size:18px;font-weight:900;letter-spacing:-0.02em;text-transform:uppercase;">${wod.name}</div>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--ink-mute);letter-spacing:.1em;">展開 ↓</span>
+      </div>
+      <div id="${id}-body" style="display:none;margin-top:14px;border-top:1px solid var(--rule-faint);padding-top:14px;">
+        <pre style="font-family:var(--mono);font-size:12px;white-space:pre-wrap;line-height:1.7;color:var(--ink);margin-bottom:16px;">${wod.description}</pre>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--warn);margin-bottom:8px;">降階建議</div>
+        <ul style="padding-left:0;list-style:none;">${scalingHtml}</ul>
+      </div>
+    </div>`;
+}
+
+function toggleHeroCard(id) {
+  const body = document.getElementById(id + '-body');
+  const arrow = document.querySelector(`#${id} span`);
+  const open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : 'block';
+  if (arrow) arrow.textContent = open ? '展開 ↓' : '收合 ↑';
+}
+
+async function initHeroPage() {
+  await loadHeroWODs();
+  // Check if current week has hero WODs (5/25-5/31 week)
+  const today = new Date();
+  const y = today.getFullYear(), m = today.getMonth()+1, day = today.getDate();
+  const isHeroWeek = (y===2026 && m===5 && day>=25 && day<=31);
+  if (isHeroWeek) {
+    const thisWeekHeroes = _heroWODs.filter(w => HERO_WEEK_NAMES.some(n => w.name.toUpperCase().includes(n)));
+    if (thisWeekHeroes.length) {
+      document.getElementById('hero-week-highlight').style.display = 'block';
+      document.getElementById('hero-week-chips').innerHTML = thisWeekHeroes.map(w =>
+        `<span onclick="highlightHero('${w.name}')" style="font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;background:var(--accent);color:var(--ink);cursor:pointer;">${w.name}</span>`
+      ).join('');
+    }
+  }
+  renderHeroWODs(_heroWODs);
+}
+
+function highlightHero(name) {
+  document.getElementById('hero-search').value = name;
+  filterHeroWODs();
+  // Auto-expand the card
+  setTimeout(() => {
+    const id = 'hw-' + name.replace(/\s/g,'_');
+    const body = document.getElementById(id + '-body');
+    if (body && body.style.display === 'none') toggleHeroCard(id);
+    document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'center'});
+  }, 100);
+}
+
+function filterHeroWODs() {
+  const q = document.getElementById('hero-search').value.trim().toLowerCase();
+  const filtered = q ? _heroWODs.filter(w => w.name.toLowerCase().includes(q) || w.description.toLowerCase().includes(q)) : _heroWODs;
+  renderHeroWODs(filtered);
+}
+
+function renderHeroWODs(list) {
+  const el = document.getElementById('hero-results');
+  if (!list.length) {
+    el.innerHTML = `<div class="lib-empty">找不到符合的 Hero WOD</div>`;
+    return;
+  }
+  el.innerHTML = list.map(heroCard).join('');
+}
+
+// ── Roll a random Hero WOD ──
+function rollHeroWOD() {
+  if (!_heroWODs || !_heroWODs.length) return;
+  const wod = _heroWODs[Math.floor(Math.random() * _heroWODs.length)];
+  const scaling = getScaling(wod.name);
+  const scalingHtml = scaling.map(s => `• ${s}`).join('\n');
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;padding:24px;';
+  overlay.innerHTML = `
+    <div style="background:var(--paper);max-width:480px;width:100%;max-height:80vh;overflow-y:auto;">
+      <div style="background:var(--ink);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">🎲 Random Hero WOD</span>
+        <button onclick="this.closest('[style]').remove()" style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);">✕ 關閉</button>
+      </div>
+      <div style="padding:24px;">
+        <div style="font-size:32px;font-weight:900;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:16px;">${wod.name}</div>
+        <pre style="font-family:var(--mono);font-size:13px;white-space:pre-wrap;line-height:1.7;color:var(--ink);margin-bottom:20px;">${wod.description}</pre>
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--warn);margin-bottom:8px;">降階建議</div>
+        <pre style="font-family:var(--mono);font-size:12px;white-space:pre-wrap;line-height:1.8;color:var(--ink-mute);">${scalingHtml}</pre>
+        <button onclick="this.closest('.roll-overlay').remove();rollHeroWOD();" style="margin-top:20px;width:100%;padding:14px;background:var(--accent);color:var(--ink);font-weight:800;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;">🎲 再骰一次</button>
+      </div>
+    </div>`;
+  overlay.classList.add('roll-overlay');
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
 }
 
 // ── Auth ──
