@@ -26,58 +26,39 @@
   ],
   "supplemental": {
     "label": "本週加強訓練",
-    "title": "WORK YOUR WEAKNESS",
-    "week_start": "2026-04-27",
+    "title": "HERO WOD WEEK",
+    "week_start": "2026-05-25",
     "blocks": [
       {
-        "name": "Strength I",
-        "type": "For load",
+        "name": "Hero WOD 週說明",
+        "type": "本週重點",
         "movements": [
-          "Snatch、Clean 或 Jerk（三選一）",
-          "5 下 × 2 組 · 50–60%+",
-          "4 下 × 5 組 · 60–70%+",
-          "3 下 × 3 組 · 70–80%"
+          "本週共安排 6 個 Hero WOD（MURPH、ADRIAN、SHAM、PARTNER WESTON、BRIAN、LAURA）",
+          "每日 WOD 即為本週訓練主軸，不需額外加練",
+          "控制總訓練量，組間與課間充分休息"
         ],
-        "notes": "本週是 Strength I 循環第三週，繼續用第一週選定的動作。以最近 1RM 計算重量，組間充分休息。"
+        "notes": "Hero WOD 週不建議額外疊加大重量訓練。如果你已完成當天 Hero WOD 並感覺良好，可以做以下的技術或恢復性補強。"
       },
       {
-        "name": "Strength II",
-        "type": "For load",
+        "name": "技術補強",
+        "type": "每日可選",
         "movements": [
-          "前蹲舉（Front Squat）",
-          "1-1-1-1-1-1-1"
+          "引體向上：嚴格式 3 × 5–8（Murph 後隔天不做）",
+          "雙槓撐體：嚴格式 3 × 8–10",
+          "手倒立練習：靠牆撐 3 × :30"
         ],
-        "notes": "Strength II 循環第三週，前蹲舉持續四週。目標是找到今日最重的單下，逐組加重。每 3 分鐘做一組。"
+        "notes": "做完 Hero WOD 主課後，如果體力允許再做。感覺疲勞就跳過，下週再補。"
       },
       {
-        "name": "Strength III",
-        "type": "3 rounds for completion",
+        "name": "恢復與活動度",
+        "type": "每日推薦",
         "movements": [
-          "沙袋熊抱走 100 公尺（32/45 kg）",
-          "過頭持槓片走 100 公尺（16/20 kg）",
-          "向後拉雪橇 100 公尺（20/40 kg）"
+          "泡沫滾筒：大腿前後側、臀部各 1:00",
+          "髖屈肌伸展（弓箭步）：每側 :45 × 2",
+          "肩膀鬆動（PVC pass-through）× 15",
+          "輕鬆划船 5–10 分鐘（Zone 2 配速）"
         ],
-        "notes": "選擇能不間斷完成的重量，維持穩定節奏。動作之間可充分休息。熊抱走保持挺胸；過頭走肋骨收緊、手肘鎖定。"
-      },
-      {
-        "name": "Skill I",
-        "type": "3 sets",
-        "movements": [
-          "Skin-the-cat × 10（吊環）",
-          "棒式撐地（手掌）:30",
-          "嚴格引體向上 × 10",
-          "棒式撐地（前臂）:30"
-        ],
-        "notes": "組間休息 2:00–3:00。不熟悉 skin-the-cat 可先看示範影片。引體向上可減量、用彈力帶輔助或改做 ring row。"
-      },
-      {
-        "name": "Stamina I",
-        "type": "15:00 clock",
-        "movements": [
-          "划船機 / 腳踏車 / 滑雪機，計總距離",
-          "每分鐘整點衝刺 :15 秒"
-        ],
-        "notes": "從慢速開始，衝刺時盡量提速。衝刺後充分降速確保能反覆重複。計分為 15 分鐘總距離。"
+        "notes": "Hero WOD 週每天都要做恢復。不要因為「感覺還好」就跳過——累積性疲勞會在週中後段爆發。"
       }
     ]
   }
