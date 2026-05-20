@@ -143,6 +143,63 @@ a { color: inherit; text-decoration: none; }
 }
 .gym-label-addr { font-family: var(--mono); font-size: 12px; color: var(--fg-4); }
 
+/* ── AI Planner ── */
+.planner-section { padding: 80px 24px; background: var(--ink-2); border-top: 1px solid var(--rule-soft); }
+.planner-inner { max-width: 720px; margin: 0 auto; }
+
+.planner-form {
+  background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 16px;
+  padding: 32px; margin-top: 40px; display: flex; flex-direction: column; gap: 24px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:540px) { .form-row { grid-template-columns: 1fr; gap: 12px; } }
+.form-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+@media(max-width:540px) { .form-row.triple { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-3); }
+.form-input, .form-select {
+  background: var(--ink); border: 1px solid var(--rule); color: var(--fg);
+  padding: 12px 14px; font-size: 15px; font-family: var(--sans); border-radius: 8px;
+  outline: none; transition: border-color 0.2s; width: 100%;
+}
+.form-input:focus, .form-select:focus { border-color: var(--live); }
+.form-input::placeholder { color: var(--fg-4); }
+.form-select option { background: var(--ink-3); }
+
+.btn-generate {
+  background: var(--live); color: var(--live-ink);
+  padding: 16px 32px; border-radius: 999px; border: none;
+  font-size: 15px; font-weight: 700; cursor: pointer; font-family: var(--sans);
+  transition: opacity 0.2s, transform 0.1s; display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.btn-generate:hover { opacity: 0.9; }
+.btn-generate:active { transform: scale(0.98); }
+.btn-generate:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-generate .spin { display: none; width: 18px; height: 18px; border: 2px solid rgba(0,0,0,0.3); border-top-color: var(--live-ink); border-radius: 50%; animation: spin 0.7s linear infinite; }
+.btn-generate.loading .spin { display: block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.plan-output { margin-top: 32px; display: none; }
+.plan-warning {
+  background: rgba(166,230,53,0.1); border: 1px solid rgba(166,230,53,0.35);
+  border-radius: 12px; padding: 16px 20px; margin-bottom: 24px;
+  font-family: var(--mono); font-size: 12px; color: var(--live); letter-spacing: 0.04em;
+  display: flex; align-items: center; gap: 12px;
+}
+.plan-content {
+  background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 16px;
+  padding: 32px; white-space: pre-wrap; font-size: 14px; line-height: 1.85;
+  color: var(--fg-2); font-family: var(--mono);
+}
+.plan-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+.btn-download {
+  background: var(--ink-3); border: 1px solid var(--rule); color: var(--fg-2);
+  padding: 12px 24px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: var(--mono); letter-spacing: 0.04em; transition: all 0.15s;
+}
+.btn-download:hover { border-color: var(--fg-3); color: var(--fg); }
+.planner-err { font-family: var(--mono); font-size: 12px; color: #e07b6a; margin-top: 12px; display: none; }
+
 /* ── Marketing sections ── */
 .section { padding: 80px 24px; max-width: 720px; margin: 0 auto; }
 .section-label {
@@ -206,7 +263,7 @@ a { color: inherit; text-decoration: none; }
     </div>
 
     <div class="login-actions">
-      <button class="btn-google" onclick="signInWithGoogle()">
+      <button class="btn-google" id="btn-google" onclick="signInWithGoogle()">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -215,6 +272,9 @@ a { color: inherit; text-decoration: none; }
         </svg>
         使用 Google 帳號登入
       </button>
+      <a class="btn-google" id="btn-enter" href="dashboard.html" style="display:none;">
+        進入會員中心 →
+      </a>
       <div id="error-msg"></div>
     </div>
 
@@ -231,6 +291,81 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ── AI Plan Generator ── -->
+<section class="planner-section" id="planner">
+  <div class="planner-inner">
+    <p class="section-label">AI PROGRAM GENERATOR</p>
+    <h2 class="section-title">填入你的數據<br>AI 幫你規劃兩週課表</h2>
+
+    <div class="planner-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">訓練目標</label>
+          <select id="pg-style" class="form-select">
+            <option value="crossfit">CrossFit 功能性體能</option>
+            <option value="bodybuilding">健美 · 增肌塑形</option>
+            <option value="powerlifting">健力 · 最大肌力</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">訓練經驗</label>
+          <select id="pg-exp" class="form-select">
+            <option value="beginner">初學者（&lt; 1年）</option>
+            <option value="intermediate">中級（1–3 年）</option>
+            <option value="advanced">進階（3 年以上）</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">身高（cm）</label>
+          <input id="pg-height" type="number" class="form-input" placeholder="170">
+        </div>
+        <div class="form-group">
+          <label class="form-label">體重（kg）</label>
+          <input id="pg-weight" type="number" class="form-input" placeholder="70">
+        </div>
+      </div>
+
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--fg-4);text-transform:uppercase;">最大重量（選填，有填更準確）</div>
+      <div class="form-row triple">
+        <div class="form-group">
+          <label class="form-label">深蹲 1RM（kg）</label>
+          <input id="pg-squat" type="number" class="form-input" placeholder="例：100">
+        </div>
+        <div class="form-group">
+          <label class="form-label">硬舉 1RM（kg）</label>
+          <input id="pg-deadlift" type="number" class="form-input" placeholder="例：120">
+        </div>
+        <div class="form-group">
+          <label class="form-label">臥推 1RM（kg）</label>
+          <input id="pg-bench" type="number" class="form-input" placeholder="例：80">
+        </div>
+      </div>
+
+      <button class="btn-generate" id="pg-btn" onclick="generatePlan()">
+        <div class="spin"></div>
+        <span id="pg-btn-text">生成我的兩週課表</span>
+      </button>
+      <div class="planner-err" id="pg-err"></div>
+    </div>
+
+    <div class="plan-output" id="pg-output">
+      <div class="plan-warning">
+        課表不會自動儲存，請截圖或點「下載課表」保存。登入後可儲存至會員帳號。
+      </div>
+      <div class="plan-content" id="pg-plan"></div>
+      <div class="plan-actions">
+        <button class="btn-download" onclick="downloadPlan()">下載課表（.txt）</button>
+        <button class="btn-download" onclick="window.print()">列印 / 儲存 PDF</button>
+        <button class="btn-download" id="pg-save-btn" style="display:none;border-color:var(--live);color:var(--live);" onclick="savePlan()">儲存至我的帳號</button>
+      </div>
+      <div id="pg-save-msg" style="font-family:var(--mono);font-size:11px;color:var(--live);margin-top:8px;display:none;">已儲存至你的帳號</div>
+    </div>
   </div>
 </section>
 
@@ -323,6 +458,95 @@ a { color: inherit; text-decoration: none; }
 <script>
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+// ── AI Plan Generator ──────────────────────────
+let _planText = '';
+let _currentUser = null;
+
+async function generatePlan() {
+  const height = document.getElementById('pg-height').value.trim();
+  const weight = document.getElementById('pg-weight').value.trim();
+  if (!height || !weight) { showPgErr('請填寫身高和體重'); return; }
+  const btn = document.getElementById('pg-btn');
+  btn.disabled = true;
+  btn.classList.add('loading');
+  document.getElementById('pg-btn-text').textContent = 'AI 分析中，請稍候…';
+  document.getElementById('pg-err').style.display = 'none';
+  document.getElementById('pg-output').style.display = 'none';
+
+  try {
+    const res = await fetch('/api/generate-plan', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        style: document.getElementById('pg-style').value,
+        experience: document.getElementById('pg-exp').value,
+        height, weight,
+        squat1rm: document.getElementById('pg-squat').value || null,
+        deadlift1rm: document.getElementById('pg-deadlift').value || null,
+        bench1rm: document.getElementById('pg-bench').value || null,
+      })
+    });
+    const data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || '生成失敗');
+    _planText = data.plan;
+    document.getElementById('pg-plan').textContent = data.plan;
+    document.getElementById('pg-output').style.display = 'block';
+    // 已登入才顯示儲存按鈕
+    document.getElementById('pg-save-btn').style.display = _currentUser ? '' : 'none';
+    document.getElementById('pg-save-msg').style.display = 'none';
+    document.getElementById('pg-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch(e) {
+    showPgErr(e.message);
+  } finally {
+    btn.disabled = false;
+    btn.classList.remove('loading');
+    document.getElementById('pg-btn-text').textContent = '生成我的兩週課表';
+  }
+}
+
+function showPgErr(msg) {
+  const el = document.getElementById('pg-err');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function downloadPlan() {
+  if (!_planText) return;
+  const blob = new Blob([_planText], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '4SC_訓練課表.txt';
+  a.click();
+}
+
+async function savePlan() {
+  if (!_currentUser || !_planText) return;
+  const btn = document.getElementById('pg-save-btn');
+  btn.textContent = '儲存中…';
+  btn.disabled = true;
+  const { error } = await sb.from('ai_plans').insert({
+    member_id: _currentUser.id,
+    style: document.getElementById('pg-style').value,
+    experience: document.getElementById('pg-exp').value,
+    inputs: {
+      height: document.getElementById('pg-height').value,
+      weight: document.getElementById('pg-weight').value,
+      squat1rm: document.getElementById('pg-squat').value || null,
+      deadlift1rm: document.getElementById('pg-deadlift').value || null,
+      bench1rm: document.getElementById('pg-bench').value || null,
+    },
+    plan_text: _planText
+  });
+  if (!error) {
+    document.getElementById('pg-save-msg').style.display = 'block';
+    btn.style.display = 'none';
+  } else {
+    btn.textContent = '儲存至我的帳號';
+    btn.disabled = false;
+    showPgErr('儲存失敗：' + error.message);
+  }
+}
+
 async function signInWithGoogle() {
   const { error } = await sb.auth.signInWithOAuth({
     provider: 'google',
@@ -335,15 +559,13 @@ async function signInWithGoogle() {
   }
 }
 
-let routingDone = false;
-
 async function checkMemberStatus(user) {
-  if (routingDone) return;
-  routingDone = true;
+  _currentUser = user;
   const { data } = await sb.from('members').select('status').eq('id', user.id).single();
   if (!data) { window.location.href = 'onboarding.html'; return; }
-  if (data.status === 'approved') { window.location.href = 'dashboard.html'; return; }
-  if (data.status === 'pending')  { window.location.href = 'pending.html'; return; }
+  if (data.status === 'pending') { window.location.href = 'pending.html'; return; }
+  document.getElementById('btn-google').style.display = 'none';
+  document.getElementById('btn-enter').style.display = '';
 }
 
 sb.auth.onAuthStateChange((event, session) => {

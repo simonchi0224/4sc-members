@@ -857,8 +857,9 @@ a{color:inherit;text-decoration:none}
     <button class="tab" data-tab="schedule"><span class="tab-num">04</span>開課時間</button>
     <button class="tab" data-tab="library"><span class="tab-num">05</span>補強庫</button>
     <button class="tab" data-tab="hero"><span class="tab-num">06</span>Hero WOD</button>
-    <button class="tab" onclick="window.open('tools.html','_blank')" style="white-space:nowrap;"><span class="tab-num">07</span>訓練工具</button>
-    <button class="tab" data-tab="admin" id="admin-tab-btn" style="display:none;"><span class="tab-num">08</span>後台</button>
+    <button class="tab" data-tab="myplan"><span class="tab-num">07</span>AI 課表</button>
+    <button class="tab" onclick="window.open('tools.html','_blank')" style="white-space:nowrap;"><span class="tab-num">08</span>訓練工具</button>
+    <button class="tab" data-tab="admin" id="admin-tab-btn" style="display:none;"><span class="tab-num">09</span>後台</button>
     <span class="tab-ink" id="tab-ink"></span>
   </div>
 
@@ -991,6 +992,20 @@ a{color:inherit;text-decoration:none}
     </div>
     <div id="hero-tag-row" style="padding:0 22px 16px;display:flex;gap:6px;flex-wrap:wrap;"></div>
     <div id="hero-results" style="display:flex;flex-direction:column;gap:1px;background:var(--rule-soft);border:2px solid var(--ink);overflow:hidden;margin:0 22px 40px;"></div>
+  </div>
+
+  <!-- ── AI 課表 Page ── -->
+  <div class="page" id="tab-myplan">
+    <div class="page-head">
+      <h1>AI<br>課表</h1>
+      <div class="lede"><b>MY PROGRAMS</b>儲存的 AI 個人化課表。</div>
+    </div>
+    <div style="padding:0 22px 12px;">
+      <a href="/" style="display:inline-block;padding:10px 22px;background:var(--ink);color:var(--accent);font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;">+ 生成新課表</a>
+    </div>
+    <div id="myplan-list" style="padding:0 22px 60px;display:flex;flex-direction:column;gap:12px;">
+      <div style="font-family:var(--mono);font-size:12px;color:var(--ink-mute);padding:20px 0;">載入中…</div>
+    </div>
   </div>
 
   <!-- ── Admin Page ── -->
@@ -1174,6 +1189,7 @@ function setupTabs() {
 }
 
 let _heroInited = false;
+let _myplanInited = false;
 function showTab(tabId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -1181,6 +1197,69 @@ function showTab(tabId) {
   const el = document.querySelector(`[data-tab="${tabId}"]`);
   if (el) { el.classList.add('active'); updateTabInk(el); }
   if (tabId === 'hero' && !_heroInited) { _heroInited = true; initHeroPage(); }
+  if (tabId === 'myplan' && !_myplanInited) { _myplanInited = true; loadMyPlans(); }
+}
+
+const STYLE_LABEL = { crossfit: 'CrossFit', bodybuilding: '健美', powerlifting: '健力' };
+const EXP_LABEL = { beginner: '初學者', intermediate: '中級', advanced: '進階' };
+
+async function loadMyPlans() {
+  const list = document.getElementById('myplan-list');
+  const { data, error } = await sb.from('ai_plans').select('*').order('created_at', { ascending: false });
+  if (error || !data?.length) {
+    list.innerHTML = `<div style="font-family:var(--mono);font-size:12px;color:var(--ink-mute);padding:20px 0;">還沒有儲存的課表。<a href="/" style="color:var(--accent);text-decoration:underline;">去生成一份</a></div>`;
+    return;
+  }
+  list.innerHTML = data.map(p => {
+    const date = new Date(p.created_at).toLocaleDateString('zh-TW', { month: 'numeric', day: 'numeric' });
+    const label = `${STYLE_LABEL[p.style]||p.style} · ${EXP_LABEL[p.experience]||p.experience}`;
+    const inputs = p.inputs || {};
+    const meta = [inputs.height && `${inputs.height}cm`, inputs.weight && `${inputs.weight}kg`, inputs.squat1rm && `深蹲${inputs.squat1rm}kg`, inputs.deadlift1rm && `硬舉${inputs.deadlift1rm}kg`].filter(Boolean).join(' / ');
+    return `
+      <div style="border:2px solid var(--ink);background:var(--paper);">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;cursor:pointer;background:var(--bg-soft);" onclick="togglePlan('plan-${p.id}')">
+          <div>
+            <div style="font-family:var(--mono);font-weight:800;font-size:13px;letter-spacing:.06em;">${label}</div>
+            <div style="font-family:var(--mono);font-size:10px;color:var(--ink-mute);margin-top:3px;">${date}${meta ? ' · ' + meta : ''}</div>
+          </div>
+          <span id="icon-${p.id}" style="font-family:var(--mono);font-size:12px;">▶</span>
+        </div>
+        <div id="plan-${p.id}" style="display:none;padding:20px 18px;white-space:pre-wrap;font-size:13px;line-height:1.8;font-family:var(--mono);color:var(--ink-2);border-top:1px solid var(--rule-soft);">
+          ${p.plan_text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+          <div style="margin-top:16px;display:flex;gap:10px;">
+            <button onclick="downloadSavedPlan('${p.id}')" style="padding:8px 16px;border:1.5px solid var(--ink);background:none;font-family:var(--mono);font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.06em;">下載 .txt</button>
+            <button onclick="deletePlan('${p.id}')" style="padding:8px 16px;border:1.5px solid var(--warn);color:var(--warn);background:none;font-family:var(--mono);font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.06em;">刪除</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+  window._savedPlans = Object.fromEntries(data.map(p => [p.id, p.plan_text]));
+}
+
+function togglePlan(elId) {
+  const el = document.getElementById(elId);
+  const id = elId.replace('plan-', '');
+  const icon = document.getElementById('icon-' + id);
+  const open = el.style.display !== 'none';
+  el.style.display = open ? 'none' : 'block';
+  if (icon) icon.textContent = open ? '▶' : '▼';
+}
+
+function downloadSavedPlan(id) {
+  const text = window._savedPlans?.[id];
+  if (!text) return;
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '4SC_AI課表.txt';
+  a.click();
+}
+
+async function deletePlan(id) {
+  if (!confirm('確定要刪除這份課表？')) return;
+  await sb.from('ai_plans').delete().eq('id', id);
+  _myplanInited = false;
+  loadMyPlans();
 }
 
 function updateTabInk(activeEl) {

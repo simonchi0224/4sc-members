@@ -228,6 +228,54 @@ button{font:inherit;cursor:pointer;background:none;border:0;padding:0}
 .week-header.current{background:var(--accent);color:var(--ink);}
 .week-body{display:none;padding:12px;}
 .week-body.open{display:block;}
+
+/* ── Mobile ── */
+@media(max-width:640px){
+  .topbar{padding:12px 16px;}
+  .wrap{padding:20px 14px 60px;}
+  .tab-bar{padding:0 14px;}
+  .tab{margin-right:18px;font-size:12px;}
+
+  /* Member filter buttons wrap */
+  .member-filter-bar{gap:6px;}
+  .mf-btn{padding:7px 12px;font-size:11px;}
+
+  /* Hide table, show card layout */
+  .member-table thead{display:none;}
+  .member-table,.member-table tbody,.member-row,.member-row td{
+    display:block;width:100%;
+  }
+  .member-row{
+    border:1.5px solid var(--rule-soft);
+    margin-bottom:10px;padding:14px;
+  }
+  .member-row:hover{background:var(--bg-soft);}
+  .member-row td{
+    padding:4px 0;white-space:normal;border:none;
+    font-size:13px;
+  }
+  .member-row td.td-email{font-size:11px;word-break:break-all;}
+  .table-wrap{overflow-x:unset;}
+
+  /* Action buttons full-width on mobile */
+  .action-btn{
+    display:block;width:100%;margin-right:0;margin-bottom:6px;
+    text-align:center;padding:10px 14px;
+  }
+
+  /* Date input full width */
+  .date-input{width:100%;padding:8px 10px;font-size:13px;}
+
+  /* Note textarea */
+  .note-textarea{font-size:12px;}
+
+  /* WOD editor */
+  .wod-card{padding:16px;}
+  .week-header{padding:12px 14px;font-size:11px;}
+  .week-body{padding:8px;}
+  .field-input{font-size:13px;padding:9px 10px;}
+  .save-all-btn{width:100%;padding:16px;}
+}
 </style>
 </head>
 <body>

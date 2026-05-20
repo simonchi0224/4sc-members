@@ -1048,6 +1048,137 @@
       "type": "Active Recovery / Hero Makeup",
       "description": "Program any Hero workout, make up a missed Hero workout from this week, or perform the active recovery session.\n\nActive recovery session:\n5:00 run, row, bike, or ski\n2:00 couch stretch/side\n1:00 rotational med-ball slam (10/15 lb)\n5:00 run, row, bike, or ski\n2:00 alternating Spiderman twists\n2:00 straddle stretch\n1:00 med-ball slams\n5:00 run, row, bike, or ski\n2:00 banded shoulder stretch/side\n1:00 hand-to-hand kettlebell swings (26/35 lb)\n5:00 run, row, bike, or ski\n– Focus on nasal breathing only, maintain no more than 20 breaths per minute.",
       "coach_notes": "恢復日。可補做這週任何 Hero WOD。"
+    },
+    {
+      "date": "2026-06-01",
+      "day": "MON",
+      "name": "260601",
+      "tag": "",
+      "type": "4 × AMRAP 3",
+      "description": "21 AbMat sit-ups\n15 box jump-overs (20/24 in)\n9 squat cleans (43/61 kg)\nMax toes-to-bars in remaining time\n– Rest 3:00 between AMRAPs.",
+      "movements": [
+        {
+          "name": "Squat Clean",
+          "detail": "9 reps",
+          "has_weight": true,
+          "rx_female_kg": 43,
+          "rx_male_kg": 61,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-02",
+      "day": "TUE",
+      "name": "260602",
+      "tag": "",
+      "type": "For time",
+      "description": "1,000-m run\n200-m row\n800-m run\n400-m row\n600-m run\n600-m row\n400-m run\n800-m row\n200-m run\n1,000-m row",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-03",
+      "day": "WED",
+      "name": "260603",
+      "tag": "",
+      "type": "AMRAP 7",
+      "description": "1-2-3-4-5, etc.\nStrict pull-ups\nPush presses (47.5/70 kg)",
+      "movements": [
+        {
+          "name": "Push Press",
+          "detail": "Ascending ladder",
+          "has_weight": true,
+          "rx_female_kg": 47.5,
+          "rx_male_kg": 70,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-04",
+      "day": "THU",
+      "name": "260604",
+      "tag": "",
+      "type": "3 rounds for time",
+      "description": "30 wall-ball shots (6/9 kg)\n90 double-unders",
+      "movements": [
+        {
+          "name": "Wall-ball Shot",
+          "detail": "30 reps",
+          "has_weight": true,
+          "rx_female_kg": 6,
+          "rx_male_kg": 9,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-05",
+      "day": "FRI",
+      "name": "260605",
+      "tag": "",
+      "type": "For time",
+      "description": "6 rope climbs (15/15 ft)\n6 DB farmers carry shuttles (22.5/32 kg)\n21 DB deadlifts (22.5/32 kg)\n21-cal bike\n4 rope climbs\n4 DB farmers carry shuttles\n15 DB deadlifts\n15-cal bike\n2 rope climbs\n2 DB farmers carry shuttles\n9 DB deadlifts\n9-cal bike\n– Use two dumbbells.\n– 1 shuttle is 25 ft down and back.",
+      "movements": [
+        {
+          "name": "DB Deadlift",
+          "detail": "21-15-9 reps",
+          "has_weight": true,
+          "rx_female_kg": 22.5,
+          "rx_male_kg": 32,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-06",
+      "day": "SAT",
+      "name": "260606",
+      "tag": "",
+      "type": "For time",
+      "description": "On a 2:30 clock:\n20 front squats (29.5/43 kg)\n12 burpees over the bar\n\nOn a 2:30 clock:\n16 front squats (43/61 kg)\n12 burpees over the bar\n\nOn a 2:30 clock:\n12 front squats (57/84 kg)\n12 burpees over the bar\n\nOn a 2:30 clock:\n8 front squats (61/93 kg)\n12 burpees over the bar\n\nOn a 2:30 clock:\n4 front squats (66/102 kg)\n12 burpees over the bar\n\n– Rest the remainder of each 2:30 window.\n– Record your time for each couplet.",
+      "movements": [
+        {
+          "name": "Front Squat",
+          "detail": "20-16-12-8-4 reps (ascending weight)",
+          "has_weight": true,
+          "rx_female_kg": 29.5,
+          "rx_male_kg": 43,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-07",
+      "day": "SUN",
+      "name": "260607",
+      "tag": "PARTNER",
+      "type": "For time with a partner",
+      "description": "60-50-40-30-20\nSumo deadlift high-pulls (25/34 kg)\n150-120-90-60-30\nHandstand walk feet\n– Split the work as desired.",
+      "movements": [
+        {
+          "name": "Sumo Deadlift High Pull",
+          "detail": "60-50-40-30-20 reps",
+          "has_weight": true,
+          "rx_female_kg": 25,
+          "rx_male_kg": 34,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
     }
   ]
 }
