@@ -563,44 +563,36 @@ function renderPlanCards(plan) {
   if (plan.analysis) {
     html += `<div class="plan-analysis">${esc(plan.analysis)}</div>`;
   }
+  if (plan.rest_note) {
+    html += `<div style="font-family:var(--mono);font-size:11px;color:var(--fg-4);letter-spacing:.04em;margin-bottom:4px;">${esc(plan.rest_note)}</div>`;
+  }
   for (const week of (plan.weeks || [])) {
     html += `<div class="plan-week-label">第 ${week.week} 週 · ${esc(plan.split_name || '')}</div>`;
     html += '<div class="plan-cards-row">';
     for (const day of (week.days || [])) {
-      if (day.type === 'rest') {
-        html += `<div class="plan-card rest">
-          <div class="plan-card-head">
-            <span class="plan-card-day">${esc(day.day_short)}</span>
-            <span class="plan-card-label">${esc(day.day_label)}</span>
-          </div>
-          <div class="plan-card-rest-label">休息 / 恢復</div>
-          ${day.notes ? `<div class="plan-card-notes">${esc(day.notes)}</div>` : ''}
-        </div>`;
-      } else {
-        let sectionsHtml = '';
-        for (const section of (day.sections || [])) {
-          const movementsHtml = (section.movements || []).map(m =>
-            `<li class="plan-card-movement">
-              <strong>${esc(m.name)}</strong><br>
-              ${esc(m.volume)} <span class="plan-card-intensity">${esc(m.intensity)}</span>
-              ${m.note ? `<br><span class="plan-card-mnote">${esc(m.note)}</span>` : ''}
-            </li>`
-          ).join('');
-          sectionsHtml += `<div class="plan-card-section">
-            <div class="plan-card-section-label">${esc(section.label)}</div>
-            <ul class="plan-card-movements">${movementsHtml}</ul>
-          </div>`;
-        }
-        html += `<div class="plan-card">
-          <div class="plan-card-head">
-            <span class="plan-card-day">${esc(day.day_short)}</span>
-            <span class="plan-card-label">${esc(day.day_label)}</span>
-          </div>
-          ${day.workout_type ? `<span class="plan-card-badge">${esc(day.workout_type)}</span>` : ''}
-          ${sectionsHtml}
-          ${day.notes ? `<div class="plan-card-notes">${esc(day.notes)}</div>` : ''}
+      let sectionsHtml = '';
+      for (const section of (day.sections || [])) {
+        const movementsHtml = (section.movements || []).map(m =>
+          `<li class="plan-card-movement">
+            <strong>${esc(m.name)}</strong><br>
+            ${esc(m.volume)} <span class="plan-card-intensity">${esc(m.intensity)}</span>
+            ${m.note ? `<br><span class="plan-card-mnote">${esc(m.note)}</span>` : ''}
+          </li>`
+        ).join('');
+        sectionsHtml += `<div class="plan-card-section">
+          <div class="plan-card-section-label">${esc(section.label)}</div>
+          <ul class="plan-card-movements">${movementsHtml}</ul>
         </div>`;
       }
+      html += `<div class="plan-card">
+        <div class="plan-card-head">
+          <span class="plan-card-day">Day ${day.day_number}</span>
+          <span class="plan-card-label">${esc(day.day_label)}</span>
+        </div>
+        ${day.workout_type ? `<span class="plan-card-badge">${esc(day.workout_type)}</span>` : ''}
+        ${sectionsHtml}
+        ${day.notes ? `<div class="plan-card-notes">${esc(day.notes)}</div>` : ''}
+      </div>`;
     }
     html += '</div>';
   }
@@ -613,33 +605,34 @@ function showPgErr(msg) {
   el.style.display = 'block';
 }
 
-function downloadPlan() {
-  if (!_planData) return;
+function planToText(plan) {
   let txt = `4SC CrossFit · AI 訓練課表\n${'='.repeat(40)}\n\n`;
-  if (_planData.analysis) txt += `教練分析：\n${_planData.analysis}\n\n`;
-  for (const week of (_planData.weeks || [])) {
-    txt += `【第 ${week.week} 週】${_planData.split_name || ''}\n${'─'.repeat(30)}\n`;
+  if (plan.analysis) txt += `教練分析：\n${plan.analysis}\n\n`;
+  if (plan.rest_note) txt += `休息安排：${plan.rest_note}\n\n`;
+  for (const week of (plan.weeks || [])) {
+    txt += `【第 ${week.week} 週】${plan.split_name || ''}\n${'─'.repeat(30)}\n`;
     for (const day of (week.days || [])) {
-      txt += `\n${day.day_short} | ${day.day_label}\n`;
-      if (day.type === 'rest') {
-        txt += '  休息 / 恢復\n';
-        if (day.notes) txt += `  ${day.notes}\n`;
-      } else {
-        if (day.workout_type) txt += `  類型：${day.workout_type}\n`;
-        for (const section of (day.sections || [])) {
-          txt += `  ── ${section.label} ──\n`;
-          for (const m of (section.movements || [])) {
-            txt += `    - ${m.name}：${m.volume} ${m.intensity}`;
-            if (m.note) txt += `（${m.note}）`;
-            txt += '\n';
-          }
+      txt += `\nDay ${day.day_number} | ${day.day_label}\n`;
+      if (day.workout_type) txt += `  類型：${day.workout_type}\n`;
+      for (const section of (day.sections || [])) {
+        txt += `  ── ${section.label} ──\n`;
+        for (const m of (section.movements || [])) {
+          txt += `    - ${m.name}：${m.volume} ${m.intensity}`;
+          if (m.note) txt += `（${m.note}）`;
+          txt += '\n';
         }
-        if (day.notes) txt += `  備注：${day.notes}\n`;
       }
+      if (day.notes) txt += `  備注：${day.notes}\n`;
     }
     txt += '\n';
   }
   txt += '\n---\n截圖或下載後請妥善保存，離開頁面後資料將消失。\n';
+  return txt;
+}
+
+function downloadPlan() {
+  if (!_planData) return;
+  const txt = planToText(_planData);
   const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);

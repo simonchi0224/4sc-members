@@ -17,6 +17,7 @@ export default async function handler(req, res) {
 
   const days = parseInt(days_per_week) || 3;
   const mins = parseInt(session_minutes) || 60;
+  const week2Start = days + 1;
 
   const prompt = `你是一位專業的肌力與體能訓練教練，幫學員設計個人化訓練課表。
 
@@ -29,36 +30,38 @@ export default async function handler(req, res) {
 - 每次訓練時間：${mins} 分鐘
 
 【時間分配原則】
-- 30分鐘：單一主題，6-8個動作，省略獨立熱身緩和
+- 30分鐘：單一主題，最多6個動作，省略獨立熱身緩和
 - 60分鐘：熱身10分 + 主訓練40分（力量或WOD）+ 緩和10分
 - 90分鐘：熱身10分 + 力量主項30分 + WOD或代謝20分 + 緩和10分
 - 120分鐘：熱身10分 + 技術20分 + 力量30分 + WOD/代謝30分 + 緩和10分
 
 【課表設計規則】
-- 以兩週為一個週期，${days}天訓練 + 休息天組合成完整7天
+- 以兩週為一個週期，只輸出訓練日（不含休息日），休息日安排寫在 rest_note 欄位
 - CrossFit 風格：包含 WOD（For Time / AMRAP / EMOM 格式）和每日力量訓練
 - 健美風格：推拉腿分化，8-15下高次數
 - 健力風格：深蹲臥推硬舉為核心，3-5下低次數
 - 重量用百分比標示（@60%等）；沒有最大重量用「體重的X%」或「中等重量」
-- 第二週難度比第一週提升（重量+5% 或組數+1）
+- 第二週訓練日難度比第一週提升（重量+5% 或組數+1）
 - 不要使用任何表情符號（emoji）
-- 每個 section 最多 4 個動作，每天最多 3 個 section，保持精簡
-- note 欄位非必要時留空字串 ""，不要寫多餘說明
+- 每個 section 最多 4 個動作，每天最多 3 個 section
+- note 欄位非必要時留空字串 ""
 
 【輸出格式】
 只輸出合法 JSON，不要任何 markdown、不要 code fence、不要解釋文字，直接從 { 開始到 } 結束。
 
+第一週訓練日編號 1 到 ${days}，第二週訓練日編號 ${week2Start} 到 ${days * 2}。
+
 {
-  "analysis": "教練分析，3-4句，說明推薦的訓練頻率與結構原因",
-  "split_name": "課表分化名稱（例：推拉腿三分化 / 全身性訓練 / CrossFit WOD）",
+  "analysis": "教練分析，3-4句，說明推薦的訓練結構與原因",
+  "split_name": "課表分化名稱（例：推拉腿三分化 / 全身性 / CrossFit WOD）",
+  "rest_note": "休息日建議，一句話（例：訓練日之間穿插休息，建議連續訓練不超過2天）",
   "weeks": [
     {
       "week": 1,
       "days": [
         {
-          "day_short": "週一",
+          "day_number": 1,
           "day_label": "推力日",
-          "type": "training",
           "focus": "上肢推力",
           "workout_type": "Strength + Accessory",
           "sections": [
@@ -77,26 +80,26 @@ export default async function handler(req, res) {
             }
           ],
           "notes": ""
-        },
-        {
-          "day_short": "週二",
-          "day_label": "休息日",
-          "type": "rest",
-          "focus": "",
-          "workout_type": "",
-          "sections": [],
-          "notes": "充分休息，可進行輕度伸展"
         }
       ]
     },
     {
       "week": 2,
-      "days": []
+      "days": [
+        {
+          "day_number": ${week2Start},
+          "day_label": "推力日",
+          "focus": "上肢推力（進階）",
+          "workout_type": "Strength + Accessory",
+          "sections": [],
+          "notes": ""
+        }
+      ]
     }
   ]
 }
 
-每週 days 陣列必須剛好有 7 個元素（週一到週日），訓練日 type 為 "training"，休息日 type 為 "rest"。
+每週 days 陣列只包含訓練日，共 ${days} 天。不要輸出休息日。
 使用繁體中文和台灣健身常用術語，動作名稱用中文並附英文縮寫。`;
 
   try {
