@@ -186,11 +186,37 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--mono); font-size: 12px; color: var(--live); letter-spacing: 0.04em;
   display: flex; align-items: center; gap: 12px;
 }
-.plan-content {
-  background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 16px;
-  padding: 32px; white-space: pre-wrap; font-size: 14px; line-height: 1.85;
-  color: var(--fg-2); font-family: var(--mono);
+.plan-analysis {
+  background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 14px;
+  padding: 20px 24px; font-size: 14px; line-height: 1.8; color: var(--fg-2); margin-bottom: 12px;
 }
+.plan-week-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--fg-3);
+  text-transform: uppercase; margin: 20px 0 10px;
+}
+.plan-cards-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+.plan-card {
+  background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 14px;
+  padding: 16px 14px; display: flex; flex-direction: column; gap: 10px;
+}
+.plan-card.rest { opacity: 0.55; }
+.plan-card-head { display: flex; flex-direction: column; gap: 2px; }
+.plan-card-day { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; color: var(--fg-4); text-transform: uppercase; }
+.plan-card-label { font-size: 14px; font-weight: 700; color: var(--fg); }
+.plan-card-badge {
+  display: inline-block; font-family: var(--mono); font-size: 8.5px; letter-spacing: .07em;
+  color: var(--live-ink); background: var(--live); border-radius: 999px;
+  padding: 2px 8px; text-transform: uppercase; align-self: flex-start;
+}
+.plan-card-section { display: flex; flex-direction: column; gap: 5px; }
+.plan-card-section-label { font-family: var(--mono); font-size: 9px; letter-spacing: .1em; color: var(--heavy); text-transform: uppercase; }
+.plan-card-movements { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.plan-card-movement { font-size: 12px; color: var(--fg-2); line-height: 1.45; }
+.plan-card-movement strong { color: var(--fg); font-size: 12px; }
+.plan-card-intensity { font-family: var(--mono); font-size: 10px; color: var(--live); }
+.plan-card-mnote { font-size: 10px; color: var(--fg-4); }
+.plan-card-notes { font-size: 11px; color: var(--fg-4); font-style: italic; }
+.plan-card-rest-label { font-size: 13px; color: var(--fg-4); padding: 4px 0; }
 .plan-actions { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
 .btn-download {
   background: var(--ink-3); border: 1px solid var(--rule); color: var(--fg-2);
@@ -322,6 +348,27 @@ a { color: inherit; text-decoration: none; }
 
       <div class="form-row">
         <div class="form-group">
+          <label class="form-label">每週訓練次數</label>
+          <select id="pg-days" class="form-select">
+            <option value="2">每週 2 次</option>
+            <option value="3" selected>每週 3 次</option>
+            <option value="4">每週 4 次</option>
+            <option value="5">每週 5 次</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">每次訓練時間</label>
+          <select id="pg-duration" class="form-select">
+            <option value="30">30 分鐘</option>
+            <option value="60" selected>60 分鐘</option>
+            <option value="90">90 分鐘</option>
+            <option value="120">120 分鐘</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
           <label class="form-label">身高（cm）</label>
           <input id="pg-height" type="number" class="form-input" placeholder="170">
         </div>
@@ -358,7 +405,7 @@ a { color: inherit; text-decoration: none; }
       <div class="plan-warning">
         課表不會自動儲存，請截圖或點「下載課表」保存。登入後可儲存至會員帳號。
       </div>
-      <div class="plan-content" id="pg-plan"></div>
+      <div class="plan-cards" id="pg-plan"></div>
       <div class="plan-actions">
         <button class="btn-download" onclick="downloadPlan()">下載課表（.txt）</button>
         <button class="btn-download" onclick="window.print()">列印 / 儲存 PDF</button>
@@ -459,7 +506,7 @@ a { color: inherit; text-decoration: none; }
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ── AI Plan Generator ──────────────────────────
-let _planText = '';
+let _planData = null;
 let _currentUser = null;
 
 async function generatePlan() {
@@ -484,14 +531,15 @@ async function generatePlan() {
         squat1rm: document.getElementById('pg-squat').value || null,
         deadlift1rm: document.getElementById('pg-deadlift').value || null,
         bench1rm: document.getElementById('pg-bench').value || null,
+        days_per_week: document.getElementById('pg-days').value,
+        session_minutes: document.getElementById('pg-duration').value,
       })
     });
     const data = await res.json();
     if (!res.ok || data.error) throw new Error(data.error || '生成失敗');
-    _planText = data.plan;
-    document.getElementById('pg-plan').textContent = data.plan;
+    _planData = data.plan;
+    renderPlanCards(data.plan);
     document.getElementById('pg-output').style.display = 'block';
-    // 已登入才顯示儲存按鈕
     document.getElementById('pg-save-btn').style.display = _currentUser ? '' : 'none';
     document.getElementById('pg-save-msg').style.display = 'none';
     document.getElementById('pg-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -504,6 +552,61 @@ async function generatePlan() {
   }
 }
 
+function esc(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderPlanCards(plan) {
+  const container = document.getElementById('pg-plan');
+  let html = '';
+  if (plan.analysis) {
+    html += `<div class="plan-analysis">${esc(plan.analysis)}</div>`;
+  }
+  for (const week of (plan.weeks || [])) {
+    html += `<div class="plan-week-label">第 ${week.week} 週 · ${esc(plan.split_name || '')}</div>`;
+    html += '<div class="plan-cards-row">';
+    for (const day of (week.days || [])) {
+      if (day.type === 'rest') {
+        html += `<div class="plan-card rest">
+          <div class="plan-card-head">
+            <span class="plan-card-day">${esc(day.day_short)}</span>
+            <span class="plan-card-label">${esc(day.day_label)}</span>
+          </div>
+          <div class="plan-card-rest-label">休息 / 恢復</div>
+          ${day.notes ? `<div class="plan-card-notes">${esc(day.notes)}</div>` : ''}
+        </div>`;
+      } else {
+        let sectionsHtml = '';
+        for (const section of (day.sections || [])) {
+          const movementsHtml = (section.movements || []).map(m =>
+            `<li class="plan-card-movement">
+              <strong>${esc(m.name)}</strong><br>
+              ${esc(m.volume)} <span class="plan-card-intensity">${esc(m.intensity)}</span>
+              ${m.note ? `<br><span class="plan-card-mnote">${esc(m.note)}</span>` : ''}
+            </li>`
+          ).join('');
+          sectionsHtml += `<div class="plan-card-section">
+            <div class="plan-card-section-label">${esc(section.label)}</div>
+            <ul class="plan-card-movements">${movementsHtml}</ul>
+          </div>`;
+        }
+        html += `<div class="plan-card">
+          <div class="plan-card-head">
+            <span class="plan-card-day">${esc(day.day_short)}</span>
+            <span class="plan-card-label">${esc(day.day_label)}</span>
+          </div>
+          ${day.workout_type ? `<span class="plan-card-badge">${esc(day.workout_type)}</span>` : ''}
+          ${sectionsHtml}
+          ${day.notes ? `<div class="plan-card-notes">${esc(day.notes)}</div>` : ''}
+        </div>`;
+      }
+    }
+    html += '</div>';
+  }
+  container.innerHTML = html;
+}
+
 function showPgErr(msg) {
   const el = document.getElementById('pg-err');
   el.textContent = msg;
@@ -511,8 +614,33 @@ function showPgErr(msg) {
 }
 
 function downloadPlan() {
-  if (!_planText) return;
-  const blob = new Blob([_planText], { type: 'text/plain;charset=utf-8' });
+  if (!_planData) return;
+  let txt = `4SC CrossFit · AI 訓練課表\n${'='.repeat(40)}\n\n`;
+  if (_planData.analysis) txt += `教練分析：\n${_planData.analysis}\n\n`;
+  for (const week of (_planData.weeks || [])) {
+    txt += `【第 ${week.week} 週】${_planData.split_name || ''}\n${'─'.repeat(30)}\n`;
+    for (const day of (week.days || [])) {
+      txt += `\n${day.day_short} | ${day.day_label}\n`;
+      if (day.type === 'rest') {
+        txt += '  休息 / 恢復\n';
+        if (day.notes) txt += `  ${day.notes}\n`;
+      } else {
+        if (day.workout_type) txt += `  類型：${day.workout_type}\n`;
+        for (const section of (day.sections || [])) {
+          txt += `  ── ${section.label} ──\n`;
+          for (const m of (section.movements || [])) {
+            txt += `    - ${m.name}：${m.volume} ${m.intensity}`;
+            if (m.note) txt += `（${m.note}）`;
+            txt += '\n';
+          }
+        }
+        if (day.notes) txt += `  備注：${day.notes}\n`;
+      }
+    }
+    txt += '\n';
+  }
+  txt += '\n---\n截圖或下載後請妥善保存，離開頁面後資料將消失。\n';
+  const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = '4SC_訓練課表.txt';
@@ -520,7 +648,7 @@ function downloadPlan() {
 }
 
 async function savePlan() {
-  if (!_currentUser || !_planText) return;
+  if (!_currentUser || !_planData) return;
   const btn = document.getElementById('pg-save-btn');
   btn.textContent = '儲存中…';
   btn.disabled = true;
@@ -534,8 +662,10 @@ async function savePlan() {
       squat1rm: document.getElementById('pg-squat').value || null,
       deadlift1rm: document.getElementById('pg-deadlift').value || null,
       bench1rm: document.getElementById('pg-bench').value || null,
+      days_per_week: document.getElementById('pg-days').value,
+      session_minutes: document.getElementById('pg-duration').value,
     },
-    plan_text: _planText
+    plan_text: JSON.stringify(_planData)
   });
   if (!error) {
     document.getElementById('pg-save-msg').style.display = 'block';

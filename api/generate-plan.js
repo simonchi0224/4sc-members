@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end();
 
-  const { style, height, weight, squat1rm, deadlift1rm, bench1rm, experience } = req.body;
+  const { style, height, weight, squat1rm, deadlift1rm, bench1rm, experience, days_per_week, session_minutes } = req.body;
   if (!style || !height || !weight) return res.status(400).json({ error: '請填寫必要欄位' });
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -15,29 +15,89 @@ export default async function handler(req, res) {
     ? `已知最大重量：深蹲 ${squat1rm||'未填'}kg、硬舉 ${deadlift1rm||'未填'}kg、臥推 ${bench1rm||'未填'}kg`
     : '尚未測過最大重量';
 
-  const prompt = `你是一位專業的肌力與體能訓練教練，幫學員設計個人化訓練課表。請勿使用任何表情符號（emoji）。
+  const days = parseInt(days_per_week) || 3;
+  const mins = parseInt(session_minutes) || 60;
+
+  const prompt = `你是一位專業的肌力與體能訓練教練，幫學員設計個人化訓練課表。
 
 【學員資料】
 - 訓練風格：${styleMap[style] || style}
 - 身高：${height} cm，體重：${weight} kg
 - 訓練經驗：${expMap[experience] || experience}
 - ${oneRmText}
+- 每週訓練天數：${days} 天（最多5天）
+- 每次訓練時間：${mins} 分鐘
 
-【輸出格式要求】
-1. 先輸出一段「教練分析」（3-4句），根據學員數據說明：推薦每週訓練幾天、選擇此頻率的原因、最適合的訓練結構。
-2. 接著輸出「第一週」和「第二週」的完整課表。
-3. 每天格式如下：
-   - 標題：週X｜訓練主題（例：推力日、下肢肌力、WOD等）
-   - 動作清單：每個動作一行，格式為「動作名稱：X組 × X下 @X%」
-   - 如果是休息日或動態恢復日，直接寫「休息日」或「動態恢復」
-4. 重量統一用百分比標示（@60%、@75%等），對應學員的最大重量或體重。如果沒有最大重量，用「體重的X%」或「中等重量」描述。
-5. CrossFit 風格：包含 WOD（For Time / AMRAP / EMOM 格式）+ 每日力量訓練。
-   健美風格：推拉腿分化，8-15下高次數組數。
-   健力風格：深蹲臥推硬舉為核心，3-5下低次數重訓。
-6. 第二週難度比第一週稍微提升（重量+5% 或組數+1）。
-7. 最後加一行提醒：「📸 請截圖或下載課表，離開頁面後資料將消失。」
+【時間分配原則】
+- 30分鐘：單一主題，6-8個動作，省略獨立熱身緩和
+- 60分鐘：熱身10分 + 主訓練40分（力量或WOD）+ 緩和10分
+- 90分鐘：熱身10分 + 力量主項30分 + WOD或代謝20分 + 緩和10分
+- 120分鐘：熱身10分 + 技術20分 + 力量30分 + WOD/代謝30分 + 緩和10分
 
-使用繁體中文，台灣健身常用術語。動作名稱用中文，必要時附英文。`;
+【課表設計規則】
+- 以兩週為一個週期，${days}天訓練 + 休息天組合成完整7天
+- CrossFit 風格：包含 WOD（For Time / AMRAP / EMOM 格式）和每日力量訓練
+- 健美風格：推拉腿分化，8-15下高次數
+- 健力風格：深蹲臥推硬舉為核心，3-5下低次數
+- 重量用百分比標示（@60%等）；沒有最大重量用「體重的X%」或「中等重量」
+- 第二週難度比第一週提升（重量+5% 或組數+1）
+- 不要使用任何表情符號（emoji）
+- 每個 section 最多 4 個動作，每天最多 3 個 section，保持精簡
+- note 欄位非必要時留空字串 ""，不要寫多餘說明
+
+【輸出格式】
+只輸出合法 JSON，不要任何 markdown、不要 code fence、不要解釋文字，直接從 { 開始到 } 結束。
+
+{
+  "analysis": "教練分析，3-4句，說明推薦的訓練頻率與結構原因",
+  "split_name": "課表分化名稱（例：推拉腿三分化 / 全身性訓練 / CrossFit WOD）",
+  "weeks": [
+    {
+      "week": 1,
+      "days": [
+        {
+          "day_short": "週一",
+          "day_label": "推力日",
+          "type": "training",
+          "focus": "上肢推力",
+          "workout_type": "Strength + Accessory",
+          "sections": [
+            {
+              "label": "力量主項",
+              "movements": [
+                { "name": "臥推 Bench Press", "volume": "5組 × 5下", "intensity": "@80%", "note": "" },
+                { "name": "啞鈴肩推 DB Press", "volume": "4組 × 8下", "intensity": "@65%", "note": "" }
+              ]
+            },
+            {
+              "label": "輔助訓練",
+              "movements": [
+                { "name": "繩索夾胸 Cable Fly", "volume": "3組 × 12下", "intensity": "中等重量", "note": "" }
+              ]
+            }
+          ],
+          "notes": ""
+        },
+        {
+          "day_short": "週二",
+          "day_label": "休息日",
+          "type": "rest",
+          "focus": "",
+          "workout_type": "",
+          "sections": [],
+          "notes": "充分休息，可進行輕度伸展"
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "days": []
+    }
+  ]
+}
+
+每週 days 陣列必須剛好有 7 個元素（週一到週日），訓練日 type 為 "training"，休息日 type 為 "rest"。
+使用繁體中文和台灣健身常用術語，動作名稱用中文並附英文縮寫。`;
 
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -48,8 +108,8 @@ export default async function handler(req, res) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 2500,
+        model: 'claude-sonnet-4-6',
+        max_tokens: 8000,
         messages: [{ role: 'user', content: prompt }]
       })
     });
@@ -57,7 +117,15 @@ export default async function handler(req, res) {
     const data = await response.json();
     if (!response.ok) throw new Error(data.error?.message || `API Error ${response.status}`);
 
-    const plan = data.content?.[0]?.text || '';
+    const text = data.content?.[0]?.text || '';
+    let plan;
+    try {
+      plan = JSON.parse(text);
+    } catch {
+      const match = text.match(/\{[\s\S]*\}/);
+      if (!match) throw new Error('AI 回傳格式錯誤，請重試');
+      plan = JSON.parse(match[0]);
+    }
     res.json({ plan });
   } catch (e) {
     res.status(500).json({ error: e.message || 'AI 服務暫時無法使用，請稍後再試' });
