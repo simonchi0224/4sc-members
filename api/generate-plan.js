@@ -100,7 +100,21 @@ export default async function handler(req, res) {
 }
 
 每週 days 陣列只包含訓練日，共 ${days} 天。不要輸出休息日。
-使用繁體中文和台灣健身常用術語，動作名稱用中文並附英文縮寫。`;
+使用繁體中文，動作名稱必須用台灣 CrossFit 社群慣用術語，附英文縮寫。
+常用對照（務必依此用法）：
+- 深蹲 Back Squat、前蹲舉 Front Squat、過頭蹲 Overhead Squat
+- 硬舉 Deadlift（不說「硬拉」）、羅馬尼亞硬舉 RDL、相撲硬舉 Sumo DL
+- 肩推 Shoulder Press、推舉 Push Press、挺舉 Push Jerk / Split Jerk
+- 上搏 Clean、抓舉 Snatch、上膊 Power Clean、懸掛式上搏 Hang Clean
+- 臥推 Bench Press、啞鈴臥推 DB Bench、窄握臥推 Close-grip Bench
+- 引體向上 Pull-up、跳躍引體向上 Jumping Pull-up、環上引體 Ring Pull-up
+- 肌肉上槓 Muscle-up、雙槓撐體 Dip、倒立推 HSPU
+- 壺鈴擺盪 KB Swing、壺鈴上搏 KB Clean、土耳其起立 Turkish Get-up
+- 農夫走路 Farmer's Carry、負重行走 Weighted Walk
+- 箱跳 Box Jump、跨步蹲 Lunge、保加利亞分腿蹲 Bulgarian Split Squat
+- 划船 Row（機器：划船機 Rowing Erg）、跳繩 Jump Rope、雙迴旋 Double Under
+- 捲腹 Sit-up、棒式 Plank、死蟲式 Dead Bug、超人式 Superman
+- 波比 Burpee、拖雪橇 Sled Push/Pull、攀繩 Rope Climb`;
 
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
