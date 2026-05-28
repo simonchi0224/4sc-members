@@ -258,6 +258,55 @@ a { color: inherit; text-decoration: none; }
 .location-row:last-child { margin-bottom: 0; }
 .location-icon { flex-shrink: 0; color: var(--fg-4); font-size: 13px; margin-top: 2px; }
 
+/* ── Today WOD ── */
+.wod-section { padding: 80px 24px; background: var(--ink-2); border-top: 1px solid var(--rule-soft); }
+.wod-inner { max-width: 720px; margin: 0 auto; }
+.wod-card {
+  background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 16px;
+  padding: 28px; margin-top: 32px;
+}
+.wod-date-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; color: var(--fg-4); margin-bottom: 10px; }
+.wod-type-badge {
+  display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: .1em;
+  text-transform: uppercase; background: var(--live); color: var(--live-ink);
+  border-radius: 999px; padding: 3px 12px; margin-bottom: 16px;
+}
+.wod-description {
+  font-family: var(--mono); font-size: 14px; line-height: 2; color: var(--fg);
+  white-space: pre-line; margin-bottom: 8px;
+}
+.wod-movements { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.wod-movement {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 10px 14px; background: var(--ink); border-radius: 8px;
+  border: 1px solid var(--rule-soft); gap: 12px;
+}
+.wod-mv-name { font-size: 13px; font-weight: 600; }
+.wod-mv-detail { font-family: var(--mono); font-size: 11px; color: var(--fg-3); margin-left: 6px; }
+.wod-mv-rx { font-family: var(--mono); font-size: 11px; color: var(--heavy); flex-shrink: 0; }
+.wod-coach-note {
+  margin-top: 16px; padding: 12px 16px;
+  background: rgba(166,230,53,0.06); border: 1px solid rgba(166,230,53,0.2);
+  border-radius: 8px; font-size: 13px; color: var(--fg-2); line-height: 1.7;
+}
+.wod-coach-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; color: var(--live); text-transform: uppercase; margin-bottom: 6px; }
+.wod-empty { font-family: var(--mono); font-size: 13px; color: var(--fg-4); padding: 40px 0; text-align: center; letter-spacing: .04em; }
+
+/* ── Trial Form ── */
+.trial-section { padding: 80px 24px; border-top: 1px solid var(--rule-soft); }
+.trial-inner { max-width: 720px; margin: 0 auto; }
+.trial-form-box {
+  background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 16px;
+  padding: 32px; margin-top: 40px; display: flex; flex-direction: column; gap: 20px;
+}
+.trial-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:540px) { .trial-row { grid-template-columns: 1fr; } }
+.trial-success {
+  display: none; text-align: center; padding: 40px 0;
+  font-family: var(--mono); font-size: 13px; color: var(--live); letter-spacing: .04em; line-height: 2.2;
+}
+.trial-success .s-big { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+
 /* footer */
 .footer { padding: 40px 24px; text-align: center; border-top: 1px solid var(--rule-soft); }
 .footer-logo { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: var(--fg-3); margin-bottom: 16px; }
@@ -317,6 +366,55 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ── Today WOD ── -->
+<section class="wod-section" id="today-wod">
+  <div class="wod-inner">
+    <p class="section-label">TODAY'S WOD</p>
+    <h2 class="section-title">今日課表</h2>
+    <div id="wod-display"><div class="wod-empty">載入中…</div></div>
+    <p style="font-family:var(--mono);font-size:10.5px;color:var(--fg-4);text-align:center;margin-top:24px;letter-spacing:.04em;">登入後可記錄今日成績，獲得 AI 教練個人化回饋</p>
+  </div>
+</section>
+
+<!-- ── Group Class Trial ── -->
+<section class="trial-section" id="trial">
+  <div class="trial-inner">
+    <p class="section-label">FREE TRIAL</p>
+    <h2 class="section-title">預約免費<br>團課體驗</h2>
+    <p style="color:var(--fg-2);font-size:15px;max-width:480px;line-height:1.7;margin-top:12px;">第一次來不知道怎麼開始？預約免費團課體驗，教練會在現場帶你，不用擔心跟不上。</p>
+    <div class="trial-form-box" id="trial-form-box">
+      <div class="trial-row">
+        <div class="form-group">
+          <label class="form-label">姓名</label>
+          <input type="text" id="tf-name" class="form-input" placeholder="王小明">
+        </div>
+        <div class="form-group">
+          <label class="form-label">手機號碼</label>
+          <input type="tel" id="tf-phone" class="form-input" placeholder="0912-345-678">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">選擇館別</label>
+        <select id="tf-branch" class="form-select">
+          <option value="永和館">永和館（永貞路 149 號 B1F）</option>
+          <option value="新店館">新店館（北新路二段 230-1 號）</option>
+        </select>
+      </div>
+      <button class="btn-generate" id="tf-btn" onclick="submitTrialForm()">
+        <div class="spin"></div>
+        <span id="tf-btn-text">送出預約申請</span>
+      </button>
+      <div id="tf-err" style="font-family:var(--mono);font-size:12px;color:#e07b6a;display:none;"></div>
+    </div>
+    <div class="trial-success" id="trial-success">
+      <div class="s-big">預約成功！</div>
+      教練會在 24 小時內透過電話或 LINE 聯繫你<br>
+      確認體驗時間安排<br><br>
+      <span style="color:var(--fg-4);">急事可直接電聯：(02) 2927-5699</span>
+    </div>
   </div>
 </section>
 
@@ -696,6 +794,86 @@ sb.auth.onAuthStateChange((event, session) => {
     checkMemberStatus(session.user);
   }
 });
+
+// ── Today WOD ──────────────────────────────────────
+async function loadTodayWOD() {
+  const display = document.getElementById('wod-display');
+  try {
+    const res = await fetch('/data/wod.json');
+    const json = await res.json();
+    const now = new Date();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+    const wod = json.days.find(d => d.date === todayStr);
+    if (!wod) {
+      display.innerHTML = '<div class="wod-empty">今天是休息日，好好恢復吧。</div>';
+      return;
+    }
+    let mvHtml = '';
+    if (wod.movements && wod.movements.length) {
+      mvHtml = '<div class="wod-movements">' + wod.movements.map(m => {
+        let rx = '';
+        if (m.has_weight && (m.rx_male_kg || m.rx_female_kg)) {
+          rx = `<span class="wod-mv-rx">${m.rx_male_kg||'?'}/${m.rx_female_kg||'?'} kg</span>`;
+        }
+        return `<div class="wod-movement">
+          <span><span class="wod-mv-name">${esc(m.name)}</span><span class="wod-mv-detail">${esc(m.detail||'')}</span></span>
+          ${rx}
+        </div>`;
+      }).join('') + '</div>';
+    }
+    let coachHtml = '';
+    if (wod.coach_notes) {
+      coachHtml = `<div class="wod-coach-note"><div class="wod-coach-label">Coach Note</div>${esc(wod.coach_notes)}</div>`;
+    }
+    display.innerHTML = `<div class="wod-card">
+      <div class="wod-date-label">${esc(todayStr)} · ${esc(wod.day||'')}</div>
+      ${wod.type ? `<div class="wod-type-badge">${esc(wod.type)}</div>` : ''}
+      <div class="wod-description">${esc(wod.description||'')}</div>
+      ${mvHtml}${coachHtml}
+    </div>`;
+  } catch(e) {
+    display.innerHTML = '<div class="wod-empty">課表載入失敗，請稍後再試。</div>';
+  }
+}
+loadTodayWOD();
+
+// ── Group Class Trial Form ──────────────────────────
+const TRIAL_FORMSPREE = 'https://formspree.io/f/mwvzooed';
+async function submitTrialForm() {
+  const name = document.getElementById('tf-name').value.trim();
+  const phone = document.getElementById('tf-phone').value.trim();
+  const branch = document.getElementById('tf-branch').value;
+  const errEl = document.getElementById('tf-err');
+  if (!name || !phone) {
+    errEl.textContent = '請填寫姓名和手機號碼';
+    errEl.style.display = 'block';
+    return;
+  }
+  const btn = document.getElementById('tf-btn');
+  btn.disabled = true; btn.classList.add('loading');
+  document.getElementById('tf-btn-text').textContent = '送出中…';
+  errEl.style.display = 'none';
+  const data = { name, phone, branch, goal: '團課體驗' };
+  await Promise.allSettled([
+    fetch(TRIAL_FORMSPREE, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }),
+    fetch(`${SUPABASE_URL}/rest/v1/trial_leads`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal',
+      },
+      body: JSON.stringify(data),
+    }),
+  ]);
+  document.getElementById('trial-form-box').style.display = 'none';
+  document.getElementById('trial-success').style.display = 'block';
+}
 </script>
 </body>
 </html>

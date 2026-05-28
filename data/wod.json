@@ -1179,6 +1179,119 @@
       ],
       "coach_notes": "",
       "scaling": ""
+    },
+    {
+      "date": "2026-06-08",
+      "day": "MON",
+      "name": "STEAK AND PUDDING",
+      "tag": "",
+      "type": "Teams + AMRAP",
+      "description": "In teams of 4:\n1:00 max-cal air bike, each athlete\n– Rest 2:00 between athletes.\n– Each athlete has one attempt to accumulate as many calories as possible in 1:00.\n\nRest 5:00\n\nAMRAP 10 with a partner:\nBurpee box get-overs (48/48 in)\n– Share the work as desired.\n– Weight vest optional.",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-09",
+      "day": "TUE",
+      "name": "NARF",
+      "tag": "",
+      "type": "For time",
+      "description": "On an 18:00 clock:\n9-15-21 reps for time of:\nPull-ups\nThrusters (29/43 kg)\n\nIn the remaining time:\nBuild to a heavy single thruster\n– Take the bar from the floor.",
+      "movements": [
+        {
+          "name": "Thruster",
+          "detail": "9-15-21 reps",
+          "has_weight": true,
+          "rx_female_kg": 29,
+          "rx_male_kg": 43,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-10",
+      "day": "WED",
+      "name": "CC...SU!",
+      "tag": "",
+      "type": "For time",
+      "description": "6 rounds, each for time:\n400-m run\n– Rest 1:30 between rounds.\n– Log each round; score is total run time.",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-11",
+      "day": "THU",
+      "name": "260611",
+      "tag": "BENCHMARK",
+      "type": "For time",
+      "description": "30 ring muscle-ups",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-12",
+      "day": "FRI",
+      "name": "PARTNER 2012 CF REGIONAL TEAM EVENT 2",
+      "tag": "PARTNER",
+      "type": "For time with a partner",
+      "description": "1,000-m row\n25 alternating single-leg squats\n15 hang power cleans (61/102 kg)\n– As soon as Partner 1 exits the rower, Partner 2 begins rowing. Reset the monitor.\n– Score is the time it takes for both athletes to complete the workout.",
+      "movements": [
+        {
+          "name": "Hang Power Clean",
+          "detail": "15 reps",
+          "has_weight": true,
+          "rx_female_kg": 61,
+          "rx_male_kg": 102,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-13",
+      "day": "SAT",
+      "name": "THE ABYSS",
+      "tag": "",
+      "type": "For time",
+      "description": "100 overhead squats (43/61 kg)\n– Every 1:00 starting at :00, perform 15 double-unders.\n– No racks. The bar comes from the floor.",
+      "movements": [
+        {
+          "name": "Overhead Squat",
+          "detail": "100 reps",
+          "has_weight": true,
+          "rx_female_kg": 43,
+          "rx_male_kg": 61,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-14",
+      "day": "SUN",
+      "name": "SLIDING DOORS",
+      "tag": "",
+      "type": "AMRAP 30",
+      "description": "400-m plate carry (20/20 kg)\n5 deadlifts\n10 strict toes-to-bars\n– Start moderate-to-heavy and increase deadlift load as mechanics and consistency allow.",
+      "movements": [
+        {
+          "name": "Deadlift",
+          "detail": "5 reps",
+          "has_weight": true,
+          "rx_female_kg": 20,
+          "rx_male_kg": 20,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
     }
   ]
 }
