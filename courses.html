@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>課程 & 研習報名｜4SC CrossFit</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:       #0D1017;
+  --ink-2:     #11151D;
+  --ink-3:     #161B25;
+  --rule:      rgba(64,78,112,0.55);
+  --rule-soft: rgba(64,78,112,0.28);
+  --fg:        #F5F2EB;
+  --fg-2:      #BFBAA9;
+  --fg-3:      #7A8499;
+  --fg-4:      #525B70;
+  --live:      #A6E635;
+  --live-ink:  #1F2818;
+  --heavy:     #D9A55C;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --sans: 'Geist', 'Noto Sans TC', -apple-system, 'PingFang TC', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  background: var(--ink);
+  color: var(--fg);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(13,16,23,0.88);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--rule-soft);
+  padding: 0 28px; height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.1em; color: var(--fg);
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo .dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--live);
+  animation: dotPulse 2s ease-out infinite;
+}
+@keyframes dotPulse {
+  0% { box-shadow: 0 0 0 0 rgba(166,230,53,0.55); }
+  100% { box-shadow: 0 0 0 8px rgba(166,230,53,0); }
+}
+.nav-back {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+  color: var(--fg-3); transition: color .2s;
+}
+.nav-back:hover { color: var(--fg); }
+
+/* ── Hero ── */
+.hero {
+  padding: 64px 28px 48px;
+  max-width: 720px; margin: 0 auto; text-align: center;
+}
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--fg-3); margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Noto Sans TC', sans-serif; font-weight: 900;
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 16px;
+}
+.hero-sub {
+  font-size: 14px; color: var(--fg-3); line-height: 1.7;
+}
+
+/* ── Course List ── */
+.course-list {
+  max-width: 600px; margin: 48px auto 80px;
+  padding: 0 28px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+.course-card {
+  background: var(--ink-2); border: 1px solid var(--rule-soft);
+  border-radius: 16px; padding: 24px;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px;
+  transition: border-color .2s, transform .15s;
+  cursor: pointer;
+  text-decoration: none;
+}
+.course-card:hover {
+  border-color: rgba(166,230,53,0.4);
+  transform: translateY(-2px);
+}
+.course-card-left { flex: 1; }
+.course-tag {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--live); margin-bottom: 8px; display: block;
+}
+.course-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.course-meta { font-size: 12.5px; color: var(--fg-3); line-height: 1.6; }
+.course-price {
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  color: var(--heavy); white-space: nowrap; flex-shrink: 0;
+  align-self: center;
+}
+.course-arrow {
+  font-size: 18px; color: var(--fg-4); flex-shrink: 0;
+  align-self: center; transition: color .2s, transform .2s;
+}
+.course-card:hover .course-arrow { color: var(--live); transform: translateX(4px); }
+
+/* 空狀態 */
+.empty {
+  text-align: center; padding: 60px 0;
+  font-family: var(--mono); font-size: 13px; color: var(--fg-4);
+  letter-spacing: 0.04em; line-height: 2;
+}
+
+/* Skeleton */
+.skeleton-card {
+  background: var(--ink-2); border: 1px solid var(--rule-soft);
+  border-radius: 16px; padding: 24px; height: 88px;
+  animation: shimmer 1.4s ease infinite;
+}
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ── Footer ── */
+.footer {
+  padding: 32px 24px; text-align: center;
+  border-top: 1px solid var(--rule-soft);
+}
+.footer-copy {
+  font-family: var(--mono); font-size: 10.5px; color: var(--fg-4);
+  letter-spacing: 0.04em;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <span class="dot"></span>
+    4SC · CROSSFIT
+  </div>
+  <a class="nav-back" href="index.html">← 返回主頁</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">WORKSHOPS & COURSES</div>
+  <h1>課程 & 研習報名</h1>
+  <p class="hero-sub">選擇課程，用 Google 帳號登入即可報名。<br>報名前請先確認課程日期與費用。</p>
+</div>
+
+<!-- 出團計劃（固定卡片） -->
+<div style="margin-bottom:8px;">
+  <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+    出團計劃
+    <span style="flex:1;height:1px;background:var(--rule-soft);display:block;"></span>
+  </div>
+  <a href="outing.html" class="course-card" style="background:var(--live);border-color:var(--live);color:var(--live-ink);">
+    <div class="course-card-left">
+      <span class="course-tag" style="color:var(--live-ink);opacity:.6;">🏆 報名進行中</span>
+      <div class="course-title">4SC 出團計劃 2026</div>
+      <div class="course-meta" style="color:var(--live-ink);opacity:.65;">WEPOWER 9/19 · 台中鋼鐵大賽 10/17–18 · 跟四季一起備賽出發</div>
+    </div>
+    <div class="course-arrow" style="color:var(--live-ink);">›</div>
+  </a>
+</div>
+
+<!-- 研習課程（動態載入） -->
+<div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+  研習課程
+  <span style="flex:1;height:1px;background:var(--rule-soft);display:block;"></span>
+</div>
+<div class="course-list" id="course-list">
+  <div class="skeleton-card"></div>
+  <div class="skeleton-card"></div>
+  <div class="skeleton-card"></div>
+</div>
+
+<footer class="footer">
+  <div class="footer-copy">© 2026 混合健身股份有限公司 · 4SC CrossFit</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+function formatDate(d) {
+  if (!d) return '';
+  const dt = new Date(d + 'T00:00:00');
+  return `${dt.getMonth() + 1}/${dt.getDate()}`;
+}
+
+function buildPriceLabel(plans) {
+  if (!plans || !plans.length) return '';
+  if (plans.length === 1) return `NT$ ${plans[0].price.toLocaleString()}`;
+  const min = Math.min(...plans.map(p => p.price));
+  return `NT$ ${min.toLocaleString()} 起`;
+}
+
+function buildDateLabel(course) {
+  if (course.start_date && course.end_date) {
+    return `${formatDate(course.start_date)} – ${formatDate(course.end_date)}`;
+  }
+  if (course.start_date) return `${formatDate(course.start_date)} 開始`;
+  return '';
+}
+
+async function loadCourses() {
+  const list = document.getElementById('course-list');
+  try {
+    const { data, error } = await sb
+      .from('courses')
+      .select('id, title, description, start_date, end_date, plans, active')
+      .eq('active', true)
+      .order('start_date', { ascending: true });
+
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      list.innerHTML = `<div class="empty">目前沒有開放報名的課程。<br>請追蹤我們的 Instagram 或 Facebook 獲得最新消息。</div>`;
+      return;
+    }
+
+    list.innerHTML = data.map(c => {
+      const dateLabel = buildDateLabel(c);
+      const priceLabel = buildPriceLabel(c.plans);
+      return `
+        <a class="course-card" href="course-register.html?id=${c.id}">
+          <div class="course-card-left">
+            <span class="course-tag">報名開放中</span>
+            <div class="course-title">${esc(c.title)}</div>
+            <div class="course-meta">${dateLabel ? esc(dateLabel) + '　' : ''}${esc(c.description || '')}</div>
+          </div>
+          ${priceLabel ? `<div class="course-price">${esc(priceLabel)}</div>` : ''}
+          <div class="course-arrow">›</div>
+        </a>`;
+    }).join('');
+
+  } catch(e) {
+    list.innerHTML = `<div class="empty">載入失敗，請稍後再試。</div>`;
+  }
+}
+
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+loadCourses();
+</script>
+</body>
+</html>
