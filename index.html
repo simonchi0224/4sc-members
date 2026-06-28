@@ -19,6 +19,7 @@
   --live:      #A6E635;
   --live-ink:  #1F2818;
   --heavy:     #D9A55C;
+  --gold:      #D9A55C;
   --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
   --sans: 'Geist', 'Noto Sans TC', -apple-system, 'PingFang TC', sans-serif;
 }
@@ -37,116 +38,322 @@ body {
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
 a { color: inherit; text-decoration: none; }
 
-/* ── Login shell (full viewport) ── */
-.login-shell {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 60px 24px;
-  position: relative;
-  overflow: hidden;
-  background: var(--ink);
-  background-image: radial-gradient(ellipse at 50% -20%, rgba(64,78,112,0.4), transparent 60%);
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(13,16,23,0.88);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--rule-soft);
+  padding: 0 28px;
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
 }
-.login-shell::before {
-  content: '';
-  position: absolute; inset: 0;
-  background-image: linear-gradient(to right, var(--rule-soft) 1px, transparent 1px);
-  background-size: 88px 100%;
-  opacity: 0.5;
-  mask: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
-  -webkit-mask: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
-  pointer-events: none;
+.nav-logo {
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.1em; color: var(--fg);
+  display: flex; align-items: center; gap: 8px;
 }
-
-.login {
-  position: relative;
-  width: 100%; max-width: 480px;
-  display: flex; flex-direction: column; gap: 32px;
-}
-
-.login-mark {
-  font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--fg-3);
-}
-.login-mark .dot {
-  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--live); margin-right: 8px; vertical-align: 2px;
+.nav-logo .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--live);
   animation: dotPulse 2s ease-out infinite;
 }
 @keyframes dotPulse {
   0% { box-shadow: 0 0 0 0 rgba(166,230,53,0.55); }
   100% { box-shadow: 0 0 0 8px rgba(166,230,53,0); }
 }
-
-.login h1 {
-  font-family: 'Geist', -apple-system, sans-serif;
-  font-weight: 700; font-size: clamp(52px, 9vw, 72px);
-  letter-spacing: -0.05em; line-height: 0.92;
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+.nav-link {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+  color: var(--fg-3); text-transform: uppercase;
+  transition: color .2s;
+  display: none;
 }
-.login h1 em { color: var(--live); font-style: normal; font-weight: 700; }
-.login .cjk-h1 {
-  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
-  font-weight: 900; font-size: clamp(28px, 5vw, 40px);
-  letter-spacing: -0.01em; line-height: 1.1; margin-top: -8px;
-}
-.login p.lede { font-size: 15px; color: var(--fg-2); max-width: 380px; line-height: 1.6; }
-
-/* stat strip */
-.login-stats {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--rule-soft);
-  border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft);
-}
-.login-stats .s {
-  background: var(--ink); padding: 18px 4px 18px 0;
-  display: flex; flex-direction: column; gap: 4px;
-}
-.login-stats .s .v {
-  font-family: var(--mono); font-size: 24px; letter-spacing: -0.02em;
-}
-.login-stats .s .k {
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--fg-4);
-}
-
-/* google button */
-.login-actions { display: flex; flex-direction: column; gap: 10px; }
-.btn-google {
+@media(min-width:640px) { .nav-link { display: block; } }
+.nav-link:hover { color: var(--fg); }
+.btn-login {
   background: var(--fg); color: var(--ink);
-  height: 60px; border-radius: 999px;
-  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  height: 36px; padding: 0 20px; border-radius: 999px;
+  font-weight: 600; font-size: 13px;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: background .2s, transform .1s;
+}
+.btn-login:hover { background: #e8e5de; }
+.btn-login:active { transform: scale(0.97); }
+.btn-login svg { width: 14px; height: 14px; flex-shrink: 0; }
+.btn-enter {
+  background: var(--live); color: var(--live-ink);
+  height: 36px; padding: 0 20px; border-radius: 999px;
+  font-weight: 700; font-size: 13px;
+  display: none; align-items: center;
+  transition: opacity .2s;
+}
+.btn-enter:hover { opacity: 0.88; }
+
+/* ── Login Modal ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  place-items: center;
+}
+.modal-overlay.open { display: grid; }
+.modal-box {
+  background: var(--ink-3); border: 1px solid var(--rule);
+  border-radius: 20px; padding: 40px 36px;
+  width: 100%; max-width: 420px; margin: 24px;
+  display: flex; flex-direction: column; gap: 28px;
+}
+.modal-close {
+  position: absolute; top: 16px; right: 16px;
+  font-family: var(--mono); font-size: 18px; color: var(--fg-4);
+  cursor: pointer; line-height: 1;
+}
+.modal-title { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+.modal-sub { font-size: 13px; color: var(--fg-3); line-height: 1.7; margin-top: -12px; }
+.btn-google-full {
+  background: var(--fg); color: var(--ink);
+  height: 56px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
   font-weight: 600; font-size: 15px;
   transition: transform .14s ease, background .2s ease;
 }
-.btn-google:active { transform: scale(0.98); }
-.btn-google:hover { background: #e8e5de; }
-.btn-google svg { width: 18px; height: 18px; flex-shrink: 0; }
-
-#error-msg { display: none; font-family: var(--mono); font-size: 12px; color: #e07b6a; text-align: center; }
-
-/* fine print */
-.login-fine {
+.btn-google-full:active { transform: scale(0.98); }
+.btn-google-full:hover { background: #e8e5de; }
+.btn-google-full svg { width: 18px; height: 18px; flex-shrink: 0; }
+.modal-fine {
   font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; color: var(--fg-4);
-  display: flex; gap: 16px; align-items: center;
+  text-align: center;
 }
-.login-fine::before, .login-fine::after {
-  content: ''; flex: 1; height: 1px; background: var(--rule-soft);
+#modal-error { display: none; font-family: var(--mono); font-size: 12px; color: #e07b6a; text-align: center; }
+
+/* ── Hero ── */
+.hero {
+  padding: 80px 28px 72px;
+  max-width: 860px; margin: 0 auto;
+}
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--fg-3);
+  display: flex; align-items: center; gap: 8px; margin-bottom: 24px;
+}
+.hero-eyebrow::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--rule); }
+.hero h1 {
+  font-family: 'Geist', -apple-system, sans-serif;
+  font-weight: 700; font-size: clamp(48px, 8vw, 76px);
+  letter-spacing: -0.05em; line-height: 0.9; margin-bottom: 8px;
+}
+.hero h1 em { color: var(--live); font-style: normal; }
+.hero-cjk {
+  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  font-weight: 900; font-size: clamp(26px, 4.5vw, 40px);
+  letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 28px;
+}
+.hero-sub {
+  font-size: 16px; color: var(--fg-2); max-width: 480px;
+  line-height: 1.7; margin-bottom: 48px;
 }
 
-/* gym labels */
-.gym-labels {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 4px;
+/* CTA cards */
+.hero-ctas {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 12px;
 }
-.gym-label-name {
+@media(max-width:600px) { .hero-ctas { grid-template-columns: 1fr; } }
+.cta-card {
+  background: var(--ink-2); border: 1px solid var(--rule-soft);
+  border-radius: 16px; padding: 22px 20px;
+  display: block; transition: border-color .2s, transform .15s;
+  cursor: pointer;
+}
+.cta-card:hover { border-color: rgba(166,230,53,0.4); transform: translateY(-2px); }
+.cta-icon { font-size: 1.6rem; margin-bottom: 12px; display: block; }
+.cta-label {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--live); margin-bottom: 6px; display: block;
+}
+.cta-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.cta-desc { font-size: 12.5px; color: var(--fg-3); line-height: 1.6; }
+
+/* ── Schedule Section ── */
+.schedule-section {
+  padding: 80px 0; background: var(--ink-2);
+  border-top: 1px solid var(--rule-soft);
+}
+.schedule-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.section-label {
+  font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+  letter-spacing: 0.14em; color: var(--fg-3); text-transform: uppercase; margin-bottom: 12px; display: block;
+}
+.section-title {
+  font-family: 'Noto Sans TC', sans-serif; font-weight: 900;
+  font-size: clamp(1.5rem, 4vw, 2.2rem); margin-bottom: 8px;
+  line-height: 1.2; letter-spacing: -0.02em;
+}
+.schedule-meta {
+  font-size: 13px; color: var(--fg-3); margin-bottom: 36px;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.schedule-meta .tag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; background: rgba(166,230,53,0.12);
+  color: var(--live); border: 1px solid rgba(166,230,53,0.25);
+  padding: 3px 10px; border-radius: 999px;
+}
+.schedule-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.schedule-table {
+  width: 100%; border-collapse: collapse; min-width: 620px;
+}
+.schedule-table th {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--fg-4);
+  padding: 10px 12px; text-align: center;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.schedule-table th.time-col { text-align: left; color: var(--fg-4); width: 70px; }
+.schedule-table td {
+  padding: 8px 10px; border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top; min-width: 110px;
+}
+.schedule-table td.time-cell {
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  color: var(--fg-3); white-space: nowrap; padding-top: 14px;
+}
+.class-chip {
+  background: var(--ink-3); border: 1px solid var(--rule-soft);
+  border-radius: 10px; padding: 9px 10px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.class-chip.beginner { border-color: rgba(166,230,53,0.25); background: rgba(166,230,53,0.05); }
+.class-chip.heavy { border-color: rgba(217,165,92,0.3); background: rgba(217,165,92,0.05); }
+.chip-coach {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--fg-4);
+  display: flex; align-items: center; gap: 4px;
+}
+.chip-star { color: var(--live); font-size: 8px; }
+.chip-name { font-size: 13px; font-weight: 700; color: var(--fg); line-height: 1.3; }
+.chip-type { font-size: 11px; color: var(--fg-3); }
+.empty-cell { opacity: 0; }
+.schedule-notes {
+  margin-top: 24px; display: flex; gap: 20px; flex-wrap: wrap;
+  font-family: var(--mono); font-size: 10.5px; color: var(--fg-4); letter-spacing: 0.04em;
+}
+.schedule-notes span { display: flex; align-items: center; gap: 6px; }
+
+/* ── Today WOD ── */
+.wod-section { padding: 80px 24px; border-top: 1px solid var(--rule-soft); }
+.wod-inner { max-width: 720px; margin: 0 auto; }
+.wod-card {
+  background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 16px;
+  padding: 28px; margin-top: 32px;
+}
+.wod-date-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; color: var(--fg-4); margin-bottom: 10px; }
+.wod-type-badge {
+  display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: .1em;
+  text-transform: uppercase; background: var(--live); color: var(--live-ink);
+  border-radius: 999px; padding: 3px 12px; margin-bottom: 16px;
+}
+.wod-name { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
+.wod-description {
+  font-family: var(--mono); font-size: 14px; line-height: 2; color: var(--fg);
+  white-space: pre-line; margin-bottom: 8px;
+}
+.wod-movements { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.wod-movement {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 10px 14px; background: var(--ink); border-radius: 8px;
+  border: 1px solid var(--rule-soft); gap: 12px;
+}
+.wod-mv-name { font-size: 13px; font-weight: 600; }
+.wod-mv-detail { font-family: var(--mono); font-size: 11px; color: var(--fg-3); margin-left: 6px; }
+.wod-mv-rx { font-family: var(--mono); font-size: 11px; color: var(--heavy); flex-shrink: 0; }
+.wod-coach-note {
+  margin-top: 16px; padding: 12px 16px;
+  background: rgba(166,230,53,0.06); border: 1px solid rgba(166,230,53,0.2);
+  border-radius: 8px; font-size: 13px; color: var(--fg-2); line-height: 1.7;
+}
+.wod-coach-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; color: var(--live); text-transform: uppercase; margin-bottom: 6px; }
+.wod-empty { font-family: var(--mono); font-size: 13px; color: var(--fg-4); padding: 40px 0; text-align: center; letter-spacing: .04em; }
+
+/* ── Monthly Focus Preview ── */
+.focus-section { padding: 40px 24px 0; }
+.focus-inner { max-width: 720px; margin: 0 auto; }
+.focus-card {
+  background: linear-gradient(135deg, #1a2a1a 0%, #0f1f2a 100%);
+  border: 1px solid rgba(166,230,53,0.25); border-radius: 16px;
+  padding: 24px 28px;
+}
+.focus-eyebrow { font-family: var(--mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--live); margin-bottom: 8px; }
+.focus-title { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 16px; color: #fff; }
+.focus-points { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.focus-points li { font-size: 13px; color: var(--fg-2); line-height: 1.6; padding-left: 16px; position: relative; }
+.focus-points li::before { content: '—'; position: absolute; left: 0; color: var(--live); }
+
+/* ── Supplemental ── */
+.suppl-section { margin-top: 32px; }
+.suppl-toggle {
+  display: flex; align-items: center; gap: 10px; cursor: pointer;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--fg-4); background: none; border: none; padding: 0; width: 100%;
+}
+.suppl-toggle:hover { color: var(--fg-2); }
+.suppl-label-text { flex: 1; text-align: left; }
+.suppl-chevron { transition: transform 0.2s; font-size: 10px; }
+.suppl-toggle.open .suppl-chevron { transform: rotate(180deg); }
+.suppl-body { display: none; margin-top: 16px; display: flex; flex-direction: column; gap: 12px; }
+.suppl-body.hidden { display: none; }
+.suppl-card {
+  background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 12px; padding: 18px;
+}
+.suppl-card-title { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--heavy); margin-bottom: 10px; }
+.suppl-card-content { font-family: var(--mono); font-size: 12.5px; color: var(--fg-2); line-height: 1.85; white-space: pre-line; }
+
+/* ── Schedule Tabs ── */
+.sched-tabs {
+  display: flex; gap: 4px; margin-bottom: 32px;
+  background: var(--ink-3); border: 1px solid var(--rule-soft);
+  border-radius: 12px; padding: 4px; width: fit-content;
+}
+.sched-tab {
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--fg-3); display: block; margin-bottom: 6px;
+  text-transform: uppercase; padding: 8px 20px; border-radius: 9px;
+  cursor: pointer; transition: all .18s; color: var(--fg-3);
 }
-.gym-label-addr { font-family: var(--mono); font-size: 12px; color: var(--fg-4); }
+.sched-tab.active {
+  background: var(--ink); color: var(--fg); font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+.sched-tab:hover:not(.active) { color: var(--fg-2); }
+.sched-panel { display: none; }
+.sched-panel.active { display: block; }
+.coach-disclaimer {
+  margin-top: 20px; padding: 14px 18px;
+  background: rgba(217,165,92,0.07); border: 1px solid rgba(217,165,92,0.2);
+  border-radius: 10px; font-size: 12px; color: var(--fg-3); line-height: 1.7;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.coach-disclaimer-icon { color: var(--gold); flex-shrink: 0; margin-top: 1px; }
+
+/* ── Features ── */
+.features-section { padding: 80px 24px; background: var(--ink-2); border-top: 1px solid var(--rule-soft); }
+.features-inner { max-width: 720px; margin: 0 auto; }
+.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule-soft); border: 1px solid var(--rule-soft); border-radius: 16px; overflow: hidden; margin-top: 40px; }
+@media (max-width: 480px) { .features-grid { grid-template-columns: 1fr; } }
+.feature-card { background: var(--ink-2); padding: 24px 22px; }
+.feature-icon { font-size: 1.4rem; margin-bottom: 12px; display: block; }
+.feature-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.feature-desc { font-size: 13px; color: var(--fg-3); line-height: 1.7; }
+.feature-badge {
+  display: inline-block; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-bottom: 10px;
+}
+.feature-badge.free { background: rgba(166,230,53,0.12); color: var(--live); border: 1px solid rgba(166,230,53,0.25); }
+.feature-badge.member { background: rgba(217,165,92,0.12); color: var(--gold); border: 1px solid rgba(217,165,92,0.25); }
 
 /* ── AI Planner ── */
-.planner-section { padding: 80px 24px; background: var(--ink-2); border-top: 1px solid var(--rule-soft); }
+.planner-section { padding: 80px 24px; border-top: 1px solid var(--rule-soft); }
 .planner-inner { max-width: 720px; margin: 0 auto; }
-
 .planner-form {
   background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 16px;
   padding: 32px; margin-top: 40px; display: flex; flex-direction: column; gap: 24px;
@@ -165,7 +372,6 @@ a { color: inherit; text-decoration: none; }
 .form-input:focus, .form-select:focus { border-color: var(--live); }
 .form-input::placeholder { color: var(--fg-4); }
 .form-select option { background: var(--ink-3); }
-
 .btn-generate {
   background: var(--live); color: var(--live-ink);
   padding: 16px 32px; border-radius: 999px; border: none;
@@ -178,7 +384,6 @@ a { color: inherit; text-decoration: none; }
 .btn-generate .spin { display: none; width: 18px; height: 18px; border: 2px solid rgba(0,0,0,0.3); border-top-color: var(--live-ink); border-radius: 50%; animation: spin 0.7s linear infinite; }
 .btn-generate.loading .spin { display: block; }
 @keyframes spin { to { transform: rotate(360deg); } }
-
 .plan-output { margin-top: 32px; display: none; }
 .plan-warning {
   background: rgba(166,230,53,0.1); border: 1px solid rgba(166,230,53,0.35);
@@ -226,74 +431,8 @@ a { color: inherit; text-decoration: none; }
 .btn-download:hover { border-color: var(--fg-3); color: var(--fg); }
 .planner-err { font-family: var(--mono); font-size: 12px; color: #e07b6a; margin-top: 12px; display: none; }
 
-/* ── Marketing sections ── */
-.section { padding: 80px 24px; max-width: 720px; margin: 0 auto; }
-.section-label {
-  font-family: var(--mono); font-size: 10.5px; font-weight: 500;
-  letter-spacing: 0.14em; color: var(--fg-3); text-transform: uppercase; margin-bottom: 12px;
-}
-.section-title {
-  font-family: 'Noto Sans TC', sans-serif; font-weight: 900;
-  font-size: clamp(1.5rem, 4vw, 2.2rem); margin-bottom: 40px;
-  line-height: 1.2; letter-spacing: -0.02em;
-}
-
-/* features */
-.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule-soft); border: 1px solid var(--rule-soft); border-radius: 16px; overflow: hidden; }
-@media (max-width: 480px) { .features-grid { grid-template-columns: 1fr; } }
-.feature-card { background: var(--ink-2); padding: 24px 22px; }
-.feature-icon { font-size: 1.4rem; margin-bottom: 12px; display: block; }
-.feature-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-.feature-desc { font-size: 13px; color: var(--fg-3); line-height: 1.7; }
-
-/* locations */
-.locations-section { padding: 80px 24px; background: var(--ink-2); border-top: 1px solid var(--rule-soft); }
-.locations-inner { max-width: 720px; margin: 0 auto; }
-.locations-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule-soft); border: 1px solid var(--rule-soft); border-radius: 16px; overflow: hidden; margin-top: 40px; }
-@media (max-width: 540px) { .locations-grid { grid-template-columns: 1fr; } }
-.location-card { background: var(--ink); padding: 28px 24px; }
-.location-tag { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.15em; color: var(--heavy); text-transform: uppercase; margin-bottom: 10px; display: block; }
-.location-name { font-size: 22px; font-weight: 900; margin-bottom: 20px; letter-spacing: -0.01em; }
-.location-row { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--fg-3); line-height: 1.6; margin-bottom: 10px; }
-.location-row:last-child { margin-bottom: 0; }
-.location-icon { flex-shrink: 0; color: var(--fg-4); font-size: 13px; margin-top: 2px; }
-
-/* ── Today WOD ── */
-.wod-section { padding: 80px 24px; background: var(--ink-2); border-top: 1px solid var(--rule-soft); }
-.wod-inner { max-width: 720px; margin: 0 auto; }
-.wod-card {
-  background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 16px;
-  padding: 28px; margin-top: 32px;
-}
-.wod-date-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; color: var(--fg-4); margin-bottom: 10px; }
-.wod-type-badge {
-  display: inline-block; font-family: var(--mono); font-size: 9px; letter-spacing: .1em;
-  text-transform: uppercase; background: var(--live); color: var(--live-ink);
-  border-radius: 999px; padding: 3px 12px; margin-bottom: 16px;
-}
-.wod-description {
-  font-family: var(--mono); font-size: 14px; line-height: 2; color: var(--fg);
-  white-space: pre-line; margin-bottom: 8px;
-}
-.wod-movements { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
-.wod-movement {
-  display: flex; justify-content: space-between; align-items: baseline;
-  padding: 10px 14px; background: var(--ink); border-radius: 8px;
-  border: 1px solid var(--rule-soft); gap: 12px;
-}
-.wod-mv-name { font-size: 13px; font-weight: 600; }
-.wod-mv-detail { font-family: var(--mono); font-size: 11px; color: var(--fg-3); margin-left: 6px; }
-.wod-mv-rx { font-family: var(--mono); font-size: 11px; color: var(--heavy); flex-shrink: 0; }
-.wod-coach-note {
-  margin-top: 16px; padding: 12px 16px;
-  background: rgba(166,230,53,0.06); border: 1px solid rgba(166,230,53,0.2);
-  border-radius: 8px; font-size: 13px; color: var(--fg-2); line-height: 1.7;
-}
-.wod-coach-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; color: var(--live); text-transform: uppercase; margin-bottom: 6px; }
-.wod-empty { font-family: var(--mono); font-size: 13px; color: var(--fg-4); padding: 40px 0; text-align: center; letter-spacing: .04em; }
-
-/* ── Trial Form ── */
-.trial-section { padding: 80px 24px; border-top: 1px solid var(--rule-soft); }
+/* ── Trial ── */
+.trial-section { padding: 80px 24px; background: var(--ink-2); border-top: 1px solid var(--rule-soft); }
 .trial-inner { max-width: 720px; margin: 0 auto; }
 .trial-form-box {
   background: var(--ink-3); border: 1px solid var(--rule-soft); border-radius: 16px;
@@ -307,7 +446,19 @@ a { color: inherit; text-decoration: none; }
 }
 .trial-success .s-big { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
 
-/* footer */
+/* ── Locations ── */
+.locations-section { padding: 80px 24px; border-top: 1px solid var(--rule-soft); }
+.locations-inner { max-width: 720px; margin: 0 auto; }
+.locations-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule-soft); border: 1px solid var(--rule-soft); border-radius: 16px; overflow: hidden; margin-top: 40px; }
+@media (max-width: 540px) { .locations-grid { grid-template-columns: 1fr; } }
+.location-card { background: var(--ink); padding: 28px 24px; }
+.location-tag { font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 0.15em; color: var(--heavy); text-transform: uppercase; margin-bottom: 10px; display: block; }
+.location-name { font-size: 22px; font-weight: 900; margin-bottom: 20px; letter-spacing: -0.01em; }
+.location-row { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--fg-3); line-height: 1.6; margin-bottom: 10px; }
+.location-row:last-child { margin-bottom: 0; }
+.location-icon { flex-shrink: 0; color: var(--fg-4); font-size: 13px; margin-top: 2px; }
+
+/* ── Footer ── */
 .footer { padding: 40px 24px; text-align: center; border-top: 1px solid var(--rule-soft); }
 .footer-logo { font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: var(--fg-3); margin-bottom: 16px; }
 .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
@@ -318,73 +469,593 @@ a { color: inherit; text-decoration: none; }
 </head>
 <body>
 
-<!-- ── Login hero ── -->
-<section class="login-shell">
-  <div class="login">
+<!-- ── NAV ── -->
+<nav class="nav">
+  <div class="nav-logo">
+    <span class="dot"></span>
+    4SC · CROSSFIT
+  </div>
+  <div class="nav-actions">
+    <a class="nav-link" href="courses.html">課程報名</a>
+    <a class="nav-link" href="#schedule">課表</a>
+    <a class="nav-link" href="#today-wod">今日 WOD</a>
+    <a class="nav-link" href="#trial">免費體驗</a>
+    <button class="btn-login" id="btn-login" onclick="openLoginModal()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+      會員登入
+    </button>
+    <a class="btn-enter" id="btn-enter" href="dashboard.html">
+      進入會員中心 →
+    </a>
+  </div>
+</nav>
 
-    <div class="login-mark"><span class="dot"></span>4SC · CROSSFIT · TAIWAN</div>
+<!-- ── Login Modal ── -->
+<div class="modal-overlay" id="login-modal" onclick="closeLoginModal(event)">
+  <div class="modal-box">
+    <div class="modal-title">會員登入</div>
+    <p class="modal-sub">使用 Google 帳號登入，首次登入需等候教練審核（約 24 小時）。</p>
+    <button class="btn-google-full" onclick="signInWithGoogle()">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      使用 Google 帳號登入
+    </button>
+    <div id="modal-error"></div>
+    <div class="modal-fine">登入即表示同意場館使用規範</div>
+  </div>
+</div>
 
-    <div>
-      <h1>Train.<br>Log. <em>Repeat.</em></h1>
-      <div class="cjk-h1">訓練。紀錄。再來。</div>
-    </div>
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-eyebrow">4SC Strength &amp; Conditioning · 永和館</div>
+  <h1>Train.<br>Log. <em>Repeat.</em></h1>
+  <div class="hero-cjk">訓練。紀錄。再來。</div>
+  <p class="hero-sub">本月課表、今日 WOD、1RM 換算、AI 課表生成器。<br>不用登入就能查課表和預約體驗，登入後解鎖訓練紀錄與個人回饋。</p>
 
-    <p class="lede">本週課表、1RM 重量換算、訓練紀錄與 AI 教練回饋。會員專屬平台。</p>
+  <div class="hero-ctas">
+    <a class="cta-card" href="#schedule">
+      <span class="cta-icon">🗓</span>
+      <span class="cta-label">免費開放</span>
+      <div class="cta-title">六月課表</div>
+      <div class="cta-desc">永和館完整開課時間，星期一到六所有時段一覽。</div>
+    </a>
+    <a class="cta-card" href="#today-wod">
+      <span class="cta-icon">⚡</span>
+      <span class="cta-label">免費開放</span>
+      <div class="cta-title">今日 WOD</div>
+      <div class="cta-desc">今天課表自動置頂，包含動作說明與 RX 建議重量。</div>
+    </a>
+    <a class="cta-card" href="#planner">
+      <span class="cta-icon">🤖</span>
+      <span class="cta-label">免費開放</span>
+      <div class="cta-title">AI 課表生成</div>
+      <div class="cta-desc">填入你的數據，AI 幫你規劃個人化兩週訓練課表。</div>
+    </a>
+  </div>
 
-    <div class="login-stats">
-      <div class="s"><span class="v">2</span><span class="k">Locations</span></div>
-      <div class="s"><span class="v">7</span><span class="k">/wk Sessions</span></div>
-      <div class="s"><span class="v">AI</span><span class="k">Coach Feedback</span></div>
-    </div>
-
-    <div class="login-actions">
-      <button class="btn-google" id="btn-google" onclick="signInWithGoogle()">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-        </svg>
-        使用 Google 帳號登入
-      </button>
-      <a class="btn-google" id="btn-enter" href="dashboard.html" style="display:none;">
-        進入會員中心 →
-      </a>
-      <div id="error-msg"></div>
-    </div>
-
-    <div class="login-fine">第一次登入？教練會於 24 小時內完成審核</div>
-
-    <div class="gym-labels">
+  <a href="outing.html" style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;background:var(--live);color:var(--live-ink);border-radius:16px;padding:20px 24px;font-weight:700;transition:opacity .2s,transform .15s;cursor:pointer;text-decoration:none;" onmouseover="this.style.opacity='.88';this.style.transform='translateY(-2px)'" onmouseout="this.style.opacity='1';this.style.transform=''">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span style="font-size:1.6rem;">🏆</span>
       <div>
-        <span class="gym-label-name">新店館</span>
-        <span class="gym-label-addr">CrossFit · 北新路二段</span>
-      </div>
-      <div>
-        <span class="gym-label-name">永和館</span>
-        <span class="gym-label-addr">混合健身 · 永貞路</span>
+        <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;margin-bottom:3px;">2026 出團計劃</div>
+        <div style="font-size:16px;font-weight:800;letter-spacing:-0.02em;">跟四季一起備賽、出發、完成挑戰</div>
+        <div style="font-size:12px;opacity:.65;margin-top:3px;">WEPOWER 9/19 · 台中鋼鐵大賽 10/17–18</div>
       </div>
     </div>
+    <span style="font-family:var(--mono);font-size:13px;font-weight:700;white-space:nowrap;">了解詳情 →</span>
+  </a>
+</section>
 
+<!-- ── June Schedule ── -->
+<section class="schedule-section" id="schedule">
+  <div class="schedule-inner">
+    <span class="section-label">GROUP CLASS SCHEDULE</span>
+    <h2 class="section-title">2026 六月團課課表</h2>
+    <div class="schedule-meta">
+      <span class="tag">★ 運動新手友善</span>
+      <span class="tag">首次體驗 $400</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="sched-tabs">
+      <div class="sched-tab active" onclick="switchTab('yonghe')">永和館</div>
+      <div class="sched-tab" onclick="switchTab('xindian')">新店館</div>
+    </div>
+
+    <!-- 永和館 -->
+    <div class="sched-panel active" id="panel-yonghe">
+      <div class="schedule-meta" style="margin-bottom:20px;">
+        <span>新北市永和區永貞路 149 號 B1F · (02) 2927-5699</span>
+      </div>
+      <div class="schedule-wrap">
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th class="time-col">時間</th>
+            <th>MON</th>
+            <th>TUE</th>
+            <th>WED</th>
+            <th>THU</th>
+            <th>FRI</th>
+            <th>SAT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="time-cell">11:00</td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">基礎肌力</span>
+                <span class="chip-type">Foundation</span>
+              </div>
+            </td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">基礎肌力</span>
+                <span class="chip-type">Foundation</span>
+              </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">綜合體能</span>
+                <span class="chip-type">基礎班</span>
+              </div>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="time-cell">14:00</td>
+            <td></td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">肌力樂齡班</span>
+                <span class="chip-type">Senior Workout</span>
+              </div>
+            </td>
+            <td></td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">肌力樂齡班</span>
+                <span class="chip-type">Senior Workout</span>
+              </div>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="time-cell">18:30</td>
+            <td></td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">基礎肌力</span>
+                <span class="chip-type">Foundation</span>
+              </div>
+            </td>
+            <td>
+              <div class="class-chip">
+                <span class="chip-name">綜合體能</span>
+                <span class="chip-type">&nbsp;</span>
+              </div>
+            </td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">基礎肌力</span>
+                <span class="chip-type">Foundation</span>
+              </div>
+            </td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">流動舒展</span>
+                <span class="chip-type">Power &amp; Recovery</span>
+              </div>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="time-cell">19:30</td>
+            <td>
+              <div class="class-chip">
+                <span class="chip-name">綜合體能</span>
+                <span class="chip-type">&nbsp;</span>
+              </div>
+            </td>
+            <td>
+              <div class="class-chip">
+                <span class="chip-name">綜合體能</span>
+                <span class="chip-type">&nbsp;</span>
+              </div>
+            </td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">體操核心訓練</span>
+                <span class="chip-type">Gymnastics</span>
+              </div>
+            </td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">綜合體能</span>
+                <span class="chip-type">基礎班</span>
+              </div>
+            </td>
+            <td>
+              <div class="class-chip">
+                <span class="chip-name">綜合體能</span>
+                <span class="chip-type">&nbsp;</span>
+              </div>
+            </td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">基礎肌力</span>
+                <span class="chip-type">Foundation</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="time-cell">20:30</td>
+            <td>
+              <div class="class-chip beginner">
+                <span class="chip-name">基礎肌力</span>
+                <span class="chip-type">Foundation</span>
+              </div>
+            </td>
+            <td></td>
+            <td>
+              <div class="class-chip">
+                <span class="chip-name">成人體操</span>
+                <span class="chip-type">Gymnastics</span>
+              </div>
+            </td>
+            <td></td>
+            <td>
+              <div class="class-chip heavy">
+                <span class="chip-name">深蹲專班</span>
+                <span class="chip-type">Squat</span>
+              </div>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="schedule-notes">
+      <span><span style="color:var(--live);">★</span> 運動新手友善課程</span>
+      <span>· 最低開班 2 人</span>
+      <span>· 採預約制</span>
+      <span>· (02) 2927-5699</span>
+      <span>· 預約請洽官方 LINE</span>
+    </div>
+    </div><!-- /panel-yonghe -->
+
+    <!-- 新店館 -->
+    <div class="sched-panel" id="panel-xindian">
+      <div class="schedule-meta" style="margin-bottom:20px;">
+        <span>新北市新店區北新路二段 230-1 號 · (02) 8979-5230</span>
+      </div>
+      <div class="schedule-wrap">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th class="time-col">時間</th>
+              <th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th><th>SUN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-cell" style="font-size:11px;">週末<br>早上</td>
+              <td></td><td></td><td></td><td></td><td></td>
+              <td>
+                <div class="class-chip">
+                  <span class="chip-time" style="font-size:8.5px;">10:30</span>
+                  <span class="chip-name">CrossFit</span>
+                </div>
+              </td>
+              <td>
+                <div class="class-chip">
+                  <span class="chip-time" style="font-size:8.5px;">09:00</span>
+                  <span class="chip-name">CrossFit</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-cell">12:10</td>
+              <td></td>
+              <td>
+                <div class="class-chip">
+                  <span class="chip-name">CrossFit</span>
+                  <span class="chip-type">&nbsp;</span>
+                </div>
+              </td>
+              <td>
+                <div class="class-chip beginner">
+                  <span class="chip-name">CrossFit</span>
+                  <span class="chip-type">基礎班</span>
+                </div>
+              </td>
+              <td>
+                <div class="class-chip">
+                  <span class="chip-name">CrossFit</span>
+                  <span class="chip-type">&nbsp;</span>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td>
+                <div class="class-chip beginner">
+                  <span class="chip-name">CrossFit</span>
+                  <span class="chip-type">基礎班</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-cell">15:00</td>
+              <td></td>
+              <td>
+                <div class="class-chip beginner">
+                  <span class="chip-name">基礎肌力樂齡班</span>
+                  <span class="chip-type">包月優惠專案</span>
+                </div>
+              </td>
+              <td></td>
+              <td>
+                <div class="class-chip beginner">
+                  <span class="chip-name">基礎肌力</span>
+                  <span class="chip-type">Foundation</span>
+                </div>
+              </td>
+              <td></td><td></td>
+              <td>
+                <div class="class-chip heavy">
+                  <span class="chip-time" style="font-size:8.5px;">17:00</span>
+                  <span class="chip-name">進階肌力課程</span>
+                  <span class="chip-type">Adv. Strength</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="time-cell">18:30</td>
+              <td>
+                <div class="class-chip beginner">
+                  <span class="chip-name">基礎肌力</span>
+                  <span class="chip-type">Foundation</span>
+                </div>
+              </td>
+              <td>
+                <div class="class-chip beginner">
+                  <span class="chip-name">CrossFit</span>
+                  <span class="chip-type">基礎班</span>
+                </div>
+              </td>
+              <td></td>
+              <td>
+                <div class="class-chip heavy">
+                  <span class="chip-name">進階肌力課程</span>
+                  <span class="chip-type">Adv. Strength</span>
+                </div>
+              </td>
+              <td>
+                <div class="class-chip">
+                  <span class="chip-name">舉重團課</span>
+                  <span class="chip-type">&nbsp;</span>
+                </div>
+              </td>
+              <td></td><td></td>
+            </tr>
+            <tr>
+              <td class="time-cell">19:30</td>
+              <td>
+                <div class="class-chip beginner">
+                  <span class="chip-name">CrossFit</span>
+                  <span class="chip-type">&nbsp;</span>
+                </div>
+              </td>
+              <td>
+                <div class="class-chip">
+                  <span class="chip-name">CrossFit</span>
+                  <span class="chip-type">&nbsp;</span>
+                </div>
+                <div class="class-chip beginner" style="margin-top:6px;">
+                  Yan</span>
+                  <span class="chip-name">基礎體操</span>
+                  <span class="chip-type">Gymnastics</span>
+                </div>
+              </td>
+              <td>
+                <div class="class-chip">
+                  <span class="chip-name">CrossFit</span>
+                  <span class="chip-type">&nbsp;</span>
+                </div>
+                <div class="class-chip beginner" style="margin-top:6px;">
+                  <span class="chip-name">基礎肌力</span>
+                  <span class="chip-type">Foundation</span>
+                </div>
+              </td>
+              <td>
+                <div class="class-chip">
+                  <span class="chip-name">CrossFit</span>
+                  <span class="chip-type">&nbsp;</span>
+                </div>
+              </td>
+              <td>
+                <div class="class-chip">
+                  <span class="chip-name">舉重團課</span>
+                  <span class="chip-type">&nbsp;</span>
+                </div>
+              </td>
+              <td></td><td></td>
+            </tr>
+            <tr>
+              <td class="time-cell">20:30</td>
+              <td></td><td></td><td></td><td></td>
+              <td>
+                <div class="class-chip beginner">
+                  <span class="chip-name">CrossFit</span>
+                  <span class="chip-type">基礎班</span>
+                </div>
+              </td>
+              <td></td><td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="schedule-notes">
+        <span><span style="color:var(--live);">★</span> 運動新手友善課程</span>
+        <span>· 最低開班 2 人</span>
+        <span>· 採預約制</span>
+        <span>· (02) 8979-5230</span>
+        <span>· 預約請洽官方 LINE</span>
+      </div>
+    </div><!-- /panel-xindian -->
+
+    <!-- 教練更換說明 -->
+    <div class="coach-disclaimer">
+      <span class="coach-disclaimer-icon">ℹ️</span>
+      <span>課表上之授課教練僅供參考，實際授課教練可能因課程安排而調整。<strong style="color:var(--fg-2);">請以預約系統上顯示的最終授課教練為準。</strong></span>
+    </div>
+
+    <!-- Trial CTA -->
+    <div style="margin-top:28px;padding:24px 28px;background:rgba(166,230,53,0.07);border:1px solid rgba(166,230,53,0.2);border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:16px;font-weight:700;margin-bottom:4px;">首次團課體驗</div>
+        <div style="font-family:var(--mono);font-size:12px;color:var(--fg-3);">選擇任一課程，享優惠體驗價 $400 元</div>
+      </div>
+      <a href="#trial" style="background:var(--live);color:var(--live-ink);padding:12px 28px;border-radius:999px;font-weight:700;font-size:14px;white-space:nowrap;">立即預約體驗 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Monthly Focus Preview ── -->
+<section class="focus-section">
+  <div class="focus-inner">
+    <div class="focus-card" id="monthly-focus-card" style="display:none;">
+      <div class="focus-eyebrow">UPCOMING · MONTHLY FOCUS</div>
+      <div class="focus-title" id="focus-title"></div>
+      <ul class="focus-points" id="focus-points"></ul>
+    </div>
   </div>
 </section>
 
 <!-- ── Today WOD ── -->
 <section class="wod-section" id="today-wod">
   <div class="wod-inner">
-    <p class="section-label">TODAY'S WOD</p>
+    <span class="section-label">TODAY'S WOD</span>
     <h2 class="section-title">今日課表</h2>
     <div id="wod-display"><div class="wod-empty">載入中…</div></div>
     <p style="font-family:var(--mono);font-size:10.5px;color:var(--fg-4);text-align:center;margin-top:24px;letter-spacing:.04em;">登入後可記錄今日成績，獲得 AI 教練個人化回饋</p>
+    <div class="suppl-section" id="suppl-section" style="display:none;">
+      <button class="suppl-toggle" id="suppl-toggle" onclick="toggleSuppl()">
+        <span class="suppl-label-text">本週補充課 (Strength / Skill / Stamina)</span>
+        <span class="suppl-chevron">▼</span>
+      </button>
+      <div class="suppl-body hidden" id="suppl-body"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AI Plan Generator ── -->
+<section class="planner-section" id="planner">
+  <div class="planner-inner">
+    <span class="section-label">AI PROGRAM GENERATOR</span>
+    <h2 class="section-title">填入你的數據<br>AI 幫你規劃兩週課表</h2>
+
+    <div class="planner-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">訓練目標</label>
+          <select id="pg-style" class="form-select">
+            <option value="crossfit">CrossFit 功能性體能</option>
+            <option value="bodybuilding">健美 · 增肌塑形</option>
+            <option value="powerlifting">健力 · 最大肌力</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">訓練經驗</label>
+          <select id="pg-exp" class="form-select">
+            <option value="beginner">初學者（&lt; 1年）</option>
+            <option value="intermediate">中級（1–3 年）</option>
+            <option value="advanced">進階（3 年以上）</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">每週訓練次數</label>
+          <select id="pg-days" class="form-select">
+            <option value="2">每週 2 次</option>
+            <option value="3" selected>每週 3 次</option>
+            <option value="4">每週 4 次</option>
+            <option value="5">每週 5 次</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">每次訓練時間</label>
+          <select id="pg-duration" class="form-select">
+            <option value="30">30 分鐘</option>
+            <option value="60" selected>60 分鐘</option>
+            <option value="90">90 分鐘</option>
+            <option value="120">120 分鐘</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">身高（cm）</label>
+          <input id="pg-height" type="number" class="form-input" placeholder="170">
+        </div>
+        <div class="form-group">
+          <label class="form-label">體重（kg）</label>
+          <input id="pg-weight" type="number" class="form-input" placeholder="70">
+        </div>
+      </div>
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--fg-4);text-transform:uppercase;">最大重量（選填，有填更準確）</div>
+      <div class="form-row triple">
+        <div class="form-group">
+          <label class="form-label">深蹲 1RM（kg）</label>
+          <input id="pg-squat" type="number" class="form-input" placeholder="例：100">
+        </div>
+        <div class="form-group">
+          <label class="form-label">硬舉 1RM（kg）</label>
+          <input id="pg-deadlift" type="number" class="form-input" placeholder="例：120">
+        </div>
+        <div class="form-group">
+          <label class="form-label">臥推 1RM（kg）</label>
+          <input id="pg-bench" type="number" class="form-input" placeholder="例：80">
+        </div>
+      </div>
+      <button class="btn-generate" id="pg-btn" onclick="generatePlan()">
+        <div class="spin"></div>
+        <span id="pg-btn-text">生成我的兩週課表</span>
+      </button>
+      <div class="planner-err" id="pg-err"></div>
+    </div>
+
+    <div class="plan-output" id="pg-output">
+      <div class="plan-warning">課表不會自動儲存，請截圖或點「下載課表」保存。登入後可儲存至會員帳號。</div>
+      <div class="plan-cards" id="pg-plan"></div>
+      <div class="plan-actions">
+        <button class="btn-download" onclick="downloadPlan()">下載課表（.txt）</button>
+        <button class="btn-download" onclick="window.print()">列印 / 儲存 PDF</button>
+        <button class="btn-download" id="pg-save-btn" style="display:none;border-color:var(--live);color:var(--live);" onclick="savePlan()">儲存至我的帳號</button>
+      </div>
+      <div id="pg-save-msg" style="font-family:var(--mono);font-size:11px;color:var(--live);margin-top:8px;display:none;">已儲存至你的帳號</div>
+    </div>
   </div>
 </section>
 
 <!-- ── Group Class Trial ── -->
 <section class="trial-section" id="trial">
   <div class="trial-inner">
-    <p class="section-label">FREE TRIAL</p>
-    <h2 class="section-title">預約免費<br>團課體驗</h2>
-    <p style="color:var(--fg-2);font-size:15px;max-width:480px;line-height:1.7;margin-top:12px;">第一次來不知道怎麼開始？預約免費團課體驗，教練會在現場帶你，不用擔心跟不上。</p>
+    <span class="section-label">FREE TRIAL</span>
+    <h2 class="section-title">預約首次<br>團課體驗</h2>
+    <p style="color:var(--fg-2);font-size:15px;max-width:480px;line-height:1.7;margin-top:12px;">第一次來不知道怎麼開始？預約體驗，優惠價 $400 元，教練現場帶你，不用擔心跟不上。</p>
     <div class="trial-form-box" id="trial-form-box">
       <div class="trial-row">
         <div class="form-group">
@@ -418,171 +1089,26 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<!-- ── AI Plan Generator ── -->
-<section class="planner-section" id="planner">
-  <div class="planner-inner">
-    <p class="section-label">AI PROGRAM GENERATOR</p>
-    <h2 class="section-title">填入你的數據<br>AI 幫你規劃兩週課表</h2>
-
-    <div class="planner-form">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">訓練目標</label>
-          <select id="pg-style" class="form-select">
-            <option value="crossfit">CrossFit 功能性體能</option>
-            <option value="bodybuilding">健美 · 增肌塑形</option>
-            <option value="powerlifting">健力 · 最大肌力</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">訓練經驗</label>
-          <select id="pg-exp" class="form-select">
-            <option value="beginner">初學者（&lt; 1年）</option>
-            <option value="intermediate">中級（1–3 年）</option>
-            <option value="advanced">進階（3 年以上）</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">每週訓練次數</label>
-          <select id="pg-days" class="form-select">
-            <option value="2">每週 2 次</option>
-            <option value="3" selected>每週 3 次</option>
-            <option value="4">每週 4 次</option>
-            <option value="5">每週 5 次</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">每次訓練時間</label>
-          <select id="pg-duration" class="form-select">
-            <option value="30">30 分鐘</option>
-            <option value="60" selected>60 分鐘</option>
-            <option value="90">90 分鐘</option>
-            <option value="120">120 分鐘</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">身高（cm）</label>
-          <input id="pg-height" type="number" class="form-input" placeholder="170">
-        </div>
-        <div class="form-group">
-          <label class="form-label">體重（kg）</label>
-          <input id="pg-weight" type="number" class="form-input" placeholder="70">
-        </div>
-      </div>
-
-      <div style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--fg-4);text-transform:uppercase;">最大重量（選填，有填更準確）</div>
-      <div class="form-row triple">
-        <div class="form-group">
-          <label class="form-label">深蹲 1RM（kg）</label>
-          <input id="pg-squat" type="number" class="form-input" placeholder="例：100">
-        </div>
-        <div class="form-group">
-          <label class="form-label">硬舉 1RM（kg）</label>
-          <input id="pg-deadlift" type="number" class="form-input" placeholder="例：120">
-        </div>
-        <div class="form-group">
-          <label class="form-label">臥推 1RM（kg）</label>
-          <input id="pg-bench" type="number" class="form-input" placeholder="例：80">
-        </div>
-      </div>
-
-      <button class="btn-generate" id="pg-btn" onclick="generatePlan()">
-        <div class="spin"></div>
-        <span id="pg-btn-text">生成我的兩週課表</span>
-      </button>
-      <div class="planner-err" id="pg-err"></div>
-    </div>
-
-    <div class="plan-output" id="pg-output">
-      <div class="plan-warning">
-        課表不會自動儲存，請截圖或點「下載課表」保存。登入後可儲存至會員帳號。
-      </div>
-      <div class="plan-cards" id="pg-plan"></div>
-      <div class="plan-actions">
-        <button class="btn-download" onclick="downloadPlan()">下載課表（.txt）</button>
-        <button class="btn-download" onclick="window.print()">列印 / 儲存 PDF</button>
-        <button class="btn-download" id="pg-save-btn" style="display:none;border-color:var(--live);color:var(--live);" onclick="savePlan()">儲存至我的帳號</button>
-      </div>
-      <div id="pg-save-msg" style="font-family:var(--mono);font-size:11px;color:var(--live);margin-top:8px;display:none;">已儲存至你的帳號</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Features ── -->
-<section class="section">
-  <p class="section-label">FEATURES</p>
-  <h2 class="section-title">專為會員設計的<br>訓練工具</h2>
-  <div class="features-grid">
-    <div class="feature-card">
-      <span class="feature-icon">📋</span>
-      <div class="feature-title">每週課表</div>
-      <div class="feature-desc">今天的 WOD 自動置頂顯示，過往課表灰化。教練備注一起呈現。</div>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">⚖️</span>
-      <div class="feature-title">重量換算</div>
-      <div class="feature-desc">拖動滑桿設定你的 1RM，自動換算 60/70/75/85/95% 建議訓練重量。</div>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">📝</span>
-      <div class="feature-title">訓練紀錄</div>
-      <div class="feature-desc">記錄完成時間、使用重量與感受，送出後獲得 AI 教練個人化回饋。</div>
-    </div>
-    <div class="feature-card">
-      <span class="feature-icon">🕐</span>
-      <div class="feature-title">開課時間</div>
-      <div class="feature-desc">永和館與新店館每週開課時間一覽，今日課程自動標記。</div>
-    </div>
-  </div>
-</section>
-
 <!-- ── Locations ── -->
 <section class="locations-section">
   <div class="locations-inner">
-    <p class="section-label">OUR LOCATIONS</p>
+    <span class="section-label">OUR LOCATIONS</span>
     <h2 class="section-title">兩個場館<br>等你來訓練</h2>
     <div class="locations-grid">
-
       <div class="location-card">
         <span class="location-tag">CROSSFIT AFFILIATE</span>
         <div class="location-name">永和館</div>
-        <div class="location-row">
-          <span class="location-icon">📍</span>
-          <span>新北市永和區永貞路 149 號 B1F</span>
-        </div>
-        <div class="location-row">
-          <span class="location-icon">📞</span>
-          <span>(02) 2927-5699</span>
-        </div>
-        <div class="location-row">
-          <span class="location-icon">🚇</span>
-          <span>捷運永安市場站步行約 5 分鐘</span>
-        </div>
+        <div class="location-row"><span class="location-icon">📍</span><span>新北市永和區永貞路 149 號 B1F</span></div>
+        <div class="location-row"><span class="location-icon">📞</span><span>(02) 2927-5699</span></div>
+        <div class="location-row"><span class="location-icon">🚇</span><span>捷運永安市場站步行約 5 分鐘</span></div>
       </div>
-
       <div class="location-card">
         <span class="location-tag">CROSSFIT AFFILIATE</span>
         <div class="location-name">新店館</div>
-        <div class="location-row">
-          <span class="location-icon">📍</span>
-          <span>新北市新店區北新路二段 230-1 號</span>
-        </div>
-        <div class="location-row">
-          <span class="location-icon">📞</span>
-          <span>(02) 8979-5230</span>
-        </div>
-        <div class="location-row">
-          <span class="location-icon">🚇</span>
-          <span>捷運七張站步行約 3 分鐘</span>
-        </div>
+        <div class="location-row"><span class="location-icon">📍</span><span>新北市新店區北新路二段 230-1 號</span></div>
+        <div class="location-row"><span class="location-icon">📞</span><span>(02) 8979-5230</span></div>
+        <div class="location-row"><span class="location-icon">🚇</span><span>捷運七張站步行約 3 分鐘</span></div>
       </div>
-
     </div>
   </div>
 </section>
@@ -602,11 +1128,142 @@ a { color: inherit; text-decoration: none; }
 <script src="config.js"></script>
 <script>
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-// ── AI Plan Generator ──────────────────────────
 let _planData = null;
 let _currentUser = null;
 
+function openLoginModal() {
+  document.getElementById('login-modal').classList.add('open');
+}
+function closeLoginModal(e) {
+  if (e.target === document.getElementById('login-modal')) {
+    document.getElementById('login-modal').classList.remove('open');
+  }
+}
+function switchTab(branch) {
+  document.querySelectorAll('.sched-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.sched-panel').forEach(p => p.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('panel-' + branch).classList.add('active');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('login-modal').classList.remove('open');
+});
+
+async function signInWithGoogle() {
+  const { error } = await sb.auth.signInWithOAuth({
+    provider: 'google',
+    options: { redirectTo: window.location.origin + '/index.html' }
+  });
+  if (error) {
+    const el = document.getElementById('modal-error');
+    el.style.display = 'block';
+    el.textContent = '登入失敗：' + error.message;
+  }
+}
+
+async function checkMemberStatus(user) {
+  _currentUser = user;
+  const { data } = await sb.from('members').select('status').eq('id', user.id).single();
+  if (!data) { window.location.href = 'onboarding.html'; return; }
+  if (data.status === 'pending') { window.location.href = 'pending.html'; return; }
+  document.getElementById('btn-login').style.display = 'none';
+  document.getElementById('btn-enter').style.display = 'inline-flex';
+}
+
+sb.auth.onAuthStateChange((event, session) => {
+  if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session) {
+    checkMemberStatus(session.user);
+  }
+});
+
+// ── Supplemental toggle ────────────────────────────
+function toggleSuppl() {
+  const btn = document.getElementById('suppl-toggle');
+  const body = document.getElementById('suppl-body');
+  btn.classList.toggle('open');
+  body.classList.toggle('hidden');
+}
+
+// ── Today WOD ──────────────────────────────────────
+function esc(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function loadTodayWOD() {
+  const display = document.getElementById('wod-display');
+  try {
+    const res = await fetch('/data/wod.json');
+    const json = await res.json();
+    const now = new Date();
+    const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+    const wod = json.days.find(d => d.date === todayStr);
+    if (!wod) {
+      display.innerHTML = '<div class="wod-empty">今天是休息日，好好恢復吧。</div>';
+      return;
+    }
+    let mvHtml = '';
+    if (wod.movements && wod.movements.length) {
+      mvHtml = '<div class="wod-movements">' + wod.movements.map(m => {
+        let rx = '';
+        if (m.has_weight && (m.rx_male_kg || m.rx_female_kg)) {
+          rx = `<span class="wod-mv-rx">${m.rx_male_kg||'?'}/${m.rx_female_kg||'?'} kg</span>`;
+        }
+        return `<div class="wod-movement">
+          <span><span class="wod-mv-name">${esc(m.name)}</span><span class="wod-mv-detail"> ${esc(m.detail||'')}</span></span>
+          ${rx}
+        </div>`;
+      }).join('') + '</div>';
+    }
+    let coachHtml = '';
+    if (wod.coach_notes) {
+      coachHtml = `<div class="wod-coach-note"><div class="wod-coach-label">Coach Note</div>${esc(wod.coach_notes)}</div>`;
+    }
+    let tagHtml = '';
+    if (wod.tag) tagHtml = `<div style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--heavy);margin-bottom:6px;">${esc(wod.tag)}</div>`;
+    display.innerHTML = `<div class="wod-card">
+      <div class="wod-date-label">${esc(todayStr)} · ${esc(wod.day||'')}</div>
+      ${tagHtml}
+      ${wod.type ? `<div class="wod-type-badge">${esc(wod.type)}</div>` : ''}
+      <div class="wod-name">${esc(wod.name||'')}</div>
+      <div class="wod-description">${esc(wod.description||'')}</div>
+      ${mvHtml}${coachHtml}
+    </div>`;
+
+    // Monthly focus preview
+    if (json.monthly_focus) {
+      const mf = json.monthly_focus;
+      const [fy, fm] = mf.month.split('-').map(Number);
+      if (now.getFullYear() === fy && now.getMonth() + 1 <= fm) {
+        document.getElementById('focus-title').textContent = mf.title;
+        document.getElementById('focus-points').innerHTML = mf.points.map(p => `<li>${esc(p)}</li>`).join('');
+        document.getElementById('monthly-focus-card').style.display = '';
+      }
+    }
+
+    // Weekly supplemental
+    if (json.weekly_supplemental) {
+      const weekStart = new Date(now);
+      weekStart.setDate(now.getDate() - now.getDay() + 1); // Monday
+      const wsStr = `${weekStart.getFullYear()}-${String(weekStart.getMonth()+1).padStart(2,'0')}-${String(weekStart.getDate()).padStart(2,'0')}`;
+      const suppl = json.weekly_supplemental.find(s => s.week_start === wsStr);
+      if (suppl && suppl.sessions && suppl.sessions.length) {
+        const body = document.getElementById('suppl-body');
+        body.innerHTML = suppl.sessions.map(s =>
+          `<div class="suppl-card"><div class="suppl-card-title">${esc(s.title)}</div><div class="suppl-card-content">${esc(s.content)}</div></div>`
+        ).join('');
+        document.getElementById('suppl-section').style.display = '';
+      }
+    }
+
+  } catch(e) {
+    display.innerHTML = '<div class="wod-empty">課表載入失敗，請稍後再試。</div>';
+  }
+}
+loadTodayWOD();
+
+// ── AI Plan Generator ──────────────────────────
 async function generatePlan() {
   const height = document.getElementById('pg-height').value.trim();
   const weight = document.getElementById('pg-weight').value.trim();
@@ -617,7 +1274,6 @@ async function generatePlan() {
   document.getElementById('pg-btn-text').textContent = 'AI 分析中，請稍候…';
   document.getElementById('pg-err').style.display = 'none';
   document.getElementById('pg-output').style.display = 'none';
-
   try {
     const res = await fetch('/api/generate-plan', {
       method: 'POST',
@@ -650,20 +1306,11 @@ async function generatePlan() {
   }
 }
 
-function esc(str) {
-  if (!str) return '';
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
 function renderPlanCards(plan) {
   const container = document.getElementById('pg-plan');
   let html = '';
-  if (plan.analysis) {
-    html += `<div class="plan-analysis">${esc(plan.analysis)}</div>`;
-  }
-  if (plan.rest_note) {
-    html += `<div style="font-family:var(--mono);font-size:11px;color:var(--fg-4);letter-spacing:.04em;margin-bottom:4px;">${esc(plan.rest_note)}</div>`;
-  }
+  if (plan.analysis) html += `<div class="plan-analysis">${esc(plan.analysis)}</div>`;
+  if (plan.rest_note) html += `<div style="font-family:var(--mono);font-size:11px;color:var(--fg-4);letter-spacing:.04em;margin-bottom:4px;">${esc(plan.rest_note)}</div>`;
   for (const week of (plan.weeks || [])) {
     html += `<div class="plan-week-label">第 ${week.week} 週 · ${esc(plan.split_name || '')}</div>`;
     html += '<div class="plan-cards-row">';
@@ -730,8 +1377,7 @@ function planToText(plan) {
 
 function downloadPlan() {
   if (!_planData) return;
-  const txt = planToText(_planData);
-  const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+  const blob = new Blob([planToText(_planData)], { type: 'text/plain;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = '4SC_訓練課表.txt';
@@ -741,8 +1387,7 @@ function downloadPlan() {
 async function savePlan() {
   if (!_currentUser || !_planData) return;
   const btn = document.getElementById('pg-save-btn');
-  btn.textContent = '儲存中…';
-  btn.disabled = true;
+  btn.textContent = '儲存中…'; btn.disabled = true;
   const { error } = await sb.from('ai_plans').insert({
     member_id: _currentUser.id,
     style: document.getElementById('pg-style').value,
@@ -762,80 +1407,10 @@ async function savePlan() {
     document.getElementById('pg-save-msg').style.display = 'block';
     btn.style.display = 'none';
   } else {
-    btn.textContent = '儲存至我的帳號';
-    btn.disabled = false;
+    btn.textContent = '儲存至我的帳號'; btn.disabled = false;
     showPgErr('儲存失敗：' + error.message);
   }
 }
-
-async function signInWithGoogle() {
-  const { error } = await sb.auth.signInWithOAuth({
-    provider: 'google',
-    options: { redirectTo: window.location.origin + '/index.html' }
-  });
-  if (error) {
-    const el = document.getElementById('error-msg');
-    el.style.display = 'block';
-    el.textContent = '登入失敗：' + error.message;
-  }
-}
-
-async function checkMemberStatus(user) {
-  _currentUser = user;
-  const { data } = await sb.from('members').select('status').eq('id', user.id).single();
-  if (!data) { window.location.href = 'onboarding.html'; return; }
-  if (data.status === 'pending') { window.location.href = 'pending.html'; return; }
-  document.getElementById('btn-google').style.display = 'none';
-  document.getElementById('btn-enter').style.display = '';
-}
-
-sb.auth.onAuthStateChange((event, session) => {
-  if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session) {
-    checkMemberStatus(session.user);
-  }
-});
-
-// ── Today WOD ──────────────────────────────────────
-async function loadTodayWOD() {
-  const display = document.getElementById('wod-display');
-  try {
-    const res = await fetch('/data/wod.json');
-    const json = await res.json();
-    const now = new Date();
-    const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-    const wod = json.days.find(d => d.date === todayStr);
-    if (!wod) {
-      display.innerHTML = '<div class="wod-empty">今天是休息日，好好恢復吧。</div>';
-      return;
-    }
-    let mvHtml = '';
-    if (wod.movements && wod.movements.length) {
-      mvHtml = '<div class="wod-movements">' + wod.movements.map(m => {
-        let rx = '';
-        if (m.has_weight && (m.rx_male_kg || m.rx_female_kg)) {
-          rx = `<span class="wod-mv-rx">${m.rx_male_kg||'?'}/${m.rx_female_kg||'?'} kg</span>`;
-        }
-        return `<div class="wod-movement">
-          <span><span class="wod-mv-name">${esc(m.name)}</span><span class="wod-mv-detail">${esc(m.detail||'')}</span></span>
-          ${rx}
-        </div>`;
-      }).join('') + '</div>';
-    }
-    let coachHtml = '';
-    if (wod.coach_notes) {
-      coachHtml = `<div class="wod-coach-note"><div class="wod-coach-label">Coach Note</div>${esc(wod.coach_notes)}</div>`;
-    }
-    display.innerHTML = `<div class="wod-card">
-      <div class="wod-date-label">${esc(todayStr)} · ${esc(wod.day||'')}</div>
-      ${wod.type ? `<div class="wod-type-badge">${esc(wod.type)}</div>` : ''}
-      <div class="wod-description">${esc(wod.description||'')}</div>
-      ${mvHtml}${coachHtml}
-    </div>`;
-  } catch(e) {
-    display.innerHTML = '<div class="wod-empty">課表載入失敗，請稍後再試。</div>';
-  }
-}
-loadTodayWOD();
 
 // ── Group Class Trial Form ──────────────────────────
 const TRIAL_FORMSPREE = 'https://formspree.io/f/mwvzooed';
