@@ -399,6 +399,76 @@
           "tags": ["Stamina", "有氧", "全身", "Run"]
         }
       ]
+    },
+    {
+      "week_start": "2026-06-15",
+      "label": "Week 22 · 2026/06/15",
+      "blocks": [
+        {
+          "id": "w22-strength-1",
+          "name": "Strength I",
+          "category": "strength",
+          "type": "For load",
+          "movements": [
+            "抓舉（Snatch）",
+            "Wave 1：72% × 3、77% × 2、82% × 1",
+            "Wave 2：77% × 3、82% × 2、84% × 1",
+            "Wave 3：82% × 2、87% × 1、92% × 1",
+            "Heavy single × 1"
+          ],
+          "notes": "Strength I 循環第二週，繼續 Wave Loading 模板。第五週減量，第六週測 1RM 抓舉。百分比以近期最大重量或重組單次計算。多於 1 下的組數請以觸地不停（touch-and-go）完成。組間、波次間充分休息。",
+          "tags": ["Strength", "槓鈴", "全身", "Snatch", "Olympic Lifting"]
+        },
+        {
+          "id": "w22-strength-2",
+          "name": "Strength II",
+          "category": "strength",
+          "type": "For load",
+          "movements": [
+            "背蹲舉（Back Squat）",
+            "4-4-4-4-4+"
+          ],
+          "notes": "Strength II 循環第二週，持續深蹲力量累積。第 4、5 組使用相同重量，最後一組可超過 4 下但不至力竭。組間充分休息。",
+          "tags": ["Strength", "槓鈴", "下肢", "Back Squat"]
+        },
+        {
+          "id": "w22-strength-3",
+          "name": "Strength III",
+          "category": "strength",
+          "type": "5 sets",
+          "movements": [
+            "加重雙槓撐體（Weighted Dips）× 10",
+            "啞鈴農夫走（Dumbbell Farmers Carry）50 公尺"
+          ],
+          "notes": "組間充分休息。雙槓撐體逐漸增重，目標建立 10 下最重組。農夫走選擇可全程不落地的重量。",
+          "tags": ["Strength", "上肢", "啞鈴", "Dips", "Carry"]
+        },
+        {
+          "id": "w22-skill-1",
+          "name": "Skill I",
+          "category": "skill",
+          "type": "4 sets for quality",
+          "movements": [
+            "坐姿抬腿（Seated Leg Raises）× 25",
+            "嚴格吊環肌肉上（Strict Ring Muscle-Ups）× 1–3",
+            "牆上走（Wall Walks）× 1–3"
+          ],
+          "notes": "全程優先動作品質。坐姿抬腿目標兩腳跟離地至少 7–8 公分；困難時可稍微後仰。肌肉上選擇 1 分鐘內可完成的下數；無法完成可練低環轉換。牆上走下降要控制，避免衝撞地板；無法胸貼牆者盡量靠近。",
+          "tags": ["Skill", "體重", "核心", "Ring Muscle-Up", "Wall Walk", "Gymnastics"]
+        },
+        {
+          "id": "w22-stamina-1",
+          "name": "Stamina I",
+          "category": "stamina",
+          "type": "10 sets for time",
+          "movements": [
+            "C2 腳踏車 500/600 公尺（女/男）",
+            "休息 :30"
+          ],
+          "notes": "每組維持在 1:30 以內。前幾組保守配速，之後逐漸加快。目標每組誤差不超過 5 秒。替代：Assault Bike 700/1,000 公尺、Echo Bike 700/1,000 公尺、划船 250/300 公尺、雪橇機 250/300 公尺。",
+          "tags": ["Stamina", "有氧", "腳踏車", "C2 Bike"]
+        }
+      ]
     }
   ]
 }

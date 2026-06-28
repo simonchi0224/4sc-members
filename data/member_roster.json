@@ -1,36 +1,52 @@
 {
-  "generated": "2026-04-28",
+  "generated": "2026-06-10",
   "members": [
     {
-      "name": "劉婉瑩",
+      "name": "陳運泠",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-12-09",
+      "status": "結清"
+    },
+    {
+      "name": "陳泰丞",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-12-09",
+      "status": "結清"
+    },
+    {
+      "name": "阮萬倫",
+      "location": "新店",
+      "product": "新店-自主訓練年會籍",
+      "is_group_class": false,
+      "expiry": "2026-11-12",
+      "status": "結清"
+    },
+    {
+      "name": "溫柔雅",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-11-05",
+      "status": "結清"
+    },
+    {
+      "name": "賴晟暐",
       "location": "新店",
       "product": "新店-團課180天會籍",
       "is_group_class": true,
-      "expiry": "2026-10-25",
+      "expiry": "2026-11-03",
       "status": "結清"
     },
     {
-      "name": "趙哲緯",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-06-17",
-      "status": "結清"
-    },
-    {
-      "name": "彭湘蓉",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
+      "name": "唐千雅",
+      "location": "永和",
+      "product": "團課180天會籍",
       "is_group_class": true,
-      "expiry": "2026-07-22",
-      "status": "結清"
-    },
-    {
-      "name": "呂貽舜",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-07-26",
+      "expiry": "2026-10-28",
       "status": "結清"
     },
     {
@@ -42,19 +58,115 @@
       "status": "結清"
     },
     {
-      "name": "林姿伶",
+      "name": "劉婉瑩",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-05-20",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-10-25",
       "status": "結清"
     },
     {
-      "name": "王顗琍",
+      "name": "劉瑞元",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-10-16",
+      "status": "結清"
+    },
+    {
+      "name": "陳沁彬",
+      "location": "永和",
+      "product": "團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-09-20",
+      "status": "結清"
+    },
+    {
+      "name": "翁資涵",
       "location": "新店",
       "product": "新店-團課90天會籍",
       "is_group_class": true,
-      "expiry": "2026-07-17",
+      "expiry": "2026-09-06",
+      "status": "結清"
+    },
+    {
+      "name": "姚文國",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-09-05",
+      "status": "結清"
+    },
+    {
+      "name": "葉郁琪",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-31",
+      "status": "結清"
+    },
+    {
+      "name": "呂珮汝",
+      "location": "新店",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-28",
+      "status": "結清"
+    },
+    {
+      "name": "林家瑜",
+      "location": "新店",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-28",
+      "status": "結清"
+    },
+    {
+      "name": "吳維鴻",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-25",
+      "status": "結清"
+    },
+    {
+      "name": "江承緯",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-24",
+      "status": "結清"
+    },
+    {
+      "name": "唐家瑩",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-18",
+      "status": "結清"
+    },
+    {
+      "name": "吳界澄",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-16",
+      "status": "結清"
+    },
+    {
+      "name": "張雅淳",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-16",
+      "status": "結清"
+    },
+    {
+      "name": "張文哲",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-16",
       "status": "結清"
     },
     {
@@ -74,6 +186,78 @@
       "status": "結清"
     },
     {
+      "name": "彭以文",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-14",
+      "status": "結清"
+    },
+    {
+      "name": "張嘉玲",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-10",
+      "status": "結清"
+    },
+    {
+      "name": "李立涵",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-10",
+      "status": "結清"
+    },
+    {
+      "name": "簡志勳",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-06",
+      "status": "結清"
+    },
+    {
+      "name": "黃雅欣",
+      "location": "新店",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-03",
+      "status": "結清"
+    },
+    {
+      "name": "李秀緞",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-02",
+      "status": "結清"
+    },
+    {
+      "name": "張庭瑄",
+      "location": "永和",
+      "product": "團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-08-02",
+      "status": "結清"
+    },
+    {
+      "name": "孫顥睿",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-28",
+      "status": "結清"
+    },
+    {
+      "name": "呂貽舜",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-26",
+      "status": "結清"
+    },
+    {
       "name": "陳楷評",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
@@ -82,17 +266,73 @@
       "status": "結清"
     },
     {
-      "name": "賴呈寯",
+      "name": "蔡佳彤",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-25",
+      "status": "結清"
+    },
+    {
+      "name": "曾鈺雯",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-24",
+      "status": "結清"
+    },
+    {
+      "name": "陳莉莉",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-05-13",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-23",
+      "status": "結清"
+    },
+    {
+      "name": "彭湘蓉",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-22",
+      "status": "結清"
+    },
+    {
+      "name": "王顗琍",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-17",
+      "status": "結清"
+    },
+    {
+      "name": "温心綸",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-16",
+      "status": "結清"
+    },
+    {
+      "name": "許羽蓁",
+      "location": "永和",
+      "product": "團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-13",
       "status": "結清"
     },
     {
       "name": "劉凱倫",
       "location": "新店",
       "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-12",
+      "status": "結清"
+    },
+    {
+      "name": "王雅涵",
+      "location": "永和",
+      "product": "團課180天會籍",
       "is_group_class": true,
       "expiry": "2026-07-12",
       "status": "結清"
@@ -118,15 +358,31 @@
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2026-05-07",
+      "expiry": "2026-07-09",
       "status": "結清"
     },
     {
-      "name": "許書豪",
+      "name": "梁崇瑋",
       "location": "新店",
-      "product": "新店-單月場租教練吃到飽會籍",
+      "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2026-05-06",
+      "expiry": "2026-07-08",
+      "status": "結清"
+    },
+    {
+      "name": "胡智倚",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-07-06",
+      "status": "結清"
+    },
+    {
+      "name": "周勤益",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-07-06",
       "status": "結清"
     },
     {
@@ -162,19 +418,43 @@
       "status": "結清"
     },
     {
-      "name": "梁崇瑋",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-05-06",
-      "status": "結清"
-    },
-    {
       "name": "林哲緯",
       "location": "新店",
       "product": "新店-團課90天會籍",
       "is_group_class": true,
       "expiry": "2026-07-06",
+      "status": "結清"
+    },
+    {
+      "name": "許書豪",
+      "location": "新店",
+      "product": "新店-單月場租教練吃到飽會籍",
+      "is_group_class": false,
+      "expiry": "2026-07-04",
+      "status": "結清"
+    },
+    {
+      "name": "劉睿起",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-07-03",
+      "status": "結清"
+    },
+    {
+      "name": "蔡宜軒",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-07-03",
+      "status": "結清"
+    },
+    {
+      "name": "金芙安",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-03",
       "status": "結清"
     },
     {
@@ -202,19 +482,19 @@
       "status": "結清"
     },
     {
-      "name": "蔡宜軒",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-05-02",
+      "name": "蕭美玲",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-07-02",
       "status": "結清"
     },
     {
-      "name": "周勤益",
+      "name": "翁仁義",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2026-05-02",
+      "expiry": "2026-07-01",
       "status": "結清"
     },
     {
@@ -223,14 +503,6 @@
       "product": "新店-團課90天會籍",
       "is_group_class": true,
       "expiry": "2026-07-01",
-      "status": "結清"
-    },
-    {
-      "name": "胡智倚",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-05-01",
       "status": "結清"
     },
     {
@@ -250,6 +522,30 @@
       "status": "結清"
     },
     {
+      "name": "黃松梅",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-06-30",
+      "status": "結清"
+    },
+    {
+      "name": "陳佳隆",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-06-26",
+      "status": "結清"
+    },
+    {
+      "name": "江承緯",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-06-26",
+      "status": "結清"
+    },
+    {
       "name": "李秋瑤",
       "location": "新店",
       "product": "新店-團課90天會籍",
@@ -258,19 +554,19 @@
       "status": "結清"
     },
     {
-      "name": "翁仁義",
+      "name": "游能昌",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2026-04-21",
+      "expiry": "2026-06-25",
       "status": "結清"
     },
     {
-      "name": "趙哲緯",
+      "name": "林姿伶",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2026-04-21",
+      "expiry": "2026-06-21",
       "status": "結清"
     },
     {
@@ -306,19 +602,19 @@
       "status": "結清"
     },
     {
-      "name": "翁資涵",
+      "name": "劉齊",
       "location": "新店",
-      "product": "新店-團課90天會籍",
+      "product": "新店-團課180天會籍",
       "is_group_class": true,
-      "expiry": "2026-06-22",
+      "expiry": "2026-06-18",
       "status": "結清"
     },
     {
-      "name": "周明萱",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-04-17",
+      "name": "莊欣瑜",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-06-17",
       "status": "結清"
     },
     {
@@ -330,11 +626,19 @@
       "status": "結清"
     },
     {
-      "name": "林姿伶",
+      "name": "趙哲緯",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-04-15",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-06-16",
+      "status": "結清"
+    },
+    {
+      "name": "陳瑞涵",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-06-16",
       "status": "結清"
     },
     {
@@ -342,7 +646,39 @@
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2026-04-12",
+      "expiry": "2026-06-14",
+      "status": "結清"
+    },
+    {
+      "name": "林佾萱",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-06-13",
+      "status": "結清"
+    },
+    {
+      "name": "滕陈君",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-06-12",
+      "status": "結清"
+    },
+    {
+      "name": "陳威典",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-06-11",
+      "status": "結清"
+    },
+    {
+      "name": "黃琬倩",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-06-11",
       "status": "結清"
     },
     {
@@ -362,49 +698,97 @@
       "status": "結清"
     },
     {
-      "name": "游能昌",
+      "name": "周明萱",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2026-04-04",
+      "expiry": "2026-06-03",
       "status": "結清"
     },
     {
-      "name": "許書豪",
-      "location": "新店",
-      "product": "新店-單月場租教練吃到飽會籍",
-      "is_group_class": false,
-      "expiry": "2026-04-04",
-      "status": "結清"
-    },
-    {
-      "name": "高廷薇",
+      "name": "趙哲緯",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2026-04-02",
+      "expiry": "2026-06-03",
       "status": "結清"
     },
     {
-      "name": "梁崇瑋",
+      "name": "韋清元",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-04-02",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-06-02",
       "status": "結清"
     },
     {
-      "name": "蔡宜軒",
+      "name": "楊雅榛",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-04-02",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-30",
+      "status": "結清"
+    },
+    {
+      "name": "林君蔚",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-30",
+      "status": "結清"
+    },
+    {
+      "name": "王韻捷",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-30",
+      "status": "結清"
+    },
+    {
+      "name": "張妤萍",
+      "location": "新店",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-30",
+      "status": "結清"
+    },
+    {
+      "name": "林靜萱",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-30",
+      "status": "結清"
+    },
+    {
+      "name": "劉若琪",
+      "location": "永和",
+      "product": "團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-30",
+      "status": "結清"
+    },
+    {
+      "name": "許綺芳",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-30",
       "status": "結清"
     },
     {
       "name": "王禔",
       "location": "新店",
       "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-25",
+      "status": "結清"
+    },
+    {
+      "name": "陳佩君",
+      "location": "新店",
+      "product": "新店-團課120天會籍",
       "is_group_class": true,
       "expiry": "2026-05-25",
       "status": "結清"
@@ -418,22 +802,6 @@
       "status": "結清"
     },
     {
-      "name": "韋清元",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-06-02",
-      "status": "結清"
-    },
-    {
-      "name": "陳莉莉",
-      "location": "新店",
-      "product": "新店-團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-07-23",
-      "status": "結清"
-    },
-    {
       "name": "曾馨儀",
       "location": "新店",
       "product": "新店-團課90天會籍",
@@ -442,11 +810,59 @@
       "status": "結清"
     },
     {
-      "name": "翁仁義",
+      "name": "吳方偉",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-20",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-20",
+      "status": "結清"
+    },
+    {
+      "name": "葉婷",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-17",
+      "status": "結清"
+    },
+    {
+      "name": "林嘉誠",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-17",
+      "status": "結清"
+    },
+    {
+      "name": "沈淑君",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-17",
+      "status": "結清"
+    },
+    {
+      "name": "林伊亭",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-17",
+      "status": "結清"
+    },
+    {
+      "name": "陳嵩林",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-17",
+      "status": "結清"
+    },
+    {
+      "name": "顏柏昌",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-17",
       "status": "結清"
     },
     {
@@ -458,35 +874,147 @@
       "status": "結清"
     },
     {
-      "name": "周明萱",
+      "name": "高詩宜",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-15",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-16",
       "status": "結清"
     },
     {
-      "name": "賴呈寯",
+      "name": "李詩晨",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-12",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-16",
       "status": "結清"
     },
     {
-      "name": "許書豪",
+      "name": "游能昌",
       "location": "新店",
-      "product": "新店-單月場租教練吃到飽會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-03",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-15",
       "status": "結清"
     },
     {
-      "name": "王令樺",
+      "name": "黃涵榆",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-17",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-14",
+      "status": "結清"
+    },
+    {
+      "name": "嚴苠豪",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-14",
+      "status": "結清"
+    },
+    {
+      "name": "蔡家柔",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-14",
+      "status": "結清"
+    },
+    {
+      "name": "潘永生",
+      "location": "永和",
+      "product": "團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-13",
+      "status": "結清"
+    },
+    {
+      "name": "林書晨",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-10",
+      "status": "結清"
+    },
+    {
+      "name": "劉凱倫",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-10",
+      "status": "結清"
+    },
+    {
+      "name": "劉怡蘭",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-10",
+      "status": "結清"
+    },
+    {
+      "name": "黃美齡",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-09",
+      "status": "結清"
+    },
+    {
+      "name": "張庭瑄",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-09",
+      "status": "結清"
+    },
+    {
+      "name": "蔣圳雄",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-07",
+      "status": "結清"
+    },
+    {
+      "name": "李聿莓",
+      "location": "新店",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-06",
+      "status": "結清"
+    },
+    {
+      "name": "林佳瑩",
+      "location": "新店",
+      "product": "新店-團課180天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-06",
+      "status": "結清"
+    },
+    {
+      "name": "黃少凱",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-04",
+      "status": "結清"
+    },
+    {
+      "name": "趙升文",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-03",
+      "status": "結清"
+    },
+    {
+      "name": "許羽蓁",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-05-03",
       "status": "結清"
     },
     {
@@ -506,27 +1034,19 @@
       "status": "結清"
     },
     {
-      "name": "蔡宜軒",
+      "name": "高廷薇",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-02",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-04-29",
       "status": "結清"
     },
     {
-      "name": "梁崇瑋",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-01",
-      "status": "結清"
-    },
-    {
-      "name": "林婉晴",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-02-25",
+      "name": "陳運泠",
+      "location": "永和",
+      "product": "團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-04-29",
       "status": "結清"
     },
     {
@@ -538,83 +1058,35 @@
       "status": "結清"
     },
     {
-      "name": "黃益均",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-31",
+      "name": "潘彥旭",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-04-19",
       "status": "結清"
     },
     {
-      "name": "陳威典",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-02-22",
-      "status": "結清"
-    },
-    {
-      "name": "陳佳隆",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-02-21",
-      "status": "結清"
-    },
-    {
-      "name": "周勤益",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-31",
-      "status": "結清"
-    },
-    {
-      "name": "翁仁義",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-02-18",
-      "status": "結清"
-    },
-    {
-      "name": "温心綸",
+      "name": "馮鏡潔",
       "location": "新店",
       "product": "新店-團課90天會籍",
       "is_group_class": true,
-      "expiry": "2026-07-16",
+      "expiry": "2026-04-16",
       "status": "結清"
     },
     {
-      "name": "温心綸",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-07-16",
-      "status": "取消"
-    },
-    {
-      "name": "胡智倚",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-31",
-      "status": "結清"
-    },
-    {
-      "name": "游能昌",
+      "name": "李明潔",
       "location": "新店",
       "product": "新店-團課120天會籍",
       "is_group_class": true,
-      "expiry": "2026-05-15",
+      "expiry": "2026-04-16",
       "status": "結清"
     },
     {
-      "name": "陳楷評",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-04-26",
+      "name": "范溦真",
+      "location": "永和",
+      "product": "團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-04-16",
       "status": "結清"
     },
     {
@@ -622,6 +1094,14 @@
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
+      "expiry": "2026-04-15",
+      "status": "結清"
+    },
+    {
+      "name": "Clemens schweizer",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
       "expiry": "2026-04-15",
       "status": "結清"
     },
@@ -634,35 +1114,35 @@
       "status": "結清"
     },
     {
-      "name": "賴呈寯",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-02-12",
+      "name": "邱冠霖",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-04-12",
       "status": "結清"
     },
     {
-      "name": "林書晨",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
+      "name": "林立麗",
+      "location": "永和",
+      "product": "團課季會籍",
       "is_group_class": true,
-      "expiry": "2026-05-10",
+      "expiry": "2026-04-11",
       "status": "結清"
     },
     {
-      "name": "呂貽舜",
+      "name": "林家瑜",
       "location": "新店",
       "product": "新店-團課90天會籍",
       "is_group_class": true,
-      "expiry": "2026-04-13",
+      "expiry": "2026-04-07",
       "status": "結清"
     },
     {
-      "name": "翁資涵",
+      "name": "王睿浩",
       "location": "新店",
-      "product": "新店-團課90天會籍",
+      "product": "新店-團課180天會籍",
       "is_group_class": true,
-      "expiry": "2026-04-08",
+      "expiry": "2026-04-07",
       "status": "結清"
     },
     {
@@ -674,79 +1154,23 @@
       "status": "結清"
     },
     {
-      "name": "黃少凱",
+      "name": "高廷薇",
       "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-04",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-04-02",
       "status": "結清"
     },
     {
-      "name": "李聿莓",
+      "name": "黃益均",
       "location": "新店",
-      "product": "新店-團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-06",
-      "status": "結清"
-    },
-    {
-      "name": "林哲緯",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-06",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-03-31",
       "status": "結清"
     },
     {
       "name": "張子文",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-31",
-      "status": "結清"
-    },
-    {
-      "name": "高詩宜",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-16",
-      "status": "結清"
-    },
-    {
-      "name": "趙升文",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-03",
-      "status": "結清"
-    },
-    {
-      "name": "許書豪",
-      "location": "新店",
-      "product": "新店-單月場租教練吃到飽會籍",
-      "is_group_class": false,
-      "expiry": "2026-02-02",
-      "status": "結清"
-    },
-    {
-      "name": "蔡宜軒",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-02-02",
-      "status": "結清"
-    },
-    {
-      "name": "Niall Longobardi",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-31",
-      "status": "結清"
-    },
-    {
-      "name": "賴宗平",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
@@ -762,131 +1186,11 @@
       "status": "結清"
     },
     {
-      "name": "梁崇瑋",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-27",
-      "status": "結清"
-    },
-    {
-      "name": "林婉晴",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-24",
-      "status": "結清"
-    },
-    {
-      "name": "鄭博恆",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-23",
-      "status": "結清"
-    },
-    {
-      "name": "何宗穎",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-22",
-      "status": "結清"
-    },
-    {
-      "name": "滕陈君",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-20",
-      "status": "結清"
-    },
-    {
-      "name": "林宜蓁",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-13",
-      "status": "結清"
-    },
-    {
-      "name": "方偉庭",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-15",
-      "status": "結清"
-    },
-    {
-      "name": "方偉庭",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-03-15",
-      "status": "取消"
-    },
-    {
-      "name": "賴呈寯",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-12",
-      "status": "結清"
-    },
-    {
-      "name": "陳佳隆",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-12",
-      "status": "結清"
-    },
-    {
-      "name": "陳怡君",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-16",
-      "status": "結清"
-    },
-    {
-      "name": "黃鵬全",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-10",
-      "status": "結清"
-    },
-    {
-      "name": "游能昌",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-09",
-      "status": "結清"
-    },
-    {
-      "name": "韋清元",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-09",
-      "status": "結清"
-    },
-    {
-      "name": "林家瑜",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-07",
-      "status": "結清"
-    },
-    {
-      "name": "黃雅欣",
+      "name": "王顗琍",
       "location": "新店",
       "product": "新店-團課120天會籍",
       "is_group_class": true,
-      "expiry": "2026-06-03",
+      "expiry": "2026-03-30",
       "status": "結清"
     },
     {
@@ -898,35 +1202,147 @@
       "status": "結清"
     },
     {
-      "name": "許書豪",
+      "name": "鄭博恆",
       "location": "新店",
-      "product": "新店-單月場租教練吃到飽會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-02",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-23",
       "status": "結清"
     },
     {
-      "name": "蔡宜軒",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-02",
+      "name": "王美娥",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-19",
       "status": "結清"
     },
     {
-      "name": "Niall Longobardi",
+      "name": "王令樺",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2026-01-02",
+      "expiry": "2026-03-17",
       "status": "結清"
     },
     {
-      "name": "梁崇瑋",
+      "name": "周明萱",
+      "location": "新店",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-17",
+      "status": "結清"
+    },
+    {
+      "name": "陳文薇",
+      "location": "新店",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-17",
+      "status": "結清"
+    },
+    {
+      "name": "陳建嘉",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-17",
+      "status": "結清"
+    },
+    {
+      "name": "鄺立華",
+      "location": "永和",
+      "product": "團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-17",
+      "status": "結清"
+    },
+    {
+      "name": "陳怡君",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-16",
+      "status": "結清"
+    },
+    {
+      "name": "方偉庭",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2025-12-26",
+      "expiry": "2026-03-15",
+      "status": "結清"
+    },
+    {
+      "name": "黃芸臻",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-12",
+      "status": "結清"
+    },
+    {
+      "name": "黃采萱",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-12",
+      "status": "結清"
+    },
+    {
+      "name": "黃俊誠",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-12",
+      "status": "結清"
+    },
+    {
+      "name": "洪健智",
+      "location": "新店",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-11",
+      "status": "結清"
+    },
+    {
+      "name": "黃鵬全",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-10",
+      "status": "結清"
+    },
+    {
+      "name": "劉芷欣",
+      "location": "新店",
+      "product": "新店-團課120天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-04",
+      "status": "結清"
+    },
+    {
+      "name": "田庭嘉",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-03",
+      "status": "結清"
+    },
+    {
+      "name": "劉蘭槿",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-03-02",
+      "status": "結清"
+    },
+    {
+      "name": "林婉晴",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-02-25",
       "status": "結清"
     },
     {
@@ -938,27 +1354,19 @@
       "status": "結清"
     },
     {
-      "name": "吳建輝",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-17",
-      "status": "結清"
-    },
-    {
-      "name": "吳建輝",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-17",
-      "status": "取消"
-    },
-    {
       "name": "吳宣壹",
       "location": "新店",
       "product": "新店-團課90天會籍",
       "is_group_class": true,
       "expiry": "2026-02-25",
+      "status": "結清"
+    },
+    {
+      "name": "林韋澔",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-02-24",
       "status": "結清"
     },
     {
@@ -994,307 +1402,11 @@
       "status": "結清"
     },
     {
-      "name": "王顗琍",
-      "location": "新店",
-      "product": "新店-團課120天會籍",
+      "name": "黃益均",
+      "location": "永和",
+      "product": "團課季會籍",
       "is_group_class": true,
-      "expiry": "2026-03-30",
-      "status": "結清"
-    },
-    {
-      "name": "馮鏡潔",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-16",
-      "status": "結清"
-    },
-    {
-      "name": "周明萱",
-      "location": "新店",
-      "product": "新店-團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-17",
-      "status": "結清"
-    },
-    {
-      "name": "趙哲緯",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-17",
-      "status": "結清"
-    },
-    {
-      "name": "葉婷",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-17",
-      "status": "結清"
-    },
-    {
-      "name": "陳佩君",
-      "location": "新店",
-      "product": "新店-團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-26",
-      "status": "結清"
-    },
-    {
-      "name": "黃芸臻",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-12",
-      "status": "結清"
-    },
-    {
-      "name": "黃采萱",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-12",
-      "status": "結清"
-    },
-    {
-      "name": "黃俊誠",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-12",
-      "status": "結清"
-    },
-    {
-      "name": "高廷薇",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-02-17",
-      "status": "結清"
-    },
-    {
-      "name": "高廷薇",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-29",
-      "status": "結清"
-    },
-    {
-      "name": "劉蘭槿",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-02",
-      "status": "結清"
-    },
-    {
-      "name": "李明潔",
-      "location": "新店",
-      "product": "新店-團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-16",
-      "status": "結清"
-    },
-    {
-      "name": "楊雅榛",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-30",
-      "status": "結清"
-    },
-    {
-      "name": "陳亞晴",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-02-17",
-      "status": "結清"
-    },
-    {
-      "name": "陳亞晴",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-17",
-      "status": "結清"
-    },
-    {
-      "name": "吳建輝",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-17",
-      "status": "取消"
-    },
-    {
-      "name": "李紀璇",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-17",
-      "status": "結清"
-    },
-    {
-      "name": "林韋澔",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-24",
-      "status": "結清"
-    },
-    {
-      "name": "陳瑞涵",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-06-16",
-      "status": "結清"
-    },
-    {
-      "name": "林嘉誠",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-17",
-      "status": "結清"
-    },
-    {
-      "name": "沈淑君",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-17",
-      "status": "結清"
-    },
-    {
-      "name": "林伊亭",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-17",
-      "status": "結清"
-    },
-    {
-      "name": "陳文薇",
-      "location": "新店",
-      "product": "新店-團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-17",
-      "status": "結清"
-    },
-    {
-      "name": "馮夢瑩",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-17",
-      "status": "結清"
-    },
-    {
-      "name": "陳建嘉",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-17",
-      "status": "結清"
-    },
-    {
-      "name": "劉齊",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-17",
-      "status": "結清"
-    },
-    {
-      "name": "陳嵩林",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-17",
-      "status": "結清"
-    },
-    {
-      "name": "李祖儀",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-16",
-      "status": "結清"
-    },
-    {
-      "name": "李詩晨",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-16",
-      "status": "結清"
-    },
-    {
-      "name": "林君蔚",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-30",
-      "status": "結清"
-    },
-    {
-      "name": "畢均琪",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-12-13",
-      "status": "結清"
-    },
-    {
-      "name": "阮萬倫",
-      "location": "新店",
-      "product": "新店-自主訓練年會籍",
-      "is_group_class": false,
-      "expiry": "2026-11-12",
-      "status": "結清"
-    },
-    {
-      "name": "吳方偉",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-20",
-      "status": "結清"
-    },
-    {
-      "name": "黃涵榆",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-14",
-      "status": "結清"
-    },
-    {
-      "name": "嚴苠豪",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-14",
-      "status": "結清"
-    },
-    {
-      "name": "洪健智",
-      "location": "新店",
-      "product": "新店-團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-11",
-      "status": "結清"
-    },
-    {
-      "name": "劉凱倫",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-10",
+      "expiry": "2026-02-19",
       "status": "結清"
     },
     {
@@ -1306,6 +1418,70 @@
       "status": "結清"
     },
     {
+      "name": "吳建輝",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-02-17",
+      "status": "結清"
+    },
+    {
+      "name": "陳亞晴",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-02-17",
+      "status": "結清"
+    },
+    {
+      "name": "陳亞晴",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-02-17",
+      "status": "結清"
+    },
+    {
+      "name": "李紀璇",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-02-17",
+      "status": "結清"
+    },
+    {
+      "name": "馮夢瑩",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-02-17",
+      "status": "結清"
+    },
+    {
+      "name": "范溦真",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-02-17",
+      "status": "取消"
+    },
+    {
+      "name": "溫柔雅",
+      "location": "永和",
+      "product": "團課季會籍",
+      "is_group_class": true,
+      "expiry": "2026-02-17",
+      "status": "結清"
+    },
+    {
+      "name": "李祖儀",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-02-16",
+      "status": "結清"
+    },
+    {
       "name": "翁立平",
       "location": "新店",
       "product": "新店-團課90天會籍",
@@ -1314,83 +1490,11 @@
       "status": "取消"
     },
     {
-      "name": "劉睿起",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-12-07",
-      "status": "結清"
-    },
-    {
-      "name": "王韻捷",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
+      "name": "劉若琪",
+      "location": "永和",
+      "product": "團課季會籍",
       "is_group_class": true,
-      "expiry": "2026-05-30",
-      "status": "結清"
-    },
-    {
-      "name": "陳佳隆",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-12-07",
-      "status": "結清"
-    },
-    {
-      "name": "劉怡蘭",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-10",
-      "status": "結清"
-    },
-    {
-      "name": "黃美齡",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-09",
-      "status": "結清"
-    },
-    {
-      "name": "林佳瑩",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-05",
-      "status": "結清"
-    },
-    {
-      "name": "蔡宜軒",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-12-01",
-      "status": "結清"
-    },
-    {
-      "name": "Niall Longobardi",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-11-29",
-      "status": "結清"
-    },
-    {
-      "name": "許書豪",
-      "location": "新店",
-      "product": "新店-單月場租教練吃到飽會籍",
-      "is_group_class": false,
-      "expiry": "2025-11-28",
-      "status": "結清"
-    },
-    {
-      "name": "劉芷欣",
-      "location": "新店",
-      "product": "新店-團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-04",
+      "expiry": "2026-01-31",
       "status": "結清"
     },
     {
@@ -1402,11 +1506,11 @@
       "status": "結清"
     },
     {
-      "name": "游能昌",
+      "name": "何宗穎",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2025-11-21",
+      "expiry": "2026-01-22",
       "status": "結清"
     },
     {
@@ -1418,11 +1522,19 @@
       "status": "結清"
     },
     {
-      "name": "張妤萍",
+      "name": "蕭亦琪",
       "location": "新店",
-      "product": "新店-團課120天會籍",
+      "product": "新店-團課90天會籍",
       "is_group_class": true,
-      "expiry": "2026-05-30",
+      "expiry": "2026-01-20",
+      "status": "結清"
+    },
+    {
+      "name": "李宜倩",
+      "location": "新店",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-01-20",
       "status": "結清"
     },
     {
@@ -1431,22 +1543,6 @@
       "product": "新店-團課90天會籍",
       "is_group_class": true,
       "expiry": "2026-01-19",
-      "status": "結清"
-    },
-    {
-      "name": "翁仁義",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-11-15",
-      "status": "結清"
-    },
-    {
-      "name": "涂文宇",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-11-13",
       "status": "結清"
     },
     {
@@ -1463,6 +1559,14 @@
       "product": "新店-團課90天會籍",
       "is_group_class": true,
       "expiry": "2026-01-17",
+      "status": "結清"
+    },
+    {
+      "name": "林宜蓁",
+      "location": "新店",
+      "product": "新店-自主訓練月會籍",
+      "is_group_class": false,
+      "expiry": "2026-01-13",
       "status": "結清"
     },
     {
@@ -1490,46 +1594,6 @@
       "status": "結清"
     },
     {
-      "name": "曾玉霞",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-09",
-      "status": "結清"
-    },
-    {
-      "name": "蕭亦琪",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-20",
-      "status": "結清"
-    },
-    {
-      "name": "李宜倩",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-20",
-      "status": "結清"
-    },
-    {
-      "name": "李宜倩",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-20",
-      "status": "取消"
-    },
-    {
-      "name": "王睿浩",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-07",
-      "status": "結清"
-    },
-    {
       "name": "王星蘋",
       "location": "新店",
       "product": "新店-團課90天會籍",
@@ -1538,11 +1602,11 @@
       "status": "結清"
     },
     {
-      "name": "陳佳隆",
+      "name": "曾玉霞",
       "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-11-04",
+      "product": "新店-團課90天會籍",
+      "is_group_class": true,
+      "expiry": "2026-01-09",
       "status": "結清"
     },
     {
@@ -1554,1043 +1618,19 @@
       "status": "結清"
     },
     {
-      "name": "蔡宜軒",
+      "name": "畢均琪",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2025-11-01",
+      "expiry": "2025-12-13",
       "status": "結清"
     },
     {
-      "name": "許書豪",
-      "location": "新店",
-      "product": "新店-單月場租教練吃到飽會籍",
-      "is_group_class": false,
-      "expiry": "2025-10-26",
-      "status": "結清"
-    },
-    {
-      "name": "陳翊煊",
+      "name": "涂文宇",
       "location": "新店",
       "product": "新店-自主訓練月會籍",
       "is_group_class": false,
-      "expiry": "2025-10-19",
-      "status": "結清"
-    },
-    {
-      "name": "游能昌",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-10-16",
-      "status": "結清"
-    },
-    {
-      "name": "Niall Longobardi",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-10-12",
-      "status": "結清"
-    },
-    {
-      "name": "陳佳隆",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-10-03",
-      "status": "結清"
-    },
-    {
-      "name": "黃芸臻",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-01",
-      "status": "結清"
-    },
-    {
-      "name": "黃采萱",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-01",
-      "status": "結清"
-    },
-    {
-      "name": "程馨儀",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-02",
-      "status": "結清"
-    },
-    {
-      "name": "黃俊誠",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-08",
-      "status": "結清"
-    },
-    {
-      "name": "莊恬婷",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-01",
-      "status": "結清"
-    },
-    {
-      "name": "林建卓",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-10-01",
-      "status": "結清"
-    },
-    {
-      "name": "林哲緯",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-02",
-      "status": "結清"
-    },
-    {
-      "name": "王韻捷",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-10",
-      "status": "結清"
-    },
-    {
-      "name": "翁仁義",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-09-30",
-      "status": "結清"
-    },
-    {
-      "name": "蔡宜軒",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-10-01",
-      "status": "結清"
-    },
-    {
-      "name": "魚詠婷",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-06",
-      "status": "結清"
-    },
-    {
-      "name": "楊雅筑",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-26",
-      "status": "結清"
-    },
-    {
-      "name": "許書豪",
-      "location": "新店",
-      "product": "新店-單月場租教練吃到飽會籍",
-      "is_group_class": false,
-      "expiry": "2025-09-26",
-      "status": "結清"
-    },
-    {
-      "name": "謝明劭",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-26",
-      "status": "結清"
-    },
-    {
-      "name": "周立翔",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-24",
-      "status": "結清"
-    },
-    {
-      "name": "Vitor Paranhos",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-25",
-      "status": "結清"
-    },
-    {
-      "name": "Suzana",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-03",
-      "status": "結清"
-    },
-    {
-      "name": "吳以婕",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-09-22",
-      "status": "結清"
-    },
-    {
-      "name": "林佾萱",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-09-19",
-      "status": "結清"
-    },
-    {
-      "name": "王瑩琇",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-30",
-      "status": "結清"
-    },
-    {
-      "name": "蕭仲廷",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-11-18",
-      "status": "結清"
-    },
-    {
-      "name": "Janne Kalevi",
-      "location": "新店",
-      "product": "新店-團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-17",
-      "status": "結清"
-    },
-    {
-      "name": "周宜蓁",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-19",
-      "status": "結清"
-    },
-    {
-      "name": "吳宣壹",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-18",
-      "status": "結清"
-    },
-    {
-      "name": "陳郁婷",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-15",
-      "status": "結清"
-    },
-    {
-      "name": "高廷薇",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-11-12",
-      "status": "結清"
-    },
-    {
-      "name": "高廷薇",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-18",
-      "status": "結清"
-    },
-    {
-      "name": "游能昌",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-09-12",
-      "status": "結清"
-    },
-    {
-      "name": "沈淑君",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-12",
-      "status": "結清"
-    },
-    {
-      "name": "林伊亭",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-09",
-      "status": "結清"
-    },
-    {
-      "name": "孫珮華",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-08",
-      "status": "取消"
-    },
-    {
-      "name": "姚文國",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-08",
-      "status": "結清"
-    },
-    {
-      "name": "Niall Longobardi",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-09-08",
-      "status": "結清"
-    },
-    {
-      "name": "王騰慶",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-06",
-      "status": "結清"
-    },
-    {
-      "name": "馮夢瑩",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-05",
-      "status": "結清"
-    },
-    {
-      "name": "陳佳隆",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-09-02",
-      "status": "結清"
-    },
-    {
-      "name": "蔡宜軒",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-08-30",
-      "status": "結清"
-    },
-    {
-      "name": "林韋志",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-28",
-      "status": "結清"
-    },
-    {
-      "name": "翁仁義",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-08-28",
-      "status": "結清"
-    },
-    {
-      "name": "陳瓊姗",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-01",
-      "status": "結清"
-    },
-    {
-      "name": "盧頡澧",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-25",
-      "status": "結清"
-    },
-    {
-      "name": "許書豪",
-      "location": "新店",
-      "product": "新店-單月場租教練吃到飽會籍",
-      "is_group_class": false,
-      "expiry": "2025-08-25",
-      "status": "結清"
-    },
-    {
-      "name": "蔡郁辰",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-22",
-      "status": "結清"
-    },
-    {
-      "name": "黃心儀",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-22",
-      "status": "結清"
-    },
-    {
-      "name": "楊雅榛",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-20",
-      "status": "結清"
-    },
-    {
-      "name": "程群家",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-08-16",
-      "status": "結清"
-    },
-    {
-      "name": "謝亞錡",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-12",
-      "status": "結清"
-    },
-    {
-      "name": "夏紹雄",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-12",
-      "status": "結清"
-    },
-    {
-      "name": "陳亞晴",
-      "location": "新店",
-      "product": "新店-團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-17",
-      "status": "結清"
-    },
-    {
-      "name": "黃毓庭",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-08",
-      "status": "結清"
-    },
-    {
-      "name": "游能昌",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2025-08-08",
-      "status": "結清"
-    },
-    {
-      "name": "黃鵬全",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-07",
-      "status": "結清"
-    },
-    {
-      "name": "呂珮汝",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-07",
-      "status": "結清"
-    },
-    {
-      "name": "黃百樂",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-07",
-      "status": "結清"
-    },
-    {
-      "name": "黃百樂",
-      "location": "新店",
-      "product": "新店-自主訓練月會籍",
-      "is_group_class": false,
-      "expiry": "2026-01-07",
-      "status": "取消"
-    },
-    {
-      "name": "黃百樂",
-      "location": "新店",
-      "product": "新店-團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-07",
-      "status": "結清"
-    },
-    {
-      "name": "林郁婷",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-04",
-      "status": "結清"
-    },
-    {
-      "name": "馮鏡潔",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-05",
-      "status": "結清"
-    },
-    {
-      "name": "郭雅寧",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-05",
-      "status": "結清"
-    },
-    {
-      "name": "王筱涵",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-10",
-      "status": "結清"
-    },
-    {
-      "name": "謝坤哲",
-      "location": "新店",
-      "product": "新店-團課90天會籍",
-      "is_group_class": true,
-      "expiry": "2025-10-30",
-      "status": "結清"
-    },
-    {
-      "name": "唐千雅",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-10-28",
-      "status": "結清"
-    },
-    {
-      "name": "劉瑞元",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-10-16",
-      "status": "結清"
-    },
-    {
-      "name": "蔡佳彤",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-07-25",
-      "status": "結清"
-    },
-    {
-      "name": "溫柔雅",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-10-14",
-      "status": "結清"
-    },
-    {
-      "name": "曾鈺雯",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-07-10",
-      "status": "結清"
-    },
-    {
-      "name": "張庭瑄",
-      "location": "永和",
-      "product": "團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-08-02",
-      "status": "結清"
-    },
-    {
-      "name": "蕭美玲",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-07-02",
-      "status": "結清"
-    },
-    {
-      "name": "許羽蓁",
-      "location": "永和",
-      "product": "團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-07-13",
-      "status": "結清"
-    },
-    {
-      "name": "曾鈺雯",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-24",
-      "status": "結清"
-    },
-    {
-      "name": "吳界澄",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-08-16",
-      "status": "結清"
-    },
-    {
-      "name": "張雅淳",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-08-16",
-      "status": "結清"
-    },
-    {
-      "name": "張文哲",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-08-16",
-      "status": "結清"
-    },
-    {
-      "name": "張庭瑄",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-09",
-      "status": "結清"
-    },
-    {
-      "name": "簡志勳",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-08-06",
-      "status": "結清"
-    },
-    {
-      "name": "許羽蓁",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-03",
-      "status": "結清"
-    },
-    {
-      "name": "蔡佳彤",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-20",
-      "status": "結清"
-    },
-    {
-      "name": "潘彥旭",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-19",
-      "status": "結清"
-    },
-    {
-      "name": "Clemens schweizer",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-15",
-      "status": "結清"
-    },
-    {
-      "name": "邱冠霖",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-12",
-      "status": "結清"
-    },
-    {
-      "name": "蔣圳雄",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-07",
-      "status": "結清"
-    },
-    {
-      "name": "林立麗",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-11",
-      "status": "結清"
-    },
-    {
-      "name": "王美娥",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-19",
-      "status": "結清"
-    },
-    {
-      "name": "曾鈺雯",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-12",
-      "status": "結清"
-    },
-    {
-      "name": "田庭嘉",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-03",
-      "status": "結清"
-    },
-    {
-      "name": "范溦真",
-      "location": "永和",
-      "product": "團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-16",
-      "status": "結清"
-    },
-    {
-      "name": "范溦真",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-17",
-      "status": "取消"
-    },
-    {
-      "name": "黃松梅",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-06-30",
-      "status": "結清"
-    },
-    {
-      "name": "陳泰丞",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-11-09",
-      "status": "結清"
-    },
-    {
-      "name": "黃益均",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-19",
-      "status": "結清"
-    },
-    {
-      "name": "陳運泠",
-      "location": "永和",
-      "product": "團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-29",
-      "status": "結清"
-    },
-    {
-      "name": "鄺立華",
-      "location": "永和",
-      "product": "團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-03-17",
-      "status": "結清"
-    },
-    {
-      "name": "林靜萱",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-30",
-      "status": "結清"
-    },
-    {
-      "name": "溫柔雅",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-17",
-      "status": "結清"
-    },
-    {
-      "name": "姚文國",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-09-05",
-      "status": "結清"
-    },
-    {
-      "name": "劉若琪",
-      "location": "永和",
-      "product": "團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-30",
-      "status": "結清"
-    },
-    {
-      "name": "蔡家柔",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-14",
-      "status": "結清"
-    },
-    {
-      "name": "林佾萱",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-14",
-      "status": "結清"
-    },
-    {
-      "name": "許綺芳",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-30",
-      "status": "結清"
-    },
-    {
-      "name": "金芙安",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-06-18",
-      "status": "結清"
-    },
-    {
-      "name": "許綺芳",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-30",
-      "status": "結清"
-    },
-    {
-      "name": "黃琬倩",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-06-11",
-      "status": "結清"
-    },
-    {
-      "name": "顏柏昌",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-17",
-      "status": "結清"
-    },
-    {
-      "name": "莊欣瑜",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-17",
-      "status": "結清"
-    },
-    {
-      "name": "王雅涵",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-07-12",
-      "status": "結清"
-    },
-    {
-      "name": "潘永生",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-13",
-      "status": "結清"
-    },
-    {
-      "name": "張文哲",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-10",
-      "status": "結清"
-    },
-    {
-      "name": "唐千雅",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-05-24",
-      "status": "結清"
-    },
-    {
-      "name": "劉若琪",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-31",
-      "status": "結清"
-    },
-    {
-      "name": "姚文國",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-28",
-      "status": "結清"
-    },
-    {
-      "name": "劉瑞元",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-04-12",
-      "status": "結清"
-    },
-    {
-      "name": "潘彥旭",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-17",
-      "status": "結清"
-    },
-    {
-      "name": "許羽蓁",
-      "location": "永和",
-      "product": "團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-10",
-      "status": "結清"
-    },
-    {
-      "name": "陳運泠",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-15",
-      "status": "結清"
-    },
-    {
-      "name": "郭美蓉",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-21",
-      "status": "結清"
-    },
-    {
-      "name": "許綺芳",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-02-22",
-      "status": "結清"
-    },
-    {
-      "name": "姚文國",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-08",
-      "status": "結清"
-    },
-    {
-      "name": "潘永生",
-      "location": "永和",
-      "product": "團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-11",
-      "status": "結清"
-    },
-    {
-      "name": "許羽蓁",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-11",
-      "status": "結清"
-    },
-    {
-      "name": "劉若琪",
-      "location": "永和",
-      "product": "團課季會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-06",
-      "status": "結清"
-    },
-    {
-      "name": "粘卉絜",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-17",
-      "status": "結清"
-    },
-    {
-      "name": "粘卉絜",
-      "location": "永和",
-      "product": "團課180天會籍",
-      "is_group_class": true,
-      "expiry": "2026-01-17",
-      "status": "取消"
-    },
-    {
-      "name": "曾鈺雯",
-      "location": "永和",
-      "product": "團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2025-12-12",
-      "status": "結清"
-    },
-    {
-      "name": "姚奕辰",
-      "location": "永和",
-      "product": "團課120天會籍",
-      "is_group_class": true,
-      "expiry": "2025-11-09",
+      "expiry": "2025-11-13",
       "status": "結清"
     }
   ]

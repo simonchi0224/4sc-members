@@ -1292,6 +1292,756 @@
       ],
       "coach_notes": "",
       "scaling": ""
+    },
+    {
+      "date": "2026-06-15",
+      "day": "MON",
+      "name": "260615",
+      "tag": "",
+      "type": "For time",
+      "description": "10-9-8-7-6-5-4-3-2-1 reps for time:\nBench presses\nChest-to-bar pull-ups\n– Bench press body weight.",
+      "movements": [
+        {
+          "name": "Bench Press",
+          "detail": "10-9-8-7-6-5-4-3-2-1 reps",
+          "has_weight": false,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-16",
+      "day": "TUE",
+      "name": "260616",
+      "tag": "",
+      "type": "For time",
+      "description": "5 rounds for time:\n800-m run\n50 air squats\n20 GHD sit-ups or 30 AbMat sit-ups",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-17",
+      "day": "WED",
+      "name": "GWEN",
+      "tag": "BENCHMARK",
+      "type": "For load",
+      "description": "15-12-9 clean and jerks\n– Perform all unbroken touch-and-go reps.\n– No time limit; rest as needed between sets.",
+      "movements": [
+        {
+          "name": "Clean and Jerk",
+          "detail": "15-12-9 reps",
+          "has_weight": false,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-18",
+      "day": "THU",
+      "name": "260618",
+      "tag": "",
+      "type": "Every 3:00 for 8 rounds",
+      "description": "Every 3:00 for 8 rounds:\n250-m row\n5 box jumps (61/76 cm)\n– Record the time for each round.",
+      "movements": [
+        {
+          "name": "Box Jump",
+          "detail": "5 reps",
+          "has_weight": false,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-19",
+      "day": "FRI",
+      "name": "260619",
+      "tag": "HEAVY DAY",
+      "type": "For load",
+      "description": "For load:\nBack squat\n5-5-5-5-5",
+      "movements": [
+        {
+          "name": "Back Squat",
+          "detail": "5-5-5-5-5",
+          "has_weight": false,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-20",
+      "day": "SAT",
+      "name": "260620",
+      "tag": "PARTNER",
+      "type": "For time",
+      "description": "For time:\n1,600-m sled drag (43/61 kg)\n– With a barbell carried in the front rack (43/61 kg).\n– Any time you stop, you must perform 15 bent-over rows with the barbell before starting again.\n– Sled is attached around the waist and dragged behind the athlete.\n\nOR\n\nFor time with a partner:\n1,600-m sled drag (43/61 kg)\n– While one partner drags the sled, the other front-rack carries a barbell (43/61 kg).\n– Any time the front-rack carrying partner stops, switch places; each athlete must perform 15 bent-over rows with the barbell before starting again.\n– Sled is attached around the waist and dragged behind the athlete.",
+      "movements": [
+        {
+          "name": "Sled Drag",
+          "detail": "1,600-m",
+          "has_weight": true,
+          "rx_female_kg": 43,
+          "rx_male_kg": 61,
+          "is_percentage_1rm": false
+        },
+        {
+          "name": "Front Rack Carry",
+          "detail": "1,600-m",
+          "has_weight": true,
+          "rx_female_kg": 43,
+          "rx_male_kg": 61,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-21",
+      "day": "SUN",
+      "name": "260621",
+      "tag": "",
+      "type": "For time",
+      "description": "3 rounds for time:\n22/30-cal Echo bike\n30 KB snatches (24/32 kg)\n30 burpees",
+      "movements": [
+        {
+          "name": "Kettlebell Snatch",
+          "detail": "30 reps",
+          "has_weight": true,
+          "rx_female_kg": 24,
+          "rx_male_kg": 32,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-22",
+      "day": "MON",
+      "name": "260622",
+      "tag": "",
+      "type": "On a 20:00 clock for total reps",
+      "description": "0:00–5:00:\n200-m run\nMax freestanding shoulder taps\n\n5:00–10:00:\n200-m run\nMax skin-the-cats\n\n10:00–15:00:\n200-m run\nMax L-sit pull-ups\n\n15:00–20:00:\n200-m run\nMax deficit push-ups (2/4 in)",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-23",
+      "day": "TUE",
+      "name": "260623",
+      "tag": "HEAVY DAY",
+      "type": "For load",
+      "description": "Deadlift\n5-5-5-5-5",
+      "movements": [
+        {
+          "name": "Deadlift",
+          "detail": "5-5-5-5-5",
+          "has_weight": false,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-24",
+      "day": "WED",
+      "name": "260624",
+      "tag": "",
+      "type": "30-20-10 reps for time",
+      "description": "Front-rack reverse lunges (43/61 kg)\nKnees-to-elbows\nCalorie bike",
+      "movements": [
+        {
+          "name": "Front-rack Reverse Lunge",
+          "detail": "30-20-10 reps",
+          "has_weight": true,
+          "rx_female_kg": 43,
+          "rx_male_kg": 61,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-25",
+      "day": "THU",
+      "name": "260625",
+      "tag": "",
+      "type": "Every 3:00 for 10 rounds",
+      "description": "10 DB push presses (15/22.5 kg)\n8 shuttle runs\n– Rest the remainder of the interval.\n– 1 shuttle run is 25 ft out and back.\n– Use two dumbbells.",
+      "movements": [
+        {
+          "name": "DB Push Press",
+          "detail": "10 reps",
+          "has_weight": true,
+          "rx_female_kg": 15,
+          "rx_male_kg": 22.5,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-26",
+      "day": "FRI",
+      "name": "260626",
+      "tag": "",
+      "type": "For time",
+      "description": "15-12-9\nHang squat cleans (47/70 kg)\n5-4-3\nRope climbs (4.6/4.6 m)",
+      "movements": [
+        {
+          "name": "Hang Squat Clean",
+          "detail": "15-12-9 reps",
+          "has_weight": true,
+          "rx_female_kg": 47,
+          "rx_male_kg": 70,
+          "is_percentage_1rm": false
+        },
+        {
+          "name": "Rope Climb",
+          "detail": "5-4-3",
+          "has_weight": false,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-27",
+      "day": "SAT",
+      "name": "260627",
+      "tag": "BENCHMARK",
+      "type": "For time",
+      "description": "5,000-m run",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-28",
+      "day": "SUN",
+      "name": "260628",
+      "tag": "",
+      "type": "2 rounds for time",
+      "description": "100 double-unders\n50 Russian KB swings (24/32 kg)\n100-m KB suitcase carry (24/32 kg)",
+      "movements": [
+        {
+          "name": "Russian KB Swing",
+          "detail": "50 reps",
+          "has_weight": true,
+          "rx_female_kg": 24,
+          "rx_male_kg": 32,
+          "is_percentage_1rm": false
+        },
+        {
+          "name": "KB Suitcase Carry",
+          "detail": "100-m",
+          "has_weight": true,
+          "rx_female_kg": 24,
+          "rx_male_kg": 32,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-29",
+      "day": "MON",
+      "name": "OMAR",
+      "tag": "BENCHMARK",
+      "type": "For time",
+      "description": "10 thrusters (29/43 kg)\n15 bar-facing burpees\n20 thrusters\n25 bar-facing burpees\n30 thrusters\n35 bar-facing burpees",
+      "movements": [
+        {
+          "name": "Thruster",
+          "detail": "10-20-30 reps",
+          "has_weight": true,
+          "rx_female_kg": 29,
+          "rx_male_kg": 43,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-06-30",
+      "day": "TUE",
+      "name": "MICHAEL",
+      "tag": "BENCHMARK",
+      "type": "3 rounds for time of",
+      "description": "800-m run\n50 GHD back extensions\n50 sit-ups",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-01",
+      "day": "WED",
+      "name": "JENNIFER",
+      "tag": "BENCHMARK",
+      "type": "AMRAP 26",
+      "description": "10 pull-ups\n15 KB swings (16/24 kg)\n20 box jumps (51/61 cm)",
+      "movements": [
+        {
+          "name": "KB Swing",
+          "detail": "15 reps",
+          "has_weight": true,
+          "rx_female_kg": 16,
+          "rx_male_kg": 24,
+          "is_percentage_1rm": false
+        },
+        {
+          "name": "Box Jump",
+          "detail": "20 reps",
+          "has_weight": false,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-02",
+      "day": "THU",
+      "name": "JT",
+      "tag": "BENCHMARK",
+      "type": "21-15-9 reps for time of",
+      "description": "Handstand push-ups\nRing dips\nPush-ups",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-03",
+      "day": "FRI",
+      "name": "NED",
+      "tag": "BENCHMARK",
+      "type": "7 rounds for time of",
+      "description": "11 back squats\n1,000-m row\n– Use bodyweight for the back squats.",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-04",
+      "day": "SAT",
+      "name": "EVA STRONG",
+      "tag": "BENCHMARK",
+      "type": "5 rounds for time with a partner",
+      "description": "48 double-unders\n19 toes-to-bars\n2 clean and jerks (61/93 kg)\n400-m run\n– Share all work and perform the 400-m run together.",
+      "movements": [
+        {
+          "name": "Clean and Jerk",
+          "detail": "2 reps",
+          "has_weight": true,
+          "rx_female_kg": 61,
+          "rx_male_kg": 93,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-05",
+      "day": "SUN",
+      "name": "260705",
+      "tag": "",
+      "type": "Active Recovery",
+      "description": "Program any Hero workout, make up a missed Hero workout from this week, or perform the active recovery session.\n\nActive recovery session:\n5:00 run, row, bike, or ski\n2:00 couch stretch/side\n1:00 rotational med-ball slam (10/15 lb)\n5:00 run, row, bike, or ski\n2:00 alternating Spiderman twists\n2:00 straddle stretch\n1:00 med-ball slams\n5:00 run, row, bike, or ski\n2:00 banded shoulder stretch/side\n1:00 hand-to-hand kettlebell swings (26/35 lb)\n5:00 run, row, bike, or ski\n– During each 5:00 run, row, bike, or ski, focus on nasal breathing only, and maintain no more than 20 breaths per minute.",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-06",
+      "day": "MON",
+      "name": "260706",
+      "tag": "",
+      "type": "For time",
+      "description": "15 power snatches (43/61 kg)\n5 rope climbs (4.6/4.6 m)\n12 power snatches\n4 rope climbs\n9 power snatches\n3 rope climbs\n6 power snatches\n2 rope climbs\n3 power snatches\n1 rope climb",
+      "movements": [
+        {
+          "name": "Power Snatch",
+          "detail": "15-12-9-6-3 reps",
+          "has_weight": true,
+          "rx_female_kg": 43,
+          "rx_male_kg": 61,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-07",
+      "day": "TUE",
+      "name": "260707",
+      "tag": "HEAVY DAY",
+      "type": "On a 20:00 clock",
+      "description": "Build to a 3-rep-max front squat",
+      "movements": [
+        {
+          "name": "Front Squat",
+          "detail": "3-rep max",
+          "has_weight": true,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-08",
+      "day": "WED",
+      "name": "260708",
+      "tag": "",
+      "type": "5 rounds for time",
+      "description": "15 push presses (47/70 kg)\n20 toes-to-bars",
+      "movements": [
+        {
+          "name": "Push Press",
+          "detail": "15 reps",
+          "has_weight": true,
+          "rx_female_kg": 47,
+          "rx_male_kg": 70,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-09",
+      "day": "THU",
+      "name": "260709",
+      "tag": "",
+      "type": "For time",
+      "description": "1,500-m row\n150 double-unders\n2,400-m run",
+      "movements": [],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-10",
+      "day": "FRI",
+      "name": "260710",
+      "tag": "",
+      "type": "AMRAP 10",
+      "description": "3 burpee box jump-overs (51/61 cm)\n3 deadlifts (70/102 kg)\n6 burpee box jump-overs\n6 deadlifts\n9 burpee box jump-overs\n9 deadlifts\netc …",
+      "movements": [
+        {
+          "name": "Deadlift",
+          "detail": "3-6-9-... ascending",
+          "has_weight": true,
+          "rx_female_kg": 70,
+          "rx_male_kg": 102,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-11",
+      "day": "SAT",
+      "name": "OPEN WORKOUT 20.5",
+      "tag": "BENCHMARK",
+      "type": "For time, partitioned any way",
+      "description": "40 muscle-ups\n80-cal row\n120 wall-ball shots (6/9 kg)\n– 20:00 time cap.",
+      "movements": [
+        {
+          "name": "Wall-ball Shot",
+          "detail": "120 reps",
+          "has_weight": true,
+          "rx_female_kg": 6,
+          "rx_male_kg": 9,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-12",
+      "day": "SUN",
+      "name": "260712",
+      "tag": "",
+      "type": "AMRAP 15",
+      "description": "11/15-cal Echo bike\n10 strict handstand push-ups\n5 hang power cleans (56/84 kg)",
+      "movements": [
+        {
+          "name": "Hang Power Clean",
+          "detail": "5 reps",
+          "has_weight": true,
+          "rx_female_kg": 56,
+          "rx_male_kg": 84,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-13",
+      "day": "MON",
+      "name": "260713",
+      "tag": "",
+      "type": "3 rounds for time",
+      "description": "20 DB box step-ups (15/22.5 kg) (51/51 cm)\n400-m run\n– Use two dumbbells.\n– Wear a weight vest (14/20 lb).",
+      "movements": [
+        {
+          "name": "DB Box Step-up",
+          "detail": "20 reps",
+          "has_weight": true,
+          "rx_female_kg": 15,
+          "rx_male_kg": 22.5,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-14",
+      "day": "TUE",
+      "name": "JACK'S TRIANGLE",
+      "tag": "BENCHMARK",
+      "type": "For total reps",
+      "description": "AMRAP 2:\nMax-reps deadlifts (70/102 kg)\n\nAMRAP 19:\n4 strict pull-ups\n11 box jumps (61/76 cm)\n13 hand-release push-ups\n23-cal bike\n\nAMRAP 2:\nMax-reps deadlifts (70/102 kg)\n– No rest between AMRAPs.",
+      "movements": [
+        {
+          "name": "Deadlift",
+          "detail": "max reps",
+          "has_weight": true,
+          "rx_female_kg": 70,
+          "rx_male_kg": 102,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-15",
+      "day": "WED",
+      "name": "260715",
+      "tag": "",
+      "type": "21-15-9 reps for time of",
+      "description": "Cal row\nThrusters (29/43 kg)",
+      "movements": [
+        {
+          "name": "Thruster",
+          "detail": "21-15-9 reps",
+          "has_weight": true,
+          "rx_female_kg": 29,
+          "rx_male_kg": 43,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-16",
+      "day": "THU",
+      "name": "260716",
+      "tag": "",
+      "type": "AMRAP 14",
+      "description": "Handstand walk (15.2 m)\n10 knees-to-elbows\n10 KB swings (24/32 kg)\nHandstand walk (15.2 m)\n20 knees-to-elbows\n20 KB swings",
+      "movements": [
+        {
+          "name": "Russian KB Swing",
+          "detail": "10-20 reps",
+          "has_weight": true,
+          "rx_female_kg": 24,
+          "rx_male_kg": 32,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-17",
+      "day": "FRI",
+      "name": "260717",
+      "tag": "HEAVY DAY",
+      "type": "For load",
+      "description": "Power clean\n3-3-2-2-1-1-1",
+      "movements": [
+        {
+          "name": "Power Clean",
+          "detail": "3-3-2-2-1-1-1",
+          "has_weight": false,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-18",
+      "day": "SAT",
+      "name": "PRESSING ANNIE",
+      "tag": "",
+      "type": "50-40-30-20-10 reps for time",
+      "description": "Double-unders\nSit-ups\n– Perform 5 shoulder presses after each round (80% of 1-rep max).",
+      "movements": [
+        {
+          "name": "Shoulder Press",
+          "detail": "5 reps each round",
+          "has_weight": false,
+          "rx_female_kg": null,
+          "rx_male_kg": null,
+          "is_percentage_1rm": true
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    },
+    {
+      "date": "2026-07-19",
+      "day": "SUN",
+      "name": "260719",
+      "tag": "",
+      "type": "For time with a partner",
+      "description": "8 total rounds:\n500-m row\n– Partners alternate efforts.\n\nOnce the 8 rounds are complete, perform:\n100 back squats (47/70 kg)\n– One person works at a time.",
+      "movements": [
+        {
+          "name": "Back Squat",
+          "detail": "100 reps (total)",
+          "has_weight": true,
+          "rx_female_kg": 47,
+          "rx_male_kg": 70,
+          "is_percentage_1rm": false
+        }
+      ],
+      "coach_notes": "",
+      "scaling": ""
+    }
+  ],
+  "monthly_focus": {
+    "month": "2026-07",
+    "title": "LIFTING HEAVY",
+    "points": [
+      "七月是重量月，所有訓練都圍繞著提升相對最大重量來設計。",
+      "本月課表與技能訓練專注於讓每位學員在自身能力範圍內舉得更重。",
+      "本月以第二個英雄週揭開序幕，向獨立紀念日致敬。",
+      "七月 Benchmark：1RM 硬舉、3RM 前蹲舉、Linda。"
+    ]
+  },
+  "weekly_supplemental": [
+    {
+      "week_start": "2026-06-08",
+      "label": "Week 2 · Strength Cycle",
+      "sessions": [
+        {
+          "title": "STRENGTH I",
+          "content": "Snatch\nWave 1: 72% x 3 / 77% x 2 / 82% x 1\nWave 2: 77% x 3 / 82% x 2 / 84% x 1\nWave 3: 82% x 2 / 87% x 1 / 92% x 1\nHeavy single x 1\n– Week two of this Strength I lifting cycle, following the same wave-loading template. Week five will be a deload week, and then in week six we will test our 1-rep snatch.\n– For the percentages, use a recent max or heavy single.\n– If the percentage calls for more than a single rep, complete as unbroken (touch-and-go) reps.\n– Rest as needed between percentages and waves."
+        },
+        {
+          "title": "STRENGTH II",
+          "content": "Back squat\n4-4-4-4-4+\n– Week two of this Strength II lifting cycle, continuing to build strength in the back squat.\n– Use the same load for sets 4 and 5, but go for more than 4 reps in that final set without pushing to failure.\n– Rest as needed between sets."
+        },
+        {
+          "title": "STRENGTH III",
+          "content": "5 sets:\n10 weighted dips\n50-meter dumbbell farmers carry\n– Rest as needed between sets. Build to a heavy set of 10 dips.\n– Use a farmers carry load that allows you to complete each effort unbroken."
+        },
+        {
+          "title": "SKILL I",
+          "content": "4 sets for quality:\n25 seated leg raises\n1-3 strict ring muscle-ups\n1-3 wall walks\n– Prioritize quality movement throughout. Try to get both heels off the ground at least three inches on the seated leg raises.\n– Choose a strict muscle-up volume that you can complete in around 1 minute.\n– Control every wall walk descent, avoiding crashing to the floor."
+        },
+        {
+          "title": "STAMINA I",
+          "content": "10 sets for time:\n500/600-meter C2 bike\n:30 rest\n– Keep all sets under 1:30.\n– Start at a conservative pace, and increase your speed after the first couple of sets.\n– Challenge yourself to not deviate from your pace by more than 5 seconds in either direction.\n– Bike modifications: 700/1,000-m Assault bike, 700/1,000-m Echo bike, 250/300-m row, 250/300-m ski"
+        }
+      ]
+    },
+    {
+      "week_start": "2026-06-15",
+      "label": "Week 3 · Strength Cycle",
+      "sessions": [
+        {
+          "title": "STRENGTH I",
+          "content": "Snatch\nWave 1: 72% x 3 / 77% x 2 / 82% x 1\nWave 2: 77% x 3 / 82% x 2 / 84% x 1\nWave 3: 82% x 2 / 87% x 1 / 92% x 1\nHeavy single x 1\n– Week three of this Strength I lifting cycle. Week five will be a deload week, and then in week six, we will test our 1-rep snatch.\n– Use a recent max or heavy single to determine your percentages.\n– If the set calls for more than a single rep, complete as unbroken (touch-and-go) reps.\n– Rest as needed between percentages and waves."
+        },
+        {
+          "title": "STRENGTH II",
+          "content": "Back squat\n3-3-3-3-3+\n– Week three of this Strength II lifting cycle, continuing to build strength in the back squat.\n– Use the same load for sets 4 and 5, but go for more than 3 reps in that final set without pushing to failure.\n– Rest as needed between sets."
+        },
+        {
+          "title": "STRENGTH III",
+          "content": "4 sets for load:\n100-meter dumbbell farmers carry\n1:00 sandbag bear hug hold\n– Relatively heavy grunt work.\n– Increase loading of both the dumbbells and the sandbag across as many sets as possible.\n– Complete both movements in 2 sets or fewer.\n– Rest 10-20 seconds between movements and then as needed between sets.\n– Farmers carry modifications: Dumbbell box step-ups\n– Sandbag hold modifications: Load, dumbbell or kettlebell front-rack hold"
+        },
+        {
+          "title": "SKILL I",
+          "content": "10 sets:\n:30 max strict handstand push-ups\n1:00 rest\n– Gradually increase set sizes, and avoid working to failure.\n– Hold back your effort in the first set. Then gradually increase the set size as opposed to working to failure on set one.\n– The goal of this session is to build your gymnastics pressing endurance as well as your awareness of your ability with this movement.\n– Strict handstand push-up modifications: pike push-ups, dumbbell shoulder presses"
+        },
+        {
+          "title": "STAMINA I",
+          "content": "On a 15:00 clock:\nBike, row, or ski for distance\n– Every minute perform a :15 sprint.\n– Score is the total distance; scores will be different depending on which machine you use.\n– Start at a slow-to-moderate pace, and increase your pace as much as possible during the 15-second sprints.\n– Hold a sustainable recovery pace and then push the sprint paces close to 100% effort. Ride as slow as you need to after each sprint to be able to repeat that sprint pace.\n– Use any bike available or substitute run or ski as needed."
+        }
+      ]
+    },
+    {
+      "week_start": "2026-06-22",
+      "label": "Week 4 · Strength Cycle",
+      "sessions": [
+        {
+          "title": "STRENGTH I",
+          "content": "Snatch\nWave 1: 75% x 3 / 80% x 2 / 85% x 1\nWave 2: 80% x 2 / 85% x 2 / 90% x 1\nWave 3: 85% x 1 / 90% x 1 / 95% x 1\nHeavy single x 1\n– Week four of this 2026 Strength I lifting cycle, continuing with the same wave-loading template. Next week will be a deload week, and then in week six, we will test our 1-rep snatch.\n– For the percentages, use a recent max or heavy single.\n– If the percentage calls for more than a single rep, complete as unbroken (touch-and-go) reps.\n– Rest as needed between percentages and waves."
+        },
+        {
+          "title": "STRENGTH II",
+          "content": "Back squat\n2-2-2-2-2+\n– Week four of this 2026 Strength II lifting cycle, continuing to build strength in the back squat.\n– Use the same load for sets 4 and 5, but go for more than 2 reps in that final set without pushing to failure.\n– Rest as needed between sets.\n– Consider the back squats in the workout on Friday. Think about limiting the weight across your sets."
+        },
+        {
+          "title": "STRENGTH III",
+          "content": "For time:\n400-meter back-rack walk (1.15 x bodyweight)\nor\n400-meter yoke carry (15/25 lb per corner)\n– 9:00–14:00.\n– You might have to drop the bar once or twice and the yoke up to 5 times.\n– Walk as far as you can without putting the bar down. Push through the feeling of being uncomfortable and continue to walk. If you have to drop, rest minimally before picking it back up again.\n– If using a barbell, only use a load you can safely get back to the rack position from the ground if you have to drop.\n– Brace your midsection the entire walk, and use a belt if desired.\n– Scale load to finish within the intended time domain.\n– Make sure you have a loading that you can comfortably and confidently bring to your back rack if you are using a bar."
+        },
+        {
+          "title": "SKILL I",
+          "content": "4 sets:\nHandstand walk (100 ft)\n1:00 plank hold\n– Rest 2:00 between sets.\n– Set up a 100-ft course and walk as far as possible without breaking.\n– Perform the plank on your hands or your forearms.\n– If you are unable to walk on your hands or you know you will struggle with the volume, consider reducing the distance or giving yourself 1 minute to walk as far as you can. Scale to 50 alternating shoulder taps if you are unable to walk on your hands."
+        },
+        {
+          "title": "STAMINA I",
+          "content": "5 sets for max calories:\n3:00 air bike\n– Rest 1:00 between sets.\n– 30-50 calories each set.\n– Consistent paces across the 3-minute effort.\n– Build stamina and conditioning.\n– Increasing the pace with each effort. Sets 4 and 5 should be at a pace that is challenging to hold for the entire 3 minutes.\n– Keep your chest high and push/pull with your arms and legs.\n– Bike modifications: Echo bike, assault bike, C2 bike, ski, row, run"
+        }
+      ]
     }
   ]
 }
