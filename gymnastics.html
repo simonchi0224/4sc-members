@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CrossFit 體操專攻班 招生簡章｜4SC CrossFit</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:       #0D1017;
+  --ink-2:     #11151D;
+  --ink-3:     #161B25;
+  --rule:      rgba(64,78,112,0.55);
+  --rule-soft: rgba(64,78,112,0.28);
+  --fg:        #F5F2EB;
+  --fg-2:      #BFBAA9;
+  --fg-3:      #7A8499;
+  --fg-4:      #525B70;
+  --live:      #A6E635;
+  --live-ink:  #1F2818;
+  --heavy:     #D9A55C;
+  --accent:    #e8ff00;
+  --accent-ink:#0D1017;
+  --warn:      #ff5a36;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --sans: 'Geist', 'Noto Sans TC', -apple-system, 'PingFang TC', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  background: var(--ink);
+  color: var(--fg);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ── NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(13,16,23,0.88);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--rule-soft);
+  padding: 0 28px; height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.1em; color: var(--fg);
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo .dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--live);
+  animation: dotPulse 2s ease-out infinite;
+}
+@keyframes dotPulse {
+  0% { box-shadow: 0 0 0 0 rgba(166,230,53,0.55); }
+  100% { box-shadow: 0 0 0 8px rgba(166,230,53,0); }
+}
+.nav-back { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--fg-3); transition: color .2s; }
+.nav-back:hover { color: var(--fg); }
+
+/* ── HERO ── */
+.hero {
+  padding: 56px 28px 48px;
+  max-width: 720px; margin: 0 auto; text-align: center;
+}
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--fg-3); margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Noto Sans TC', sans-serif; font-weight: 900;
+  font-size: clamp(26px, 5vw, 40px);
+  letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 20px;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  justify-content: center; margin-bottom: 8px;
+}
+.meta-chip {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
+  background: var(--ink-3); border: 1px solid var(--rule-soft);
+  border-radius: 999px; padding: 5px 14px; color: var(--fg-2);
+}
+.meta-chip.live { background: var(--live); color: var(--live-ink); border-color: var(--live); font-weight: 700; }
+
+/* ── STOP NOTICE ── */
+.stop-notice {
+  max-width: 660px; margin: 0 auto 40px;
+  background: rgba(255,90,54,0.1); border: 1px solid rgba(255,90,54,0.3);
+  border-radius: 12px; padding: 14px 20px;
+  font-size: 13px; color: var(--fg-2); text-align: center;
+  font-family: var(--mono); letter-spacing: 0.02em;
+}
+.stop-notice strong { color: var(--warn); }
+
+/* ── DATES ROW ── */
+.dates-row {
+  max-width: 660px; margin: 0 auto 48px;
+  padding: 0 28px;
+  display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+}
+.date-chip {
+  font-family: var(--mono); font-size: 11px;
+  background: var(--ink-3); border: 1px solid var(--rule-soft);
+  border-radius: 8px; padding: 5px 12px; color: var(--fg-2);
+}
+.date-chip.off { opacity: .4; text-decoration: line-through; }
+
+/* ── CLASS SECTIONS ── */
+.class-section {
+  max-width: 660px; margin: 0 auto 48px;
+  padding: 0 28px;
+}
+.class-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 24px; border-radius: 16px 16px 0 0;
+  border: 1px solid var(--rule); border-bottom: 0;
+}
+.class-header.beginner { background: var(--ink-2); }
+.class-header.advanced { background: rgba(217,165,92,0.08); border-color: rgba(217,165,92,0.3); }
+.class-badge {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em;
+  text-transform: uppercase; border-radius: 999px; padding: 4px 12px; white-space: nowrap;
+}
+.class-badge.beginner { background: var(--live); color: var(--live-ink); }
+.class-badge.advanced { background: var(--heavy); color: #1a0f00; }
+.class-title {
+  font-size: 19px; font-weight: 800; letter-spacing: -0.01em;
+}
+.class-time {
+  font-family: var(--mono); font-size: 11px; color: var(--fg-3); margin-top: 3px;
+}
+
+.class-body {
+  border: 1px solid var(--rule); border-top: 0; border-radius: 0 0 16px 16px;
+  overflow: hidden;
+}
+.class-row {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.class-row:last-child { border-bottom: 0; }
+.row-label {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--fg-4); margin-bottom: 10px;
+}
+
+/* prerequisite */
+.prereq {
+  display: inline-block;
+  background: rgba(232,255,0,0.1); border: 1px solid rgba(232,255,0,0.3);
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 13px; color: var(--accent); line-height: 1.6;
+}
+
+/* curriculum */
+.curriculum-group { margin-bottom: 16px; }
+.curriculum-group:last-child { margin-bottom: 0; }
+.curriculum-group-title {
+  font-size: 12px; font-weight: 700; color: var(--fg-2); margin-bottom: 6px;
+}
+.curriculum-items { display: flex; flex-direction: column; gap: 4px; }
+.curriculum-item {
+  font-size: 13px; color: var(--fg-3); line-height: 1.6;
+  padding-left: 12px; position: relative;
+}
+.curriculum-item::before {
+  content: '·'; position: absolute; left: 0; color: var(--fg-4);
+}
+.curriculum-item em {
+  font-style: normal; font-family: var(--mono); font-size: 11px; color: var(--fg-4);
+}
+
+/* capacity */
+.capacity-info {
+  font-size: 13px; color: var(--fg-2); line-height: 1.8;
+}
+.capacity-info span { font-weight: 700; color: var(--fg); }
+
+/* pricing */
+.price-grid { display: flex; flex-direction: column; gap: 8px; }
+.price-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px; padding: 12px 14px;
+  background: var(--ink-3); border-radius: 10px;
+  border: 1px solid var(--rule-soft);
+}
+.price-row.featured { background: rgba(217,165,92,0.1); border-color: rgba(217,165,92,0.35); }
+.price-label { font-size: 13px; color: var(--fg-2); }
+.price-label small { font-size: 11px; color: var(--fg-4); display: block; margin-top: 2px; }
+.price-amount {
+  font-family: var(--mono); font-size: 16px; font-weight: 700;
+  color: var(--heavy); white-space: nowrap;
+}
+.price-amount.alumni { color: var(--live); }
+
+/* ── CTA ── */
+.cta-block {
+  max-width: 660px; margin: 0 auto 80px;
+  padding: 0 28px; text-align: center;
+}
+.cta-title {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--fg-3); margin-bottom: 20px;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent); color: var(--accent-ink);
+  font-family: var(--mono); font-size: 13px; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 16px 36px; border-radius: 12px;
+  border: 2px solid var(--accent-ink);
+  transition: transform .15s, box-shadow .15s;
+  text-decoration: none; cursor: pointer;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--accent-ink);
+}
+.cta-note { font-size: 12px; color: var(--fg-4); margin-top: 14px; line-height: 1.7; }
+
+/* ── FOOTER ── */
+.footer {
+  padding: 32px 24px; text-align: center;
+  border-top: 1px solid var(--rule-soft);
+}
+.footer-copy { font-family: var(--mono); font-size: 10.5px; color: var(--fg-4); letter-spacing: 0.04em; }
+
+/* anchor offset for sticky nav */
+.anchor { scroll-margin-top: 80px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <span class="dot"></span>
+    4SC · CROSSFIT
+  </div>
+  <a class="nav-back" href="courses.html">← 課程總覽</a>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow">GYMNASTICS WORKSHOP · 2026</div>
+  <h1>CrossFit<br>體操專攻班</h1>
+  <div class="hero-meta">
+    <span class="meta-chip live">● 報名進行中</span>
+    <span class="meta-chip">📅 7/11 – 9/12</span>
+    <span class="meta-chip">🗓 全期 9 堂</span>
+    <span class="meta-chip">📍 4SC CrossFit</span>
+  </div>
+</div>
+
+<!-- Stop notice -->
+<div class="stop-notice">
+  ⚠ 停課公告：<strong>8/22（週六）</strong>當週暫停一次
+</div>
+
+<!-- Dates -->
+<div class="dates-row">
+  <div class="date-chip">7/11</div>
+  <div class="date-chip">7/18</div>
+  <div class="date-chip">7/25</div>
+  <div class="date-chip">8/1</div>
+  <div class="date-chip">8/8</div>
+  <div class="date-chip">8/15</div>
+  <div class="date-chip off">8/22 停課</div>
+  <div class="date-chip">8/29</div>
+  <div class="date-chip">9/5</div>
+  <div class="date-chip">9/12</div>
+</div>
+
+<!-- ── 基礎班 ── -->
+<div class="class-section anchor" id="beginner">
+  <div class="class-header beginner">
+    <div>
+      <span class="class-badge beginner">基礎入門班</span>
+      <div class="class-title" style="margin-top:10px;">CrossFit 基礎體操入門班</div>
+      <div class="class-time">每週六 09:00 – 10:30（90 分鐘）</div>
+    </div>
+  </div>
+  <div class="class-body">
+
+    <div class="class-row">
+      <div class="row-label">課程目標</div>
+      <p style="font-size:13px;color:var(--fg-2);line-height:1.75;">針對初學者設計，從最基礎的關節活動度、發力模式與身體控制練起，為未來的 CrossFit 體操動作打下堅實且安全的基礎。</p>
+    </div>
+
+    <div class="class-row">
+      <div class="row-label">預計教學內容</div>
+      <div class="curriculum-group">
+        <div class="curriculum-group-title">核心與中軸穩定</div>
+        <div class="curriculum-items">
+          <div class="curriculum-item">中空姿勢 <em>Hollow position</em></div>
+          <div class="curriculum-item">中空搖擺 <em>Hollow rock</em></div>
+          <div class="curriculum-item">超人姿勢 <em>Arch position</em></div>
+        </div>
+      </div>
+      <div class="curriculum-group">
+        <div class="curriculum-group-title">肩胛控制與基礎懸吊</div>
+        <div class="curriculum-items">
+          <div class="curriculum-item">肩胛引體 <em>Scap pull-up</em></div>
+          <div class="curriculum-item">基本擺盪 <em>Kip swing</em></div>
+          <div class="curriculum-item">主動懸吊發力</div>
+        </div>
+      </div>
+      <div class="curriculum-group">
+        <div class="curriculum-group-title">倒立前置與肩部耐力</div>
+        <div class="curriculum-items">
+          <div class="curriculum-item">爬牆倒立 <em>Wall walk</em></div>
+          <div class="curriculum-item">直腿折腰點肩 <em>Pike shoulder taps</em></div>
+          <div class="curriculum-item">靠牆倒立 <em>Handstand hold</em></div>
+        </div>
+      </div>
+      <div class="curriculum-group">
+        <div class="curriculum-group-title">嚴格力量建立</div>
+        <div class="curriculum-items">
+          <div class="curriculum-item">嚴格引體向上 <em>Strict pull-up</em> 肌力建構與降階訓練</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="class-row">
+      <div class="row-label">人數配置</div>
+      <div class="capacity-info">
+        滿班 <span>15 人</span><br>
+        報名達 <span>10 人（含）以上</span>時，將額外安排一名助教協助指導
+      </div>
+    </div>
+
+    <div class="class-row">
+      <div class="row-label">課程費用</div>
+      <div class="price-grid">
+        <div class="price-row">
+          <div class="price-label">單堂報名</div>
+          <div class="price-amount">NT$ 1,000 <span style="font-size:11px;color:var(--fg-3);font-weight:400;">/ 堂</span></div>
+        </div>
+        <div class="price-row featured">
+          <div class="price-label">
+            全期報名優惠
+            <small>共 9 堂，換算單堂僅 $750</small>
+          </div>
+          <div class="price-amount">NT$ 6,750</div>
+        </div>
+        <div class="price-row">
+          <div class="price-label">
+            舊生續報專案
+            <small>參加過前一期體操班，享全期九折優惠</small>
+          </div>
+          <div class="price-amount alumni">NT$ 6,075</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 進階班 ── -->
+<div class="class-section anchor" id="advanced">
+  <div class="class-header advanced">
+    <div>
+      <span class="class-badge advanced">進階研習班</span>
+      <div class="class-title" style="margin-top:10px;">CrossFit 進階體操研習班</div>
+      <div class="class-time">每週六 12:00 – 13:30（90 分鐘）</div>
+    </div>
+  </div>
+  <div class="class-body">
+
+    <div class="class-row">
+      <div class="row-label">報名資格（先決條件）</div>
+      <div class="prereq">需具備「靠牆踢倒立」及「嚴格引體向上 Strict pull-up」之能力</div>
+    </div>
+
+    <div class="class-row">
+      <div class="row-label">課程目標</div>
+      <p style="font-size:13px;color:var(--fg-2);line-height:1.75;">專為具備一定體操能力的訓練者設計。著重高階動作的流暢串聯、技術細節優化，以及訓練效率的提升。</p>
+    </div>
+
+    <div class="class-row">
+      <div class="row-label">預計教學內容</div>
+      <div class="curriculum-group">
+        <div class="curriculum-group-title">動態拉力與節奏控制</div>
+        <div class="curriculum-items">
+          <div class="curriculum-item">借力引體向上 <em>Kipping pull-up</em></div>
+          <div class="curriculum-item">胸觸槓 <em>Chest to bar</em></div>
+          <div class="curriculum-item">蝴蝶式引體向上 <em>Butterfly pull-up</em> 技巧導入</div>
+        </div>
+      </div>
+      <div class="curriculum-group">
+        <div class="curriculum-group-title">進階核心與槓上技巧</div>
+        <div class="curriculum-items">
+          <div class="curriculum-item">腳趾觸槓 <em>Toes to bar</em></div>
+          <div class="curriculum-item">單槓翻轉上槓 <em>Bar pull over</em></div>
+          <div class="curriculum-item">暴力上槓 <em>Bar muscle-up</em> 發力與轉換基礎</div>
+        </div>
+      </div>
+      <div class="curriculum-group">
+        <div class="curriculum-group-title">高階倒立與動態平衡</div>
+        <div class="curriculum-items">
+          <div class="curriculum-item">倒立行走 <em>Handstand walk</em></div>
+          <div class="curriculum-item">倒立伏地挺身 <em>Handstand push-up</em> 技巧優化</div>
+          <div class="curriculum-item">自由倒立平衡感建立</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="class-row">
+      <div class="row-label">人數配置</div>
+      <div class="capacity-info">
+        精緻小班 <span>10 人</span>，主教練全程高密度技術指導，不另行安排助教
+      </div>
+    </div>
+
+    <div class="class-row">
+      <div class="row-label">課程費用</div>
+      <div class="price-grid">
+        <div class="price-row">
+          <div class="price-label">單堂報名</div>
+          <div class="price-amount">NT$ 1,500 <span style="font-size:11px;color:var(--fg-3);font-weight:400;">/ 堂</span></div>
+        </div>
+        <div class="price-row featured">
+          <div class="price-label">
+            全期報名優惠
+            <small>共 9 堂，換算單堂僅 $1,000</small>
+          </div>
+          <div class="price-amount">NT$ 9,000</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-block">
+  <div class="cta-title">報名方式</div>
+  <a class="cta-btn" href="https://line.me/R/ti/p/LINE_ID_HERE" target="_blank" rel="noopener">
+    💬 私訊官方 LINE 報名
+  </a>
+  <div class="cta-note">
+    名額以完成繳費順序為準<br>
+    對程度是否適合有疑問，歡迎先私訊教練評估<br>
+    選擇全期報名者，請確認可配合全部 9 個上課日期
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-copy">© 2026 混合健身股份有限公司 · 4SC CrossFit</div>
+</footer>
+
+</body>
+</html>
