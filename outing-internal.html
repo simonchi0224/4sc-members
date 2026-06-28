@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4SC 出團計畫 — 內部執行文件</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A0A0A;
+  --surface: #141414;
+  --surface-2: #1E1E1E;
+  --border: #2A2A2A;
+  --red: #CC1F2D;
+  --red-dim: rgba(204, 31, 45, 0.12);
+  --gold: #E8A020;
+  --text: #FFFFFF;
+  --text-muted: #909090;
+  --text-dim: #606060;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --max-w: 1100px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans TC', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.nav-logo .badge {
+  background: var(--red);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--red);
+  color: #fff !important;
+  padding: 7px 18px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: #a8151f; }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); transition: all 0.2s; }
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+.internal-banner {
+  background: linear-gradient(90deg, #1a0a02, #0A0A0A);
+  border-bottom: 2px solid var(--gold);
+  padding: 10px 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.internal-hero { padding: 60px 0 40px; }
+.internal-hero h1 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; margin-bottom: 8px; }
+.internal-hero .version-badge {
+  display: inline-block;
+  background: rgba(232, 160, 32, 0.15);
+  border: 1px solid rgba(232, 160, 32, 0.4);
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+.internal-hero .hero-meta { font-size: 14px; color: var(--text-muted); display: flex; gap: 24px; flex-wrap: wrap; }
+.int-section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+.int-section:last-child { border-bottom: none; }
+.int-title { font-size: 22px; font-weight: 800; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.int-title .num {
+  background: var(--red);
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.int-title .num.gold { background: var(--gold); color: #000; }
+.phase-boxes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.phase-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+.phase-box .ph-num { font-size: 36px; font-weight: 900; color: rgba(204,31,45,0.2); line-height: 1; margin-bottom: 8px; }
+.phase-box .ph-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+.phase-box .ph-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.phase-box .ph-items li { font-size: 13px; color: var(--text-muted); display: flex; gap: 8px; line-height: 1.5; }
+.phase-box .ph-items li::before { content: '·'; color: var(--red); font-weight: 900; flex-shrink: 0; }
+.checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; list-style: none; }
+.checklist li { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; font-size: 14px; color: var(--text-muted); display: flex; gap: 10px; line-height: 1.5; }
+.checklist li .ci { color: #4CAF50; font-weight: 700; flex-shrink: 0; }
+.checklist.dont li .ci { color: #FF5252; }
+.role-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.role-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; }
+.role-card .rc-title { font-size: 14px; font-weight: 700; margin-bottom: 12px; color: var(--gold); }
+.role-card .rc-items { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.role-card .rc-items li { font-size: 13px; color: var(--text-muted); line-height: 1.5; display: flex; gap: 6px; }
+.role-card .rc-items li::before { content: '—'; color: var(--text-dim); flex-shrink: 0; }
+.script-list { display: flex; flex-direction: column; gap: 16px; }
+.script-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px 24px; }
+.script-card .sc-q { font-size: 14px; font-weight: 700; color: var(--text-muted); margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.script-card .sc-q::before { content: 'Q：'; color: var(--red); }
+.script-card .sc-a { font-size: 14px; line-height: 1.7; }
+.script-card .sc-a::before { content: 'A：'; color: var(--gold); font-weight: 700; }
+.metrics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.metric-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; font-size: 14px; color: var(--text-muted); display: flex; gap: 10px; line-height: 1.5; }
+.metric-item::before { content: attr(data-num); color: var(--red); font-weight: 700; font-size: 18px; line-height: 1.2; flex-shrink: 0; }
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 0; }
+.footer-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
+.footer-brand { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+.footer-disclaimer { font-size: 12px; color: var(--text-dim); max-width: 500px; line-height: 1.6; }
+.footer-links { display: flex; flex-direction: column; gap: 8px; text-align: right; }
+.footer-links a { font-size: 13px; color: var(--text-muted); transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 60px; left: 0; right: 0; background: var(--surface); padding: 24px; gap: 16px; border-bottom: 1px solid var(--border); z-index: 99; }
+  .nav-links.open a { font-size: 16px; color: var(--text); }
+  .nav-toggle { display: flex; }
+  .grid-2, .grid-4 { grid-template-columns: 1fr; }
+  .phase-boxes { grid-template-columns: 1fr; }
+  .role-cards { grid-template-columns: 1fr 1fr; }
+  .checklist { grid-template-columns: 1fr; }
+  .metrics-grid { grid-template-columns: 1fr; }
+  .footer-links { text-align: left; }
+}
+@media (max-width: 480px) {
+  .role-cards { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- INTERNAL BANNER -->
+<div class="internal-banner">
+  ⚠ 內部文件 · 僅供教練、行政與四季夥伴使用 ⚠
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="outing.html" class="nav-logo">
+      <span class="badge">4SC</span>
+      出團計畫 — 內部執行
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#flow">行政流程</a></li>
+      <li><a href="#coach">教練守則</a></li>
+      <li><a href="#roles">當天分工</a></li>
+      <li><a href="#scripts">對話口徑</a></li>
+      <li><a href="#metrics">成功指標</a></li>
+      <li><a href="outing.html" class="nav-cta">← 公開頁面</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="選單">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- INTERNAL HERO -->
+<div class="container">
+  <div class="internal-hero">
+    <div class="version-badge">v0.4 · 2026/6</div>
+    <h1>4SC 出團計畫 — 執行手冊</h1>
+    <div class="hero-meta">
+      <span>涵蓋賽事：WEPOWER 9/19 · 台中鋼鐵大賽 10/17–18</span>
+      <span>備賽期：2026/7/11 – 9/13</span>
+      <span>使用對象：四季內部夥伴、行政、教練</span>
+    </div>
+  </div>
+</div>
+
+<div style="border-top: 1px solid var(--border);"></div>
+
+<!-- KEY DATES QUICK REF -->
+<div class="container">
+  <div class="int-section" id="quickref">
+    <div class="int-title">
+      <span class="num gold">!</span>
+      重要日期快速參考
+    </div>
+    <div class="grid-4">
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">備賽開始</div>
+        <div style="font-size: 22px; font-weight: 900; margin-bottom: 4px;">7/11</div>
+        <div style="font-size: 13px; color: var(--text-muted);">週六第一堂</div>
+      </div>
+      <div style="background: var(--surface); border: 1px solid rgba(204,31,45,0.4); border-radius: var(--radius-lg); padding: 20px;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">WEPOWER</div>
+        <div style="font-size: 22px; font-weight: 900; margin-bottom: 4px;">9/19</div>
+        <div style="font-size: 13px; color: var(--text-muted);">台北大直橋下</div>
+      </div>
+      <div style="background: var(--surface); border: 1px solid rgba(204,31,45,0.4); border-radius: var(--radius-lg); padding: 20px;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">台中鋼鐵大賽</div>
+        <div style="font-size: 22px; font-weight: 900; margin-bottom: 4px;">10/17–18</div>
+        <div style="font-size: 13px; color: var(--text-muted);">台中</div>
+      </div>
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px;">
+        <div style="font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px;">IAN 不在</div>
+        <div style="font-size: 22px; font-weight: 900; margin-bottom: 4px;">8/22–23</div>
+        <div style="font-size: 13px; color: var(--text-muted);">菁英組兩班暫停</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="border-top: 1px solid var(--border);"></div>
+
+<!-- ADMIN FLOW -->
+<div class="container">
+  <div class="int-section" id="flow">
+    <div class="int-title">
+      <span class="num">1</span>
+      行政執行流程（三階段）
+    </div>
+    <div class="phase-boxes">
+      <div class="phase-box">
+        <div class="ph-num">01</div>
+        <div class="ph-title">表單收名單</div>
+        <ul class="ph-items">
+          <li>姓名 + 聯絡方式</li>
+          <li>會員身分確認</li>
+          <li>想參加賽事（WEPOWER / 鋼鐵 / 兩場）</li>
+          <li>想參加組別（推廣 / 菁英）</li>
+          <li>是否已有隊友</li>
+          <li>是否需要四季協助組隊</li>
+          <li>是否參加備賽團練</li>
+          <li>是否要一起出團</li>
+          <li>交通 / 住宿 / 餐會需求</li>
+          <li>是否代表四季出團（核心確認）</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="ph-num">02</div>
+        <div class="ph-title">名單分類整理</div>
+        <ul class="ph-items">
+          <li>WEPOWER 推廣組名單</li>
+          <li>WEPOWER 菁英組名單</li>
+          <li>鋼鐵推廣組名單</li>
+          <li>鋼鐵菁英組名單</li>
+          <li>需要組隊名單</li>
+          <li>只出團不備賽名單</li>
+          <li>親友同行名單</li>
+          <li>交通 / 住宿 / 餐會需求名單</li>
+          <li>非四季出團名單（分開處理）</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="ph-num">03</div>
+        <div class="ph-title">建立群組</div>
+        <ul class="ph-items">
+          <li><strong style="color: var(--text);">4SC 出團總群</strong>：所有要跟四季一起出團的人</li>
+          <li>用途：比賽資訊、集合、交通、住宿、餐會、賽後照片</li>
+          <li><strong style="color: var(--text);">4SC 備賽團練群</strong>：有參加備賽課的人</li>
+          <li>用途：課程提醒、動作方向、教練公告</li>
+          <li>兩個群要分開，不要合在一起</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="border-top: 1px solid var(--border);"></div>
+
+<!-- TRANSPORT / ACCOMMODATION -->
+<div class="container">
+  <div class="int-section" id="transport">
+    <div class="int-title">
+      <span class="num">2</span>
+      交通、住宿與餐會安排原則
+    </div>
+    <div class="grid-2">
+      <div>
+        <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--red);">WEPOWER（台北大直）</div>
+        <ul class="ph-items" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+          <li style="display: flex; gap: 10px; font-size: 14px; color: var(--text-muted);"><span style="color: var(--red);">·</span>以自行前往或約定集合為主</li>
+          <li style="display: flex; gap: 10px; font-size: 14px; color: var(--text-muted);"><span style="color: var(--red);">·</span>四季協助統一集合時間與現場集合點</li>
+          <li style="display: flex; gap: 10px; font-size: 14px; color: var(--text-muted);"><span style="color: var(--red);">·</span>原則上不特別安排住宿</li>
+          <li style="display: flex; gap: 10px; font-size: 14px; color: var(--text-muted);"><span style="color: var(--red);">·</span>賽後可評估簡單聚餐或拍照</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--red);">台中鋼鐵大賽（10/17–18）</div>
+        <ul class="ph-items" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+          <li style="display: flex; gap: 10px; font-size: 14px; color: var(--text-muted);"><span style="color: var(--red);">·</span>依人數評估：自行 / 高鐵集合 / 包車</li>
+          <li style="display: flex; gap: 10px; font-size: 14px; color: var(--text-muted);"><span style="color: var(--red);">·</span>包車費用由參與者平均分攤，未達包車人數改高鐵</li>
+          <li style="display: flex; gap: 10px; font-size: 14px; color: var(--text-muted);"><span style="color: var(--red);">·</span>住宿：四季推薦區域，大家自行訂房，不代收款</li>
+          <li style="display: flex; gap: 10px; font-size: 14px; color: var(--text-muted);"><span style="color: var(--red);">·</span>賽後餐會：四季協助訂位，餐費自行負擔</li>
+          <li style="display: flex; gap: 10px; font-size: 14px; color: var(--text-muted);"><span style="color: var(--red);">·</span>臨時取消餐會座位者，需自行承擔相關費用</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top: 20px; background: rgba(232,160,32,0.08); border: 1px solid rgba(232,160,32,0.3); border-radius: var(--radius); padding: 16px 20px; font-size: 13px; color: var(--text-muted);">
+      <strong style="color: var(--gold);">對外說法（包車）：</strong>「交通會依人數評估是否包車，包車費用由參與者平均分攤。未達包車人數，會改成高鐵或自行前往，四季協助安排集合時間。」<br><br>
+      <strong style="color: var(--gold);">對外說法（餐會）：</strong>「四季會協助預訂賽後餐廳，餐費由參與者自行負擔。為了方便訂位，會提前統計人數，臨時取消可能需要自行負擔餐廳訂位相關費用。」
+    </div>
+  </div>
+</div>
+
+<div style="border-top: 1px solid var(--border);"></div>
+
+<!-- COACH GUIDELINES -->
+<div class="container">
+  <div class="int-section" id="coach">
+    <div class="int-title">
+      <span class="num">3</span>
+      教練執行重點（要做的事）
+    </div>
+    <ul class="checklist">
+      <li><span class="ci">✓</span> 看到適合的會員，主動引導填表單</li>
+      <li><span class="ci">✓</span> 會員問組隊，統一導回四季出團流程，不私下亂配</li>
+      <li><span class="ci">✓</span> 會員問備賽，導到對應組別與時段</li>
+      <li><span class="ci">✓</span> 推廣組以安全、理解、完賽為主</li>
+      <li><span class="ci">✓</span> 菁英組以強度、策略、配速、效率為主</li>
+      <li><span class="ci">✓</span> 所有規則與動作標準，以官方公告為準</li>
+      <li><span class="ci">✓</span> 名單、組隊與出團資訊回到四季統一流程</li>
+      <li><span class="ci">✓</span> 讓會員知道為什麼平常訓練跟比賽有關</li>
+      <li><span class="ci">✓</span> 有安全疑慮的會員，提醒事先告知或評估</li>
+      <li><span class="ci">✓</span> 比賽當天以簡單、清楚、容易執行的提醒為主</li>
+    </ul>
+
+    <div style="margin-top: 40px;">
+      <div class="int-title" style="font-size: 18px;">
+        <span class="num" style="background: #FF5252;">✕</span>
+        教練不要做的事
+      </div>
+      <ul class="checklist dont">
+        <li><span class="ci">✕</span> 不承諾四季會處理所有交通、住宿與報名費</li>
+        <li><span class="ci">✕</span> 不替會員保證名次或完賽結果</li>
+        <li><span class="ci">✕</span> 不私下收費開個人備賽小團</li>
+        <li><span class="ci">✕</span> 不把代表其他場館的人放進四季出團安排</li>
+        <li><span class="ci">✕</span> 不在現場批評會員表現</li>
+        <li><span class="ci">✕</span> 不把賽事規則講成四季版本</li>
+        <li><span class="ci">✕</span> 不各自開小群，造成資訊分散</li>
+        <li><span class="ci">✕</span> 不私下亂配隊，造成行政無法管理</li>
+        <li><span class="ci">✕</span> 不批評其他場館、其他隊伍或其他比賽</li>
+        <li><span class="ci">✕</span> 不使用「官方合作」「指定訓練中心」等字眼</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style="border-top: 1px solid var(--border);"></div>
+
+<!-- GAME DAY ROLES -->
+<div class="container">
+  <div class="int-section" id="roles">
+    <div class="int-title">
+      <span class="num">4</span>
+      比賽當天現場分工
+    </div>
+    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 28px;">比賽當天要避免所有事情都集中在 Simon 身上。以下四個角色需事前分配清楚。</p>
+    <div class="role-cards">
+      <div class="role-card">
+        <div class="rc-title">出團總召</div>
+        <ul class="rc-items">
+          <li>集合時間確認</li>
+          <li>集合地點確認</li>
+          <li>現場公告</li>
+          <li>臨時狀況協調</li>
+          <li>統一對外窗口</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="rc-title">教練支援</div>
+        <ul class="rc-items">
+          <li>帶領熱身</li>
+          <li>動作提醒</li>
+          <li>配速提醒</li>
+          <li>隊伍分工提醒</li>
+          <li>賽後簡單照顧</li>
+          <li>不臨時改太多策略</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="rc-title">行政支援</div>
+        <ul class="rc-items">
+          <li>名單確認</li>
+          <li>聯絡事項</li>
+          <li>交通確認</li>
+          <li>餐會確認</li>
+          <li>群組公告</li>
+          <li>臨時訊息整理</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="rc-title">影像紀錄</div>
+        <ul class="rc-items">
+          <li>出發集合照片</li>
+          <li>隊伍合照</li>
+          <li>熱身畫面</li>
+          <li>比賽動作</li>
+          <li>隊友加油</li>
+          <li>完賽表情</li>
+          <li>賽後餐會</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="border-top: 1px solid var(--border);"></div>
+
+<!-- SCRIPTS -->
+<div class="container">
+  <div class="int-section" id="scripts">
+    <div class="int-title">
+      <span class="num">5</span>
+      對外溝通口徑（建議說法）
+    </div>
+    <div class="script-list">
+      <div class="script-card">
+        <div class="sc-q">我沒有很強，可以參加嗎？</div>
+        <div class="sc-a">可以先填表單，讓我們看你適合哪個組別。這次重點不是一定要很強才去，而是用比賽當成接下來訓練的目標。我們會協助你評估比較適合的方式。</div>
+      </div>
+      <div class="script-card">
+        <div class="sc-q">我不參加團練，可以一起去嗎？</div>
+        <div class="sc-a">可以。這次會分成備賽團練跟出團同行兩種方式。你如果平常自己練，也可以跟四季一起去現場、一起集合、一起加油、一起拍照。</div>
+      </div>
+      <div class="script-card">
+        <div class="sc-q">交通住宿四季會處理嗎？</div>
+        <div class="sc-a">四季會協助統計需求，也會看人數評估包車、住宿建議與餐會訂位。不過交通、住宿、餐費原則上由參與者自行負擔。</div>
+      </div>
+      <div class="script-card">
+        <div class="sc-q">我已經跟別的場館組隊，可以加入四季出團嗎？</div>
+        <div class="sc-a">如果你這次主要是跟其他場館組隊與行動，就照原本場館安排走會比較清楚。現場遇到我們一樣可以打招呼、互相加油。</div>
+      </div>
+      <div class="script-card">
+        <div class="sc-q">我沒有隊友怎麼辦？</div>
+        <div class="sc-a">先填表單，我們會統整想參加的人，再依照組別、能力、時間安排協助組隊。</div>
+      </div>
+      <div class="script-card">
+        <div class="sc-q">備賽課一定要參加整期嗎？</div>
+        <div class="sc-a">建議一期 4 次一起上，會比較知道動作、流程跟團隊分工。如果時間真的無法配合，也可以單次報名，但前面課程內容需要自己熟悉。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="border-top: 1px solid var(--border);"></div>
+
+<!-- RISK / NOTICE -->
+<div class="container">
+  <div class="int-section" id="notice">
+    <div class="int-title">
+      <span class="num gold">!</span>
+      對外公告注意事項
+    </div>
+    <div class="grid-2">
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px;">
+        <div style="font-size: 14px; font-weight: 700; color: var(--gold); margin-bottom: 12px;">✓ 建議用的字眼</div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+          <li style="font-size: 14px; color: var(--text-muted);">· 四季揪團參賽</li>
+          <li style="font-size: 14px; color: var(--text-muted);">· 四季出團計畫</li>
+          <li style="font-size: 14px; color: var(--text-muted);">· 四季備賽團練</li>
+          <li style="font-size: 14px; color: var(--text-muted);">· 四季協助組隊</li>
+          <li style="font-size: 14px; color: var(--text-muted);">· 跟四季一起去比賽</li>
+        </ul>
+      </div>
+      <div style="background: var(--surface); border: 1px solid rgba(255,82,82,0.3); border-radius: var(--radius-lg); padding: 24px;">
+        <div style="font-size: 14px; font-weight: 700; color: #FF5252; margin-bottom: 12px;">✕ 不要用的字眼</div>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+          <li style="font-size: 14px; color: var(--text-muted);">· 官方合作</li>
+          <li style="font-size: 14px; color: var(--text-muted);">· 指定訓練中心</li>
+          <li style="font-size: 14px; color: var(--text-muted);">· 官方備賽</li>
+          <li style="font-size: 14px; color: var(--text-muted);">· 官方授權</li>
+          <li style="font-size: 14px; color: var(--text-muted);">· 主辦單位指定</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top: 16px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; font-size: 13px; color: var(--text-muted);">
+      所有對外圖文或公告，建議加上：<strong style="color: var(--text);">「賽事資訊如有調整，以官方公告為準。」</strong>
+    </div>
+  </div>
+</div>
+
+<div style="border-top: 1px solid var(--border);"></div>
+
+<!-- SUCCESS METRICS -->
+<div class="container">
+  <div class="int-section" id="metrics">
+    <div class="int-title">
+      <span class="num">6</span>
+      這次成功的判斷標準
+    </div>
+    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 24px;">不只看報名人數，也不只看成績。真正要觀察的十件事：</p>
+    <div class="metrics-grid">
+      <div class="metric-item" data-num="1">有多少會員因為這次比賽增加上課頻率</div>
+      <div class="metric-item" data-num="2">有多少會員第一次願意挑戰外部賽事</div>
+      <div class="metric-item" data-num="3">有多少人需要四季協助組隊</div>
+      <div class="metric-item" data-num="4">備賽團練出席率是否穩定</div>
+      <div class="metric-item" data-num="5">比賽當天是否有明顯的團隊感</div>
+      <div class="metric-item" data-num="6">賽後是否有會員願意分享心得</div>
+      <div class="metric-item" data-num="7">是否產生可延伸的照片、影片與文章</div>
+      <div class="metric-item" data-num="8">是否能帶動下一場出團或下一波訓練方案</div>
+      <div class="metric-item" data-num="9">教練是否能依照流程引導會員</div>
+      <div class="metric-item" data-num="10">行政是否能用這套流程複製到下一場活動</div>
+    </div>
+  </div>
+</div>
+
+<div style="border-top: 1px solid var(--border);"></div>
+
+<!-- CONCLUSION -->
+<div class="container">
+  <div class="int-section">
+    <div style="max-width: 680px;">
+      <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px;">內部結論</div>
+      <h2 style="font-size: 26px; font-weight: 800; margin-bottom: 20px; line-height: 1.3;">這套流程，是未來所有出團的範本</h2>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 14px; color: var(--text-muted); display: flex; gap: 10px;"><span style="color: var(--red); flex-shrink: 0;">→</span> WEPOWER 是第一場近程出團</div>
+        <div style="font-size: 14px; color: var(--text-muted); display: flex; gap: 10px;"><span style="color: var(--red); flex-shrink: 0;">→</span> 台中全球極限體能鋼鐵大賽是正式遠征出團</div>
+        <div style="font-size: 14px; color: var(--text-muted); display: flex; gap: 10px;"><span style="color: var(--red); flex-shrink: 0;">→</span> 備賽團練是讓會員有訓練目標</div>
+        <div style="font-size: 14px; color: var(--text-muted); display: flex; gap: 10px;"><span style="color: var(--red); flex-shrink: 0;">→</span> 組隊與出團是讓會員產生社群連結</div>
+        <div style="font-size: 14px; color: var(--text-muted); display: flex; gap: 10px;"><span style="color: var(--red); flex-shrink: 0;">→</span> 賽後照片、心得與內容，是讓四季品牌被看見</div>
+      </div>
+      <div style="margin-top: 28px; padding: 20px 24px; background: var(--red-dim); border: 1px solid rgba(204,31,45,0.3); border-radius: var(--radius-lg);">
+        <div style="font-size: 15px; font-weight: 700; margin-bottom: 6px;">所有夥伴與教練要共同傳達的是：</div>
+        <div style="font-size: 14px; color: var(--text-muted); line-height: 1.8;">
+          四季不只提供課程。<br>
+          四季會帶大家一起準備，一起出發，一起完成挑戰。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">4SC 出團計畫 2026 — 內部執行文件</div>
+      <div class="footer-disclaimer">
+        v0.4 · 僅供四季內部夥伴、行政、教練使用。<br>
+        請勿對外分享本頁連結。所有對外公告請使用公開頁面。
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="outing.html">← 公開出團頁面</a>
+      <a href="https://scfitness.tw" target="_blank">四季健身官網</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+if (toggle && links) {
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+}
+</script>
+</body>
+</html>

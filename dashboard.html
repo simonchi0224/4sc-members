@@ -626,7 +626,68 @@ a{color:inherit;text-decoration:none}
 .time:hover{background:var(--bg-soft)}
 .time.now{background:var(--ink);color:var(--accent)}
 
+/* ── Schedule Table ── */
+.sched-panel-db{display:none}
+.sched-panel-db.active{display:block}
+.schedule-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 22px}
+.schedule-table{width:100%;border-collapse:collapse;min-width:560px}
+.schedule-table th{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-mute);
+  padding:10px 10px;text-align:center;border-bottom:2px solid var(--rule-soft);
+}
+.schedule-table th.time-col{text-align:left;width:62px}
+.schedule-table td{
+  padding:7px 8px;border-bottom:1px solid var(--rule-faint);
+  vertical-align:top;min-width:96px;
+}
+.schedule-table td.time-cell{
+  font-family:var(--mono);font-size:12px;font-weight:700;
+  color:var(--ink-mute);white-space:nowrap;padding-top:13px;
+}
+.class-chip{
+  background:var(--bg-soft);border:1px solid var(--rule-soft);
+  border-radius:8px;padding:8px 9px;display:flex;flex-direction:column;gap:2px;
+}
+.class-chip.beginner{border-color:rgba(166,230,53,.35);background:rgba(166,230,53,.07)}
+.class-chip.heavy{border-color:rgba(255,90,54,.3);background:rgba(255,90,54,.05)}
+.chip-name{font-size:12px;font-weight:700;color:var(--ink);line-height:1.3}
+.chip-type{font-size:10.5px;color:var(--ink-mute)}
+.chip-time{font-family:var(--mono);font-size:9px;color:var(--ink-mute)}
+.schedule-notes-db{
+  display:flex;flex-wrap:wrap;gap:14px;padding:14px 22px 0;
+  font-family:var(--mono);font-size:10px;color:var(--ink-mute);letter-spacing:.04em;
+}
+.coach-disclaimer-db{
+  margin:16px 22px 0;padding:12px 16px;
+  background:rgba(217,165,92,.06);border:1px solid rgba(217,165,92,.25);
+  border-radius:8px;font-size:11.5px;color:var(--ink-mute);line-height:1.7;
+  display:flex;gap:8px;align-items:flex-start;
+}
+
 /* ── Monthly Focus ── */
+.announce-card{
+  border:2px solid var(--ink);background:var(--accent);
+  margin:0 22px 14px;overflow:hidden;
+}
+.announce-card.event{background:var(--ink);color:#fff;}
+.announce-head{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 18px;border-bottom:1px solid rgba(0,0,0,.15);
+}
+.announce-head .a-icon{font-size:18px;line-height:1;}
+.announce-head .a-title{
+  font-family:var(--mono);font-size:11px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.announce-body{padding:12px 18px;display:flex;flex-direction:column;gap:6px;}
+.announce-body .a-line{
+  font-size:13px;line-height:1.6;
+}
+.announce-card.event .a-line{color:rgba(255,255,255,.85);}
+.announce-card.event .announce-head{border-bottom-color:rgba(255,255,255,.15);}
+.announce-card.event .a-title{color:var(--accent);}
+@media(max-width:540px){.announce-card{margin:0 16px 12px}}
 .monthly-focus{
   border:2px solid var(--ink);
   background:var(--paper);overflow:hidden;margin:0 22px 22px;
@@ -856,7 +917,7 @@ a{color:inherit;text-decoration:none}
     <button class="tab" data-tab="log"><span class="tab-num">03</span>訓練紀錄</button>
     <button class="tab" data-tab="schedule"><span class="tab-num">04</span>開課時間</button>
     <button class="tab" data-tab="library"><span class="tab-num">05</span>補強庫</button>
-    <button class="tab" data-tab="hero"><span class="tab-num">06</span>Hero WOD</button>
+    <button class="tab" data-tab="hero"><span class="tab-num">06</span>官方訓練課表</button>
     <button class="tab" data-tab="myplan"><span class="tab-num">07</span>AI 課表</button>
     <button class="tab" onclick="window.open('tools.html','_blank')" style="white-space:nowrap;"><span class="tab-num">08</span>訓練工具</button>
     <button class="tab" data-tab="admin" id="admin-tab-btn" style="display:none;"><span class="tab-num">09</span>後台</button>
@@ -869,6 +930,20 @@ a{color:inherit;text-decoration:none}
       <h1>本週<br>課表</h1>
       <div class="lede" id="wod-lede"><b>LOADING</b></div>
     </div>
+    <a href="outing.html" style="display:block;margin:0 22px 14px;background:var(--accent);border:2px solid var(--ink);color:var(--ink);text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 0 var(--ink)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:2px solid var(--ink);">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:18px;">🏆</span>
+          <span style="font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;">4SC 出團計劃 2026</span>
+        </div>
+        <span style="font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.05em;background:var(--ink);color:var(--accent);padding:5px 12px;white-space:nowrap;">查看詳情 →</span>
+      </div>
+      <div style="padding:12px 18px;display:flex;flex-direction:column;gap:4px;">
+        <span style="font-size:13px;font-weight:600;">WEPOWER 台北大直 9/19 · 台中鋼鐵大賽 10/17–18</span>
+        <span style="font-size:12px;opacity:.7;">跟四季一起備賽、組隊、出發、完成挑戰</span>
+      </div>
+    </a>
+    <div id="announcements-container"></div>
     <div id="monthly-focus-container"></div>
     <div id="wod-today-hero"></div>
     <div id="supplemental-container"></div>
@@ -952,7 +1027,176 @@ a{color:inherit;text-decoration:none}
       <div class="lede"><b>2 LOCATIONS</b>新店 · 永和</div>
     </div>
     <div class="gym-tabs" id="gym-tabs"></div>
-    <div id="schedule-rows"></div>
+    <div id="schedule-panels">
+
+      <!-- 新店館 -->
+      <div class="sched-panel-db active" id="db-panel-xindian">
+        <div class="schedule-wrap">
+          <table class="schedule-table">
+            <thead><tr>
+              <th class="time-col">時間</th>
+              <th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th><th>SUN</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td class="time-cell" style="font-size:10px;">週末<br>早上</td>
+                <td></td><td></td><td></td><td></td><td></td>
+                <td><div class="class-chip">
+                  <span class="chip-time">10:30</span>
+                  <span class="chip-name">CrossFit</span>
+                </div></td>
+                <td><div class="class-chip">
+                  <span class="chip-time">09:00</span>
+                  <span class="chip-name">CrossFit</span>
+                </div></td>
+              </tr>
+              <tr>
+                <td class="time-cell">08:30</td>
+                <td><div class="class-chip"><span class="chip-name">CrossFit</span></div></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td>
+              </tr>
+              <tr>
+                <td class="time-cell">12:10</td>
+                <td></td>
+                <td><div class="class-chip"><span class="chip-name">CrossFit</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">CrossFit</span><span class="chip-type">基礎班</span></div></td>
+                <td><div class="class-chip"><span class="chip-name">CrossFit</span></div></td>
+                <td></td>
+                <td></td>
+                <td><div class="class-chip beginner"><span class="chip-name">CrossFit</span><span class="chip-type">基礎班</span></div></td>
+              </tr>
+              <tr>
+                <td class="time-cell">15:00</td>
+                <td></td>
+                <td><div class="class-chip beginner"><span class="chip-name">基礎肌力樂齡班</span><span class="chip-type">包月優惠專案</span></div></td>
+                <td></td>
+                <td><div class="class-chip beginner"><span class="chip-name">基礎肌力</span><span class="chip-type">Foundation</span></div></td>
+                <td></td><td></td>
+                <td><div class="class-chip heavy"><span class="chip-time">17:00</span><span class="chip-name">進階肌力課程</span><span class="chip-type">Adv. Strength</span></div></td>
+              </tr>
+              <tr>
+                <td class="time-cell">18:30</td>
+                <td><div class="class-chip beginner"><span class="chip-name">基礎肌力</span><span class="chip-type">Foundation</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">CrossFit</span><span class="chip-type">基礎班</span></div></td>
+                <td></td>
+                <td><div class="class-chip heavy"><span class="chip-name">進階肌力課程</span><span class="chip-type">Adv. Strength</span></div></td>
+                <td><div class="class-chip"><span class="chip-name">舉重團課</span></div></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td class="time-cell">19:00</td>
+                <td></td>
+                <td><div class="class-chip"><span class="chip-name">CrossFit</span></div></td>
+                <td></td><td></td><td></td><td></td><td></td>
+              </tr>
+              <tr>
+                <td class="time-cell">19:30</td>
+                <td><div class="class-chip beginner"><span class="chip-name">CrossFit</span></div></td>
+                <td>
+                  <div class="class-chip"><span class="chip-name">CrossFit</span></div>
+                  <div class="class-chip beginner" style="margin-top:5px;"><span class="chip-name">基礎體操</span><span class="chip-type">Gymnastics</span></div>
+                </td>
+                <td>
+                  <div class="class-chip"><span class="chip-name">CrossFit</span></div>
+                  <div class="class-chip beginner" style="margin-top:5px;"><span class="chip-name">基礎肌力</span><span class="chip-type">Foundation</span></div>
+                </td>
+                <td><div class="class-chip"><span class="chip-name">CrossFit</span></div></td>
+                <td><div class="class-chip"><span class="chip-name">舉重團課</span></div></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td class="time-cell">20:00</td>
+                <td><div class="class-chip"><span class="chip-name">CrossFit</span></div></td>
+                <td><div class="class-chip"><span class="chip-name">CrossFit</span></div></td>
+                <td><div class="class-chip"><span class="chip-name">CrossFit</span></div></td>
+                <td><div class="class-chip"><span class="chip-name">CrossFit</span></div></td>
+                <td></td><td></td><td></td>
+              </tr>
+              <tr>
+                <td class="time-cell">20:30</td>
+                <td></td><td></td><td></td><td></td>
+                <td><div class="class-chip beginner"><span class="chip-name">CrossFit</span><span class="chip-type">基礎班</span></div></td>
+                <td></td><td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="schedule-notes-db">
+          <span>★ 新手友善課程</span>
+          <span>· 最低開班 2 人</span>
+          <span>· 採預約制</span>
+          <span>· (02) 8979-5230</span>
+        </div>
+      </div>
+
+      <!-- 永和館 -->
+      <div class="sched-panel-db" id="db-panel-yonghe">
+        <div class="schedule-wrap">
+          <table class="schedule-table">
+            <thead><tr>
+              <th class="time-col">時間</th>
+              <th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td class="time-cell">11:00</td>
+                <td><div class="class-chip beginner"><span class="chip-name">基礎肌力</span><span class="chip-type">Foundation</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">基礎肌力</span><span class="chip-type">Foundation</span></div></td>
+                <td></td><td></td>
+                <td><div class="class-chip beginner"><span class="chip-name">綜合體能</span><span class="chip-type">基礎班</span></div></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="time-cell">14:00</td>
+                <td></td>
+                <td><div class="class-chip beginner"><span class="chip-name">肌力樂齡班</span><span class="chip-type">Senior Workout</span></div></td>
+                <td></td>
+                <td><div class="class-chip beginner"><span class="chip-name">肌力樂齡班</span><span class="chip-type">Senior Workout</span></div></td>
+                <td></td><td></td>
+              </tr>
+              <tr>
+                <td class="time-cell">18:30</td>
+                <td></td>
+                <td><div class="class-chip beginner"><span class="chip-name">基礎肌力</span><span class="chip-type">Foundation</span></div></td>
+                <td><div class="class-chip"><span class="chip-name">綜合體能</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">基礎肌力</span><span class="chip-type">Foundation</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">流動舒展</span><span class="chip-type">Power &amp; Recovery</span></div></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="time-cell">19:30</td>
+                <td><div class="class-chip"><span class="chip-name">綜合體能</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">綜合體能</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">體操核心訓練</span><span class="chip-type">Gymnastics</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">綜合體能</span><span class="chip-type">基礎班</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">深蹲專班</span><span class="chip-type">Squat Workshop</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">基礎肌力</span><span class="chip-type">19:00 · Foundation</span></div></td>
+              </tr>
+              <tr>
+                <td class="time-cell">20:30</td>
+                <td><div class="class-chip beginner"><span class="chip-name">基礎肌力</span><span class="chip-type">Foundation</span></div></td>
+                <td><div class="class-chip beginner"><span class="chip-name">綜合體能</span><span class="chip-type">基礎班</span></div></td>
+                <td><div class="class-chip"><span class="chip-name">成人體操</span><span class="chip-type">Gymnastics</span></div></td>
+                <td></td>
+                <td><div class="class-chip"><span class="chip-name">綜合體能</span></div></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="schedule-notes-db">
+          <span>★ 新手友善課程</span>
+          <span>· 最低開班 2 人</span>
+          <span>· 採預約制</span>
+          <span>· (02) 2927-5699</span>
+        </div>
+      </div>
+
+    </div><!-- /schedule-panels -->
+    <div class="coach-disclaimer-db">
+      <span>ℹ️</span>
+      <span>課表時段僅供參考，實際授課教練請以預約系統顯示為準。</span>
+    </div>
   </div>
 
   <!-- ── Library Page ── -->
@@ -973,25 +1217,56 @@ a{color:inherit;text-decoration:none}
     <div class="lib-results" id="lib-results"></div>
   </div>
 
-  <!-- ── Hero WOD Page ── -->
+  <!-- ── 官方訓練課表 Page ── -->
   <div class="page" id="tab-hero">
     <div class="page-head">
-      <h1>HERO<br>WOD</h1>
-      <div class="lede"><b>140 WORKOUTS</b>以英雄之名命名的訓練。</div>
+      <h1>官方<br>訓練課表</h1>
+      <div class="lede"><b>OFFICIAL PROGRAMS</b>Hero WOD 與歷史課表。</div>
     </div>
-    <div style="padding:0 22px 20px;display:flex;gap:10px;align-items:center;">
-      <input id="hero-search" type="text" placeholder="搜尋 WOD 名稱…"
-        style="width:100%;padding:12px 16px;border:2px solid var(--ink);background:var(--paper);
-               color:var(--ink);font-size:14px;font-family:var(--mono);outline:none;letter-spacing:.04em;"
-        oninput="filterHeroWODs()">
-      <button onclick="rollHeroWOD()" style="flex-shrink:0;padding:12px 18px;background:var(--ink);color:var(--accent);font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap;">🎲 骰骰看</button>
+
+    <!-- Sub-tab nav -->
+    <div style="display:flex;border-bottom:2px solid var(--ink);margin:0 22px 24px;">
+      <button id="subtab-btn-hero" onclick="showHeroSubTab('hero')"
+        style="padding:10px 20px;font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;background:var(--ink);color:var(--accent);">
+        Hero WOD
+      </button>
+      <button id="subtab-btn-history" onclick="showHeroSubTab('history')"
+        style="padding:10px 20px;font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;background:var(--paper);color:var(--ink-mute);">
+        歷史課表
+      </button>
     </div>
-    <div id="hero-week-highlight" style="display:none;padding:0 22px 24px;">
-      <div style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px;">本週 Hero WODs</div>
-      <div id="hero-week-chips" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+
+    <!-- Sub-page: Hero WOD -->
+    <div id="subtab-hero">
+      <div style="padding:0 22px 20px;display:flex;gap:10px;align-items:center;">
+        <input id="hero-search" type="text" placeholder="搜尋 WOD 名稱…"
+          style="width:100%;padding:12px 16px;border:2px solid var(--ink);background:var(--paper);
+                 color:var(--ink);font-size:14px;font-family:var(--mono);outline:none;letter-spacing:.04em;"
+          oninput="filterHeroWODs()">
+        <button onclick="rollHeroWOD()" style="flex-shrink:0;padding:12px 18px;background:var(--ink);color:var(--accent);font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap;">🎲 骰骰看</button>
+      </div>
+      <div id="hero-week-highlight" style="display:none;padding:0 22px 24px;">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:10px;">本週 Hero WODs</div>
+        <div id="hero-week-chips" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+      </div>
+      <div id="hero-tag-row" style="padding:0 22px 16px;display:flex;gap:6px;flex-wrap:wrap;"></div>
+      <div id="hero-results" style="display:flex;flex-direction:column;gap:1px;background:var(--rule-soft);border:2px solid var(--ink);overflow:hidden;margin:0 22px 40px;"></div>
     </div>
-    <div id="hero-tag-row" style="padding:0 22px 16px;display:flex;gap:6px;flex-wrap:wrap;"></div>
-    <div id="hero-results" style="display:flex;flex-direction:column;gap:1px;background:var(--rule-soft);border:2px solid var(--ink);overflow:hidden;margin:0 22px 40px;"></div>
+
+    <!-- Sub-page: 歷史課表 -->
+    <div id="subtab-history" style="display:none;">
+      <div style="padding:0 22px 20px;display:flex;gap:10px;align-items:center;">
+        <input id="hist-search" type="text" placeholder="搜尋課表內容…"
+          style="width:100%;padding:12px 16px;border:2px solid var(--ink);background:var(--paper);
+                 color:var(--ink);font-size:14px;font-family:var(--mono);outline:none;letter-spacing:.04em;"
+          oninput="filterHistoryWODs()">
+        <button onclick="rollHistoryWOD()" style="flex-shrink:0;padding:12px 18px;background:var(--ink);color:var(--accent);font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;white-space:nowrap;">🎲 骰骰看</button>
+      </div>
+      <div id="hist-type-row" style="padding:0 22px 8px;display:flex;gap:6px;flex-wrap:wrap;"></div>
+      <div id="hist-tag-row" style="padding:0 22px 16px;display:flex;gap:6px;flex-wrap:wrap;"></div>
+      <div id="hist-count" style="padding:0 22px 10px;font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:.06em;"></div>
+      <div id="hist-results" style="display:flex;flex-direction:column;gap:1px;background:var(--rule-soft);border:2px solid var(--ink);overflow:hidden;margin:0 22px 40px;"></div>
+    </div>
   </div>
 
   <!-- ── AI 課表 Page ── -->
@@ -1015,15 +1290,20 @@ a{color:inherit;text-decoration:none}
       <div class="lede"><b>ADMIN</b>審核會員、更新課表。</div>
     </div>
     <div style="padding:0 22px;">
-    <span class="admin-label">待審核</span>
+    <span class="admin-label">申請中 <span id="admin-pending-count" style="font-size:11px;font-family:var(--mono);color:var(--ink-mute);font-weight:400;"></span></span>
     <table class="member-table">
       <thead><tr><th>姓名</th><th>Email</th><th>場館</th><th>性別</th><th>申請時間</th><th>操作</th></tr></thead>
       <tbody id="admin-pending-list"></tbody>
     </table>
-    <span class="admin-label" style="margin-top:36px;">已核准會員</span>
+    <span class="admin-label" style="margin-top:36px;">已核准 <span id="admin-approved-count" style="font-size:11px;font-family:var(--mono);color:var(--ink-mute);font-weight:400;"></span></span>
+    <table class="member-table">
+      <thead><tr><th>姓名</th><th>Email</th><th>場館</th><th>最後登入</th><th>操作</th></tr></thead>
+      <tbody id="admin-approved-list"></tbody>
+    </table>
+    <span class="admin-label" style="margin-top:36px;">已停用／拒絕 <span id="admin-suspended-count" style="font-size:11px;font-family:var(--mono);color:var(--ink-mute);font-weight:400;"></span></span>
     <table class="member-table">
       <thead><tr><th>姓名</th><th>Email</th><th>場館</th><th>狀態</th><th>操作</th></tr></thead>
-      <tbody id="admin-approved-list"></tbody>
+      <tbody id="admin-suspended-list"></tbody>
     </table>
     <span class="admin-label" style="margin-top:40px;">更新課表</span>
     <p style="color:var(--ink-mute);font-size:13px;margin-bottom:20px;line-height:1.7;font-family:var(--mono);">修改後點「儲存全部課表」，學員即時看到更新。</p>
@@ -1142,7 +1422,8 @@ async function init() {
   }
   if (!member || member.status !== 'approved') { window.location.href = 'pending.html'; return; }
   memberData = member;
-  sb.from('members').update({ last_login_at: new Date().toISOString() }).eq('id', user.id);
+  sb.rpc('update_last_login')
+    .then(({ error }) => { if (error) console.error('update_last_login rpc failed:', error); });
 
   const name = member.real_name || user.email;
   document.getElementById('user-name').textContent = name;
@@ -1549,6 +1830,21 @@ function buildDayRowHtml(day, todayStr) {
 
 function renderAnnouncements() {
   if (!announcementsData) return;
+
+  // Announcements banner
+  const announcements = announcementsData.announcements || [];
+  if (announcements.length) {
+    document.getElementById('announcements-container').innerHTML = announcements.map(a => `
+      <div class="announce-card ${a.type === 'event' ? 'event' : ''}">
+        <div class="announce-head">
+          <span class="a-icon">${a.icon}</span>
+          <span class="a-title">${a.title}</span>
+        </div>
+        <div class="announce-body">
+          ${a.lines.map(l => `<div class="a-line">${l}</div>`).join('')}
+        </div>
+      </div>`).join('');
+  }
 
   // Monthly Focus — auto-select by current month
   const nowYM = `${new Date().getFullYear()}-${String(new Date().getMonth()+1).padStart(2,'0')}`;
@@ -2122,33 +2418,9 @@ function selectGym(locId) {
   document.querySelectorAll('.gym-tab').forEach(t => {
     t.classList.toggle('active', t.dataset.locId === locId);
   });
-
-  const loc = scheduleData.locations.find(l => l.id === locId);
-  if (!loc) return;
-
-  const todayDow = new Date().getDay();
-  const DAY_KEYS_ORD = ['mon','tue','wed','thu','fri','sat','sun'];
-  const DAY_NUM = { mon:1, tue:2, wed:3, thu:4, fri:5, sat:6, sun:0 };
-  const DAY_ZH  = { mon:'一', tue:'二', wed:'三', thu:'四', fri:'五', sat:'六', sun:'日' };
-
-  document.getElementById('schedule-rows').innerHTML = DAY_KEYS_ORD.map(d => {
-    const isToday = DAY_NUM[d] === todayDow;
-    const times   = loc.schedule[d] || [];
-    const now     = new Date();
-    const nowH    = now.getHours() * 60 + now.getMinutes();
-    const timesHtml = times.length
-      ? times.map(t => {
-          const [h, m] = t.split(':').map(Number);
-          const tMin = h * 60 + m;
-          const isNow = isToday && Math.abs(tMin - nowH) <= 90;
-          return `<span class="time ${isNow?'now':''}">${t}</span>`;
-        }).join('')
-      : `<span style="color:var(--ink-mute);font-family:var(--mono);font-size:12px;letter-spacing:0.06em;">本日無課</span>`;
-    return `<div class="day-row ${isToday?'today-row':''}">
-      <span class="dlabel">${DAY_ZH[d]}</span>
-      <div class="times">${timesHtml}</div>
-    </div>`;
-  }).join('');
+  document.querySelectorAll('.sched-panel-db').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('db-panel-' + locId);
+  if (panel) panel.classList.add('active');
 }
 
 // ── Admin ──
@@ -2193,10 +2465,20 @@ function rosterBadgeHtml(name) {
 
 async function adminLoadMembers() {
   await loadRoster();
-  const { data: pending }  = await sb.from('members').select('*').eq('status','pending').order('created_at');
-  const { data: approved } = await sb.from('members').select('*').eq('status','approved').order('real_name');
+  const [{ data: pending }, { data: approved }, { data: suspended }] = await Promise.all([
+    sb.from('members').select('*').eq('status','pending').order('created_at'),
+    sb.from('members').select('*').eq('status','approved').order('real_name'),
+    sb.from('members').select('*').in('status',['suspended','rejected']).order('real_name'),
+  ]);
 
   const noteStyle = `width:100%;margin-top:6px;padding:5px 8px;background:var(--bg-soft);border:1px solid var(--rule-soft);color:var(--ink-mute);font-size:0.72rem;font-family:var(--mono);resize:none;outline:none;`;
+
+  const pc = pending?.length || 0;
+  const ac = approved?.length || 0;
+  const sc = suspended?.length || 0;
+  document.getElementById('admin-pending-count').textContent  = pc ? `(${pc})` : '';
+  document.getElementById('admin-approved-count').textContent = ac ? `(${ac})` : '';
+  document.getElementById('admin-suspended-count').textContent = sc ? `(${sc})` : '';
 
   document.getElementById('admin-pending-list').innerHTML =
     (pending||[]).map(m => `<tr class="member-row">
@@ -2226,9 +2508,21 @@ async function adminLoadMembers() {
       </td>
       <td style="color:var(--fg-3);font-size:0.8rem;">${m.email}</td>
       <td>${formatLoc(m.location)}</td>
-      <td><span class="status-badge status-approved">已核准</span></td>
-      <td><button class="action-btn reject-btn" onclick="adminUpdateStatus('${m.id}','rejected')">停用</button></td>
+      <td style="color:var(--fg-4);font-size:0.75rem;font-family:var(--mono);">${m.last_login_at?.split('T')[0] || '—'}</td>
+      <td><button class="action-btn reject-btn" onclick="adminUpdateStatus('${m.id}','suspended')">停用</button></td>
     </tr>`).join('') || `<tr><td colspan="5" class="admin-empty">尚無已核准會員</td></tr>`;
+
+  document.getElementById('admin-suspended-list').innerHTML =
+    (suspended||[]).map(m => `<tr class="member-row">
+      <td>
+        <strong>${m.real_name}</strong>
+        ${m.admin_notes ? `<div style="margin-top:5px;font-size:0.7rem;color:var(--fg-4);font-family:var(--mono);">${m.admin_notes}</div>` : ''}
+      </td>
+      <td style="color:var(--fg-3);font-size:0.8rem;">${m.email}</td>
+      <td>${formatLoc(m.location)}</td>
+      <td><span class="status-badge" style="background:rgba(255,90,54,.1);color:var(--warn);">${m.status === 'rejected' ? '已拒絕' : '已停用'}</span></td>
+      <td><button class="action-btn approve-btn" onclick="adminUpdateStatus('${m.id}','approved')">重新啟用</button></td>
+    </tr>`).join('') || `<tr><td colspan="5" class="admin-empty">無停用會員</td></tr>`;
 }
 
 async function adminSaveNote(id, val) {
@@ -2236,7 +2530,12 @@ async function adminSaveNote(id, val) {
 }
 
 async function adminUpdateStatus(id, status) {
-  await sb.from('members').update({ status }).eq('id', id);
+  const { error } = await sb.from('members').update({ status }).eq('id', id);
+  if (error) {
+    alert('更新失敗：' + error.message);
+    console.error('adminUpdateStatus error:', error);
+    return;
+  }
   adminLoadMembers();
 }
 
@@ -2270,6 +2569,23 @@ async function adminSaveAllWOD() {
   await sb.from('wod_cache').upsert({ id:'current', data:wod, updated_at:new Date().toISOString() });
   btn.textContent = '儲存全部課表 →';
   document.getElementById('admin-save-status').textContent = '✓ 已儲存 ' + new Date().toLocaleTimeString('zh-TW');
+}
+
+// ── Sub-tab: 官方訓練課表 ──
+let _heroSubTab = 'hero';
+let _historyInited = false;
+
+function showHeroSubTab(name) {
+  _heroSubTab = name;
+  document.getElementById('subtab-hero').style.display = name === 'hero' ? '' : 'none';
+  document.getElementById('subtab-history').style.display = name === 'history' ? '' : 'none';
+  const btnHero = document.getElementById('subtab-btn-hero');
+  const btnHist = document.getElementById('subtab-btn-history');
+  btnHero.style.background = name === 'hero' ? 'var(--ink)' : 'var(--paper)';
+  btnHero.style.color = name === 'hero' ? 'var(--accent)' : 'var(--ink-mute)';
+  btnHist.style.background = name === 'history' ? 'var(--ink)' : 'var(--paper)';
+  btnHist.style.color = name === 'history' ? 'var(--accent)' : 'var(--ink-mute)';
+  if (name === 'history' && !_historyInited) { _historyInited = true; initHistoryPage(); }
 }
 
 // ── Hero WODs ──
@@ -2435,6 +2751,178 @@ function rollHeroWOD() {
       </div>
     </div>`;
   overlay.classList.add('roll-overlay');
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+  document.body.appendChild(overlay);
+}
+
+// ── History WODs ──
+let _histWODs = null;
+let _histActiveType = null;
+let _histActiveTag = null;
+
+const HIST_TYPE_MAP = {
+  'for time': 'For Time',
+  'for reps': 'For Reps',
+  'for load': 'For Load',
+  'amrap': 'AMRAP',
+  'emom': 'EMOM',
+  'tabata': 'Tabata',
+};
+
+function normalizeType(t) {
+  if (!t) return '其他';
+  const lower = t.toLowerCase();
+  for (const [k, v] of Object.entries(HIST_TYPE_MAP)) {
+    if (lower.includes(k)) return v;
+  }
+  return '其他';
+}
+
+async function loadHistoryWODs() {
+  if (_histWODs) return;
+  const res = await fetch('data/wod.json').catch(() => null);
+  if (!res) { _histWODs = []; return; }
+  const d = await res.json();
+  const today = new Date();
+  const todayStr = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+  _histWODs = (d.days || []).filter(w => w.date < todayStr).reverse();
+}
+
+async function initHistoryPage() {
+  await loadHistoryWODs();
+  const types = [...new Set(_histWODs.map(w => normalizeType(w.type)))].sort();
+  const tags = [...new Set(_histWODs.map(w => w.tag).filter(Boolean))].sort();
+
+  const typeRow = document.getElementById('hist-type-row');
+  typeRow.innerHTML = types.map(t =>
+    `<button onclick="toggleHistType('${t}')" id="htype-${t.replace(/\s/g,'_')}"
+      style="padding:5px 12px;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);
+             font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;">${t}</button>`
+  ).join('');
+
+  const tagRow = document.getElementById('hist-tag-row');
+  tagRow.innerHTML = tags.map(t =>
+    `<button onclick="toggleHistTag('${t}')" id="htag-h-${t.replace(/\s/g,'_')}"
+      style="padding:5px 12px;border:1.5px solid var(--rule-soft);background:var(--paper);color:var(--ink-mute);
+             font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;">${t}</button>`
+  ).join('');
+
+  renderHistoryWODs(getFilteredHistory());
+}
+
+function toggleHistType(type) {
+  _histActiveType = _histActiveType === type ? null : type;
+  document.querySelectorAll('[id^="htype-"]').forEach(btn => {
+    const t = btn.textContent.trim();
+    const active = t === _histActiveType;
+    btn.style.background = active ? 'var(--ink)' : 'var(--paper)';
+    btn.style.color = active ? 'var(--accent)' : 'var(--ink)';
+  });
+  renderHistoryWODs(getFilteredHistory());
+}
+
+function toggleHistTag(tag) {
+  _histActiveTag = _histActiveTag === tag ? null : tag;
+  document.querySelectorAll('[id^="htag-h-"]').forEach(btn => {
+    const t = btn.textContent.trim();
+    const active = t === _histActiveTag;
+    btn.style.background = active ? 'var(--ink)' : 'var(--paper)';
+    btn.style.color = active ? 'var(--accent)' : 'var(--ink-mute)';
+    btn.style.borderColor = active ? 'var(--ink)' : 'var(--rule-soft)';
+  });
+  renderHistoryWODs(getFilteredHistory());
+}
+
+function getFilteredHistory() {
+  const q = (document.getElementById('hist-search')?.value || '').trim().toLowerCase();
+  return _histWODs.filter(w => {
+    const matchType = !_histActiveType || normalizeType(w.type) === _histActiveType;
+    const matchTag = !_histActiveTag || w.tag === _histActiveTag;
+    const matchQ = !q || w.description.toLowerCase().includes(q) || w.name.toLowerCase().includes(q) ||
+                   (w.movements||[]).some(m => m.name.toLowerCase().includes(q));
+    return matchType && matchTag && matchQ;
+  });
+}
+
+function filterHistoryWODs() { renderHistoryWODs(getFilteredHistory()); }
+
+function historyCard(w) {
+  const id = 'hw-hist-' + w.date;
+  const typeLabel = normalizeType(w.type);
+  const days = ['日','一','二','三','四','五','六'];
+  const [wy, wm, wd] = w.date.split('-').map(Number);
+  const dow = new Date(Date.UTC(wy, wm-1, wd)).getUTCDay();
+  const dateLabel = `${wm}/${wd} (${days[dow]})`;
+  const tagHtml = w.tag ? `<span style="font-family:var(--mono);font-size:10px;padding:2px 8px;background:var(--accent);color:var(--accent-ink);font-weight:700;letter-spacing:.06em;">${w.tag}</span>` : '';
+  const typeHtml = `<span style="font-family:var(--mono);font-size:10px;padding:2px 8px;background:var(--bg-soft);border:1px solid var(--rule-soft);color:var(--ink-mute);letter-spacing:.04em;">${typeLabel}</span>`;
+  const scalingHtml = w.scaling ? `<div style="margin-top:12px;padding:10px 12px;background:var(--bg-soft);border-left:3px solid var(--warn);">
+    <div style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--warn);margin-bottom:6px;">降階</div>
+    <pre style="font-family:var(--mono);font-size:11px;white-space:pre-wrap;line-height:1.7;color:var(--ink-mute);">${w.scaling}</pre>
+  </div>` : '';
+  const notesHtml = w.coach_notes ? `<div style="margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--ink-mute);line-height:1.6;font-style:italic;">${w.coach_notes}</div>` : '';
+  return `
+    <div class="lib-card" id="${id}" onclick="toggleHistCard('${id}')">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+        <div>
+          <div style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--ink-mute);margin-bottom:6px;">${dateLabel}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;">${typeHtml}${tagHtml}</div>
+        </div>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--ink-mute);letter-spacing:.1em;flex-shrink:0;margin-top:4px;" id="${id}-arrow">展開 ↓</span>
+      </div>
+      <div id="${id}-body" style="display:none;margin-top:14px;border-top:1px solid var(--rule-faint);padding-top:14px;">
+        <pre style="font-family:var(--mono);font-size:12px;white-space:pre-wrap;line-height:1.7;color:var(--ink);margin-bottom:4px;">${w.description}</pre>
+        ${notesHtml}${scalingHtml}
+      </div>
+    </div>`;
+}
+
+function toggleHistCard(id) {
+  const body = document.getElementById(id + '-body');
+  const arrow = document.getElementById(id + '-arrow');
+  const open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : 'block';
+  if (arrow) arrow.textContent = open ? '展開 ↓' : '收合 ↑';
+}
+
+function renderHistoryWODs(list) {
+  const el = document.getElementById('hist-results');
+  const countEl = document.getElementById('hist-count');
+  if (!list.length) {
+    el.innerHTML = `<div class="lib-empty">找不到符合的課表</div>`;
+    if (countEl) countEl.textContent = '';
+    return;
+  }
+  if (countEl) countEl.textContent = `共 ${list.length} 筆課表`;
+  el.innerHTML = list.map(historyCard).join('');
+}
+
+function rollHistoryWOD() {
+  if (!_histWODs || !_histWODs.length) return;
+  const pool = getFilteredHistory();
+  if (!pool.length) return;
+  const w = pool[Math.floor(Math.random() * pool.length)];
+  const typeLabel = normalizeType(w.type);
+  const days = ['日','一','二','三','四','五','六'];
+  const [wy, wm, wd] = w.date.split('-').map(Number);
+  const dow = new Date(Date.UTC(wy, wm-1, wd)).getUTCDay();
+  const dateLabel = `${wm}/${wd} (${days[dow]})`;
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;padding:24px;';
+  overlay.innerHTML = `
+    <div style="background:var(--paper);max-width:480px;width:100%;max-height:80vh;overflow-y:auto;">
+      <div style="background:var(--ink);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">🎲 隨機歷史課表</span>
+        <button onclick="this.closest('[style*=fixed]').remove()" style="font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.5);">✕ 關閉</button>
+      </div>
+      <div style="padding:24px;">
+        <div style="font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--ink-mute);margin-bottom:4px;">${dateLabel}</div>
+        <div style="font-family:var(--mono);font-size:11px;padding:3px 10px;display:inline-block;background:var(--bg-soft);border:1px solid var(--rule-soft);color:var(--ink-mute);margin-bottom:16px;">${typeLabel}${w.tag ? ' · ' + w.tag : ''}</div>
+        <pre style="font-family:var(--mono);font-size:13px;white-space:pre-wrap;line-height:1.7;color:var(--ink);margin-bottom:20px;">${w.description}</pre>
+        ${w.coach_notes ? `<div style="font-family:var(--mono);font-size:11px;color:var(--ink-mute);line-height:1.6;font-style:italic;margin-bottom:16px;">${w.coach_notes}</div>` : ''}
+        ${w.scaling ? `<div style="font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--warn);margin-bottom:8px;">降階</div><pre style="font-family:var(--mono);font-size:12px;white-space:pre-wrap;line-height:1.8;color:var(--ink-mute);margin-bottom:20px;">${w.scaling}</pre>` : ''}
+        <button onclick="this.closest('[style*=fixed]').remove();rollHistoryWOD();" style="width:100%;padding:14px;background:var(--accent);color:var(--ink);font-weight:800;font-family:var(--mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;">🎲 再骰一次</button>
+      </div>
+    </div>`;
   overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
   document.body.appendChild(overlay);
 }
