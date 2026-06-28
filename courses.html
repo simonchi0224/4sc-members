@@ -102,11 +102,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .course-card-left { flex: 1; }
 .course-tag {
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--live); margin-bottom: 8px; display: block;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--live); margin-bottom: 10px; display: block;
 }
-.course-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-.course-meta { font-size: 12.5px; color: var(--fg-3); line-height: 1.6; }
+.course-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.course-meta { font-size: 14px; color: var(--fg-3); line-height: 1.65; }
 .course-price {
   font-family: var(--mono); font-size: 13px; font-weight: 600;
   color: var(--heavy); white-space: nowrap; flex-shrink: 0;
@@ -163,66 +163,130 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   <p class="hero-sub">選擇課程，用 Google 帳號登入即可報名。<br>報名前請先確認課程日期與費用。</p>
 </div>
 
-<!-- 出團計劃（固定卡片） -->
-<div style="margin-bottom:8px;">
-  <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
-    出團計劃
-    <span style="flex:1;height:1px;background:var(--rule-soft);display:block;"></span>
-  </div>
-  <a href="outing.html" class="course-card" style="background:var(--live);border-color:var(--live);color:var(--live-ink);">
-    <div class="course-card-left">
-      <span class="course-tag" style="color:var(--live-ink);opacity:.6;">🏆 報名進行中</span>
-      <div class="course-title">4SC 出團計劃 2026</div>
-      <div class="course-meta" style="color:var(--live-ink);opacity:.65;">WEPOWER 9/19 · 台中鋼鐵大賽 10/17–18 · 跟四季一起備賽出發</div>
+<!-- 所有卡片共用容器 -->
+<div class="course-list" style="gap:32px;">
+
+  <!-- 出團計劃 -->
+  <div>
+    <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+      出團計劃
+      <span style="flex:1;height:1px;background:var(--rule-soft);display:block;"></span>
     </div>
-    <div class="course-arrow" style="color:var(--live-ink);">›</div>
-  </a>
-</div>
-
-<!-- 體操專攻班（固定卡片） -->
-<div style="max-width:600px;margin:0 auto 8px;padding:0 28px;">
-  <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
-    體操專攻班 · 7/11–9/12
-    <span style="flex:1;height:1px;background:var(--rule-soft);display:block;"></span>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:12px;">
-    <a href="gymnastics.html#beginner" class="course-card">
+    <a href="outing.html" class="course-card" style="background:var(--live);border-color:var(--live);color:var(--live-ink);">
       <div class="course-card-left">
-        <span class="course-tag">🤸 報名進行中 · 每週六 09:00–10:30</span>
-        <div class="course-title">基礎體操入門班</div>
-        <div class="course-meta">7/11 – 9/12 · 9 堂 · 滿班 15 人 · 新手友善，從核心發力到倒立入門</div>
+        <span class="course-tag" style="color:var(--live-ink);opacity:.6;">🏆 報名進行中</span>
+        <div class="course-title">4SC 出團計劃 2026</div>
+        <div class="course-meta" style="color:var(--live-ink);opacity:.65;">WEPOWER 9/19 · 台中鋼鐵大賽 10/17–18 · 跟四季一起備賽出發</div>
       </div>
-      <div style="text-align:right;flex-shrink:0;align-self:center;">
-        <div style="font-family:var(--mono);font-size:13px;font-weight:600;color:var(--heavy);">NT$1,000<small style="font-size:10px;color:var(--fg-3);">/堂</small></div>
-        <div style="font-family:var(--mono);font-size:10px;color:var(--fg-3);margin-top:2px;">全期 $6,750</div>
-      </div>
-      <div class="course-arrow">›</div>
-    </a>
-    <a href="gymnastics.html#advanced" class="course-card">
-      <div class="course-card-left">
-        <span class="course-tag">🤸 報名進行中 · 每週六 12:00–13:30</span>
-        <div class="course-title">進階體操研習班</div>
-        <div class="course-meta">7/11 – 9/12 · 9 堂 · 精緻小班 10 人 · 需具備靠牆倒立 + Strict pull-up</div>
-      </div>
-      <div style="text-align:right;flex-shrink:0;align-self:center;">
-        <div style="font-family:var(--mono);font-size:13px;font-weight:600;color:var(--heavy);">NT$1,500<small style="font-size:10px;color:var(--fg-3);">/堂</small></div>
-        <div style="font-family:var(--mono);font-size:10px;color:var(--fg-3);margin-top:2px;">全期 $9,000</div>
-      </div>
-      <div class="course-arrow">›</div>
+      <div class="course-arrow" style="color:var(--live-ink);">›</div>
     </a>
   </div>
-</div>
 
-<!-- 研習課程（動態載入） -->
-<div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px;display:flex;align-items:center;gap:8px;max-width:600px;margin:24px auto 12px;padding:0 28px;">
-  其他課程
-  <span style="flex:1;height:1px;background:var(--rule-soft);display:block;"></span>
-</div>
-<div class="course-list" id="course-list">
-  <div class="skeleton-card"></div>
-  <div class="skeleton-card"></div>
-  <div class="skeleton-card"></div>
-</div>
+  <!-- 備賽團練 -->
+  <div>
+    <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+      備賽團練 · 7/11–9/13
+      <span style="flex:1;height:1px;background:var(--rule-soft);display:block;"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <a href="outing.html#schedule" class="course-card">
+        <div class="course-card-left">
+          <span class="course-tag">🏆 WEPOWER 班 · 每週六 13:30–15:00</span>
+          <div class="course-title">WEPOWER 推廣組</div>
+          <div class="course-meta">共 9 次 · 教練：Chi &amp; 周 · 動作熟悉、心肺配速、安全完賽</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;align-self:center;">
+          <div style="font-family:var(--mono);font-size:13px;font-weight:600;color:var(--heavy);">NT$500<small style="font-size:10px;color:var(--fg-3);">/次</small></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--fg-3);margin-top:2px;">一期 4 次 $2,000</div>
+        </div>
+        <div class="course-arrow">›</div>
+      </a>
+      <a href="outing.html#schedule" class="course-card">
+        <div class="course-card-left">
+          <span class="course-tag">🏆 WEPOWER 班 · 每週六 15:00–16:30</span>
+          <div class="course-title">WEPOWER 菁英組</div>
+          <div class="course-meta">共 9 次 · 教練：IAN · 高強度配速、團隊策略、賽前模擬</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;align-self:center;">
+          <div style="font-family:var(--mono);font-size:13px;font-weight:600;color:var(--heavy);">NT$500<small style="font-size:10px;color:var(--fg-3);">/次</small></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--fg-3);margin-top:2px;">一期 4 次 $2,000</div>
+        </div>
+        <div class="course-arrow">›</div>
+      </a>
+      <a href="outing.html#schedule" class="course-card">
+        <div class="course-card-left">
+          <span class="course-tag">🥇 鋼鐵大賽班 · 每週日 13:00–14:30</span>
+          <div class="course-title">鋼鐵大賽推廣組</div>
+          <div class="course-meta">共 9 次 · 教練：Chi &amp; 周 · 動作熟悉、心肺配速、安全完賽</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;align-self:center;">
+          <div style="font-family:var(--mono);font-size:13px;font-weight:600;color:var(--heavy);">NT$500<small style="font-size:10px;color:var(--fg-3);">/次</small></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--fg-3);margin-top:2px;">一期 4 次 $2,000</div>
+        </div>
+        <div class="course-arrow">›</div>
+      </a>
+      <a href="outing.html#schedule" class="course-card">
+        <div class="course-card-left">
+          <span class="course-tag">🥇 鋼鐵大賽班 · 每週日 14:30–16:00</span>
+          <div class="course-title">鋼鐵大賽菁英組</div>
+          <div class="course-meta">共 9 次 · 教練：IAN · 高強度配速、團隊棒次、高疲勞動作品質</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;align-self:center;">
+          <div style="font-family:var(--mono);font-size:13px;font-weight:600;color:var(--heavy);">NT$500<small style="font-size:10px;color:var(--fg-3);">/次</small></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--fg-3);margin-top:2px;">一期 4 次 $2,000</div>
+        </div>
+        <div class="course-arrow">›</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 體操專攻班 -->
+  <div>
+    <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+      體操專攻班 · 7/11–9/12
+      <span style="flex:1;height:1px;background:var(--rule-soft);display:block;"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <a href="gymnastics.html#beginner" class="course-card">
+        <div class="course-card-left">
+          <span class="course-tag">🤸 報名進行中 · 每週六 09:00–10:30</span>
+          <div class="course-title">基礎體操入門班</div>
+          <div class="course-meta">7/11 – 9/12 · 9 堂 · 滿班 15 人 · 新手友善，從核心發力到倒立入門</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;align-self:center;">
+          <div style="font-family:var(--mono);font-size:13px;font-weight:600;color:var(--heavy);">NT$1,000<small style="font-size:10px;color:var(--fg-3);">/堂</small></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--fg-3);margin-top:2px;">全期 $6,750</div>
+        </div>
+        <div class="course-arrow">›</div>
+      </a>
+      <a href="gymnastics.html#advanced" class="course-card">
+        <div class="course-card-left">
+          <span class="course-tag">🤸 報名進行中 · 每週六 12:00–13:30</span>
+          <div class="course-title">進階體操研習班</div>
+          <div class="course-meta">7/11 – 9/12 · 9 堂 · 精緻小班 10 人 · 需具備靠牆倒立 + Strict pull-up</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;align-self:center;">
+          <div style="font-family:var(--mono);font-size:13px;font-weight:600;color:var(--heavy);">NT$1,500<small style="font-size:10px;color:var(--fg-3);">/堂</small></div>
+          <div style="font-family:var(--mono);font-size:10px;color:var(--fg-3);margin-top:2px;">全期 $9,000</div>
+        </div>
+        <div class="course-arrow">›</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 其他課程（動態載入） -->
+  <div>
+    <div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+      其他課程
+      <span style="flex:1;height:1px;background:var(--rule-soft);display:block;"></span>
+    </div>
+    <div id="course-list">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </div><!-- /其他課程 -->
+
+</div><!-- /course-list wrapper -->
 
 <footer class="footer">
   <div class="footer-copy">© 2026 混合健身股份有限公司 · 4SC CrossFit</div>
